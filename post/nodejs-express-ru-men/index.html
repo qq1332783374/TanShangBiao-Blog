@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>时间戳转换函数 | Tan&#39;s-Blog</title>
+<title>Node.js Express入门 | Tan&#39;s-Blog</title>
 <link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1556369467557">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
@@ -72,38 +72,92 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              时间戳转换函数
+              Node.js Express入门
             </h2>
             <div class="post-info">
               <time class="post-time">
                 · 2019-04-27 ·
               </time>
               
-                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
-                  # 前端
+                <a href="https://qq1332783374.github.io/tag/mDJQ8TjHY" class="post-tags">
+                  # nodeJS
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/vkrwi_XKS" class="post-tags">
+                  # Express
                 </a>
               
             </div>
             
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/nodejs-express-ru-men.jpg')">
+              </div>
+            
             <div class="post-content">
-              <pre><code class="language-javascript">
-formatDate (value) {
-		let date = new Date(value);
-		let y = date.getFullYear();
-		let MM = date.getMonth() + 1;
-		MM = MM &lt; 10 ? ('0' + MM) : MM;
-		let d = date.getDate();
-		d = d &lt; 10 ? ('0' + d) : d;
-		let h = date.getHours();
-		h = h &lt; 10 ? ('0' + h) : h;
-		let m = date.getMinutes();
-		m = m &lt; 10 ? ('0' + m) : m;
-		let s = date.getSeconds();
-		s = s &lt; 10 ? ('0' + s) : s;
-		return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
-}
+              <h1 id="nodejs-express-入门">Node.js Express 入门</h1>
+<h2 id="express-简介">Express 简介</h2>
+<p>Express 是一个简洁而灵活的 node.js Web应用框架, 提供了一系列强大特性帮助你创建各种
+Web 应用，和丰富的 HTTP 工具。
+使用 Express 可以快速地搭建一个完整功能的网站。
+Express 框架核心特性：
+* 可以设置中间件来响应 HTTP 请求。
+* 定义了路由表用于执行不同的 HTTP 请求动作。
+* 可以通过向模板传递参数来动态渲染 HTML 页面。</p>
+<h2 id="项目初始化">项目初始化</h2>
+<ol>
+<li>首先通过 <code>npm init -y</code> 初始化项目
+<img src="https://qq1332783374.github.io/post-images/1556367357051.png" alt=""></li>
+</ol>
+<h2 id="express和相关依赖安装">Express和相关依赖安装</h2>
+<ol>
+<li>
+<p>安装 express 到当前项目
+<code>npm install --save express</code></p>
+</li>
+<li>
+<p><strong>body-parser</strong> node.js 中间件，用于处理 JSON, Raw, Text 和 URL 编码的数据。</p>
+<ul>
+<li><code>npm install --save body-parser</code></li>
+</ul>
+</li>
+<li>
+<p><strong>cookie-parser</strong> 解析Cookie的工具。通过req.cookies可以取到传过来的cookie，并把它们转成对象。</p>
+<ul>
+<li><code>npm install --save cookie-parser</code></li>
+</ul>
+</li>
+<li>
+<p><strong>multer</strong> 用于处理 enctype=&quot;multipart/form-data&quot;（设置表单的MIME编码）的表单数据。</p>
+</li>
+</ol>
+<ul>
+<li><code>npm install --save multer</code></li>
+</ul>
+<h2 id="第一个express实例">第一个Express实例</h2>
+<blockquote>
+<p>接下来通过 Express 框架来输出 &quot;Hello Express&quot;，创建<strong>express_demo.js</strong>,代码示例如下：</p>
+</blockquote>
+<pre><code class="language-javascript">
+// 加载express 模块
+const express = require('express')
+
+// 实例化express
+const app = express()
+
+// 基本路由配置
+app.get('/', (req, res) =&gt; {
+    res.send('Hello Express')
+})
+
+// 端口监听
+const server = app.listen(3000, () =&gt; {
+    console.log('server running at http://localhost:3000')
+})
 
 </code></pre>
+<p><strong>执行以上代码</strong>
+<code>node express_demo.js</code>
+浏览器访问 <code>localhost:3000</code>,结果如下图
+<img src="https://qq1332783374.github.io/post-images/1556369408870.png" alt=""></p>
 
             </div>
           </article>
@@ -112,9 +166,9 @@ formatDate (value) {
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/wang-zhan-she-ji-chang-jian-wen-ti">
+            <a href="https://qq1332783374.github.io/post/shi-jian-chuo-zhuan-huan-han-shu">
               <h3 class="post-title">
-                网站设计常见问题
+                时间戳转换函数
               </h3>
             </a>
           </div>  
