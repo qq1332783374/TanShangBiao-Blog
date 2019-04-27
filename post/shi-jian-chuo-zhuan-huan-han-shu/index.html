@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>about | Tan&#39;s-Blog</title>
+<title>时间戳转换函数 | Tan&#39;s-Blog</title>
 <link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1556344896174">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
@@ -72,26 +72,52 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              about
+              时间戳转换函数
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-04-25 ·
+                · 2019-04-27 ·
               </time>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
               
             </div>
             
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/about.png')">
-              </div>
-            
             <div class="post-content">
-              <p>大家好，我是前端小白谭上彪，欢迎访问我的GitHub主页，我的个人博客 <a href="%E5%9C%B0%E5%9D%80">https://www.tanshangbiao.cn</a>
-主修设计和前端开发，平时喜欢逛一下各种技术论坛，掘金、CSDN、博客园、还有设计的网站、花瓣、站酷、68设计。对后端也有一定的了解，nodeJS+MongoDB的基本业务开发，想自学Python。想尽量往全栈工程师的方向发展。</p>
+              <pre><code class="language-javascript">
+formatDate (value) {
+		let date = new Date(value);
+		let y = date.getFullYear();
+		let MM = date.getMonth() + 1;
+		MM = MM &lt; 10 ? ('0' + MM) : MM;
+		let d = date.getDate();
+		d = d &lt; 10 ? ('0' + d) : d;
+		let h = date.getHours();
+		h = h &lt; 10 ? ('0' + h) : h;
+		let m = date.getMinutes();
+		m = m &lt; 10 ? ('0' + m) : m;
+		let s = date.getSeconds();
+		s = s &lt; 10 ? ('0' + s) : s;
+		return y + '-' + MM + '-' + d + ' ' + h + ':' + m + ':' + s;
+}
+
+</code></pre>
 
             </div>
           </article>
         </div>
     
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/wang-zhan-she-ji-chang-jian-wen-ti">
+              <h3 class="post-title">
+                网站设计常见问题
+              </h3>
+            </a>
+          </div>  
         
 
         
