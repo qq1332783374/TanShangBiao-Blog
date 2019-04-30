@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>git入门 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1556612026907">
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1556612235171">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
 
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1556612026907" alt="">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1556612235171" alt="">
   </a>
   <h1 class="site-title">
     Tan&#39;s-Blog
@@ -96,21 +96,21 @@
               <h2 id="起步">起步</h2>
 <p>首先到官网下载一个<strong>git</strong>，我这里以win10为例。
 <a href="%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80">https://git-scm.com/downloads</a>
-下载好了直接下部就行了，安装完了鼠标右键菜单会出现以下两个选项：</p>
+下载好了直接下一步就行了，安装完了鼠标右键菜单会出现以下两个选项：</p>
 <p><img src="https://qq1332783374.github.io/post-images/1556604619144.png" alt=""></p>
 <h2 id="配置">配置</h2>
 <p>安装完<strong>git</strong>后，直接在桌面右键选择 <code>Git Bash Here</code>，进入git终端，进行配置。</p>
 <ol>
 <li>添加用户名和用户邮箱</li>
 </ol>
-<pre><code>git config --global user.name &quot;your GitHub username&quot;
+<pre><code class="language-javascript">git config --global user.name &quot;your GitHub username&quot;
 git config --global user.email &quot;your GitHub Email&quot;
 </code></pre>
 <p>ps：输入这两个命令时，是没有提示的。</p>
 <ol start="2">
 <li>查看用户是否添加成功</li>
 </ol>
-<pre><code>git config -l
+<pre><code class="language-javascript">git config -l
 </code></pre>
 <p><img src="https://qq1332783374.github.io/post-images/1556605195378.png" alt=""></p>
 <ol start="3">
@@ -119,7 +119,7 @@ git config --global user.email &quot;your GitHub Email&quot;
 <ul>
 <li>添加GitHub注册邮箱到ssh,连续三次回车就行了，成功会出现一个很多泡泡的信息</li>
 </ul>
-<pre><code>ssh-keygen -t rsa -C &quot;youremail@domain.com&quot;
+<pre><code class="language-javascript">ssh-keygen -t rsa -C &quot;youremail@domain.com&quot;
 </code></pre>
 <ul>
 <li>输入 <code>eval &quot;$(ssh-agent -s)&quot;</code>, 添加秘钥到 <strong>ssh-agent</strong></li>
@@ -155,27 +155,27 @@ git config --global user.email &quot;your GitHub Email&quot;
 <li>在里面新建一个名为 <strong>README</strong>/<strong>md</strong>格式的文件，在里面输入一句简单的话来测试一下。</li>
 <li>鼠标右键菜单<code>Git Bash Here</code>输入一下代码创建本地仓库</li>
 </ol>
-<pre><code>git init
+<pre><code class="language-javascript">git init
 </code></pre>
 <p>创建成功后会多出一个<code>master</code>本地分支来</p>
 <p><img src="https://qq1332783374.github.io/post-images/1556610125564.png" alt=""></p>
 <ol start="4">
 <li>首先查看一下本地文件的状态，如果未提交的话文件会显示红色。</li>
 </ol>
-<pre><code>git status
+<pre><code class="language-javascript">git status
 </code></pre>
 <p><img src="https://qq1332783374.github.io/post-images/1556610344102.png" alt=""></p>
 <ol start="5">
 <li>添加要提交的文件，输入一下代码</li>
 </ol>
-<pre><code>git add READM.md   // 添加单个文件，直接添加文件名就行
+<pre><code class="language-javascript">git add READM.md   // 添加单个文件，直接添加文件名就行
 add add .    // 这个命令简单点来说就是直接添加全部，一般都用这个
 </code></pre>
 <p><img src="https://qq1332783374.github.io/post-images/1556610618284.png" alt=""></p>
 <ol start="6">
 <li>提交刚刚添加的文件</li>
 </ol>
-<pre><code>git commit -m &quot;first commit&quot;
+<pre><code class="language-javascript">git commit -m &quot;first commit&quot;
 </code></pre>
 <p><img src="https://qq1332783374.github.io/post-images/1556610712258.png" alt=""></p>
 <ol start="7">
@@ -191,12 +191,12 @@ add add .    // 这个命令简单点来说就是直接添加全部，一般都�
 <ol start="9">
 <li>添加远程仓库地址</li>
 </ol>
-<pre><code>git remote add origin git@github.com:qq1332783374/git_demo.git
+<pre><code class="language-javascript">git remote add origin git@github.com:qq1332783374/git_demo.git
 </code></pre>
 <ol start="10">
 <li>然后就是提交到GitHub上面去了</li>
 </ol>
-<pre><code>git push -u origin master    // 初次提交要加上 -u，下一次提交就不用了
+<pre><code class="language-javascript">git push -u origin master    // 初次提交要加上 -u，下一次提交就不用了
 </code></pre>
 <p><img src="https://qq1332783374.github.io/post-images/1556611479272.png" alt=""></p>
 <ol start="11">
