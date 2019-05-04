@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>about | Tan&#39;s-Blog</title>
+<title>URL参数截取工具函数 | Tan&#39;s-Blog</title>
 <link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1556966579337">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
@@ -72,26 +72,54 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              about
+              URL参数截取工具函数
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-04-25 ·
+                · 2019-05-04 ·
               </time>
+              
+                <a href="https://qq1332783374.github.io/tag/IU6ZSj6pA" class="post-tags">
+                  # URL
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/KS9yxfg9U" class="post-tags">
+                  # JavaScript
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
               
             </div>
             
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/about.png')">
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/url-can-shu-jie-qu-gong-ju-han-shu.jpeg')">
               </div>
             
             <div class="post-content">
-              <p>大家好，我是前端小白谭上彪，欢迎访问我的GitHub主页，我的个人博客 <a href="%E5%9C%B0%E5%9D%80">https://www.tanshangbiao.cn</a>
-主修设计和前端开发，平时喜欢逛一下各种技术论坛，掘金、CSDN、博客园、还有设计的网站、花瓣、站酷、68设计。对后端也有一定的了解，nodeJS+MongoDB的基本业务开发，想自学Python。想尽量往全栈工程师的方向发展。</p>
+              <blockquote>
+<p>在地址栏截取相应的参数这种场景还是比较常见的，在这里和大家分享一下这个工具函数</p>
+</blockquote>
+<pre><code class="language-javascript">// name 的值就是你想要获取的key值的名称
+function getUrlKey(name) {   
+            return decodeURIComponent((new RegExp('[?|&amp;]' + name + '=' + '([^&amp;;]+?)(&amp;|#|;|$)').exec(location.href) || [, &quot;&quot;])[1].replace(/\+/g, '%20')) || null
+        }
+
+</code></pre>
 
             </div>
           </article>
         </div>
     
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/chang-jian-zheng-ze">
+              <h3 class="post-title">
+                常见正则
+              </h3>
+            </a>
+          </div>  
         
 
         
