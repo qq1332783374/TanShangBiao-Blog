@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>html5学习-2-html5中的表单 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557035196531">
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557037876345">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
 
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557035196531" alt="">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557037876345" alt="">
   </a>
   <h1 class="site-title">
     Tan&#39;s-Blog
@@ -76,58 +76,165 @@
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-05-05 ·
+                · 2018-09-14 ·
               </time>
               
+                <a href="https://qq1332783374.github.io/tag/1GaHdwE5J" class="post-tags">
+                  # HTML5
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
             </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/html5-xue-xi-2-html5-zhong-de-biao-dan.png')">
+              </div>
             
             <div class="post-content">
               <h2 id="目录">目录</h2>
 <ol>
 <li>新增的表单属性</li>
 <li>新增的表单类型</li>
-<li>新增的表单的验证</li>
-<li>新增的页面元素</li>
+<li>新增的表单验证</li>
+<li>总结</li>
 </ol>
-<h2 id="1-新增的表单属性">1. 新增的表单属性</h2>
-<h5 id="11-placeholder">1.1 placeholder</h5>
+<h2 id="1-表单属性">1. 表单属性</h2>
+<h4 id="11-placeholder">1.1 placeholder</h4>
 <p>当用户还没有输入值的时候，输入型控件可以通过placeholder属性向用户描述性说明或者提示信息。使用placeholder属性只需要将说明性文字作为该属性值即可。</p>
 <pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
 </code></pre>
-<h5 id="12-autocomplete属性">1.2 autocomplete属性</h5>
+<h4 id="12-autocomplete属性">1.2 autocomplete属性</h4>
 <p>浏览器通过autocomplete属性能够知晓是否应该保存输入值以备将来使用。
 autocomplete属性应该用来保护敏感用户数据，避免浏览器对它们进行不安全的存储。autocomplete属性，可以指定on,off两个值，设置为on的时候，可以显示指定候补输入的数据列表</p>
 <pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot; autocomplete=&quot;on&quot;/&gt;
 </code></pre>
-<h5 id="13-autofocus属性">1.3 autofocus属性</h5>
+<h4 id="13-autofocus属性">1.3 autofocus属性</h4>
 <p>给文本框,选择框或按钮组件加上该属性，当画面打开时，该控件自动获取光标焦点。</p>
 <pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot; autofocus/&gt;
 </code></pre>
 <p><strong>注意:一个页面上只能有一个控件具有该属性，不可以出现多个</strong></p>
-<h5 id="11-placeholder-2">1.1 placeholder</h5>
-<p>当用户还没有输入值的时候，输入型控件可以通过placeholder属性向用户描述性说明或者提示信息。使用placeholder属性只需要将说明性文字作为该属性值即可。</p>
-<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
-</code></pre>
-<h5 id="14-list属性">1.4 list属性</h5>
+<h4 id="14-list属性">1.4 list属性</h4>
 <p>在HTML5中，为单行文本增加一个list属性，该属性的值为某个datalist元素的id。dataList元素也是HTML5新增元素，该元素类似于选择框，但是当用户想要设置的值不在选择列表之内，允许其自行输入。该元素本身并不显示，而是当文本框获得焦点时以输入的方式显示。</p>
-<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
+<pre><code class="language-html">&lt;input type=&quot;text&quot; list=&quot;greet&quot; /&gt;
+&lt;datalist id=&quot;greet&quot;&gt;
+    &lt;option&gt;吃饭&lt;/option&gt;
+    &lt;option&gt;喝水&lt;/option&gt;
+    &lt;option&gt;打球&lt;/option&gt;
+&lt;/datalist&gt;
 </code></pre>
-<h5 id="11-placeholder-3">1.1 placeholder</h5>
-<p>当用户还没有输入值的时候，输入型控件可以通过placeholder属性向用户描述性说明或者提示信息。使用placeholder属性只需要将说明性文字作为该属性值即可。</p>
-<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
+<h4 id="15-min和max属性">1.5 min和max属性</h4>
+<p>通过属性min和max属性，可以将range输入框的数值范围限定在最低值和最高值之间。这两个特性既可以值设置一个，也可以两个设置，当然也可以不设置。例如：创建一个表示型大小的range空间，值范围为0%-100%</p>
+<pre><code class="language-html">&lt;input id=&quot;text&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;0&quot; /&gt;
 </code></pre>
-<h5 id="11-placeholder-4">1.1 placeholder</h5>
-<p>当用户还没有输入值的时候，输入型控件可以通过placeholder属性向用户描述性说明或者提示信息。使用placeholder属性只需要将说明性文字作为该属性值即可。</p>
-<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
+<p><strong>注意:默认的min为0，max的值为100</strong></p>
+<h4 id="16-step属性">1.6 step属性</h4>
+<p>对于输入型控件，设置其step属性能够设定输入值递增或递减的梯度。例如，如下的方式将表示型大小的range控件的step属性值设置为5</p>
+<pre><code class="language-html">&lt;input id=&quot;text&quot; type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;0&quot; step=&quot;5&quot; /&gt;
 </code></pre>
-<h5 id="11-placeholder-5">1.1 placeholder</h5>
-<p>当用户还没有输入值的时候，输入型控件可以通过placeholder属性向用户描述性说明或者提示信息。使用placeholder属性只需要将说明性文字作为该属性值即可。</p>
-<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
+<p>设置完成后，控件可接受的输入只能是初始值和5的倍数</p>
+<h2 id="2-表单类型">2. 表单类型</h2>
+<p>在HTML5中，增加与改良了input元素的种类，可以简单地使用这些元素来实现HTML5之前需要使用javascript才能实现的许多功能</p>
+<h4 id="21-email输入类型">2.1 email输入类型</h4>
+<p>email类型的input元素是一种专门用来输入Email地址的文本框。提交时如果该文本框中的内容不是E-mail地址格式的文字则不允许提交，但是它不检查Email是否存在。</p>
+<pre><code class="language-html">&lt;input type=&quot;email&quot; /&gt;
 </code></pre>
-<h5 id="11-placeholder-6">1.1 placeholder</h5>
-<p>当用户还没有输入值的时候，输入型控件可以通过placeholder属性向用户描述性说明或者提示信息。使用placeholder属性只需要将说明性文字作为该属性值即可。</p>
-<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
+<h4 id="22-url输入类型">2.2 url输入类型</h4>
+<p>url类型的input元素是一种专门用来输入url地址的文本框。提交时如果该文本框中内容不是url地址格式的文字，否则不允许提交</p>
+<pre><code class="language-html">&lt;input type=&quot;url&quot; /&gt;
 </code></pre>
+<h4 id="23-date输入类型">2.3 date输入类型</h4>
+<p>date输入类型比较受欢迎的一种元素，我们常常在网页中要求输入各种各样的日期，如生日，购买日期，订单等。data类型的input元素以日历的形式方便用户输入。</p>
+<pre><code class="language-html">&lt;input type=&quot;date&quot; /&gt;
+</code></pre>
+<h4 id="24-time输入类型">2.4 time输入类型</h4>
+<p>time类型的input元素是一种专门用来输入时间的文本框，并且在提交时会对输入时间的有效性进行检查。它的外观取决于浏览器的默认样式。</p>
+<pre><code class="language-html">&lt;input type=&quot;time&quot; /&gt;
+</code></pre>
+<h4 id="25-datetime输入类型">2.5 datetime输入类型</h4>
+<p>datetime类型的input元素是一种专门用来输入UTC日期和事件的文本框，并在提交时对输入的日期和时间进行有效的检查。</p>
+<pre><code class="language-html">&lt;input type=&quot;datetime&quot; /&gt;
+</code></pre>
+<h4 id="26-datetime-local输入类型">2.6 datetime-local输入类型</h4>
+<p>datetime-local类型的input元素是一种专门用来输入本地日期和时间的文本框，并且在提交时会对输入的日期和时间进行有效性的检查。</p>
+<pre><code class="language-html">&lt;input type=&quot;datetime-local&quot; /&gt;
+</code></pre>
+<h4 id="27-month输入类型">2.7 month输入类型</h4>
+<p>month类型的input元素是一种专门用来输入月份的文本框，并且在提交时会对输入的月份的有效性进行检查。</p>
+<pre><code class="language-html">&lt;input type=&quot;month &quot; /&gt;
+</code></pre>
+<h4 id="28-number输入类型">2.8 number输入类型</h4>
+<p>email类型的input元素是一种专门用来输入Email地址的文本框。提交时如果该文本框中的内容不是E-mail地址格式的文字则不允许提交，但是它不检查Email是否存在。</p>
+<pre><code class="language-html">&lt;input type=&quot;number &quot; /&gt;
+</code></pre>
+<h4 id="29-tel输入类型">2.9 tel输入类型</h4>
+<p>tel类型的input元素输入电话号码的专用文本框。但是它没有特殊的检验规则。</p>
+<pre><code class="language-html">&lt;input type=&quot;tel &quot; /&gt;
+</code></pre>
+<h4 id="210-color输入类型">2.10 color输入类型</h4>
+<p>Color类型的input元素用来选取颜色，它提供了一个颜色选择器。</p>
+<pre><code class="language-html">&lt;input type=&quot;color &quot; /&gt;
+</code></pre>
+<h4 id="211-search输入类型">2.11 search输入类型</h4>
+<p>Search类型的input元素是一种专门用来搜索关键词的文本框。</p>
+<pre><code class="language-html">&lt;input type=&quot;search &quot; /&gt;
+</code></pre>
+<h2 id="3-表单验证">3. 表单验证</h2>
+<p>在HTML5中，可以实现在表单提交时执行自动验证的功能。下面是关于在HTML5中追加的关于对元素内输入内容进行限制属性的指定。</p>
+<h4 id="31-required属性">3.1 required属性</h4>
+<p><strong>required</strong>属性的主要目的的是确保表单控件中的值已填写。在提交时，如果元素中内容为空白，则不允许提交，同时在浏览器中显示文字，提示用户该元素中必须输入内容。</p>
+<h4 id="32-pattern属性">3.2 pattern属性</h4>
+<p><strong>pattern</strong>属性根据表单控件上设置的格式规则验证输入是否为有效格式。对input元素使用pattern属性，并且将属性设为某个格式的正则表达式，在提交时会检查其内容是否符合给定格式，并且会给出相对应的提示。</p>
+<pre><code class="language-html">&lt;form&gt;
+    &lt;input 
+					 type=&quot;text&quot; 
+					 placeholder=&quot;请输入1个数字与三个大写字母&quot; 
+					 name=&quot;username&quot; 
+					 pattern=&quot;[0-9][a-z]{3}&quot; 
+					 required=&quot;required&quot;/&gt;
+	
+    &lt;input type=&quot;submit&quot; /&gt;
+&lt;/form&gt;
+</code></pre>
+<h4 id="33-使用setcustomvaliduty方法自定义错误信息">3.3 使用setCustomValiduty方法自定义错误信息</h4>
+<p>HTML5中许多新的input元素都带有对于输入内容的有效性检查，如果检查不通过，浏览器会针对于该元素提示错误信息，但有时开发者不想使用这些默认的错误信息提示，而是想自定义错误信息框。那么，就可以使用到我们<strong>setCustomValiduty()</strong> 这个方法。</p>
+<pre><code class="language-html">
+&lt;form action=&quot;article.html&quot;&gt;
+     &lt;input type=&quot;text&quot; placeholder=&quot;请输入第一次密码&quot; required=&quot;required&quot; id=&quot;password1&quot; /&gt;
+     &lt;input type=&quot;text&quot; placeholder=&quot;请输入第二次密码&quot; required=&quot;required&quot; id=&quot;password2&quot;/&gt;
+    &lt;input type=&quot;submit&quot; id=&quot;btn&quot; /&gt;
+&lt;/form&gt;
+&lt;script&gt;
+    var oBtn = document.getElementById(&quot;btn&quot;)
+    oBtn.addEventListener(&quot;click&quot;,function(){
+    var oPassword1 = document.getElementById(&quot;password1&quot;)
+    var oPassword2 = document.getElementById(&quot;password2&quot;)
+    if(oPassword1.validity.valueMissing){
+        oPassword1.setCustomValidity(&quot;不能为空啊..&quot;)
+    }else {
+        oPassword1.setCustomValidity(&quot;&quot;)
+    }
+    if(oPassword2.validity.valueMissing){
+       oPassword2.setCustomValidity(&quot;不能为空啊..&quot;)
+    }else {
+       oPassword2.setCustomValidity(&quot;&quot;)
+    }
+    if(oPassword1.value!=oPassword2.value){
+        oPassword2.setCustomValidity(&quot;不一致..&quot;)
+     }else {
+        oPassword2.setCustomValidity(&quot;&quot;)
+     }
+  })
+&lt;/script&gt;
+
+</code></pre>
+<h2 id="总结">总结</h2>
+<p>HTML5表单极大地提高了开发者的工作效率，并给用户带来了一些新的体验。HTML5提供了很多直接使用的功能，而以前需要大量的定制代码才能实现这些功能。</p>
 
             </div>
           </article>
@@ -136,9 +243,9 @@ autocomplete属性应该用来保护敏感用户数据，避免浏览器对它�
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/wowjs-jian-dan-shi-yong-jiao-cheng">
+            <a href="https://qq1332783374.github.io/post/html5-xue-xi-1-html5-xin-zeng-biao-qian">
               <h3 class="post-title">
-                WOW.js 简单使用教程
+                html5学习-1-html5新增标签
               </h3>
             </a>
           </div>  

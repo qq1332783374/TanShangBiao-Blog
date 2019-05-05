@@ -1,0 +1,787 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>html5学习-3-html5中的文件操作 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557037876345">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557037876345" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              html5学习-3-html5中的文件操作
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-09-17 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/1GaHdwE5J" class="post-tags">
+                  # HTML5
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/html5-xue-xi-3-html5-zhong-de-wen-jian-cao-zuo.png')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>files对象</li>
+<li>FileReader</li>
+<li>FileReader事件</li>
+<li>HTML5新增拖拽的api</li>
+<li>dataTransfer的使用方法</li>
+</ol>
+<h2 id="1-files对象">1. files对象</h2>
+<p>在HTML5中，从Web网页上访问本地文件系统非常简单，那就是使用它新增的API，<strong>files</strong>对象。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>文件名称</td>
+</tr>
+<tr>
+<td>size</td>
+<td>文件大小</td>
+</tr>
+<tr>
+<td>type</td>
+<td>文件类型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意:用户每个选择的文件都是一个files对象，而fileList对象则为这些files对象的列表，代表用户选择的所有文件。</strong></p>
+<h2 id="2-filereader">2. FileReader</h2>
+<p>FileReader API 主要用来把文件读入内存，并且读取文件中的数据。FileReader接口提供了一个异步的api，使用该api可以在浏览器主线程中异步访问文件系统，读取文件中的数据。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>readAsDataUrl</td>
+<td>file</td>
+<td>将文件读取为DataURL</td>
+</tr>
+<tr>
+<td>readAsText</td>
+<td>file</td>
+<td>将文件读取为文本</td>
+</tr>
+</tbody>
+</table>
+<h4 id="21-readasdataurl该方法将文件读取为一段以data开头的字符串这段字符串实际上是dataurl并且读取结果都将存储在result属性中">2.1 readAsDataUrl:该方法将文件读取为一段以data开头的字符串，这段字符串实际上是dataURL.，并且读取结果都将存储在result属性中。</h4>
+<h4 id="22readastext该方法会读取文件中的文本元素并且读取结果都将存储在result属性中-注意使用filereader的时候必须使用new运算符创建出对象并且调用readasdaraurl方法读取文件在实例的onload事件中获取到成功读取到的文件内容">2.2:readAsText该方法会读取文件中的文本元素，并且读取结果都将存储在result属性中。注意:使用FileReader的时候，必须使用new运算符，创建出对象，并且调用readAsDaraUrl方法读取文件，在实例的onload事件中，获取到成功读取到的文件内容。</h4>
+<h2 id="练习">练习</h2>
+<p>综合以上的API进行一道简单的练习加深一下印象。</p>
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;综合练习&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;input type=&quot;file&quot; id=&quot;files&quot; /&gt;
+        &lt;input type=&quot;submit&quot; id=&quot;btn&quot; /&gt;
+        &lt;div id=&quot;result&quot;&gt;
+        &lt;/div&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            var oFiles = document.getElementById(&quot;files&quot;);
+            var oBtn = document.getElementById(&quot;btn&quot;);
+            var oRes = document.getElementById(&quot;result&quot;);
+            oBtn.onclick = function(){
+                //console.log(oFiles.files[0].type)  输出image/jpeg
+                var oType = oFiles.files[0].type;   //文件类型
+                var fs = oFiles.files[0];    //文件对象
+                var pattern = /^(image)\/\w+/  //判断文件类型的正则
+                if(!pattern.test(oType)){
+                    oRes.innerHTML = &quot;不可以上传&quot;;
+                }
+                var reader = new FileReader() ;  //实例化一个接口读取文件
+                reader.readAsDataURL(fs)   //读取文件
+                //console.log(reader)
+                //使用FileReader事件 onload 预览上传的图片
+                reader.onload = function(){
+                    var oNode = document.createElement(&quot;img&quot;);  //创建img标签
+                    oNode.src = this.result;  //
+                    oRes.appendChild(oNode)  //追加图片
+                    oFiles.value = ''
+                }
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h2 id="3-filereader事件">3. FileReader事件</h2>
+<p><strong>FileReader</strong> API中包含了一套完整的事件模型，用于捕获读取文件的状态</p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onabort</td>
+<td>中断时触发</td>
+</tr>
+<tr>
+<td>onerror</td>
+<td>出错时触发</td>
+</tr>
+<tr>
+<td>onload</td>
+<td>文件读取成功完成时触发</td>
+</tr>
+<tr>
+<td>onloadstart</td>
+<td>读取完成触发，无论成功或失败</td>
+</tr>
+<tr>
+<td>onloadend</td>
+<td>读取时触发</td>
+</tr>
+<tr>
+<td>onprogress</td>
+<td>读取中（接受事件对象）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：文件上传是属于数据流的格式，那么我们就要注意，就要使用HTML5中的FormData对象</strong></p>
+<h4 id="练习文件上传进度条">练习：文件上传进度条</h4>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;文件上传进度条&lt;/title&gt;
+        &lt;style&gt;
+            *{
+                margin: 0;
+            }
+            #progress{
+                width: 200px;
+                height: 20px;
+                background: #ddd;
+                position: relative;
+            }
+            #info{
+                width: 0px;
+                height: 20px;
+                background: aquamarine;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body style=&quot;margin: 200px;&quot;&gt;
+        &lt;input type=&quot;file&quot; name=&quot;files&quot; id=&quot;files&quot; value=&quot;&quot; /&gt;
+        &lt;div id=&quot;progress&quot;&gt;
+            &lt;div id=&quot;info&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div id=&quot;result&quot;&gt;
+
+        &lt;/div&gt;
+        &lt;input type=&quot;submit&quot; name=&quot;btn&quot; id=&quot;btn&quot; /&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            var oFiles = document.getElementById(&quot;files&quot;);
+            var oBtn = document.getElementById(&quot;btn&quot;);
+            var oRes = document.getElementById(&quot;result&quot;);
+            var oInfo = document.getElementById(&quot;info&quot;);
+            oBtn.onclick = function(){
+                var fs = oFiles.files[0];
+//                console.log(fs)
+                var reader = new FileReader(fs)
+//                console.log(reader)
+                reader.onprogress = function(e){
+                    console.log(e)
+                    oInfo.style.width = Math.round(e.loaded/e.total*200)+&quot;px&quot;
+                    oRes.innerHTML = Math.round((e.loaded/e.total*200)*0.5)+&quot;%&quot;
+                }
+                reader.readAsDataURL(fs)
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="4-html5新增拖拽的api">4. HTML5新增拖拽的API</h2>
+<p>在HTL5中，支持直接拖放操作的api。虽然HTML5之前已经可以使用<strong>mousedown</strong>,<strong>mousemove</strong>和<strong>mouseup</strong>来进行操作，但只支持在浏览器内部的拖放；而在HTML5中，已经支持在浏览器与其它应用程序之间的数据互相拖动。</p>
+<h4 id="api">API</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557037510040.png" alt=""></p>
+<h4 id="实现步骤">实现步骤：</h4>
+<ol>
+<li>
+<p>把需要拖放的对象元素的<strong>draggable</strong>属性设为true(draggable=true)。这样才能将该元素进行拖放。</p>
+</li>
+<li>
+<p>编写与拖放有关的事件处理代码。</p>
+</li>
+</ol>
+<h4 id="练习-2">练习：</h4>
+<h5 id="练习1datatransfer中的setdata和getdata设置文本">练习1：datatransfer中的setData()和getData()设置文本</h5>
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;datatransfer中的setData()和getData()设置文本&lt;/title&gt;
+        &lt;style&gt;
+            *{
+                margin: 150px;
+            }
+            .drag{
+                width: 100px;
+                height: 100px;
+                border: 1px solid #666;
+            }
+            .result{
+                width: 200px;
+                height: 200px;
+                background: #7FFFD4;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;drag&quot; id=&quot;drag&quot; draggable=&quot;true&quot;&gt;&lt;/div&gt;
+        &lt;div class=&quot;result&quot; id=&quot;result&quot;&gt;&lt;/div&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            var oDrag = document.getElementById(&quot;drag&quot;);
+            var oRes = document.getElementById(&quot;result&quot;);
+            //拖拽元素
+            //拖拽开始
+            oDrag.ondragstart = function(e){
+//                console.log(e)
+                e.dataTransfer.setData(&quot;title&quot;,&quot;今日头条 &quot;)  //设置数据
+            }
+            //目标元素
+            //进入元素是触发
+            oRes.ondragenter = function(){
+                this.innerHTML = &quot;进入目标元素&quot;
+            }
+            //在元素上触发
+            oRes.ondragover = function(e){
+                //必须阻止默认时间触发
+                e.preventDefault()
+            }
+            //离开元素是触发
+            oRes.ondragleave = function(){
+                this.innerHTML = &quot;&quot;
+            }
+            //在目标元素释放
+            oRes.ondrop = function(e){
+                //这里也要阻止默认事件
+                var test = e.dataTransfer.getData(&quot;title&quot;)   //获取设置数据的值
+                this.innerHTML = test
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h5 id="练习2拖拽实现文本预览">练习2：拖拽实现文本预览</h5>
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;拖拽实现文本预览&lt;/title&gt;
+        &lt;style&gt;
+            *{
+                margin: 150px;
+            }
+            .result{
+                width: 200px;
+                height: 200px;
+                background: aquamarine;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;result&quot;&gt;
+
+        &lt;/div&gt;
+        &lt;div id=&quot;view&quot;&gt;
+
+        &lt;/div&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            var oRes = document.getElementsByTagName(&quot;div&quot;)[0];
+            var oView = document.getElementById(&quot;view&quot;);
+            /*
+             1. 文件进入  ondragenter
+             2. 文件在元素上  ondragover
+             3. 文件释放  ondrop 
+             注意： ondragover是一定要阻止默认事件 preventDefault()
+             * */
+            //1.文件进入
+            oRes.ondragenter = function(){
+                this.innerHTML = &quot;可以放手了&quot;
+            }
+            //2.在元素上  阻止默认事件
+            oRes.ondragover = function(e){
+                //阻止默认事件
+                e.preventDefault();
+            }
+            //3.文件释放
+            oRes.ondrop = function(e){
+                //阻止默认
+                e.preventDefault();
+                var fs = e.dataTransfer.files[0];   //获取文件
+                var reader = new FileReader();    //实例化文件对象
+                reader.readAsText(fs)   //读取文件
+                reader.onload = function(){   //文件加载完成事件
+                    oView.innerHTML = this.result
+                }
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h5 id="练习3拖拽预览单张图片">练习3：拖拽预览单张图片</h5>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;拖拽预览单张图片&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 0;
+            }
+            ul li{
+                list-style: none;
+            }
+            .drag{
+                width: 200px;
+                height: 200px;
+                border: 1px solid #666;
+                text-align: center;
+                line-height: 200px;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;drag&quot;&gt;
+            文件放这里
+        &lt;/div&gt;
+        &lt;ul id=&quot;view&quot;&gt;
+
+        &lt;/ul&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            var oDrag = document.getElementsByTagName(&quot;div&quot;)[0];
+            var oView = document.getElementById(&quot;view&quot;);
+            var obj = {};
+            //1. 文件进入
+            oDrag.ondragenter = function(){
+                this.innerHTML = &quot;可以释放了&quot;
+            }
+            //2. 在元素上面
+            oDrag.ondragover = function(e){
+                //阻止默认事件
+                e.preventDefault();
+            }
+            //2. 释放文件
+            oDrag.ondrop = function(e){
+                e.preventDefault();
+                var fs = e.dataTransfer.files;   //获取文件
+                var reader = new FileReader();
+                reader.readAsDataURL(fs[0]);
+                reader.onload = function(){
+                    if(!obj[this.result]){
+                        //创建标签
+                        var oLi = document.createElement(&quot;li&quot;);
+                        var oImg = document.createElement(&quot;img&quot;);
+                        oImg.src = this.result;
+                        oLi.appendChild(oImg);
+                        oView.appendChild(oLi);
+                        obj[this.result] = this.result
+                    }else{
+                        alert(&quot;不要重复提交&quot;)
+                    }
+                }
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="练习4拖拽预览多张图片">练习4：拖拽预览多张图片</h5>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;拖拽预览多张图片&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 0;
+            }
+            ul li{
+                list-style: none;
+            }
+            .drag{
+                width: 200px;
+                height: 200px;
+                border: 1px solid #666;
+                text-align: center;
+                line-height: 200px;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;drag&quot;&gt;
+            文件放这里
+        &lt;/div&gt;
+        &lt;ul id=&quot;view&quot;&gt;
+
+        &lt;/ul&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            var oDrag = document.getElementsByTagName(&quot;div&quot;)[0];
+            var oView = document.getElementById(&quot;view&quot;);
+            var obj = {};
+            //1. 文件进入
+            oDrag.ondragenter = function(){
+                this.innerHTML = &quot;可以释放了&quot;
+            }
+            //2. 在元素上面
+            oDrag.ondragover = function(e){
+                //阻止默认事件
+                e.preventDefault();
+            }
+            //2. 释放文件
+            oDrag.ondrop = function(e){
+                e.preventDefault();
+                var fs = e.dataTransfer.files;   //获取文件
+                for (var i=0;i&lt;fs.length;i++) {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(fs[i]);
+                    reader.onload = function(){
+                        if(!obj[this.result]){
+                            //创建标签
+                            var oLi = document.createElement(&quot;li&quot;);
+                            var oImg = document.createElement(&quot;img&quot;);
+                            oImg.src = this.result;
+                            oLi.appendChild(oImg);
+                            oView.appendChild(oLi);
+                            obj[this.result] = this.result
+                        }else{
+                            alert(&quot;不要重复提交&quot;)
+                        }
+                    }
+                }
+                this.innerHTML = &quot;文件放这里&quot;
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="练习5拖拽实现购物车添加效果">练习5：拖拽实现购物车添加效果</h5>
+<p>效果图：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557037831287.gif" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot; /&gt;
+    &lt;title&gt;Boostrap+H5拖拽购物车&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;css/bootstrap.css&quot;/&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            list-style: none;
+        }
+        .content{
+            width: 520px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        #list li{
+            width: 120px;
+            float: left;
+            border: 1px solid #ddd;
+            box-shadow: 2px 2px 4px #ddd;
+            margin-right: 5px;
+        }
+        #list li img{
+            width: 100%;
+        }
+        .clear{
+            clear: both;
+        }
+        .shopcar table{
+            border-collapse: collapse;
+        }
+        
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;h1&gt;Boostrap+H5拖拽购物车&lt;/h1&gt;
+        &lt;ul id=&quot;list&quot;&gt;
+            &lt;li draggable=&quot;true&quot;&gt;
+                &lt;img src=&quot;img/f1.jpg&quot;/&gt;
+                &lt;p&gt;美丽的鲜花1&lt;/p&gt;
+                &lt;p&gt;52￥&lt;/p&gt;
+            &lt;/li&gt;
+            &lt;li draggable=&quot;true&quot;&gt;
+                &lt;img src=&quot;img/f2.jpg&quot;/&gt;
+                &lt;p&gt;美丽的鲜花2&lt;/p&gt;
+                &lt;p&gt;130￥&lt;/p&gt;
+            &lt;/li&gt;
+            &lt;li draggable=&quot;true&quot;&gt;
+                &lt;img src=&quot;img/f3.jpg&quot;/&gt;
+                &lt;p&gt;美丽的鲜花3&lt;/p&gt;
+                &lt;p&gt;140￥&lt;/p&gt;
+            &lt;/li&gt;
+            &lt;li draggable=&quot;true&quot;&gt;
+                &lt;img src=&quot;img/f4.jpg&quot;/&gt;
+                &lt;p&gt;美丽的鲜花4&lt;/p&gt;
+                &lt;p&gt;99￥&lt;/p&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div&gt;&lt;/div&gt;
+        &lt;div id=&quot;shopcar&quot;&gt;
+            &lt;h3&gt;购物车&lt;/h3&gt;
+            &lt;table class=&quot;table table-bordered&quot;&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;商品数量&lt;/th&gt;
+                        &lt;th&gt;商品名称&lt;/th&gt;
+                        &lt;th&gt;商品价格&lt;/th&gt;
+                        &lt;th&gt;操作&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody id=&quot;context&quot;&gt;
+                    &lt;!--&lt;tr&gt;
+                        &lt;td&gt;1&lt;/td&gt;
+                        &lt;td&gt;美丽的鲜花1&lt;/td&gt;
+                        &lt;td&gt;52&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button type=&quot;button&quot; class=&quot;btn btn-danger btn-xs&quot; id=&quot;btn&quot;&gt;删除&lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;--&gt;
+                &lt;/tbody&gt;
+                &lt;tfoot&gt;
+                    &lt;tr&gt;
+                        &lt;td colspan=&quot;3&quot;&gt;总结：&lt;em id=&quot;allMoney&quot;&gt;0&lt;/em&gt;￥&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;btn btn-success btn-xs&quot;&gt;结算&lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tfoot&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload = function(){
+            /*
+             1.开始拖动li  用到的事件ondragstart 设置数据 setData() 获取li的文本
+             2.ondragover 阻止默认事件
+             3.在目标元素释放li是的事件 ondrop
+             释放后要getData（）获取上面设置的数据进行字符串拼接 追加到tbody 
+             计算总的商品数量和价格
+             继续添加同种商品 ........没思路
+             按钮功能还在完善中
+             * */
+            var oList = document.getElementById(&quot;list&quot;);
+            var allLis = document.getElementsByTagName(&quot;li&quot;);
+            var oShopcar = document.getElementById(&quot;shopcar&quot;);
+            var oAllMoney = document.getElementById(&quot;allMoney&quot;);
+            var oAllShopNum = document.getElementById(&quot;shopNum&quot;);
+            var oContext = document.getElementById(&quot;context&quot;);
+            var obj = {}
+            var Allprice = 0 ;
+            var AllNum = 0 ;
+            var num = 0 ;
+            //1.拖拽开始
+            for (var i=0;i&lt;allLis.length;i++) {
+                allLis[i].ondragstart = function(e){
+                    //获取 p 标签的文本
+                    var oP = this.getElementsByTagName(&quot;p&quot;);  //获取当前 li 的 p 标签
+                    //设置数据
+                    e.dataTransfer.setData('title',oP[0].innerHTML);  //当前的标题
+                    e.dataTransfer.setData('price',oP[1].innerHTML);  //当前的价格
+                }
+            }
+            //2.阻止默认事件
+            oShopcar.ondragover = function(e){
+                e.preventDefault();
+            }
+            //3.释放元素
+            oShopcar.ondrop = function(e){
+                e.preventDefault();
+                //获取设置的数据
+                var title = e.dataTransfer.getData(&quot;title&quot;);
+                var price = e.dataTransfer.getData(&quot;price&quot;);
+//                console.log(obj)
+                if(!obj[title]){  //如果设置的title不相等就继续追加
+                    num++
+                    var oTr = document.createElement(&quot;tr&quot;);
+                    var oContent = '&lt;td&gt;'+num+'&lt;/td&gt;&lt;td&gt;'+title+'&lt;/td&gt;&lt;td&gt;'+price+'&lt;/td&gt;&lt;td&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-danger btn-xs&quot; id=&quot;btn&quot;&gt;删除&lt;/button&gt;&lt;/td&gt;'
+                    oTr.innerHTML = oContent;
+                    oContext.appendChild(oTr)
+                    obj[title] = 1 ;
+                    num =0 ;
+                }else{  //否则就累加
+                    var oTd_shopNum = document.getElementsByClassName(&quot;td_shopNum&quot;);
+                    var oTd_shopTitle = document.getElementsByClassName(&quot;td_shopTitle&quot;);
+                    for (var i=0;i&lt;oTd_shopTitle.length;i++) {
+                        if(oTd_shopTitle[i].innerHTML == title){
+                            oTd_shopNum[i].innerHTML = parseInt(oTd_shopNum[i].innerHTML)+1;
+                        }
+                    }
+                }
+                //商品总价
+                Allprice += parseInt(price)
+                oAllMoney.innerHTML = Allprice 
+
+            }
+
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/html5-xue-xi-2-html5-zhong-de-biao-dan">
+              <h3 class="post-title">
+                html5学习-2-html5中的表单
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
