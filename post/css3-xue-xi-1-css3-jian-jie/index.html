@@ -1,0 +1,212 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>css3学习-1-css3简介 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557047532381">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557047532381" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              css3学习-1-css3简介
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-10-05 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/qDNFOfUzc" class="post-tags">
+                  # CSS3
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/css3-xue-xi-1-css3-jian-jie.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>CSS3发展概述</li>
+<li>CSS3模块化概述</li>
+<li>CSS3新特性概览</li>
+<li>浏览器对于CSS3的支持</li>
+</ol>
+<h2 id="1-css3发展概述">1. CSS3发展概述</h2>
+<p>20世纪90年代初，HTML语言诞生，各种形式的样式表也开始出现。各种不同的浏览器结合自身的显示特性，开发了不同的样式语言，以便于读者自己调整网页的显示效果。注意，此时的样式语言仅供读者使用，而非供设计师使用。</p>
+<pre><code>     早期的HTML语言只含有很少量的显示属性，用来设置网页和字体的效果。随着HTML的发展，为了满足网页设计师的要求，HTML不断添加了很多用于显示的标签和属性。由于HTML的显示属性和标签比较丰富，其他的用来定义样式的语言就越来越没有意义了。
+</code></pre>
+<p>在这种背景下，1994年初哈坤·利提出了CSS的最初想法。伯特·波斯（Bert Bos）当时正在设计一款Argo浏览器，于是他们一拍即合，决定共同开发CSS。当然，这时市面上已经有一些非正式的样式表语言的提议了。</p>
+<pre><code>     1994年年底，哈坤在芝加哥的一次会议上第一次展示了他们对CSS的构想，1995年他与波斯再一次展示了他们的想法。当时W3C组织刚刚成立，W3C对CSS的前途很感兴趣，为此组织了一次讨论会。哈坤、波斯和其他一些人（如微软的托马斯·雷尔登）是这个项目的主要技术负责人。
+
+     1996年年底，CSS语言正式完成，同年12月CSS的第一版被正式推出（http://www.w3.org/TR/CSS1/）。
+
+     1997年年初，W3C内组织了专门负责CSS的工作组，负责人是克里斯·里雷。于是该工作组开始讨论第一个版本中没有涉及的问题。
+
+     1998年5月，CSS 2正式发布（http://www.w3.org/TR/CSS2/）。
+</code></pre>
+<p>尽管CSS 3的开发工作在2000年之前就开始了，但是距离最终的发布还有相当长的路要走。为了提高开发速度，也为了方便各主流浏览器根据需要渐进式地支持它，CSS 3被分割成多个模块，这些模块可以独立实现和发布，这也为日后CSS的扩展奠定了基础。</p>
+<p>考虑到CSS 3的定案还需要很长的时间，2002年工作组启动了对CSS 2.1的开发。这是CSS 2的修订版，它纠正了CSS 2中的一些错误，并且更精确地描述了CSS的浏览器实现。2004年CSS 2.1正式发布，到2006年年底得到完善，CSS 2.1是目前最流行、浏览器支持最完整的版本，它更准确地反映了CSS当前的状态。</p>
+<h2 id="2-css3模块化概述">2. CSS3模块化概述</h2>
+<pre><code>   CSS 1主要定义了网页的基本属性，如字体、颜色、空白边等。CSS 2在此基础上添加了一些高级功能，如浮动和定位；以及一些高级的选择器，如子选择器、相邻选择器和通用选择器等。
+
+   CSS 3开始遵循模块化开发，这将有助于理清模块化规范之间的不同关系，减少完整文件的大小。以前的规范是一个完整的模块，实在是太庞大，而且比较复杂，所以，新的CSS 3规范将其分为了多个模块。
+</code></pre>
+<h2 id="3-css3新特性概览">3. CSS3新特性概览</h2>
+<p>与前面几个版本相比较，CSS 3的变化是革命性的，而不是仅限于局部功能的修订和完善。尽管CSS 3的一些特性还不能被很多浏览器支持，或者说支持得还不够好，但是它依然让我们看到了网页样式的发展方向和使命。</p>
+<p>简单地说，CSS 3使得很多以前需要使用图片和脚本才能实现的效果，如今只需要几行代码就能实现。这不仅简化了设计师的工作，而且还能加快页面载入速度。下面我们就来领略一下CSS 3的主要新特性。</p>
+<pre><code>   1. 强大的选择器：CSS 3的选择器在CSS 2.1的基础上进行了增强，它允许设计师在标签中指定特定的HTML元素而不必使用多余的类、ID或者JavaScript脚本。
+</code></pre>
+<p>如果希望设计出简洁、轻量级的网页标签，希望结构与表现更好地分离，高级选择器是非常有用的。它可以避免在标签中添加大量的class和id属性，并让设计师更方便地维护样式表。</p>
+<pre><code>   2. 半透明度效果的实现：RGBA和HSLA不仅可以设定色彩，还能设定元素的透明度。另外，还可以使用opacity属性定义元素的不透明度
+
+   3.多栏布局：CSS 3让网页设计师不必使用多个div标签就能实现多栏布局。浏览器能解释多栏布局属性并生成多栏，让文本实现纸质报纸的多栏结构
+
+   4多背景图：CSS 3允许背景属性设置多个属性值，如background-image、background-repeat、background-size、background-position、background-originand、background-clip等，这样就可以在一个元素上添加多层背景图片。如果要设计复杂的网页效果（如圆角、背景重叠等），就不用再为HTML文档添加多个无用的标签了，使用该属性还可以优化网页文档的结构。
+
+   5. 文字阴影：text-shadow在CSS 2中就已经存在，但并没有被广泛应用。CSS 3采用了该特性，并重新进行了定义。该属性提供了一种新的跨浏览器的方案使文字看起来更醒目。
+
+   6. 开放字体类型：@font-face是最被期待的CSS 3特性之一，它在CSS 2中就已经被引入了，但是它在网站上仍然没有像其他CSS 3属性那样被广泛普及，这主要受阻于字体授权和版权问题，嵌入的字体很容易从网站上下载到，这是字体厂商的主要顾虑。
+
+   7. 圆角：border-radius属性不需背景图片就能给HTML元素添加圆角。它可能是现在使用得最多的CSS 3属性，很简单的原因是，使用圆角比较美观，而且不会与设计和可用性产生冲突。它不同于添加JavaScript或多个HTML标签，仅需要添加一些CSS属性。这个方案简洁而有效，可以让你免于花费几个小时来寻找精巧的浏览器方案和基于JavaScript圆角。
+
+   8.边框图片：border-image属性允许在元素的边框上设定图片，这使得原本单调的边框样式变得丰富起来。该属性给设计师提供了一个很好的工具，用它可以方便地定义和设计元素的边框样式，比background-image属性(对高级设计来说)和枯燥的默认边框样式更好用。我们也可以明确地定义一个边框应该如何缩放或平铺。
+
+   9.盒子阴影：box-shadow属性可以为HTML元素添加阴影而不需要使用额外的标签或背景图片。text-shadow属性能增强设计的细节，但并不影响内容的可读性，也不会影响页面布局
+
+   10.媒体查询：媒体查询（media query）可以用于为不同的显示设备定义与文能力相适配的样式。媒体查询是非常有用的，因为不用单独为不同的设备编写样式表了，而且也不需要使用JavaScript脚本来确定用户浏览器的属性和功能。这样就可以实现灵活的、更加流行的、基于JavaScript脚本解决方案的智能流体布局，以便于满足用户浏览器分辨率多样化的要求。
+</code></pre>
+<h2 id="4浏览器对于css3的支持">4.浏览器对于CSS3的支持</h2>
+<p>CSS 3给我们带来了众多全新的设计体验，但是并不是所有浏览器都完全支持它。各主流浏览器都定义了自己的私有属性，以便让用户体验CSS 3的新特性。</p>
+<pre><code>   这种“各自为政”的方法固然可以避免不同浏览器在解析相同属性时出现冲突，但是它也给设计师带来了诸多不便，因为不仅需要使用更多的CSS样式代码，而且还非常容易导致同一个页面在不同的浏览器之间表现不一致。
+
+   当然，网页不需要在所有浏览器中看起来都严格一致，有时候在某个浏览器中使用私有属性来实现特定的效果是可行的。Webkit类型的浏览器(如Safari、Chrome)的私有属性是以-webkit-为前缀的，Gecko类型的浏览器(如Firefox)的私有属性是以–moz–为前缀的，Konqueror类型的浏览器的私有属性是以-khtml-为前缀的，Opera浏览器的私有属性是以-o-为前缀的，而Internet Explorer浏览器的私有属性是以-ms-为前缀的（目前只有IE 8+支持-ms-前缀）
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/html5-xue-xi-6-html5-zhong-de-duo-mei-ti-bo-fang">
+              <h3 class="post-title">
+                html5学习-6-html5中的多媒体播放
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
