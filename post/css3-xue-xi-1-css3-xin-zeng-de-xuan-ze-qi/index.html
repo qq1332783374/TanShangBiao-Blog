@@ -1,0 +1,602 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>css3学习-1-CSS3新增的选择器 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557053341492">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557053341492" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              css3学习-1-CSS3新增的选择器
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-10-13 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/qDNFOfUzc" class="post-tags">
+                  # CSS3
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/css3-xue-xi-1-css3-xin-zeng-de-xuan-ze-qi.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<p>1 .CSS3中属性选择器
+2. CSS3中结构伪类选择器
+3. UI元素状态伪类选择器
+4. 其它新增选择器</p>
+<h2 id="1-css3中属性选择器">1 .CSS3中属性选择器</h2>
+<p>选择器（Selector，也译为选择符）是W3C在CSS 3工作草案中独立引入的一个概念（请参阅http://www.w3.org/TR/css3-selectors/）。实际上，在CSS 1和CSS 2已经非系统性地定义了很多常用选择器， 这些选择器基本上能够满足Web设计师常规的设计需求。</p>
+<table>
+<thead>
+<tr>
+<th>属性选择器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E[attr]</td>
+<td>只使用属性名，但没有确定任何的属性值</td>
+</tr>
+<tr>
+<td>E[attr=”value”]</td>
+<td>指定属性名称，并指定了该属性的属性值</td>
+</tr>
+<tr>
+<td>E[attr~=”value”]</td>
+<td>指定属性名，并且具有属性值，此属性值是一个词列表，并且以空格隔开，其中词列表中包含了一个value值。</td>
+</tr>
+<tr>
+<td>E[attr^=”value”]</td>
+<td>指定了属性名，并且有属性值，属性值是以value开头</td>
+</tr>
+<tr>
+<td>E[attr$=”value”]</td>
+<td>指定了属性名，并且拥有属性值，而且属性值是以value结束的</td>
+</tr>
+<tr>
+<td>E[attr*=”value”]</td>
+<td>指定了属性名，并且有属性值，而且属性值包含了value</td>
+</tr>
+<tr>
+<td>E[attr</td>
+<td>=”value”]</td>
+</tr>
+</tbody>
+</table>
+<p>CSS 3遵循了惯用的编码规则，选用了^、和*这3个通用匹配运算符，其中，^表示匹配起始符，表示匹配终止符，* 表示匹配任意字符，使用它们更符合编码习惯和惯用编程思维。</p>
+<p><strong>浏览器兼容情况</strong></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557052206846.png" alt=""></p>
+<h5 id="练习1-百度文库图标">练习1. 百度文库图标</h5>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;
+            百度文库图标
+        &lt;/title&gt;
+        &lt;style&gt;
+            p{
+                height: 40px;
+                line-height: 40px;
+                border: 1px solid black;
+            }
+            p a{
+                font-size: 12px;
+                font-family: &quot;微软雅黑&quot;;
+                background: url(img/ppt.gif) no-repeat;
+                padding-left: 20px;
+            }
+            p a[href*=doc]{
+                background: url(img/w.gif) no-repeat;
+            }
+            p a[href*=text]{
+                background: url(img/text.gif) no-repeat;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;p&gt;
+            &lt;a href=&quot;http//:www.xiandai.com/doc/javascript.html&quot;&gt;doc&lt;/a&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;a href=&quot;http//:www.xiandai.com/ppt/javascript.html&quot;&gt;ppt&lt;/a&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;a href=&quot;http//:www.xiandai.com/text/javascript.html&quot;&gt;text&lt;/a&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+            &lt;a href=&quot;http//:www.xiandai.com/ex/javascript.html&quot;&gt;Ex&lt;/a&gt;
+        &lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="2-css3中结构伪类选择器">2. CSS3中结构伪类选择器</h2>
+<p><strong>结构伪类(Structural pseudo-classes)</strong> 是CSS 3新增的类型选择器。顾名思义，结构伪类就是利用文档结构树（DOM）实现元素过滤，也就是说，通过文档结构的相互关系来匹配 特定的元素，从而减少文档内对class属性和I D属性的定义，使得文档更加简洁。</p>
+<table>
+<thead>
+<tr>
+<th>结构伪类选择器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:nth-child(n)</td>
+<td>表示E父元素中的第n个子节点且节点类型是E, p:nth-child(odd):匹配奇数行, p:ntn-child(even):匹配偶数行,p:nth-child(2n):匹配2的倍数</td>
+</tr>
+<tr>
+<td>E:nth-last-child(n)</td>
+<td>表示E元素中的第n个子节点且节点类型是E，从后往前计算</td>
+</tr>
+<tr>
+<td>E:nth-of-type(n)</td>
+<td>表示E父元素中E元素的第n个子节点</td>
+</tr>
+<tr>
+<td>E:empty()</td>
+<td>表示E元素中没有子节点。注意：子节点包含文本节点</td>
+</tr>
+<tr>
+<td>E:first-child</td>
+<td>表示E元素中的第一个子节点</td>
+</tr>
+<tr>
+<td>E:last-child</td>
+<td>表示E元素中的第二个子节点</td>
+</tr>
+<tr>
+<td>E:first-of-type</td>
+<td>表示E父元素中E元素的第一个子节点</td>
+</tr>
+<tr>
+<td>E:last-of-type</td>
+<td>表示E父元素中最后一个子节点且节点类型是E</td>
+</tr>
+<tr>
+<td>E:only-child</td>
+<td>表示E父元素中只有一个子节点。子节点不包含文本节点</td>
+</tr>
+<tr>
+<td>E:only-of-type</td>
+<td>表示E的父元素中只有一个子节点，且这唯一的子节点的类型必须是E。子节点不包含文本节点</td>
+</tr>
+</tbody>
+</table>
+<h5 id="练习2新浪的头部导航">练习2：新浪的头部导航</h5>
+<p><img src="https://qq1332783374.github.io/post-images/1557052656767.png" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;新浪的头部导航&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            a{
+                text-decoration: none;
+                color: #666;
+            }
+            .list{
+                list-style: none;
+            }
+            .list li{
+                float: left;
+                width: 10%;
+                text-align: center;
+                border-right: 1px solid #ddd;
+                padding: 10px;
+            }
+            .list li a:nth-child(4n+1){
+                font-weight: bold;
+            }
+            .list li:last-child{
+                border-right: none;
+            }
+            .list li a {
+                font-size: 12px;
+                width: 23%;
+                display: inline-block;
+            }
+            .list li a:hover{
+                color: #1E9FFF;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;ul class=&quot;list&quot;&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;新闻&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;军事&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;社会&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;国际&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;财经&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;股票&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;基金&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;外汇&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;科技&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;手机&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;探索&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;众测&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;体育&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;NBA&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;英超&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;中超&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;娱乐&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;明星&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;电影&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;星座&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;汽车&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;报价&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;买车&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;新车&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;新闻&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;军事&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;社会&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;国际&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;财经&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;股票&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;基金&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;外汇&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;科技&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;手机&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;探索&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;众测&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;体育&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;NBA&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;英超&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;中超&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;娱乐&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;明星&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;电影&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;星座&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;汽车&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;报价&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;买车&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;新车&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;新闻&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;军事&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;社会&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;国际&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;财经&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;股票&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;基金&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;外汇&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;科技&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;手机&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;探索&lt;/a&gt;
+                &lt;a href=&quot;#&quot;&gt;众测&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="3-ui元素状态伪类选择器">3. UI元素状态伪类选择器</h2>
+<p>UI元素状态伪类（The UI element states pseudo-classes）也是CSS 3新增的全新类型选择器。其中UI是User Interface（用户界面）的简写，UI设计是指网页的人机交互、操作逻 辑、界面美观的整体设计。优秀的UI设计不仅是让网页更具个性和品位，还要让网页操作变得便利和简单，充分体现网站的定位和特点。</p>
+<p>UI元素的状态一般包括：可用、不可用、选中、未选中、获取焦点、失去焦点、锁定、待机等。CSS 3定义了3种常用的状态伪类选择器。</p>
+<table>
+<thead>
+<tr>
+<th>UI元素伪类选择器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E:target</td>
+<td>表示当前URL片段的元素类型，这个元素必须是E</td>
+</tr>
+<tr>
+<td>E:disable</td>
+<td>表示不可点击的表单控件</td>
+</tr>
+<tr>
+<td>E:enable</td>
+<td>表示可点击的表单控件</td>
+</tr>
+<tr>
+<td>E:checked</td>
+<td>表示已选中的checkbox或radio</td>
+</tr>
+<tr>
+<td>E:first-line</td>
+<td>表示E元素中的第一行</td>
+</tr>
+<tr>
+<td>E:first-letter</td>
+<td>表示E元素中的第一个子符</td>
+</tr>
+<tr>
+<td>E::selection</td>
+<td>表示E元素在用户选中文字时</td>
+</tr>
+<tr>
+<td>E:before</td>
+<td>表示E生成内容在E元素之前</td>
+</tr>
+<tr>
+<td>E:after</td>
+<td>表示E生成内容在E元素后</td>
+</tr>
+</tbody>
+</table>
+<h5 id="练习1target实现选项卡切换">练习1:target实现选项卡切换</h5>
+<p><img src="https://qq1332783374.github.io/post-images/1557052980814.gif" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;target实现选项卡切换&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            div{
+                width: 100px;
+                height: 100px;
+                border: 1px solid #ddd;
+                text-align: center;
+                line-height: 100px;
+                display: none;
+            }
+            div:target{
+                display: block;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;a href=&quot;#div1&quot;&gt;div1&lt;/a&gt;
+        &lt;a href=&quot;#div2&quot;&gt;div2&lt;/a&gt;
+        &lt;a href=&quot;#div3&quot;&gt;div3&lt;/a&gt;
+        &lt;div id=&quot;div1&quot;&gt;1&lt;/div&gt;
+        &lt;div id=&quot;div2&quot;&gt;2&lt;/div&gt;
+        &lt;div id=&quot;div3&quot;&gt;3&lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="练习2-利用类型为radio实现选项卡">练习2: 利用类型为radio实现选项卡</h5>
+<p><img src="https://qq1332783374.github.io/post-images/1557053109305.gif" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;利用input类型为radio实现选项卡&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            label{
+                float: left;
+                width: 50px;
+                position: relative;
+                margin-right: 5px;
+            }
+            label input{
+                position: absolute;
+                left: -500px;
+                top: -500px;
+            }
+            label span{
+                float: left;
+                width: 50px;
+                text-align: center;
+                height: 50px;
+                line-height: 50px;
+                border: 1px solid #ddd;
+                cursor: pointer;
+            }
+            label input:checked~span{
+                background: #1E9FFF;
+            }
+
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;tabs&quot; id=&quot;tabs&quot; value=&quot;&quot; /&gt;
+            &lt;span&gt;选项1&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;tabs&quot; id=&quot;tabs&quot; value=&quot;&quot; /&gt;
+            &lt;span&gt;选项1&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;tabs&quot; id=&quot;tabs&quot; value=&quot;&quot; /&gt;
+            &lt;span&gt;选项1&lt;/span&gt;
+        &lt;/label&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="练习5利用和实现对话框小三角">练习5:利用和实现对话框小三角</h5>
+<p><img src="https://qq1332783374.github.io/post-images/1557053186925.png" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;三角形跟矩形组合成提示框&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 100px;
+                padding: 0;
+            }
+            #demo{
+                width: 100px;
+                height: 100px;
+                background-color: #fff;
+                position: relative;
+                border: 4px solid #000;
+            }
+            #demo:after,#demo:before{
+                border: solid transparent; 
+                content: ' '; 
+                height: 0; 
+                left: 100%; 
+                position: absolute; 
+                width: 0;
+            }
+            #demo:after {
+                border-width: 14px;
+                border-left-color: #fff;
+                top: 15px;
+            }
+
+            #demo:before {
+                border-width: 18px;
+                border-left-color: #000;
+                top: 11px;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;demo&quot;&gt;
+
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/html5-xue-xi-6-html5-zhong-de-duo-mei-ti-bo-fang">
+              <h3 class="post-title">
+                html5学习-6-html5中的多媒体播放
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
