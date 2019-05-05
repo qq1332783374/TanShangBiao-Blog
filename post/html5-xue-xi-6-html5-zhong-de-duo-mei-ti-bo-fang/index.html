@@ -1,0 +1,289 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>html5学习-6-html5中的多媒体播放 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557044375926">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557044375926" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              html5学习-6-html5中的多媒体播放
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-09-28 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/1GaHdwE5J" class="post-tags">
+                  # HTML5
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/html5-xue-xi-6-html5-zhong-de-duo-mei-ti-bo-fang.png')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>多媒体元素的基本介绍</li>
+<li>多媒体元素的基本属性</li>
+<li>多媒体元素的常用方法</li>
+<li>多媒体元素的重要事件</li>
+</ol>
+<h2 id="1-多媒体元素的基本介绍">1. 多媒体元素的基本介绍</h2>
+<p>在HTML5中，新增了两个元素 <strong>video</strong> 元素与<strong>audio</strong>元素。video元素专门用来播放网络上的视频或电影，而audio元素专门用来播放网络上的音频数据。使用这两个元素，就不在需要使用其他插件了，只需要支持HTML5的浏览器即可。</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>支持情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chrome</td>
+<td>3.0及以上版本</td>
+</tr>
+<tr>
+<td>Firefox</td>
+<td>3.5及以上版本</td>
+</tr>
+<tr>
+<td>Opera</td>
+<td>10.5及以上版本</td>
+</tr>
+<tr>
+<td>Safari</td>
+<td>3.2及以上版本</td>
+</tr>
+</tbody>
+</table>
+<p>使用这两个元素非常简单，首先以audio元素为例，只要把播放音频的url指定的该元素的src就可以了。如下：</p>
+<p><code>&lt;audio src=&quot;http://xxxx.mp3&quot;&gt;你的浏览器不支持audio属性&lt;/audio&gt;</code></p>
+<p>video使用的方法也很简单，只要把播放音频的url指定的该元素的src就可以了</p>
+<p><code>&lt;video src=&quot;http://xxxx.mp3&quot;&gt;你的浏览不支持video属性&lt;/video&gt;</code></p>
+<p>另外，还可以通过source元素来为同一个媒体数据指定多个播放格式与编码方式，以确保浏览器可以从中选择一种自己支持的播放格式来播放，浏览器的选择顺序为代码中的书写顺序，它会从上到下判断自己是否支持该播放格式，直到选择自己支持的播放格式为止</p>
+<pre><code class="language-html">&lt;video width=&quot;640&quot; height=&quot;360&quot;&gt;
+  &lt;source src=&quot;video/xxxx.ogv&quot;&gt;&lt;/source&gt;
+  &lt;source src=&quot;video/xxxx.mov&quot;&gt;&lt;/source&gt;
+&lt;/video&gt;
+</code></pre>
+<h2 id="2-多媒体元素的基本属性">2. 多媒体元素的基本属性</h2>
+<p>video属性和audio属性所具有得属性大致相同，接下来介绍其属性。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>controls</td>
+<td>显示或隐藏用户控制界面</td>
+</tr>
+<tr>
+<td>autoplay</td>
+<td>媒体是否自动播放</td>
+</tr>
+<tr>
+<td>Loop</td>
+<td>媒体是否循坏播放</td>
+</tr>
+<tr>
+<td>currentTime</td>
+<td>开始到播放现在所用的时间</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>媒体总时间(只读)</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>0.0-1.0的音量相对值</td>
+</tr>
+<tr>
+<td>muted</td>
+<td>是否静音</td>
+</tr>
+<tr>
+<td>autobuffer</td>
+<td>开始的时候是否缓存加载,autoplay加载的时候可以忽略次属性</td>
+</tr>
+<tr>
+<td>poster</td>
+<td>视频播放器的预览图片</td>
+</tr>
+<tr>
+<td>Width,height</td>
+<td>设置视频的尺寸</td>
+</tr>
+<tr>
+<td>videoWidth,videoHeight</td>
+<td>视频实际尺寸</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意:video标签拥有着额外的属性。如果想读取duration()总时长，必须监听canplay事件</strong></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557044241897.png" alt=""></p>
+<h2 id="3-多媒体元素的常用方法">3. 多媒体元素的常用方法</h2>
+<p>媒体播放时，HTML5为我们提供了3种比较常用的方法</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>media.paly()</td>
+<td>视频播放</td>
+</tr>
+<tr>
+<td>media.pause()</td>
+<td>暂停视频</td>
+</tr>
+<tr>
+<td>media.load()</td>
+<td>重新加载视频</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-多媒体元素的重要事件">4. 多媒体元素的重要事件</h2>
+<p>在利用video元素或audio元素读取或播放媒体数据时，会触发一系列的事件。如果使用javascript脚本捕获事件，就可以对这些事件处理，我们常常要利用 addEventListener 方法VideoElement.addEventListener(type,listener,useCaptrue)
+VideoElement表示页面的video或audio元素;type表示事件名称,listener表示绑定的函数，useCaptrue是一个布尔值，表示事件的响应顺序,该值如果是true，浏览器采用captrue响应方式,如果为false，浏览器采用budding响应方式，默认情况为false。</p>
+<ul>
+<li>canplay：媒体元素能够播放触发</li>
+<li>ontimeupdate:监听媒体元素进度条事件</li>
+</ul>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/html5-xue-xi-5-html5-zhong-de-shu-ju-cun-chu">
+              <h3 class="post-title">
+                html5学习-5-html5中的数据存储
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,651 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>html5学习-5-html5中的数据存储 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557044375926">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557044375926" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              html5学习-5-html5中的数据存储
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-09-22 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/1GaHdwE5J" class="post-tags">
+                  # HTML5
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/html5-xue-xi-5-html5-zhong-de-shu-ju-cun-chu.png')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>WebStorage介绍</li>
+<li>使用WebStorage中的API</li>
+</ol>
+<h2 id="1-什么是web-storage">1. 什么是Web Storage</h2>
+<p>在HTML5中，除了新增canvas元素之外，还新增的非常重要的功能是可以在客户端本地保存数据的WebStorage功能。Web应用的发展，使得客户端存储功能使用得越来越多，而实现客户端存储的方式则是多种多样。最简单而且兼容性最佳的方案就是cookies，单数作为真正的客户端存储，cookies是存在一些不足的:</p>
+<ol>
+<li>
+<p>大小:cookies的大小被限制在4KB</p>
+</li>
+<li>
+<p>宽带：cookies是随HTTP事务一起发送的，因此会浪费一部分发送cookies时使用的宽带。</p>
+</li>
+<li>
+<p>复杂:cookies操作起来是标胶麻烦:所有的信息要被拼到一个长字符串里面。</p>
+</li>
+<li>
+<p>联系:对cookies来说，在相同的站点与多事务处理保持联系不是很容易。</p>
+</li>
+</ol>
+<p>在这种情况下，在HTML5中重新提供了在客户端本地保存数据的功能，它就是WebStroge功能。
+顾名思义，WebStorage功能就是在Web上存储数据的功能，而这里的存储，是针对客户端本地而言的。它包含两种存储类型：<strong>sessionStorage</strong>和<strong>localStroage</strong>二者都支持在同域下存储5MB数据，与cookies相比有着明显的优势。</p>
+<h4 id="11-sessionstorage">1.1 sessionStorage</h4>
+<blockquote>
+<p>将数据保存在session对象中。所谓session,是指用户在浏览某个网站时，从进入网站到浏览器关闭所经过的这段时间，即浏览这个网站所花费的事件。session对象可以用来保存在这段时间内索要保存的任何数据。</p>
+</blockquote>
+<h4 id="12-localstroage">1.2 localStroage</h4>
+<blockquote>
+<p>将数据保存在客户端本地的硬件设备中，即使关闭了浏览器，改数据仍然存在，下次打开浏览器访问网站仍然可以继续使用。这两种不同的存储类型区别在于,sessionStorage为临时存储，而localStoage为永久保存。</p>
+</blockquote>
+<h2 id="2-webstorage中的api">2. WebStorage中的API</h2>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>length</td>
+<td>获取当前WebStorage中的数目</td>
+</tr>
+<tr>
+<td>key</td>
+<td>返回WebStorage中的第N个存储条目</td>
+</tr>
+<tr>
+<td>getItem(key)</td>
+<td>返回指定key的存储内容，如果不存在则返回null。注意,返回的类型是字符串类型</td>
+</tr>
+<tr>
+<td>setItem(key,value)</td>
+<td>设置指定key的内容的值为value</td>
+</tr>
+<tr>
+<td>removeItem(key)</td>
+<td>根据指定的key，删除键值为key的内容</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>清空webStorage的内容</td>
+</tr>
+</tbody>
+</table>
+<h4 id="21-数据的存储与获取">2.1 数据的存储与获取</h4>
+<ol>
+<li>在localStorage中设置键值对可以用 <strong>setItem()</strong> 进行设置</li>
+</ol>
+<p><code>localStorage.setItem(&quot;key&quot;,&quot;value&quot;)</code></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;数据的存储与获取&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            //设置存储数据的键值对  key和value 的名字都是自定义的   注意：value的值一定要是字符串或数字
+            localStorage.setItem(&quot;这是key&quot;,&quot;这是value值&quot;)
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>F12或者右键检查打开谷歌浏览器的控制台，找到Application 点击Local Storage就可以看到上面设置</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557041875912.png" alt=""></p>
+<ol start="2">
+<li>在localStorage获取数据可以用<strong>getItem()</strong></li>
+</ol>
+<p><code>var val = localStroage.getItem(&quot;key&quot;)</code></p>
+<p>当然也可以直接使用localStorage的key方法，而不使用setItem()和getItem()，代码如下:</p>
+<pre><code class="language-javascript">localStroage.key = &quot;value&quot;
+var val = localStroage.key
+</code></pre>
+<p>demo:</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;数据的存储与获取&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            //设置存储数据的键值对  key和value 的名字都是自定义的   注意：value的值一定要是字符串或数字
+            localStorage.setItem(&quot;这是key&quot;,&quot;这是value值&quot;)
+            //获取设置的key值
+            var getValue = localStorage.getItem(&quot;这是key&quot;)
+            console.log(getValue)  //输出   这是value值
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="22-数据的删除和清空">2.2 数据的删除和清空</h4>
+<ol>
+<li><strong>removeItem()</strong> 用于Stroage列表删除指定数据</li>
+</ol>
+<p><code>var val = localStroage. removeItem(key)</code></p>
+<ol start="2">
+<li>clear()方法用于清空整个列表的所有数据</li>
+</ol>
+<p><code>localStroage.clear()</code></p>
+<h4 id="23-json对象存储">2.3 JSON对象存储</h4>
+<p>虽然HTML5 Web Storage 规范允许将任意的类型的对象保存为键/值对的形式，实际情况却是一些浏览器将数据限定为文本字符串类型。不过，既然主流的浏览器原生支持JSON，就解决了这个问题。JSON格式是JavaScript Object Notation的缩写。
+JSON是一种将对象和字符串可以相互表示的数据转换标准。JSON一直是通过HTTP将对象从浏览器传送到服务器一种常用格式。现在，可以通过序列化对象将JSON数据保存在Storage中，以实现复杂数据类型的持久化。</p>
+<p><code>1. var str = JSON.stringify(data)</code></p>
+<p>该参数接受一个参数data,该参数表示要转换成JSON格式文本数据的对象。这个方法的作用是将对象转换成JSON格式的文本数据，并将其返回。</p>
+<p><code>2.var str = JSON.parse(str)</code></p>
+<p>该参数接受一个参数str，此参数表示从localStorage中取得的数据，该方法的作用是将传入的数据转换成json对象，并且返回。</p>
+<h4 id="练习">练习</h4>
+<h5 id="练习1历史记录存储">练习1：历史记录存储</h5>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;历史记录&lt;/title&gt;
+        &lt;script src=&quot;../js/jquery-1.11.0.js&quot;&gt;&lt;/script&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .content{
+                width: 520px;
+                margin: 20px auto;
+            }
+            .header,.body,.footer{
+                margin-top: 25px;
+            }
+            .content input{
+                padding: 6px 12px;
+                border: 1px solid #ddd;
+                outline: none;
+                box-shadow: 2px 2px 4px #ddd;
+            }
+            .content .btn{
+                padding: 5px 12px;
+                border: 1px solid #1E9FFF;
+                background: #1E9FFF;
+                color: #fff;
+            }
+            .body ul li{
+                list-style: none;
+                margin-top: 15px;
+                padding: 6px 12px;
+                min-width: 60px;
+                border: 1px solid #ddd;
+                float: left;
+                margin-right: 10px;
+                text-align: center;
+                box-shadow: 2px 2px 4px #ddd;
+            }
+            .body ul li:hover{
+                transition: 0.5s;
+                background: #ddd;
+            }
+            .body ul li a{
+                text-decoration: none;
+                color: #666;
+            }
+            .footer a{
+                color: #D43F3A;
+                text-decoration: none;
+            }
+            .footer a:hover{
+                text-decoration: underline;
+            }
+            .claer{
+                clear: both;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;div class=&quot;header&quot;&gt;
+                &lt;input type=&quot;text&quot; name=&quot;search&quot; id=&quot;search&quot; placeholder=&quot;请输入关键字&quot;/&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn&quot;&gt;搜索&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;body&quot;&gt;
+                &lt;h3&gt;历史记录&lt;/h3&gt;
+                &lt;ul&gt;
+                    &lt;!--&lt;li&gt;&lt;a href=&quot;javascript:;&quot;&gt;11111&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href=&quot;javascript:;&quot;&gt;1111111111111111111111&lt;/a&gt;&lt;/li&gt;--&gt;
+                &lt;/ul&gt;
+                &lt;div class=&quot;claer&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;footer&quot;&gt;
+                &lt;a href=&quot;javascript:;&quot;&gt;清除记录&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            $(function(){
+                //获取本地存储的数据
+                var gTxt = JSON.parse(localStorage.getItem(&quot;searchData&quot;)) || [];
+                if(gTxt.length&gt;0){
+                    var str = '';
+                    for (var i=0;i&lt;gTxt.length;i++) {
+                        str+='&lt;li&gt;&lt;a href=&quot;javascript:;&quot;&gt;'+gTxt[i]+'&lt;/a&gt;&lt;/li&gt;'
+                    }
+                    $(&quot;.body ul&quot;).append(str);
+                }
+                //本地存储数据
+                $(&quot;.btn&quot;).click(function(){
+                    var textSer = $(&quot;#search&quot;).val();
+                    for (var i=0;i&lt;gTxt.length;i++) {
+                        if(gTxt[i]==textSer){
+                            return
+                        }
+                    }
+                    gTxt.push(textSer);
+                    //本地存储
+                    localStorage.setItem(&quot;searchData&quot;,JSON.stringify(gTxt));
+                    $(&quot;#search&quot;).val(&quot;&quot;);
+                })
+                //清除记录
+                $(&quot;.footer a&quot;).click(function(){
+                    localStorage.clear()
+                    $(&quot;.body ul li&quot;).remove()
+                })
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="练习2简单的todolist">练习2：简单的todolist</h5>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;todo&lt;/title&gt;
+        &lt;script src=&quot;../js/jquery-1.11.0.js&quot;&gt;&lt;/script&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .container{
+                width: 520px;
+                margin: 20px auto;
+                padding: 5px;
+                border: 1px solid #ddd;
+                box-shadow: 2px 2px 4px #ddd;
+                line-height: 2.2;
+            }
+            textarea{
+                width: 97%;
+                height: 150px;
+                resize: none;
+                padding: 5px;
+                outline: none;
+            }
+            .btn{
+                padding: 6px 12px;
+                background: #1E9FFF;
+                border: 1px solid #1E9FFF;
+                color: #fff;
+            }
+            ul li{
+                list-style: none;
+                border: 1px solid #ddd;
+                padding: 0px 5px;
+                box-shadow: 2px 2px 4px #ddd;
+                margin-bottom: 15px;
+            }
+            ul li:hover{
+                transition: 0.9s;
+                background: #E7E7E7;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;container&quot;&gt;
+            &lt;textarea name=&quot;todo&quot; rows=&quot;&quot; cols=&quot;&quot;&gt;&lt;/textarea&gt;
+            &lt;button class=&quot;btn add&quot;&gt;添加&lt;/button&gt;
+            
+
+                代办：&lt;strong class=&quot;wait&quot;&gt;0&lt;/strong&gt;
+                完成：&lt;strong class=&quot;done&quot;&gt;0&lt;/strong&gt;
+            
+
+            &lt;hr /&gt;
+            
+
+&lt;h4&gt;代办&lt;/h4&gt;
+
+            &lt;ul class=&quot;wait-list&quot;&gt;
+                &lt;!–&lt;li&gt;11111&lt;/li&gt;–&gt;
+            &lt;/ul&gt;
+            
+
+&lt;h4&gt;完成&lt;/h4&gt;
+
+            &lt;ul class=&quot;done-list&quot;&gt;
+                &lt;!–&lt;li&gt;1111111&lt;/li&gt;–&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        
+
+&lt;script&gt;
+            $(function(){
+                //读取代办的长度
+                $(&quot;.wait&quot;).html(localStorage.length)
+                //读取数据
+                for (var i=0;i&lt;localStorage.length;i++) {
+                    var oLi = $(&quot;&lt;li&gt;&lt;/li&gt;&quot;),
+                        key = localStorage.key(i),
+                        val = localStorage[key];
+                    oLi.attr(&quot;data-hex&quot;,key);
+                    oLi.html(val)
+                    $(&quot;.wait-list&quot;).append(oLi)
+                }
+                //添加
+                var oDate = null;
+                $(&quot;.add&quot;).click(function(){
+                    var oValue = $(&quot;textarea&quot;).val(),
+                        times = new Date(),
+                        oLi = $(&quot;&lt;li&gt;&quot;+oValue+&quot;&lt;/li&gt;&quot;)
+                    oDate = new Date().toLocaleString()
+                    oLi.attr(&quot;data-hex&quot;,oDate)
+                    localStorage.setItem(oDate,oValue)
+                    $(&quot;.wait-list&quot;).append(oLi)
+                    $(&quot;textarea&quot;).val(&quot;&quot;)
+                    $(&quot;.wait&quot;).html(localStorage.length)
+                })
+                //完成
+                $(document).on(&quot;click&quot;,&quot;.wait-list li&quot;,function(){
+                    $(this).clone(true).appendTo(&quot;.done-list&quot;)
+                    $(this).remove()
+                    localStorage.removeItem($(this).data(&quot;hex&quot;))
+                    $(&quot;.wait&quot;).html(localStorage.length)
+                    $(&quot;.done&quot;).html($(&quot;.done-list li&quot;).length)
+                })
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="练习3todolist">练习3：todolist</h5>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=”UTF-8″&gt;
+        &lt;title&gt;&lt;/title&gt;
+        &lt;script type=”text/javascript” src=”js/jquery-1.11.0.js” &gt;&lt;/script&gt;
+        &lt;style&gt;
+            *{
+                margin: 0;
+            }
+            em{
+                font-style: normal;
+            }
+            textarea{
+                resize: none;
+                outline: none;
+                height: 200px;
+                width:100%;
+            }
+            .container{
+                width: 500px;
+                margin: 20px auto;
+                border-radius: 4px;
+                border: 1px solid #ddd;
+                padding: 10px;
+            }
+            .container .header{
+                height: 250px;
+                width: 100%;
+            }
+            .header-footer{
+                height: 20px;
+            }
+            .header-footer .btn{
+                float: right;
+            }
+            .list-item{
+                border: 1px solid #ddd;
+                padding: 10px;
+                margin-top: 10px;
+                position: relative;
+                cursor: pointer;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=”container”&gt;
+            &lt;div class=”header”&gt;
+                &lt;textarea id=”text”&gt;&lt;/textarea&gt;
+                &lt;div class=”header-footer”&gt;
+                    &lt;button class=”btn send”&gt;发送&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=”list”&gt;
+                &lt;div class=”list-header”&gt;
+                    &lt;span class=”noDone”&gt;待帮&lt;em&gt;0&lt;/em&gt;&lt;/span&gt;
+                    &lt;span class=”done”&gt;已完成&lt;em&gt;0&lt;/em&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=”list-content”&gt;
+
+                &lt;/div&gt;
+                &lt;div class=”list-footer”&gt;
+                    &lt;h4&gt;已完成&lt;/h4&gt;
+                    &lt;!–&lt;div class=”list-item”&gt;
+
+                    &lt;/div&gt;–&gt;
+                &lt;/div&gt;
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            $(function(){
+                var arrNoDone = JSON.parse(localStorage.getItem(“arrNoDone”))||[]
+                var newArr = JSON.parse(localStorage.getItem(“newArr”))||[]
+//                console.log(newArr)
+                if(arrNoDone.length&gt;0){
+                    var noDone = arrNoDone.length
+                    var str = “”
+                    for (var i=0;i&lt;arrNoDone.length;i++) {
+                        str += ‘&lt;div class=”list-item”&gt;’+arrNoDone[i]+'&lt;/div&gt;’
+                    }
+                    $(“.list-content”).append(str)
+                    $(“.noDone em”).html(noDone)
+                }else{
+                    var noDone = 0
+                }
+
+                if(newArr.length&gt;0){
+                    var done = newArr.length
+                    var str = “”
+                    for (var i=0;i&lt;newArr.length;i++) {
+                        str += ‘&lt;div class=”list-item”&gt;’+newArr[i]+'&lt;/div&gt;’
+                    }
+                    $(“.list-footer”).append(str)
+                    $(“.done em”).html(done)
+                }else{
+                    var done = 0
+                }
+
+                $(“.send”).click(function(){
+                    var oText = $(“#text”).val()
+                    if(oText.length&lt;0){
+                        alert(‘不能为空’)
+                    }else {
+                        noDone++
+                        arrNoDone.push(oText)
+                        localStorage.setItem(“arrNoDone”,JSON.stringify(arrNoDone))
+                        var str = ‘&lt;div class=”list-item”&gt;’+oText+'&lt;/div&gt;’
+                        $(“.list-content”).append(str)
+                        $(“.noDone em”).html(noDone)
+                        $(“#text”).val(“”)
+                    }
+
+                })
+
+                $(document).on(“click”,”.list-item”,function(){
+//                    alert(1)
+                    noDone–
+                    done++
+                    var index = $(this).index()
+                    var a = arrNoDone.splice(index,1)[0]
+                    var dom = $(this).clone()
+//                    console.log(a)
+                    newArr.push(a)
+                    localStorage.setItem(“arrNoDone”,JSON.stringify(arrNoDone))
+                    localStorage.setItem(“newArr”,JSON.stringify(newArr))
+                    $(this).remove()
+                    $(“.noDone em”).html(noDone)
+                    $(“.done em”).html(done)
+                    $(“.list-footer”).append(dom)
+                })
+
+            })
+
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/html5-xue-xi-4-html5-zhong-de-canvas-ji-chu">
+              <h3 class="post-title">
+                html5学习-4-html5中的canvas基础
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
