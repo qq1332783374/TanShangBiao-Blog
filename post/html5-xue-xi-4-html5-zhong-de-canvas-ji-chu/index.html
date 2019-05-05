@@ -1,0 +1,698 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>html5学习-4-html5中的canvas基础 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557040137137">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557040137137" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              html5学习-4-html5中的canvas基础
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-09-19 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/1GaHdwE5J" class="post-tags">
+                  # HTML5
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/html5-xue-xi-4-html5-zhong-de-canvas-ji-chu.png')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>canvas介绍</li>
+<li>canvas绘制矩形</li>
+<li>canvas绘制圆形</li>
+<li>使用moveTo()和lineTo()绘制路径</li>
+<li>贝赛尔和二次方曲线</li>
+<li>绘制变形图形</li>
+</ol>
+<h2 id="1-canvas介绍">1. canvas介绍</h2>
+<blockquote>
+<p>canvas是HTML5中新增的一个元素，专门用来绘制图形。在页面放置一个canvas元素，就相当于放置了一个画布，可以在其中进行图形的绘制。但绘制图形，并不是指使用鼠标作画，而是需要javascript进行配合。创建canvas的时候，他默认的宽高为<strong>300px*150px</strong></p>
+</blockquote>
+<pre><code class="language-html">&lt;canvas id=&quot;canvas&quot;&gt;我是一个画布&lt;/canvas&gt;
+</code></pre>
+<h2 id="2-canvas绘制矩形">2. canvas绘制矩形</h2>
+<p>我们在HTML页面中直接插入canvas标签，也可以对它设置宽度和高度，<strong>切记设置canvas的时候不可以利用css样式进行设置</strong>。</p>
+<pre><code class="language-html">&lt;canvas id=&quot;canvas&quot; width=&quot;400&quot; height=&quot;300&quot;&gt;我是一个画布&lt;/canvas&gt;
+</code></pre>
+<h4 id="canvas-基础api">canvas 基础API</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getContext()</td>
+<td>获取绘图环境，可选参数”2d”</td>
+</tr>
+<tr>
+<td>fillRect(x,y,width,height)</td>
+<td>绘制一个填充的矩形(其实就是实心的)</td>
+</tr>
+<tr>
+<td>strokeRect(x,y,width,height)</td>
+<td>绘制一个矩形的边框(空心的)</td>
+</tr>
+<tr>
+<td>clearRect(x,y,width,height)</td>
+<td>清除指定矩形区域</td>
+</tr>
+</tbody>
+</table>
+<h5 id="练习1-填充矩形">练习1. 填充矩形：</h5>
+<p>效果图：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557038701275.png" alt=""></p>
+<p>实现代码 :</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;绘制一个实心矩形&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!--创建一个canvas--&gt;
+        &lt;canvas id=&quot;myCanvas&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;&lt;/canvas&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            //获取canvas
+            var myCanvas = document.getElementById(&quot;myCanvas&quot;);
+            //设置canvas的绘图环境
+            var oGx = myCanvas.getContext(&quot;2d&quot;)
+            //绘制黑色的填充矩形 （就是黑色的矩形）
+            /*
+             x坐标为100、
+             y坐标为100，
+             宽高为100*100
+             * */
+            oGx.fillRect(100,100,100,100)  
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="练习2-描边矩形">练习2. 描边矩形</h5>
+<p>效果图：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557038796623.png" alt=""></p>
+<p>实现代码：</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;绘制一个空心矩形&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!--创建一个canvas--&gt;
+        &lt;canvas id=&quot;myCanvas&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;&lt;/canvas&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            //获取canvas
+            var myCanvas = document.getElementById(&quot;myCanvas&quot;);
+            //设置canvas的绘图环境
+            var oGx = myCanvas.getContext(&quot;2d&quot;)
+            /*
+             x坐标为100、
+             y坐标为100，
+             宽高为100*100
+             * */
+            oGx.strokeRect(100,100,100,100)
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="3-清除矩形指定区域">3. 清除矩形指定区域</h5>
+<p>效果图：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557038876242.png" alt=""></p>
+<p>实现代码：</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;清除矩形指定区域&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!--创建一个canvas--&gt;
+        &lt;canvas id=&quot;myCanvas&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;&lt;/canvas&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            //获取canvas
+            var myCanvas = document.getElementById(&quot;myCanvas&quot;);
+            //设置canvas的绘图环境
+            var oGx = myCanvas.getContext(&quot;2d&quot;)
+            /*
+             x坐标为100、
+             y坐标为100，
+             宽高为100*100
+             * */
+            oGx.fillRect(50,50,100,100)  
+            //清除指定区域
+            oGx.clearRect(50,50,50,50) //清除&quot;x=50,y=50,宽度为50,高度为50的区域&quot;
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="canvas-配色api">canvas 配色API</h4>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fillStyle</td>
+<td>填充背景颜色</td>
+</tr>
+<tr>
+<td>strokeStyle</td>
+<td>设置边框颜色</td>
+</tr>
+<tr>
+<td>lineWidth</td>
+<td>设置边框的宽度</td>
+</tr>
+</tbody>
+</table>
+<h5 id="练习1-红色填充矩形">练习1. 红色填充矩形</h5>
+<p>效果图：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557039057726.png" alt=""></p>
+<p>实现代码：</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;fillStyle&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!--创建一个canvas--&gt;
+        &lt;canvas id=&quot;myCanvas&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;&lt;/canvas&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            //获取canvas
+            var myCanvas = document.getElementById(&quot;myCanvas&quot;);
+            //设置canvas的绘图环境
+            var oGx = myCanvas.getContext(&quot;2d&quot;)
+            /*
+             x坐标为100、
+             y坐标为100，
+             宽高为100*100
+             * */
+            //绘制填充的&quot;红色&quot;的矩形
+            oGx.fillStyle = &quot;red&quot;;
+            oGx.fillRect(50,50,100,100);
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="练习2-红色描边矩形">练习2. 红色描边矩形</h5>
+<p>效果图：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557039129462.png" alt=""></p>
+<p>实现代码：</p>
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;strokeStyle和lineWidth&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!--创建一个canvas--&gt;
+        &lt;canvas id=&quot;myCanvas&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;&lt;/canvas&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            //获取canvas
+            var myCanvas = document.getElementById(&quot;myCanvas&quot;);
+            //设置canvas的绘图环境
+            var oGx = myCanvas.getContext(&quot;2d&quot;)
+            /*
+             x坐标为100、
+             y坐标为100，
+             宽高为100*100
+             * */
+            //绘制边框为&quot;红色&quot;的线条加粗的矩形
+            oGx.strokeStyle = &quot;red&quot;;
+            oGx.lineWidth = 5
+            oGx.strokeRect(50,50,100,100);
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h2 id="3-canvas绘制圆形">3. canvas绘制圆形</h2>
+<p>绘制圆形分为4个步骤：</p>
+<ol>
+<li>开始绘制路径(beginPath)</li>
+<li>创建图像路径</li>
+<li>路径创建完成后，关闭路径</li>
+<li>设定绘制样式，调用绘制方法，绘制路径(closePtah)</li>
+</ol>
+<p>绘制圆形,canvas也为我们提供了arc这个方法</p>
+<p><code>ctx.arc(x,y,radius,startAngle,endAngle,anticlockwise)</code></p>
+<p>该方法的6个参数分别代表：</p>
+<ul>
+<li>x为绘制圆形的起点横坐标</li>
+<li>y表示绘制圆形的起点的纵坐标</li>
+<li>radius表示圆的半径</li>
+<li>startAngle为开始角度</li>
+<li>endAngle为结束的角度</li>
+<li>anticlockwise是否按照顺时针方向进行绘制（默认顺时针true代表），反之false逆时针</li>
+</ul>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;绘制一个描边圆&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!--创建一个canvas--&gt;
+        &lt;canvas id=&quot;myCanvas&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;&lt;/canvas&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            //获取canvas
+            var myCanvas = document.getElementById(&quot;myCanvas&quot;);
+            //设置canvas的绘图环境
+            var oGx = myCanvas.getContext(&quot;2d&quot;);
+            //开始路径
+            oGx.beginPath();
+            //x,y坐标为100，半径为50，起始角度为0  结束角为360 顺时针旋转
+            oGx.arc(100,100,50,0,360*Math.PI/180,false);
+            //绘制线条
+            oGx.stroke();
+            //结束路径
+            oGx.closePath();
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<blockquote>
+<p>弧度转换的公式：(degreens * Math.PI/180)，绘制圆形默认按照以下的位置进行切换。</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557039361100.gif" alt=""></p>
+<h2 id="4-moveto和lineto绘制路径">4. moveTo()和lineTo()绘制路径</h2>
+<p>我们可以使用moveTo()和lineTo()绘制直线，或者是自己想要的图形，不局限于矩形。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>moveTo(x,y)</td>
+<td>不绘制，只是将当前位置移动到新的目标点</td>
+</tr>
+<tr>
+<td>lineTo(x,y)</td>
+<td>不仅将当前位置移动到新的目标点(x,y)，而且在两个坐标之间画一条直线</td>
+</tr>
+<tr>
+<td>linejoin</td>
+<td>设置两线段连接处所显示的样子。round,bevel,miter</td>
+</tr>
+<tr>
+<td>lineCap</td>
+<td>线段端点显示的样式</td>
+</tr>
+<tr>
+<td>save</td>
+<td>保存绘画路径</td>
+</tr>
+<tr>
+<td>restore</td>
+<td>销毁路径</td>
+</tr>
+</tbody>
+</table>
+<h5 id="练习1-绘制一个三角形">练习1. 绘制一个三角形</h5>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot; /&gt;
+    &lt;title&gt;三角形&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        body{
+            width: 100%;
+            height: 100%;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;canvas id=&quot;myCanvas&quot; width=&quot;800&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var myCanvas = document.getElementById(&quot;myCanvas&quot;);
+        var oGc = myCanvas.getContext(&quot;2d&quot;);
+        oGc.beginPath();
+        oGc.moveTo(100,100);
+        oGc.lineTo(250,250);
+        oGc.closePath();
+        oGc.stroke();
+        oGc.beginPath();
+        oGc.moveTo(400,100);
+        oGc.lineTo(250,250);
+        oGc.closePath();
+        oGc.stroke();
+        oGc.beginPath();
+        oGc.moveTo(400,100);
+        oGc.lineTo(100,100);
+        oGc.closePath();
+        oGc.stroke();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="练习2-画板">练习2. 画板</h5>
+<p>效果图：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557039748721.gif" alt=""></p>
+<p>实现代码：</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;图画板&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            .context{
+                width: 500px;
+                margin: 20px auto;
+                border: 5px solid #ddd;
+                box-shadow: 2px 2px 4px 4px #ddd;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;context&quot;&gt;
+            &lt;canvas id=&quot;myCanvas&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;
+        &lt;/div&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            var myCanvas = document.getElementById(&quot;myCanvas&quot;);
+            var ctx = myCanvas.getContext(&quot;2d&quot;);
+            myCanvas.onmousedown = function(e){
+//                console.log(e)
+                var disX = e.clientX - myCanvas.offsetLeft;
+                var disY = e.clientY - myCanvas.offsetTop;
+                ctx.moveTo(disX,disY);
+                document.onmousemove = function(e){
+                    var disX = e.clientX - myCanvas.offsetLeft;
+                    var disY = e.clientY - myCanvas.offsetTop;
+                    ctx.lineTo(disX,disY);
+                    ctx.stroke();
+                }
+                document.onmouseup = function(){
+                    document.onmousedown = null ;
+                    document.onmousemove = null ;
+                }
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h5 id="练习3运动的小方块">练习3：运动的小方块</h5>
+<p>效果图：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557039933282.gif" alt=""></p>
+<p>代码实现：</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot; /&gt;
+    &lt;title&gt;小方块运动&lt;/title&gt;
+    &lt;style type=&quot;text/css&quot;&gt;
+        body{
+            width: 100%;
+            height: 100%;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;canvas id=&quot;myCanvas&quot; width=&quot;800&quot; height=&quot;400&quot;&gt;&lt;/canvas&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        var myCanvas = document.getElementById(&quot;myCanvas&quot;);
+        var oGc = myCanvas.getContext(&quot;2d&quot;);
+        var num = 0
+        setInterval(function(){
+            num++;
+            oGc.clearRect(0,0,100*num,100*num)
+            oGc.fillRect(num,num,100,100)
+        },30)
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h5 id="练习4-走动的时钟基础版高级版正在路上">练习4. 走动的时钟（基础版，高级版正在路上）</h5>
+<p>效果图：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557040030869.gif" alt=""></p>
+<p>代码实现：</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;会动的时钟&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .box{
+                width: 800px;
+                margin: 20px auto;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;box&quot;&gt;
+            &lt;canvas id=&quot;myCanvas&quot; width=&quot;800&quot; height=&quot;800&quot;&gt;&lt;/canvas&gt;
+        &lt;/div&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            var myCanvas = document.getElementById(&quot;myCanvas&quot;);
+            var oGc = myCanvas.getContext('2d');
+            function draw(){
+                //获取本地时间
+                var oDate = new Date();
+                var oHours = oDate.getHours();
+                var oMin = oDate.getMinutes();
+                var oSec = oDate.getSeconds();
+                //计算时间的角度
+                var oHoursValue = (-90+oHours*30+oMin/2)*Math.PI/180;
+                var oMinValue = (-90+oMin*6)*Math.PI/180;
+                var oSecValue = (-90+oSec*6)*Math.PI/180;
+                //绘制时钟
+                var x = 400;
+                var y = 400;
+                var r = 400;
+                //绘制时钟的刻度
+                oGc.save();
+                oGc.beginPath();
+                for (var i=0;i&lt;60;i++) {
+                    oGc.moveTo(x,y);
+                    oGc.arc(x,y,r,6*i*Math.PI/180,6*(i+1)*Math.PI/180)
+                }
+                oGc.closePath();
+                oGc.stroke();
+                oGc.restore();
+                //绘制第一个填充的大圆
+                oGc.save();
+                oGc.beginPath();
+                oGc.fillStyle = &quot;#fff&quot;;
+                oGc.moveTo(x,y);
+                oGc.arc(x,y,r*19/20,0,360*Math.PI/180)
+                oGc.closePath();
+                oGc.fill();
+                oGc.restore();
+                //绘制时刻度
+                oGc.save();
+                oGc.beginPath();
+                oGc.lineWidth = 3 ;
+                for (var i=0;i&lt;12;i++) {
+                    oGc.moveTo(x,y);
+                    oGc.arc(x,y,r,30*i*Math.PI/180,30*(i+1)*Math.PI/180)
+                }
+                oGc.closePath();
+                oGc.stroke();
+                oGc.restore();
+                //第二个填充圆
+                oGc.save();
+                oGc.beginPath();
+                oGc.fillStyle = &quot;#fff&quot;;
+                oGc.moveTo(x,y);
+                oGc.arc(x,y,r*18/20,0,360*Math.PI/180)
+                oGc.closePath();
+                oGc.fill();
+                oGc.restore();
+                //时钟
+                oGc.save();
+                oGc.beginPath();
+                oGc.moveTo(x,y);
+                oGc.lineWidth = 3 ;
+                oGc.strokeStyle = &quot;#1E9FFF&quot;;
+                oGc.arc(x,y,r*10/20,oHoursValue,oHoursValue);
+                oGc.closePath();
+                oGc.stroke();
+                oGc.restore();
+                //分针
+                oGc.save();
+                oGc.beginPath();
+                oGc.moveTo(x,y);
+                oGc.lineWidth = 3 ;
+                oGc.strokeStyle = &quot;#7FFFD4&quot;;
+                oGc.arc(x,y,r*12/20,oMinValue,oMinValue);
+                oGc.closePath();
+                oGc.stroke();
+                oGc.restore();
+                //秒针
+                oGc.save();
+                oGc.beginPath();
+                oGc.moveTo(x,y);
+                oGc.lineWidth = 3 ;
+                oGc.strokeStyle = &quot;#761C19&quot;;
+                oGc.arc(x,y,r*16/20,oSecValue,oSecValue);
+                oGc.closePath();
+                oGc.stroke();
+                oGc.restore();
+            }
+            setInterval(function(){
+                draw()
+            },1000)
+            draw()
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="总结">总结</h2>
+<p>以上canvas的基础用法，还有更高级的有待研究。欢迎大家一起交流学习。</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/html5-xue-xi-3-html5-zhong-de-wen-jian-cao-zuo">
+              <h3 class="post-title">
+                html5学习-3-html5中的文件操作
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
