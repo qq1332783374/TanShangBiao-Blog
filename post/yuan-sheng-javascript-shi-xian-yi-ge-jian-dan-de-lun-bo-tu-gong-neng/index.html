@@ -1,0 +1,307 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>原生JavaScript实现一个简单的轮播图功能 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557031457266">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557031457266" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              原生JavaScript实现一个简单的轮播图功能
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-05-27 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/YHHgHvnEV" class="post-tags">
+                  # 原生JavaScript
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/KS9yxfg9U" class="post-tags">
+                  # JavaScript
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/yuan-sheng-javascript-shi-xian-yi-ge-jian-dan-de-lun-bo-tu-gong-neng.jpeg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="效果图">效果图</h2>
+<p><img src="https://qq1332783374.github.io/post-images/1557031304821.gif" alt=""></p>
+<h4 id="html">HTML</h4>
+<pre><code class="language-html">
+&lt;div id=&quot;pic&quot; class=&quot;pic&quot;&gt;
+			&lt;img  /&gt;
+			&lt;span&gt;图片加载中...&lt;/span&gt;
+			&lt;p&gt;文本加载中...&lt;/p&gt;
+			&lt;ul&gt;
+				&lt;!--JavaScript生成li--&gt;
+			&lt;/ul&gt;
+			&lt;a href=&quot;javascript:;&quot; class=&quot;btn next&quot;&gt;&gt;&lt;/a&gt;
+			&lt;a href=&quot;javascript:;&quot; class=&quot;btn prev&quot;&gt;&lt;&lt;/a&gt;
+		&lt;/div&gt;
+
+</code></pre>
+<h4 id="css">css</h4>
+<pre><code class="language-css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul li{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			body{
+				font-family: &quot;微软雅黑&quot;;
+				font-size: 14px;
+				color: #555;
+			}
+			.pic{
+				width: 420px;
+				height: 530px;
+				margin: 20px auto;
+				position: relative;
+				border: 1px solid #EEEEEE;
+			}
+			.pic img{
+				width: 420px;
+				height: 530px;
+			}
+			.pic span{
+				position: absolute;
+				top: 0px;
+			}
+			.pic p{
+				position: absolute;
+				bottom: 0px;
+			}
+			.pic span,.pic p{
+				width: 420px;
+				height: 40px;
+				background: rgba(0,0,0,0.55);
+				text-align: center;
+				line-height: 40px;
+				color: #fff;
+			}
+			.btn{
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				color: #fff;
+				text-align:center;
+				line-height: 40px;
+				top: 265px;
+				background: rgba(0,0,0,0.55);
+			}
+			.prev{
+				left: 0;
+			}
+			.next{
+				right: 0;
+			}
+			.pic ul {
+				position: absolute;
+				width: 40px;
+				top: 0;
+				right: -50px;
+			}
+			.pic ul li{
+				width: 40px;
+				height: 40px;
+				border: 1px solid #ddd;
+			}
+			.active{
+				background: rgba(0,0,0,0.55);
+			}
+
+</code></pre>
+<h4 id="javascript">JavaScript</h4>
+<pre><code class="language-javascript">
+			var oPic = document.getElementById(&quot;pic&quot;);
+			var oImg = oPic.getElementsByTagName(&quot;img&quot;)[0];
+			var oSpan = oPic.getElementsByTagName(&quot;span&quot;)[0];
+			var oP = oPic.getElementsByTagName(&quot;p&quot;)[0];
+			var oUl = oPic.getElementsByTagName(&quot;ul&quot;)[0];
+			var oLi = oPic.getElementsByTagName(&quot;li&quot;);
+			var oA = oPic.getElementsByTagName(&quot;a&quot;);
+			var arrImg = [&quot;img/1.png&quot;,&quot;img/2.png&quot;,&quot;img/3.png&quot;,&quot;img/4.png&quot;];
+			var arrTxt = [&quot;图片1&quot;,&quot;图片2&quot;,&quot;图片3&quot;,&quot;图片4&quot;];
+			var num = 0 ;
+ 
+			//初始化
+			oSpan.innerHTML = (num+1)+&quot;/&quot;+4;
+			oP.innerHTML = arrTxt[num];
+			oImg.src = arrImg[num];
+			for (var i = 0 ; i&lt;arrImg.length ; i++) {
+				oUl.innerHTML+=&quot;&lt;li&gt;&lt;/li&gt;&quot;;
+			}
+			oLi[num].className = &quot;active&quot;;
+			//下一张
+			oA[0].onclick = function(){
+				num++ ;
+				if(num&gt;arrImg.length-1){
+					num = 0;
+				}
+				oSpan.innerHTML = (num+1)+&quot;/&quot;+4;
+				oP.innerHTML = arrTxt[num];
+				oImg.src = arrImg[num];
+				for (var i = 0 ; i&lt;oLi.length ; i++) {
+					oLi[i].className = &quot;&quot;;
+				}
+				oLi[num].className = &quot;active&quot;;
+			}
+ 
+			//上一张
+			oA[1].onclick = function(){
+				num-- ;
+				if(num&lt;0){
+					num = arrImg.length-1;
+				}
+				oSpan.innerHTML = (num+1)+&quot;/&quot;+4;
+				oP.innerHTML = arrTxt[num];
+				oImg.src = arrImg[num];
+				for (var i = 0 ; i&lt;oLi.length ; i++) {
+					oLi[i].className = &quot;&quot;;
+				}
+				oLi[num].className = &quot;active&quot;;
+			}
+			//图片与侧栏关联
+			for (var i = 0 ; i&lt;oLi.length ; i++) {
+				oLi[i].index = i ;
+				oLi[i].onclick = function(){
+					for (var j = 0 ; j&lt;oLi.length;j++) {
+						oLi[j].className = &quot;&quot;;
+					}
+					this.className = &quot;active&quot;;
+					num = this.index
+					oSpan.innerHTML = (this.index+1)+&quot;/&quot;+4;
+					oP.innerHTML = arrTxt[this.index];
+					oImg.src = arrImg[this.index];
+				}
+			}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

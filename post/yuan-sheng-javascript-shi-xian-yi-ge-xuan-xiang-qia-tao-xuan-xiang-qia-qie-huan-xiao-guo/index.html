@@ -1,0 +1,330 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>原生JavaScript实现一个选项卡套选项卡切换效果 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557031457266">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557031457266" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              原生JavaScript实现一个选项卡套选项卡切换效果
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-06-01 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/YHHgHvnEV" class="post-tags">
+                  # 原生JavaScript
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/KS9yxfg9U" class="post-tags">
+                  # JavaScript
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/yuan-sheng-javascript-shi-xian-yi-ge-xuan-xiang-qia-tao-xuan-xiang-qia-qie-huan-xiao-guo.jpeg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="效果图">效果图</h2>
+<p><img src="https://qq1332783374.github.io/post-images/1557031003213.gif" alt=""></p>
+<h4 id="html-结构">HTML 结构</h4>
+<pre><code class="language-html">
+&lt;ul id='ul1'&gt;
+                &lt;li class=&quot;activeNav&quot;&gt;最新团购&lt;/li&gt;
+                &lt;li&gt;商品特惠&lt;/li&gt;
+                &lt;li&gt;名品推荐&lt;/li&gt;
+                &lt;li&gt;缤纷活动&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;div&gt;
+                &lt;img src=&quot;../img/1.jpg&quot;/&gt;
+                &lt;img src=&quot;../img/2.jpg&quot;&gt;
+                &lt;img src=&quot;../img/3.jpg&quot;&gt;
+                &lt;ul&gt;
+                    &lt;li class=&quot;activeImg&quot;&gt;商品1&lt;/li&gt;
+                    &lt;li&gt;商品2&lt;/li&gt;
+                    &lt;li&gt;商品3&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;img src=&quot;../img/4.jpg&quot;&gt;
+                &lt;img src=&quot;../img/5.jpg&quot;&gt;
+                &lt;img src=&quot;../img/6.jpg&quot;&gt;
+                &lt;img src=&quot;../img/7.jpg&quot;&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;商品1&lt;/li&gt;
+                    &lt;li&gt;商品2&lt;/li&gt;
+                    &lt;li&gt;商品3&lt;/li&gt;
+                    &lt;li&gt;商品4&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;img src=&quot;../img/8.jpg&quot;&gt;
+                &lt;img src=&quot;../img/9.jpg&quot;&gt;
+                &lt;img src=&quot;../img/10.jpg&quot;&gt;
+                &lt;img src=&quot;../img/11.jpg&quot;&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;商品1&lt;/li&gt;
+                    &lt;li&gt;商品2&lt;/li&gt;
+                    &lt;li&gt;商品3&lt;/li&gt;
+                    &lt;li&gt;商品4&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;img src=&quot;../img/1.jpg&quot;&gt;
+                &lt;img src=&quot;../img/2.jpg&quot;&gt;
+                &lt;img src=&quot;../img/3.jpg&quot;&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;商品1&lt;/li&gt;
+                    &lt;li&gt;商品2&lt;/li&gt;
+                    &lt;li&gt;商品3&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+</code></pre>
+<h4 id="css-样式">css 样式</h4>
+<pre><code class="language-css">
+body,
+                ul,
+                li,
+                div {
+                    padding: 0;
+                    margin: 0;
+                    list-style: none;
+                    font-family: cursive;
+                }
+                .box {
+                    width: 900px;
+                    margin: 0 auto;
+                    height: 308px;
+                    overflow: hidden;
+                }
+                #ul1 {
+                    width: 200px;
+                    float: left;
+                    height: 308px;
+                }
+                #ul1 li {
+                    height: 75px;
+                    line-height: 76px;
+                    text-align: center;
+                    font-size: 15px;
+                    border: 1px solid #eee;
+                    cursor: pointer;
+                }
+                #ul1 li.activeNav {
+                    background: #5bc0de;
+                    color: #fff;
+                }
+                .box div {
+                    width: 700px;
+                    float: right;
+                    position: relative;
+                    height: 308px;
+                    display: none;
+                }
+                .box div img {
+                    width: 100%;
+                    height: 308px;
+                }
+                .box div ul {
+                    width: 100%;
+                    height: 30px;
+                    position: absolute;
+                    left: 0px;
+                    bottom: 0px;
+                }
+                .box div li {
+                    float: left;
+                    margin-right: 1px;
+                    cursor: pointer;
+                    background: #eee;
+                    line-height: 30px;
+                    font-size: 12px;
+                    text-align: center;
+                    height: 40px;
+                }
+                .box div li.activeImg {
+                    background: #d9534f;
+                    color: #fff;
+                }
+
+</code></pre>
+<h4 id="javascript">JavaScript</h4>
+<pre><code class="language-javascript">
+						//获取元素
+            var oUlNav = document.getElementById(&quot;ul1&quot;);
+            var oLiNav = oUlNav.getElementsByTagName(&quot;li&quot;);
+            var oBox = document.getElementById(&quot;box&quot;);
+            var oDiv = oBox.getElementsByTagName(&quot;div&quot;);
+            //初始化
+            oDiv[0].style.display = &quot;block&quot;;
+            for (var i = 0 ; i&lt;oDiv.length;i++) {
+                tab(oDiv[i])
+            }
+            //侧栏Nav切换
+            for (var i = 0 ; i&lt;oLiNav.length ; i++) {
+                oLiNav[i].index = i ;
+                oLiNav[i].onclick = function(){
+                    for (var i = 0 ; i&lt;oLiNav.length ; i++) {
+                        oLiNav[i].className = &quot;&quot;;
+                        oDiv[i].style.display = 'none';
+                    }
+                    this.className = &quot;activeNav&quot;;
+                    oDiv[this.index].style.display = 'block';
+                }
+            }
+            function tab(obj){
+                var oImg = obj.getElementsByTagName(&quot;img&quot;);
+                var oLi = obj.getElementsByTagName(&quot;li&quot;);
+                //长度赋值
+                for (var i = 0 ; i&lt;oLi.length; i++) {
+                    oLi[i].style.width = (700/oLi.length)-(oLi.length*0.5)+&quot;px&quot;
+                }
+                //tab_img
+                for (var i = 0 ; i&lt;oLi.length;i++) {
+                    oLi[i].index = i ;
+                    oLi[i].onclick = function(){
+                        for (var i = 0 ; i&lt;oLi.length ; i++) {
+                            oLi[i].className = &quot;&quot;
+                            oImg[i].style.display = &quot;none&quot;
+                        }
+                        this.className = &quot;activeImg&quot;;
+                        oImg[this.index].style.display = &quot;block&quot;
+                    }
+                }
+            }
+
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/yuan-sheng-javascript-shi-xian-yi-ge-jian-dan-de-lun-bo-tu-gong-neng">
+              <h3 class="post-title">
+                原生JavaScript实现一个简单的轮播图功能
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
