@@ -1,0 +1,186 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>html5学习-2-html5中的表单 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557035196531">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557035196531" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              html5学习-2-html5中的表单
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-05 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>新增的表单属性</li>
+<li>新增的表单类型</li>
+<li>新增的表单的验证</li>
+<li>新增的页面元素</li>
+</ol>
+<h2 id="1-新增的表单属性">1. 新增的表单属性</h2>
+<h5 id="11-placeholder">1.1 placeholder</h5>
+<p>当用户还没有输入值的时候，输入型控件可以通过placeholder属性向用户描述性说明或者提示信息。使用placeholder属性只需要将说明性文字作为该属性值即可。</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
+</code></pre>
+<h5 id="12-autocomplete属性">1.2 autocomplete属性</h5>
+<p>浏览器通过autocomplete属性能够知晓是否应该保存输入值以备将来使用。
+autocomplete属性应该用来保护敏感用户数据，避免浏览器对它们进行不安全的存储。autocomplete属性，可以指定on,off两个值，设置为on的时候，可以显示指定候补输入的数据列表</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot; autocomplete=&quot;on&quot;/&gt;
+</code></pre>
+<h5 id="13-autofocus属性">1.3 autofocus属性</h5>
+<p>给文本框,选择框或按钮组件加上该属性，当画面打开时，该控件自动获取光标焦点。</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot; autofocus/&gt;
+</code></pre>
+<p><strong>注意:一个页面上只能有一个控件具有该属性，不可以出现多个</strong></p>
+<h5 id="11-placeholder-2">1.1 placeholder</h5>
+<p>当用户还没有输入值的时候，输入型控件可以通过placeholder属性向用户描述性说明或者提示信息。使用placeholder属性只需要将说明性文字作为该属性值即可。</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
+</code></pre>
+<h5 id="14-list属性">1.4 list属性</h5>
+<p>在HTML5中，为单行文本增加一个list属性，该属性的值为某个datalist元素的id。dataList元素也是HTML5新增元素，该元素类似于选择框，但是当用户想要设置的值不在选择列表之内，允许其自行输入。该元素本身并不显示，而是当文本框获得焦点时以输入的方式显示。</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
+</code></pre>
+<h5 id="11-placeholder-3">1.1 placeholder</h5>
+<p>当用户还没有输入值的时候，输入型控件可以通过placeholder属性向用户描述性说明或者提示信息。使用placeholder属性只需要将说明性文字作为该属性值即可。</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
+</code></pre>
+<h5 id="11-placeholder-4">1.1 placeholder</h5>
+<p>当用户还没有输入值的时候，输入型控件可以通过placeholder属性向用户描述性说明或者提示信息。使用placeholder属性只需要将说明性文字作为该属性值即可。</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
+</code></pre>
+<h5 id="11-placeholder-5">1.1 placeholder</h5>
+<p>当用户还没有输入值的时候，输入型控件可以通过placeholder属性向用户描述性说明或者提示信息。使用placeholder属性只需要将说明性文字作为该属性值即可。</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
+</code></pre>
+<h5 id="11-placeholder-6">1.1 placeholder</h5>
+<p>当用户还没有输入值的时候，输入型控件可以通过placeholder属性向用户描述性说明或者提示信息。使用placeholder属性只需要将说明性文字作为该属性值即可。</p>
+<pre><code class="language-html">&lt;input type=&quot;text&quot; placeholder=&quot;提示语句&quot;/&gt;
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/wowjs-jian-dan-shi-yong-jiao-cheng">
+              <h3 class="post-title">
+                WOW.js 简单使用教程
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
