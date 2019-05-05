@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>URL参数截取工具函数 | Tan&#39;s-Blog</title>
+<title>WOW.js 简单使用教程 | Tan&#39;s-Blog</title>
 <link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557024271939">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
@@ -72,15 +72,15 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              URL参数截取工具函数
+              WOW.js 简单使用教程
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-05-04 ·
+                · 2019-05-05 ·
               </time>
               
-                <a href="https://qq1332783374.github.io/tag/IU6ZSj6pA" class="post-tags">
-                  # URL
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
                 </a>
               
                 <a href="https://qq1332783374.github.io/tag/KS9yxfg9U" class="post-tags">
@@ -93,19 +93,88 @@
               
             </div>
             
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/url-can-shu-jie-qu-gong-ju-han-shu.jpeg')">
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/wowjs-jian-dan-shi-yong-jiao-cheng.jpeg')">
               </div>
             
             <div class="post-content">
               <blockquote>
-<p>在地址栏截取相应的参数这种场景还是比较常见的，在这里和大家分享一下这个工具函数</p>
+<p>WOW.js - 让页面滚动更有趣。</p>
 </blockquote>
-<pre><code class="language-javascript">// name 的值就是你想要获取的key值的名称
-function getUrlKey(name) {   
-            return decodeURIComponent((new RegExp('[?|&amp;]' + name + '=' + '([^&amp;;]+?)(&amp;|#|;|$)').exec(location.href) || [, &quot;&quot;])[1].replace(/\+/g, '%20')) || null
-}
+<p><strong>官网:</strong> <a href="wow.js">https://www.delac.io/wow/</a></p>
+<p><strong>GitHub</strong>: <a href="github">https://github.com/matthieua/WOW</a></p>
+<p><strong>BootCDN</strong>: <a href="BootCDN">https://cdn.bootcss.com/wow/1.1.2/wow.js</a></p>
+<p>ps : IE6/7 等老版本的浏览器不支持 CSS3 动画，建议使用新版本的浏览器。</p>
+<h2 id="使用教程">使用教程</h2>
+<ol>
+<li>wow.js 是依赖于 <a href="animate.css">https://daneden.github.io/animate.css/</a> ，记得要先引入animate.css。</li>
+</ol>
+<pre><code class="language-javascript">
+&lt;head&gt;
+	&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.bootcss.com/animate.css/3.7.0/animate.css&quot;&gt;
+&lt;/head&gt;
 
 </code></pre>
+<ol start="2">
+<li>引入<strong>wow.js</strong>相关的JS包，并且初始化</li>
+</ol>
+<pre><code class="language-javascript">
+&lt;script src=&quot;https://cdn.bootcss.com/wow/1.1.2/wow.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+	// wow.js 初始化
+	new WOW().init();
+&lt;/script&gt;
+
+</code></pre>
+<p>如需要自定义配置，参照官方的配置如下：</p>
+<pre><code class="language-javascript">// 1. boxClass：需要执行动画的className，默认 wow
+// 2. animateClass：animation.css 动画的 className，默认 animated
+// 3. offset：距离可视区域多少开始执行动画，默认 0
+// 4. mobile：是否在移动设备上执行动画，默认 true
+// 5. live：异步加载的内容是否有效，默认 true
+// 6. callback：每次动画启动时都会触发回调函数，参数为正在执行动画的DOM节点
+// 7. scrollContainer：可选滚动容器选择器，否则使用window
+
+var wow = new WOW({
+    boxClass: 'wow', 
+    animateClass: 'animated', 
+    offset: 0, 
+    mobile: true, 
+    live: true, 
+    callback: function (box) {
+        
+    },
+    scrollContainer: null
+});
+wow.init();
+
+</code></pre>
+<ol start="3">
+<li>在DOM节点上使用</li>
+</ol>
+<pre><code class="language-javascript">
+&lt;div 
+	class=&quot;wow fadeIn&quot; 
+	data-wow-duration=&quot;2s&quot; 
+	data-wow-delay=&quot;2s&quot; 
+	data-wow-offset=&quot;5&quot;  
+	data-wow-iteration=&quot;5&quot;&gt;
+&lt;/div&gt;
+
+</code></pre>
+<ul>
+<li><strong>wow</strong>class类名是必须添加的</li>
+<li><strong>fadeIn</strong> 是 animate 的动画样式名</li>
+<li><strong>data-wow-duration</strong>：动画持续时间</li>
+<li><strong>data-wow-delay</strong>：动画延迟时间</li>
+<li><strong>data-wow-offset</strong>：元素的偏移值</li>
+<li><strong>data-wow-iteration</strong>：动画执行次数</li>
+</ul>
+<p><strong>PS：两个class类名是必写的，data属性是可写可不写看情况而定。</strong></p>
+<ol start="4">
+<li>推荐一个全屏滚动的插件<strong>fullpage.js</strong>
+<strong>官网</strong>：<a href="">https://alvarotrigo.com/fullPage/zh/#page1</a></li>
+</ol>
+<p>以上就是全部教程，欢迎大家交流学习。</p>
 
             </div>
           </article>
@@ -114,9 +183,9 @@ function getUrlKey(name) {
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/chang-jian-zheng-ze">
+            <a href="https://qq1332783374.github.io/post/url-can-shu-jie-qu-gong-ju-han-shu">
               <h3 class="post-title">
-                常见正则
+                URL参数截取工具函数
               </h3>
             </a>
           </div>  
