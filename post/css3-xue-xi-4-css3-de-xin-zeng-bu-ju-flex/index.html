@@ -1,0 +1,278 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>css3学习-4-CSS3的新增布局flex | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557067256800">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557067256800" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              css3学习-4-CSS3的新增布局flex
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-10-22 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/qDNFOfUzc" class="post-tags">
+                  # CSS3
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/css3-xue-xi-4-css3-de-xin-zeng-bu-ju-flex.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>flex布局介绍</li>
+<li>flex基本概念与用法</li>
+<li>flex容器的属性值</li>
+</ol>
+<h2 id="1-flex布局介绍">1. flex布局介绍</h2>
+<p>传统的布局方案，是基于盒子模型(border+padding+content),依赖于display属性+position属性+float属性，它对于特殊布局非常不方便，例如盒子的垂直居中。
+Flexbox是flexible box的简称（灵活的盒子），是css3中新的布局模式，它决定了元素如何在页面上排列，使它们能在不同的屏幕尺寸和设备下可预测地展现出来。它之所以被称为 Flexbox ，是因为它能够扩展和收缩 flex 容器内的元素，以最大限度地填充可用空间。与以前布局方式（如 table 布局和浮动元素内嵌块元素）相比，Flexbox 是一个更强大的方式：
+* 在不同方向排列元素
+* 重新排列元素的显示顺序
+* 更改元素的对齐方式
+* 动态地将元素装入容器</p>
+<h2 id="2-flex基本概念与用法">2. flex基本概念与用法</h2>
+<p>采用flex布局的元素，成为flex容器，简称&quot;容器&quot;。它的所有子元素自动生成容器的成员，成为Flex项目(flex item)，简称&quot;项目&quot;。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557066099641.png" alt=""></p>
+<h2 id="3-flex容器的属性">3. flex容器的属性</h2>
+<p><img src="https://qq1332783374.github.io/post-images/1557066149872.png" alt=""></p>
+<h4 id="31-flex-direction属性">3.1 flex-direction属性</h4>
+<ul>
+<li>flex-direction属性可以取4个值</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557066210664.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557066224538.png" alt=""></p>
+<h4 id="32-flex-wrap属性">3.2 flex-wrap属性</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557066283853.png" alt=""></p>
+<ul>
+<li>nowrap(默认)：不换行</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557066311545.png" alt=""></p>
+<ul>
+<li>wrap:换行，第一行在上方</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557066335890.png" alt=""></p>
+<ul>
+<li>wrap-reverse:换行，第一行在下方</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557066358539.png" alt=""></p>
+<ul>
+<li>flex-flow属性</li>
+</ul>
+<blockquote>
+<p>flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557066400868.png" alt=""></p>
+<pre><code class="language-css">.box{
+   display:flex;
+   flex-flow: row nowrap;
+}
+</code></pre>
+<ul>
+<li>justify-content属性</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557066489082.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557066495330.png" alt=""></p>
+<ul>
+<li>align-items属性</li>
+</ul>
+<blockquote>
+<p>align-items属性定义项目在交叉轴上如何对齐。控制单行单列的情况</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557066587441.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557066594686.png" alt=""></p>
+<ul>
+<li>align-content属性</li>
+</ul>
+<blockquote>
+<p>align-content是用来控制多行多列的情况</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557066714411.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557066721839.png" alt=""></p>
+<h2 id="4-flex项目的属性">4. flex项目的属性</h2>
+<blockquote>
+<p>以下这5个属性是作用在flex项目上的</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order</td>
+<td>定义项目的排列顺序</td>
+</tr>
+<tr>
+<td>align-self</td>
+<td>允许单个项目有与其它项目不一样的对齐方式</td>
+</tr>
+<tr>
+<td>flex</td>
+<td>让所有的弹性盒模型对象的子元素都有相同的宽度</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>order属性</li>
+</ul>
+<p>order属性固定了弹性容器中可伸缩项目在布局时的顺序。元素按照order属性的值来进行布局。order的默认值为0</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557067087806.png" alt=""></p>
+<ul>
+<li>align-self属性</li>
+</ul>
+<p>align-self会对当前flex行中的flex元素，并覆盖align-items的值。</p>
+<p>可选参数</p>
+<ul>
+<li>flex-start
+flex元素会对齐到首端</li>
+<li>flex-end
+flex元素会对齐到尾端</li>
+<li>center
+flex元素会居中对齐</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557067152198.png" alt=""></p>
+<ul>
+<li>flex属性</li>
+</ul>
+<p>flex会让所有的弹性盒模型对象的子元素都有相同的宽度。</p>
+<p>可选参数:
+number
+<img src="https://qq1332783374.github.io/post-images/1557067200488.png" alt=""></p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/css3-xue-xi-3-xin-zeng-dan-xing-mo-xing">
+              <h3 class="post-title">
+                css3学习-3-新增弹性模型
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

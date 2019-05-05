@@ -1,0 +1,335 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>css3学习-3-新增弹性模型 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557067256800">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557067256800" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              css3学习-3-新增弹性模型
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-10-18 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/qDNFOfUzc" class="post-tags">
+                  # CSS3
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/css3-xue-xi-3-xin-zeng-dan-xing-mo-xing.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>什么是弹性盒子模型</li>
+<li>box-orient定义盒子布局取向</li>
+<li>box-direction属性定义盒子的布局顺序</li>
+<li>box-ordinal-group属性定义盒子布局位置</li>
+<li>定义盒子的弹性空间box-flex属性
+6.管理盒子的空间box-pack和box-align属性
+7.盒子模型的阴影
+8.其它新增盒模型的属性</li>
+</ol>
+<h2 id="前言">前言</h2>
+<blockquote>
+<p>CSS3中在CSS2的基础上引入了一些新的盒子模型技术参数,提出了弹性盒子模型的概念,方便于设计师更加灵活的设计页面上各个容器的大小和位置。</p>
+</blockquote>
+<ul>
+<li>CSS1定义的盒形元素</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557064643654.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557064650889.png" alt=""></p>
+<ul>
+<li>CSS2中新增的盒模型属性</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557064677613.png" alt=""></p>
+<h2 id="1-什么是弹性盒子模型">1. 什么是弹性盒子模型</h2>
+<blockquote>
+<p>CSS3中引入了新的盒模型处理机制，即是弹性盒模型，该模型用于决定元素在盒子中的分布方式以及如何处理盒子的可用空间。主要目的是用于创建自适应浏览器窗口流动布局或自适应大小的弹性布局。</p>
+</blockquote>
+<p>为了表现弹性盒模型的表现需要，CSS3新增了8个属性。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557064738109.png" alt=""></p>
+<h2 id="2-box-orient属性">2. box-orient属性</h2>
+<blockquote>
+<p>box-orient属性可用于定义盒子元素内部的流动布局方向，该属性的基本语法如下。注意在使用弹性盒子模型时，用户需要先把父容器的display属性设置为box或者inline-box</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557064784828.png" alt=""></p>
+<p>值简单说明:</p>
+<ul>
+<li>horizontal:盒子元素从左到右在一条水平线上显示它的子元素</li>
+<li>vertical:盒子元素从上到下在一条垂直线上显示它的子元素</li>
+</ul>
+<h2 id="3-box-direction属性定义盒子的布局顺序">3. box-direction属性定义盒子的布局顺序</h2>
+<blockquote>
+<p>box-direction属性可以改变盒子元素中内部元素的流动顺序</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557064841839.png" alt=""></p>
+<ul>
+<li>
+<p>normal:正常线束顺序，即如果盒子元素的box-orient属性值为horizontal,则其包含的子元素按照从左到右的顺序显示。如果盒子元素的box-orient属性值为vertical，则其包含的子元素按照从上到下的顺序显示</p>
+</li>
+<li>
+<p>reverse:反向显示，盒子所包含的子元素的显示顺序将与normal相反。</p>
+</li>
+</ul>
+<h2 id="4-box-ordinal-group属性定义盒子布局位置">4. box-ordinal-group属性定义盒子布局位置</h2>
+<blockquote>
+<p>box-ordinal-group属性可以改变盒子内部元素的流动顺序，而box-ordinal-group属性能够设置每个子元素在盒子中的具体显示位置。</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557064897217.png" alt=""></p>
+<p>box-ordinal-group（）可以设置指定的数值，让元素在规定的位置出现，其序号默认都为1，并且序号相同的元素将按照他们在文档中加载的顺序进行排列。</p>
+<p><strong>注意:值更低的元素会显示在值更高的元素前面显示。盒子内部的元素默认的box-ordinal-group是1</strong></p>
+<h2 id="5-定义盒子的弹性空间box-flex属性">5. 定义盒子的弹性空间box-flex属性</h2>
+<p><img src="https://qq1332783374.github.io/post-images/1557064933991.png" alt=""></p>
+<ul>
+<li>number属性值是一个整数或者小数，当盒子中包含多个定义了box-flex属性子元素时，浏览器将会把这些子元素的box-flex属性相加，然后根据它们各自的值占总值的比例来分配盒子剩余的空间。</li>
+</ul>
+<p><code>公式:子元素的尺寸=父盒子的尺寸*子元素的box-flex属性值/所有子元素的box-flex属性值的和</code></p>
+<h2 id="6管理盒子的空间box-pack和box-align属性">6.管理盒子的空间box-pack和box-align属性</h2>
+<h4 id="61-box-pack属性基本语法">6.1 box-pack属性基本语法</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557065121293.png" alt=""></p>
+<p>值简单说明</p>
+<ul>
+<li>start:所有子元素都显示在盒子的左侧，富余的空间显示在盒子的右侧</li>
+<li>end:所有子元素都显示在盒子的右侧，富余的空间在盒子的左侧。</li>
+<li>justify:富余空间在子元素之间平均分配。在第一个子元素之前和最后一个子元素之后不分配空间</li>
+<li>center:富余的空间在盒子的两侧平均分配</li>
+</ul>
+<h4 id="62-box-align属性基本语法">6.2 box-align属性基本语法</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557065192161.png" alt=""></p>
+<p>值简单说明:</p>
+<ul>
+<li>start:所有子元素沿盒子上边缘排列，都显示在盒子的上部，富余空间显示在盒子的底部。</li>
+<li>end:所有子元素沿盒子的下边缘排列，都显示在盒子的底部，富余的空间显示在盒子的上部。</li>
+<li>center:富余空间在盒子的上下两侧平均分配。</li>
+</ul>
+<h2 id="7盒子模型的阴影">7.盒子模型的阴影</h2>
+<blockquote>
+<p>box-shadow属性向框添加一个或者多个阴影</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h-shadow</td>
+<td>必需。水平阴影位置</td>
+</tr>
+<tr>
+<td>v-shadow</td>
+<td>必需。垂直阴影的位置</td>
+</tr>
+<tr>
+<td>blur</td>
+<td>可选。模糊距离</td>
+</tr>
+<tr>
+<td>spread</td>
+<td>可选。阴影尺寸</td>
+</tr>
+<tr>
+<td>color</td>
+<td>可选。阴影颜色</td>
+</tr>
+<tr>
+<td>inset</td>
+<td>可选。将外部阴影改为内部阴影</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8其它新增盒模型的属性">8.其它新增盒模型的属性</h2>
+<h4 id="81-box-reflect倒影">8.1. box-reflect倒影</h4>
+<p>由于box-reflect不是w3c组织标准属性，所以要添加浏览器的私有属性。
+使用方法:
+<code>-webkit-box-reflect:none|&lt;direction&gt;&lt;offset&gt;?&lt;mask-box-image&gt;</code></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557065470134.png" alt=""></p>
+<p>从box-reflect语法中可以得知，其中包括以下几个属性值:</p>
+<ul>
+<li>none:此值为box-reflect的默认值，表示无倒影</li>
+<li>direction:此值表示box-reflect生成倒影的方向，主要包括以下几个值</li>
+<li>above:表示生成的倒影（原图）上方</li>
+<li>below:表示生成的倒影（原图）下方</li>
+<li>left:表示生成的倒影（原图）左侧</li>
+<li>right:表示生成的倒影（原图）右侧</li>
+<li>offset:用来设置倒影与对象（原图）之间的距离，其取值可以是固定像素值，也可以是百分比。</li>
+<li>mask-box-image:用来设置倒影的遮盖效果，可以是背景图片，也可以是渐变生成的背景图像。</li>
+</ul>
+<h4 id="82-诡异的盒子模型-box-sizing">8.2. 诡异的盒子模型 box-sizing</h4>
+<p>在css2所定义的盒子模型，为标准的盒子模型(content-box)</p>
+<p>content-box定义:
+<code>width/height=border+padding+content</code></p>
+<p>在css3中新增了一个怪异盒模型的概念(border-box)
+<code>width/height = content</code></p>
+<p><strong>注：标准盒子模型主要适用于pc端。诡异(border-box)主要适用于了移动端。</strong></p>
+<h4 id="83-分栏布局">8.3. 分栏布局</h4>
+<p>在css3提供了类似css2中table布局的方式，那就是分栏布局。分栏布局指的是，均分每个容器，每列宽度都一样。分栏布局主要三个参数实现:</p>
+<ul>
+<li>column-count:分列数</li>
+<li>column-width:分列数的宽度</li>
+<li>column-gap:栏间间隙，默认为0</li>
+<li>column-rule:栏间线条，默认为0</li>
+</ul>
+<h4 id="84-css3中的响应式布局">8.4. CSS3中的响应式布局</h4>
+<p>在css3中为我们提供了@media查询。此属性是针对于不同媒体来定义不同的样式。
+@media可以针对不同的屏幕尺寸设置不同不同的样式，特别是需要你设置响应式的页面，@medai是非常有用的。当你重置浏览器大小的时候，页面也会根据浏览器的宽度和高度重新渲染页面。</p>
+<p>基本用法:</p>
+<ul>
+<li>可以针对于style样式</li>
+</ul>
+<p><code>@media screen and|not|only(media feature)</code></p>
+<ul>
+<li>可以针对与不同的stylesheets</li>
+</ul>
+<p><code>&lt;link rel=”stylesheet” media=”mediatype and | not|only(media feature)” href=”my.css”/&gt;</code></p>
+<pre><code class="language-css">@media only screen and (max-width: 500px) {
+    .gridmenu {
+        width:100%;
+    }
+
+    .gridmain {
+        width:100%;
+    }
+
+    .gridright {
+        width:100%;
+    }
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/css3-xue-xi-2-css3-zeng-qiang-wen-ben-he-yan-se-gong-neng">
+              <h3 class="post-title">
+                css3学习-2-CSS3增强文本和颜色功能
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

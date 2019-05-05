@@ -1,0 +1,220 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>css3学习-2-CSS3增强文本和颜色功能 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557067256800">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557067256800" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              css3学习-2-CSS3增强文本和颜色功能
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-10-16 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/qDNFOfUzc" class="post-tags">
+                  # CSS3
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/css3-xue-xi-2-css3-zeng-qiang-wen-ben-he-yan-se-gong-neng.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>文本阴影(text-shadow)</li>
+<li>溢出文本省略—text-over flow属性</li>
+<li>文本换行显示—word-wrap属性</li>
+<li>HSL色彩模式</li>
+<li>RGBA色彩模式</li>
+</ol>
+<blockquote>
+<p>设置文本样式是CSS的基本使命。早期的类样式（即CSS的雏形）也是基于简化标签在定义文本样式的工作量发展而来，所以CSS规范是在类样式的基础上不断丰富和完善的。在CSS 1中，W3C初步制订了文本样式的基本体系（如表3.1所示）；在CSS 2.1中适当地进行了完善（如表3.2所示），同时，CSS增强了font和vertical-align属性的功能。</p>
+</blockquote>
+<ul>
+<li>CSS3中新增的文本属性</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557063219670.png" alt=""></p>
+<ul>
+<li>CSS3中增强的颜色功能</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557063231415.png" alt=""></p>
+<h2 id="1-文本阴影text-shadow">1. 文本阴影(text-shadow)</h2>
+<p>实际上，在CSS 2.1中，W3C就已经定义了text-shadow属性，但在CSS 3中又重新定义了它，并增加了不透明度效果，该属性的基本语法如下</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557063262960.png" alt=""></p>
+<p>值简单说明：
+* 表示颜色；
+* 表示由浮点数字和单位标识符组成的长度值，可为负值，指定阴影的水平延伸距离；
+* 表示由浮点数字和单位标识符组成的长度值，不可为负值，指定模糊效果的作用距离。如果仅仅需要模糊效果，将前两个length全部设定为0即可。</p>
+<p>总结: 阴影偏移由两个值指定到文本的距离。第一个长度值指定到文本右边的水平距离，负值会把阴影放置在文本的左边。第二个长度值指定到文本下边的垂直距离，负值会把阴影放置在文本上方。</p>
+<h2 id="2-溢出文本省略text-over-flow属性">2. 溢出文本省略—text-over flow属性</h2>
+<p>在信息列表结构中，常常会遇到栏目的宽度固定但信息项的字符过长的矛盾，为了避免超长字符的信息项破坏栏目的布局，设计师经常需要考虑限制栏目信息的显示长度，如设置当信息项字符超出长度时则省略显示。之前，一般多借助JavaScript脚本来实现这种效果。现在，CSS 3新增了text-overflow属性，使得这个问题迎刃而解。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557063353918.png" alt=""></p>
+<p>值简单说明：
+* clip属性值表示不显示省略标记，而是简单地裁切。
+* ellipsis属性值表示当对象内文本溢出时显示省略标记，省略标记插入的位置是最后一个字符。
+* ellipsis-word表示当对象内文本溢出时显示省略标记，省略标记插入的位置是最后一个词（word）。</p>
+<blockquote>
+<p>注意: text-overflow属性仅用于决定，当文本溢出时是否显示省略标记，并不具备样式定义的功能。要实现溢出时产生省略号的效果，应该再定义两个样式：强制文本在一行内显示（white-space:nowrap）和溢出内容为隐藏（overflow:hidden），只有这样才能实现溢出文本显示为省略号的效果。</p>
+</blockquote>
+<h2 id="3-文本换行显示word-wrap属性">3. 文本换行显示—word-wrap属性</h2>
+<p><img src="https://qq1332783374.github.io/post-images/1557063443186.png" alt=""></p>
+<p>值简单说明：</p>
+<ul>
+<li>normal属性值表示控制连续文本换行。</li>
+<li>break-word属性值表示内容将在边界内换行。如果需要，词内换行（word-break）也会发生。</li>
+</ul>
+<h2 id="4-hsl色彩模式">4. HSL色彩模式</h2>
+<p>CSS 3新增加了HSL颜色表现方式。HSL色彩模式是工业界的一种颜色标准，它通过对色调(H)、饱和度(S)、亮度(L)三个颜色通道的改变以及它们相互之间的叠加来获得各种颜色。这个标准几乎包括了人类视力可以感知的所有颜色，在屏幕上可以重现16 777 216种颜色，是目前运用最广的颜色系统之一。</p>
+<pre><code class="language-css">hsl(&lt;length&gt; , &lt;percentage&gt; , &lt;percentage&gt;) 
+</code></pre>
+<p>hsl()函数的三个参数说明如下:</p>
+<ul>
+<li>
+<p><code>&lt;length&gt;</code>表示色调（Hue）。Hue衍生于色盘，取值可以为任意数值，其中0（或360，或-360）表示红色，60表示黄色，120表示绿色，180表示青色，240表示蓝色，300表示洋红，当然可以设置其他数值来确定不同的颜色。</p>
+</li>
+<li>
+<p><code>&lt;percentage&gt;</code> 表示饱和度(Saturation)，表示该色彩被使用了多少，即颜色的深浅程度和鲜艳程度。取值为0%到100%之间的值，其中0%表示灰度，即没有使用该颜色；100%的饱和度最高，即颜色最鲜艳。</p>
+</li>
+<li>
+<p><code>&lt;percentage&gt;</code> 表示亮度(Lightness)。取值为0%到100%之间的值，其中0%最暗，显示为黑色，50%表示均值，100%最亮，显示为白色。</p>
+</li>
+</ul>
+<h2 id="5-rgba色彩模式">5. RGBA色彩模式</h2>
+<p>RGBA色彩模式是RGB色彩模式的扩展，在红、绿、蓝三原色的基础上增加了不透明度参数。其语法格式如下所示：</p>
+<pre><code class="language-css">rgba(r, g , b , &lt;opacity&gt;) 
+</code></pre>
+<p>其中r、g、b分别表示红色、绿色和蓝色三种原色所占的比重。r、g、b的值可以是正整数或者百分数，正整数值的取值范围为0～255，百分数值的取值范围为0.0%～100.0%，超出范围的数值将被截至其最接近的取值极限。注意，并非所有浏览器都支持使用百分数值。第四个参数<opacity>表示不透明度，取值在0到1之间。</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/css3-xue-xi-1-css3-xin-zeng-de-xuan-ze-qi">
+              <h3 class="post-title">
+                css3学习-1-CSS3新增的选择器
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
