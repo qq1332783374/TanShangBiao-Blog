@@ -1,0 +1,711 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>css3学习-6-3D变换和animation动画 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557105970879">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557105970879" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              css3学习-6-3D变换和animation动画
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-10-29 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/qDNFOfUzc" class="post-tags">
+                  # CSS3
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/css3-xue-xi-6-3d-bian-huan-he-animation-dong-hua.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>3D变换</li>
+<li>animation</li>
+</ol>
+<h2 id="1-3d变换">1. 3D变换</h2>
+<h4 id="常用api">常用API：</h4>
+<ul>
+<li>transform-style（preserve-3d） 建立3D空间</li>
+<li>Perspective 景深</li>
+<li>Perspective- origin 景深基点</li>
+<li>Transform 新增函数
+* rotateX()
+* rotateY()
+* rotateZ()
+* translateZ()</li>
+</ul>
+<h4 id="实例">实例：</h4>
+<h4 id="实例13d立方体">实例1：3D立方体</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557104995252.gif" alt=""></p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;立方体&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .wrap{
+                width: 100px;
+                height: 100px;
+                border: 2px solid #ddd;
+                box-shadow: 2px 2px 4px #ddd;
+                position: relative;
+                margin: 50px auto;
+                padding: 100px;
+                -webkit-perspective-origin:right top;
+                -webkit-perspective:800px;
+            }
+            .trangel{
+                width: 100px;
+                height: 100px;
+                background: red;
+                /* 建立3d舞台 */
+                -webkit-transform-style: preserve-3d;
+                transition: 5s all;
+            }
+            .trangel div{
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                text-align: center;
+                line-height: 100px;
+                color: #fff;
+                background: black;
+            }
+            .trangel div:nth-of-type(1){
+                top: -100px;
+                left: 0px;
+                background: -webkit-linear-gradient(top, #1E9FFF,#A6E1EC);
+                -webkit-transform-origin: bottom;
+                -webkit-transform: rotateX(90deg);
+            }
+            .trangel div:nth-of-type(2){
+                top: 0px;
+                left: -100px;
+                background: -webkit-linear-gradient(left, #1E9FFF,#A6E1EC);
+                -webkit-transform-origin: right;
+                -webkit-transform: rotateY(-90deg);
+            }
+            .trangel div:nth-of-type(3){
+                top: 0px;
+                left: 0px;
+                background:-webkit-linear-gradient(360deg, #1E9FFF,#A6E1EC);
+            }
+            .trangel div:nth-of-type(4){
+                top: 100px;
+                left: 0px;
+                background: -webkit-linear-gradient(bottom, #1E9FFF,#A6E1EC);
+                -webkit-transform-origin: top;
+                -webkit-transform: rotateX(-90deg);
+            }
+            .trangel div:nth-of-type(5){
+                top: 0px;
+                left: 100px;
+                background: -webkit-linear-gradient(right, #1E9FFF,#A6E1EC);
+                -webkit-transform-origin: left;
+                -webkit-transform: rotateY(90deg);
+            }
+            .trangel div:nth-of-type(6){
+                left: 0px;
+                top: 0px;
+                background:-webkit-linear-gradient(-360deg, #1E9FFF,#A6E1EC);
+                -webkit-transform:translateZ(-100px) rotateX(180deg);
+            }
+            .wrap:hover .trangel{
+                -webkit-transform: rotateX(360deg) rotateY(-360deg) rotateZ(360deg);
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;div class=&quot;wrap&quot;&gt;
+            &lt;div class=&quot;trangel&quot;&gt;
+                &lt;div&gt;1&lt;/div&gt;
+                &lt;div&gt;2&lt;/div&gt;
+                &lt;div&gt;3&lt;/div&gt;
+                &lt;div&gt;4&lt;/div&gt;
+                &lt;div&gt;5&lt;/div&gt;
+                &lt;div&gt;6&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<h2 id="2-animation">2. animation</h2>
+<h4 id="21关键帧-keyframes">2.1关键帧-keyFrames</h4>
+<ul>
+<li>
+<p>关键帧的时间单位</p>
+<ul>
+<li>数字：0%、25%、100%等</li>
+<li>字符：from(0%)、to(100%)</li>
+</ul>
+</li>
+<li>
+<p>格式</p>
+</li>
+</ul>
+<pre><code class="language-css">
+@keyframes 动画名称
+{
+	动画状态
+}
+
+</code></pre>
+<ul>
+<li>格式(2)</li>
+</ul>
+<pre><code class="language-css">@keyframes  miaov
+{
+	from { background:red; }
+	to { background:blue; }
+}
+</code></pre>
+<h4 id="22-animate-调用动画">2.2 animate-调用动画</h4>
+<ol>
+<li>
+<p>必要属性</p>
+<ul>
+<li>animation-name		动画名称（关键帧名称）</li>
+<li>animation-duration		动画持续时间</li>
+<li>animation-play-state 播放状态（ running 播放 和paused 暂停 ）</li>
+</ul>
+</li>
+<li>
+<p>可选属性</p>
+<ul>
+<li>
+<p>animation-timing-function	动画运动形式
+- 参数
+- linear	匀速
+- ease		缓冲
+- ease-in	由慢到快
+- ease-out	由快到慢
+- ease-in-out	由慢到快再到慢
+- cubic-bezier(number, number, number, number)：	特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内</p>
+</li>
+<li>
+<p>animation-delay			动画延迟</p>
+<ul>
+<li>只是第一次</li>
+</ul>
+</li>
+<li>
+<p>animation-iteration-count		重复次数</p>
+<ul>
+<li>infinite为无限次</li>
+</ul>
+</li>
+<li>
+<p>animation-direction			播放前重置</p>
+<ul>
+<li>动画是否重置后再开始播放</li>
+<li>alternate	动画直接从上一次停止的位置开始执行</li>
+<li>normal	动画第二次直接跳到0%的状态开始执行</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="练习">练习</h4>
+<h4 id="练习1循环运动">练习1：循环运动</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557105787842.gif" alt=""></p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;循环运动&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            @-webkit-keyframes domove{
+                0%{
+                    left: 0px;
+                    top: 0px;
+                }
+                25%{
+                    left: 300px;
+                    top: 0px;
+                }
+                50%{
+                    left: 300px;
+                    top: 300px;
+                }
+                75%{
+                    left: 0;
+                    top: 300px;
+                }
+                100%{
+                    left: 0;
+                    top: 0;
+                }
+            }
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .wrap{
+                width: 400px;
+                height: 400px;
+                margin: 20px auto;
+                position: relative;
+                border: 1px solid #ddd;
+                box-shadow: 2px 2px 4px #ddd;
+            }
+            .trangel{
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                background:-webkit-linear-gradient(30deg, #1E9FFF,#A6E1EC);
+                top: 0;
+                left: 0;
+                animation: 2s  infinite domove;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;div class=&quot;wrap&quot;&gt;
+            &lt;div class=&quot;trangel&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<h4 id="练习2滚动提示">练习2：滚动提示</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557105835569.gif" alt=""></p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;滚动提示&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            @-webkit-keyframes domove{
+                0%{
+                    left: 0px;
+                    top: 0px;
+                }
+                100%{
+                    left: -500px;
+                    top: 0px;
+                }
+            }
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            ul li{
+                list-style: none;
+            }
+            .wrap{
+                width: 500px;
+                height: 100px;
+                position: relative;
+                margin: 20px auto;
+                background: #000;
+            }
+            .wrap ul{
+                position: absolute;
+                width: 200%;
+                height: 100px;
+                top: 0;
+                left: 0;
+                animation: 5s domove linear infinite;
+            }
+            .wrap ul li{
+                width: 98px;
+                height: 98px;
+                float: left;
+                border: 1px solid #fff;
+                text-align: center;
+                line-height: 98px;
+                color: #fff;
+                font-size: 24px;
+            }
+            .wrap ul:hover{
+                -webkit-animation-play-state: paused;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;div class=&quot;wrap&quot;&gt;
+            &lt;ul&gt;
+                &lt;li&gt;1&lt;/li&gt;
+                &lt;li&gt;2&lt;/li&gt;
+                &lt;li&gt;3&lt;/li&gt;
+                &lt;li&gt;4&lt;/li&gt;
+                &lt;li&gt;5&lt;/li&gt;
+                &lt;li&gt;1&lt;/li&gt;
+                &lt;li&gt;2&lt;/li&gt;
+                &lt;li&gt;3&lt;/li&gt;
+                &lt;li&gt;4&lt;/li&gt;
+                &lt;li&gt;5&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<h4 id="练习33d折叠菜单">练习3：3D折叠菜单</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557105891513.gif" alt=""></p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;3D折叠菜单&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            @-webkit-keyframes open{
+                0%{
+                    -webkit-transform: rotateX(-120deg);
+                }
+                25%{
+                    -webkit-transform: rotateX(30deg);
+                }
+                50%{
+                    -webkit-transform: rotateX(-15deg);
+                }
+                75%{
+                    -webkit-transform: rotateX(8deg);
+                }
+                100%{
+                    -webkit-transform: rotateX(0deg);
+                }
+            }
+            @-webkit-keyframes close{
+                0%{
+                    -webkit-transform: rotateX(0deg);
+                }
+
+                100%{
+                    -webkit-transform: rotateX(-120deg);
+                }
+            }
+            #wrap{
+                width: 150px;
+                margin: 30px auto;
+                position: relative;
+                -webkit-perspective: 800px;
+            }
+            #wrap h2{
+                height: 40px;
+                background: -webkit-linear-gradient(top,#1E9FFF,#A6E1EC);
+                color: #fff;
+                text-align: center;
+                position: relative;
+                z-index: 10;
+            }
+            #wrap div{
+                position: absolute;
+                width: 100%;
+                top: 32px;
+                left: 0;
+                -webkit-transform-style: preserve-3d;
+                -webkit-transform-origin:top;
+                -webkit-transform: rotateX(-120deg);
+                z-index: 1;
+            }
+            #wrap span{
+                display: block;
+                height: 30px;
+                background: -webkit-linear-gradient(top,#1E9FFF,#A6E1EC);
+                color: #fff;
+                box-shadow: 2px 2px 4px #ddd;
+                transition: 1s ;
+
+            }
+            #wrap&gt;div{
+                top: 40px;
+            }
+            #wrap .show{
+                -webkit-animation: 1.2s open;
+                -webkit-transform: rotateX(0deg);
+            }
+            #wrap .hide{
+                -webkit-animation: 1s close;
+                -webkit-transform: rotateX(-120deg);
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;wrap&quot;&gt;
+            &lt;h2&gt;我是标题&lt;/h2&gt;
+            &lt;div&gt;
+                &lt;span&gt;选项1&lt;/span&gt;
+                &lt;div&gt;
+                    &lt;span&gt;选项2&lt;/span&gt;
+                    &lt;div&gt;
+                        &lt;span&gt;选项3&lt;/span&gt;
+                        &lt;div&gt;
+                            &lt;span&gt;选项4&lt;/span&gt;
+                            &lt;div&gt;
+                                &lt;span&gt;选项5&lt;/span&gt;
+                                &lt;div&gt;
+                                    &lt;span&gt;选项6&lt;/span&gt;
+                                    &lt;div&gt;
+                                        &lt;span&gt;选项7&lt;/span&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            var oWrap = document.getElementById(&quot;wrap&quot;);
+            var oDiv = oWrap.getElementsByTagName('div');
+            var onOff = true;
+            var oTimer = null;
+            var i = 0;
+            oWrap.onclick = function(){
+                if(oTimer){
+                    return
+                }
+                if(onOff){
+                    i = 0
+                    oTimer = setInterval(function(){
+                        oDiv[i].className = &quot;show&quot;;
+                        i++;
+                        if(i==oDiv.length){
+                            clearInterval(oTimer);
+                            oTimer = null;
+                            onOff = false;
+                        }
+                    },200);
+                }else {
+                    i = oDiv.length-1;
+                    oTimer = setInterval(function(){
+                        oDiv[i].className = &quot;hide&quot;;
+                        i--;
+                        if(i&lt;0){
+                            clearInterval(oTimer);
+                            oTimer = null;
+                            onOff = true;
+                        }
+                    },200);
+                };
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="练习4涟漪效果">练习4：涟漪效果</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557105948390.gif" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot; /&gt;
+        &lt;title&gt;涟漪&lt;/title&gt;
+        &lt;style&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            @keyframes changes{
+                0%{
+                    height: 0px;
+                    width: 0px;
+                    opacity: 1;
+                }
+                100%{
+                    height: 100px;
+                    width: 100px;
+                    opacity: 0;
+                }
+            }
+            .wrap{
+                width: 100px;
+                height: 100px;
+                border: 1px solid #ddd;
+                box-shadow: 2px 2px 4px #ddd;
+                margin: 20px auto;
+                position: relative;
+            }
+            .circle{
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 10px;
+                height: 10px;
+                margin: auto;
+                border-radius: 50%;
+                background: #1E9FFF;
+                animation: changes 2s linear infinite;
+            }
+            .circle:nth-child(1){
+                animation-delay: 1s;
+            }
+            .circle:nth-child(2){
+                animation-delay: 1.5s;
+            }
+            .circle:nth-child(3){
+                animation-delay: 2s;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;wrap&quot;&gt; 
+            &lt;div class=&quot;circle&quot;&gt;
+
+            &lt;/div&gt;
+            &lt;div class=&quot;circle&quot;&gt;
+
+            &lt;/div&gt;
+            &lt;div class=&quot;circle&quot;&gt;
+
+            &lt;/div&gt;
+            &lt;div class=&quot;circle&quot;&gt;
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/css3-xue-xi-5-jian-bian-guo-du-shi-jian-yi-ji-2d-bian-huan">
+              <h3 class="post-title">
+                css3学习-5-渐变、过度时间以及2D变换
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
