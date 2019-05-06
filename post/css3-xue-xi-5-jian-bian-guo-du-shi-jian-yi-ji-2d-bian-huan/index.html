@@ -1,0 +1,613 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>css3学习-5-渐变、过度时间以及2D变换 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557104423112">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557104423112" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              css3学习-5-渐变、过度时间以及2D变换
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-10-26 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/qDNFOfUzc" class="post-tags">
+                  # CSS3
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/css3-xue-xi-5-jian-bian-guo-du-shi-jian-yi-ji-2d-bian-huan.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>css3中的过渡</li>
+<li>css3中的2d变换</li>
+<li>css3中的渐变</li>
+</ol>
+<h2 id="1-css3中的过渡">1. css3中的过渡</h2>
+<blockquote>
+<p>css3中的过渡功能像是一种黄油，通过一些CSS的简单动作触发样式平滑过渡。W3C标准中描述的transition功能非常简单：CSS3的transition允许CSS的属性值在规定的时间区间内平滑的过渡。</p>
+</blockquote>
+<h4 id="11-css3的过渡属性">1.1 CSS3的过渡属性</h4>
+<ul>
+<li>
+<p>transition属性是一个复合属性，出于简洁性和便于维护考虑，过渡语法通常以简化的形式表达。</p>
+</li>
+<li>
+<p>transition: &lt;过渡属性&gt;&lt;过渡所需的时间&gt; &lt;过渡动画函数&gt; &lt;过渡延迟时间&gt;</p>
+</li>
+<li>
+<p>transition 属性主要包含了四个属性:</p>
+</li>
+<li>
+<p>transition-property: 指定过渡或动态模拟的CSS属性。</p>
+</li>
+<li>
+<p>transition-duration: 指定完成过渡所需的时间。</p>
+</li>
+<li>
+<p>transition-timeing-function: 指定过渡函数</p>
+</li>
+<li>
+<p>transition-delay: 指定过渡开始出现的延迟时间。</p>
+</li>
+</ul>
+<h4 id="12-指定过渡属性transition-property">1.2 指定过渡属性transition-property</h4>
+<blockquote>
+<p>我们是可以通过设置指定的属性，使元素发生相对应的变化。需要注意的是,并不是所有的css属性都可以过渡，一般情况下，我们会对以下的类型属性来处理。</p>
+</blockquote>
+<ul>
+<li>
+<p>颜色属性</p>
+</li>
+<li>
+<p>具有长度值，百分比的属性</p>
+</li>
+<li>
+<p>真实的数值:如opacity,font-weight,font-size</p>
+</li>
+<li>
+<p>变形系类的属性:如rotate(),scale(),translate()等</p>
+</li>
+<li>
+<p>visibility:在0-1的范围内。0表示隐藏，1表示完全显示</p>
+</li>
+<li>
+<p>阴影:例如text-shadow属性。</p>
+</li>
+<li>
+<p>渐变</p>
+</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557103591331.png" alt=""></p>
+<h4 id="13-指定过渡时间transition-duration">1.3 指定过渡时间transition-duration</h4>
+<p><strong>transition-duration:time</strong></p>
+<p>time为数值，单位为s(秒)或ms(毫秒)。可以作用与所有元素。默认值为0，也就是说变换是即时的。当你设置transition-duration为0时，指定的元素样式过渡时，看不到过渡过程，直接看结果。和transition-property属性一样，当你设置多个过渡属性的时候，也可以设置多个过渡时间，每个值之间需要用逗号隔开。</p>
+<h4 id="14-指定过渡函数transition-timing-function">1.4 指定过渡函数transition-timing-function</h4>
+<blockquote>
+<p>transition-timing-function属性指定某种指代过渡”缓冲函数”的属性。此属性可指定浏览器的过渡速度，以及过渡期间的操作进展情况。可以将某个值指定为预定义函数，阶梯函数或者三次方贝塞尔曲线。（cubic-bezier(0.145,1.295,0,1.610)）</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557103683090.png" alt=""></p>
+<h4 id="15-指定过渡延迟时间transition-delay">1.5 指定过渡延迟时间transition-delay</h4>
+<blockquote>
+<p>过渡属性transition还有一个过渡延迟时间属性transition-delay,用来定义过渡延迟时间。transition-delay用来指定一个动画开始执行的时间，也就是说当改变元素属性值后多长时间开始执行过渡效果，它的取值可以是正整数和0，非0的时候必须设置单位s(秒)或者ms(毫秒)</p>
+</blockquote>
+<h4 id="练习">练习</h4>
+<h4 id="练习1鼠标悬浮body上时盒子的高度从100px过渡到50px然后宽度从-50px过渡到300px同时盒子的背景颜色从8ec63f色过渡到f7941d色">练习1：鼠标悬浮body上时，盒子的高度从100px过渡到50px,然后宽度从 50px过渡到300px，同时盒子的背景颜色从”#8ec63f”色过渡到”#f7941d”色。</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557103752583.gif" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;过度时间&lt;/title&gt;
+        &lt;style&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                margin: 200px auto;
+                border: 1px solid #666;
+                height: 200px;
+            }
+            .wrap{
+                width: 50px;
+                height: 100px;
+                background: #8ec63f;
+                transition: 2s all;
+            }
+            body:hover .warp{
+                height: 50px;
+                width: 300px;
+                background: #f7941d;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;wrap&quot;&gt;
+
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h4 id="练习2css3实现导航条下拉效果">练习2：CSS3实现导航条下拉效果</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557103798281.gif" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;下拉菜单&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            a{
+                text-decoration: none;
+                color: #666;
+            }
+            ul li{
+                list-style: none;
+            }
+            .nav {
+                width: 250px;
+                margin: 20px auto;
+            }
+            .nav ul:nth-child(1){
+                display: flex;
+            }
+            .nav ul:nth-child(1)&gt;li{
+                width: 120px;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                border: 1px solid #ddd;
+                box-shadow: 2px 2px 4px #ddd;
+                transition:1s all;
+            }
+            .nav ul:nth-child(2){
+                height: 0;
+            }
+            .nav ul:nth-child(2)&gt;li{
+                height: 0;
+                overflow: hidden;
+                transition:0.7s;
+            }
+            ul:nth-child(1)&gt;li:hover a .creat{
+                border-top: 8px solid #ddd;
+                border-bottom: 0px solid #ddd;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+            }
+            ul:nth-child(1)&gt;li:hover ul:nth-child(2)&gt;li{
+                border: 1px solid #ddd;
+                height: 40px;
+            }
+
+            .creat{
+                display: inline-block;
+                transition: 1s all;
+                width: 0;
+                height: 0;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid #ddd;
+                border-right: 0px solid;
+
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;nav&quot;&gt;
+            &lt;ul&gt;
+                &lt;li&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;下拉菜单 &lt;span class=&quot;creat&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;a href=&quot;javascript:;&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;javascript:;&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;javascript:;&quot;&gt;3&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a href=&quot;javascript:;&quot;&gt;下拉菜单 &lt;span class=&quot;creat&quot;&gt;&lt;/span&gt;&lt;/a&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;&lt;a href=&quot;javascript:;&quot;&gt;1&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;javascript:;&quot;&gt;2&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;javascript:;&quot;&gt;3&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;script src=&quot;js/jquery-1.11.0.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="练习3移入出现遮盖层">练习3：移入出现遮盖层</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557103839896.gif" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;遮盖层&lt;/title&gt;
+        &lt;style&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .content{
+                width: 520px;
+                height: 520px;
+                border: 1px solid #ddd;
+                box-shadow: 2px 2px 4px #ddd;
+                margin: 20px auto;
+                display: flex;
+                box-sizing: border-box;
+                padding: 10px;
+            }
+            .item{
+                width: 200px;
+                height: 150px;
+                border: 1px solid #666;
+                position: relative;
+                overflow: hidden;
+                transition: 2s all;
+            }
+            .over{
+                width: 200px;
+                height: 150px;
+                background: rgba(0,0,0,0.5);
+                position: absolute;
+                top: 150px;
+                transition: 1s all;
+                color: #fff;
+                text-align: center;
+            }
+            .item:hover .over{
+                top: 0;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;div class=&quot;item&quot;&gt;
+                &lt;h2&gt;内容&lt;/h2&gt;
+                &lt;div class=&quot;over&quot;&gt;
+                    遮盖层
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="2-css3中的2d变换">2. css3中的2d变换</h2>
+<p>在css2.0中，如果需要我们对于某个元素进行一个倾斜，缩放，移动以及翻转元素，是非常困难的一件事。只能借助photoshop切图的方式来完成。但在css3中，为我们新增了变形的功能。</p>
+<p>CSS3变形时一些效果的集合，比如平移，旋转，缩放和倾斜效果，每个效果都称为变形函数，它们可以操控元素发生旋转，缩放，平移等变化。不需要我们依赖图片，FLASH或javascript才能完成。而使用纯CSS来完成这些变形效果。</p>
+<h4 id="21-transform属性">2.1 transform属性</h4>
+<p>transform属性让元素在一个坐标系统中变形，包含了一系列变形函数，可以移动，旋转和缩放元素。</p>
+<p><code>transform:none|&lt;transform-function&gt;</code></p>
+<p>可用于内联元素和块元素。其默认值为none，表示元素不进行变形。属性值transform-function,表示一个或多个变形函数，以空格分开。例如rotate,scale,translate等。需要注意的时，在transform中使用过多个transform-function时却需要用空格隔开。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557104030979.png" alt=""></p>
+<h4 id="练习1图片列表带有旋转动画">练习1：图片列表带有旋转动画</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557104126224.gif" alt=""></p>
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;旋转图片&lt;/title&gt;
+        &lt;style&gt;
+            *{
+                margin: 0;
+            }
+            .wrap{
+                width: 600px;
+                height: 400px;
+                border: 1px solid black;
+                padding: 10px 15px;
+                box-sizing: border-box;
+
+            }
+            .wrap .item{
+                width: 120px;
+                height: 120px;
+                border: 1px solid #ddd;
+                background: url(img/1.jpg) no-repeat;
+                background-size:100% 100%;
+                position: relative;
+                overflow: hidden;
+                float: left;
+            }
+            .wrap .item .info{
+                position: absolute;
+                width: 100%;
+                height: 120px;
+                background:rgba(0,0,0,0.5);
+                color: #fff;
+                left: 0;
+                transition: 0.75s all;
+                -webkit-transform:rotate(60deg) translate(94px,52px);
+            }
+            .wrap .item:hover .info{
+                -webkit-transform:rotate(360deg) translate(0px,0px);
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;wrap&quot;&gt;
+            &lt;div class=&quot;item&quot;&gt;
+                &lt;span class=&quot;info&quot;&gt;斗破苍穹&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item&quot;&gt;
+                &lt;span class=&quot;info&quot;&gt;斗破苍穹&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item&quot;&gt;
+                &lt;span class=&quot;info&quot;&gt;斗破苍穹&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item&quot;&gt;
+                &lt;span class=&quot;info&quot;&gt;斗破苍穹&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item&quot;&gt;
+                &lt;span class=&quot;info&quot;&gt;斗破苍穹&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item&quot;&gt;
+                &lt;span class=&quot;info&quot;&gt;斗破苍穹&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;item&quot;&gt;
+                &lt;span class=&quot;info&quot;&gt;斗破苍穹&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+<h4 id="练习2扇形导航">练习2：扇形导航</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557104216537.gif" alt=""></p>
+<pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;扇形导航&lt;/title&gt;
+        &lt;style&gt;
+            *{
+                margin: 0;
+            }
+            .wrap{
+                position: fixed;
+                width: 50px;
+                height: 50px;
+                right: 20px;
+                bottom: 20px;
+            }
+            .wrap img{
+                position: absolute;
+                transition: 1s all;
+                left: 0;
+                top: 0;
+            }
+            .home{
+                width: 50px;
+                height: 50px;
+                background: url(img/home.png) no-repeat;
+                position: absolute;
+                left: 0;
+                top: 0;
+                transition: 1s all;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class=&quot;wrap&quot; id=&quot;wrap&quot;&gt;
+            &lt;img src=&quot;img/clos.png&quot; /&gt;
+            &lt;img src=&quot;img/full.png&quot; /&gt;
+            &lt;img src=&quot;img/open.png&quot; /&gt;
+            &lt;img src=&quot;img/prev.png&quot; /&gt;
+            &lt;img src=&quot;img/refresh.png&quot; /&gt;
+
+            &lt;div class=&quot;home&quot; id=&quot;home&quot;&gt;
+
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;script&gt;
+            var oHome = document.getElementById(&quot;home&quot;)
+            var oImg = document.getElementById(&quot;wrap&quot;).getElementsByTagName(&quot;img&quot;)
+            var onOff = true
+            var iR = -150
+            oHome.onclick = function(){
+                if(onOff){
+                    this.style.webkitTransform = &quot;rotate(360deg)&quot;
+                    for (var i=0;i&lt;oImg.length;i++) {
+                        var iLt = toChage(iR,90/4*i)
+                        oImg[i].style.left = iLt.left+&quot;px&quot;
+                        oImg[i].style.top = iLt.top+&quot;px&quot;
+                        oImg[i].style.webkitTransform = &quot;rotate(-720deg)&quot;
+                    }
+                    onOff = false
+																										
+                }else {
+                    this.style.webkitTransform = &quot;rotate(0deg)&quot;
+                    for (var i=0;i&lt;oImg.length;i++) {
+                        oImg[i].style.transition = &quot;0.5s &quot;+(oImg.length-1-i)*100+&quot;ms&quot;
+                        oImg[i].style.left = 0+&quot;px&quot;
+                        oImg[i].style.top = 0+&quot;px&quot;
+                        oImg[i].style.webkitTransform = &quot;rotate(-720deg)&quot;
+                    }
+                    onOff = true
+                }
+            }
+
+            function toChage(iR,iRotate){
+                var l = Math.round(Math.sin(iRotate/180*Math.PI)*iR)
+                var t = Math.round(Math.cos(iRotate/180*Math.PI)*iR)
+                return {
+                    left:l,
+                    top:t
+                }
+            }
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="22-transform-orign属性">2.2 transform-orign属性</h4>
+<ul>
+<li><strong>transform-orign</strong>属性的x轴和y轴的值可以重置元素变形原点的位置。</li>
+<li><strong>transform-orign</strong>:x,y</li>
+<li>属性值可以是百分比,em,px等具体的值，也可以是top,right,bottom,left和center这样的关键词。</li>
+</ul>
+<h2 id="3-css3中的渐变">3. css3中的渐变</h2>
+<p>一直以来,Web设计师都是通过图形软件设计这些渐变效果，然后以图片的形式或者背景图片的形式运用到页面中。Web页面上实现的效果，仅从页面的视觉效果上来看，与设计并无任何差异。
+事实上这种方法比较麻烦，因为首先需要设计师进行设计，然后进行切图，在通过样式应用到页面中。另外，在实际应用中可扩展性差，还直接影响页面性能。
+值得庆幸的是，W3C组织将渐变设计收入到CSS3标准中，可以直接通过CSS的渐变属性制作类似渐变图片的效果。</p>
+<h4 id="31-css3的线性渐变">3.1 CSS3的线性渐变</h4>
+<p>在线性渐变过程中，颜色沿着一条直线过渡：从左侧到右侧，从右侧到左侧，从顶部到底部，从底部到顶部或沿任意轴。
+在CSS3中制作线性效果，首先要指定一个渐变的方向，起始颜色，结束颜色。具有这三个参数就可以制作一个最简单，最普遍的渐变效果。</p>
+<h4 id="基本用法">基本用法：</h4>
+<ul>
+<li>-webkit-linear-gradient(type,start,end，startColor，endColor)</li>
+<li>-webkit-linear-gradient是webkit引擎对渐变的实现一共有5个参数。</li>
+<li>第一个参数type表示渐变类型，默认是线性渐变。</li>
+<li>第二个参数start表示渐变的起始值</li>
+<li>第三个参数end表示渐变的终点值</li>
+<li>第四个参数startColor表示起始的颜色</li>
+<li>第五个参数endColor表示结束的颜色</li>
+</ul>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/css3-xue-xi-4-css3-de-xin-zeng-bu-ju-flex">
+              <h3 class="post-title">
+                css3学习-4-CSS3的新增布局flex
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
