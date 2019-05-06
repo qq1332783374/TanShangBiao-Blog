@@ -1,0 +1,282 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vue学习-6-深入了解组件2 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557149482303">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557149482303" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              vue学习-6-深入了解组件2
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-11-16 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
+                  # VUE
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-xue-xi-6-shen-ru-liao-jie-zu-jian-2.png')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>编写组件细节</li>
+<li>组件嵌套子组件slot插槽的用法</li>
+<li>非父子组件间的通信</li>
+</ol>
+<h2 id="1-编写组件细节">1. 编写组件细节</h2>
+<blockquote>
+<p>你给予组件的名字可能依赖于你打算拿它来做什么。当直接在 DOM 中使用一个组件 (而不是在字符串模板或单文件组件) 的时候，我们强烈推荐遵循 W3C 规范中的自定义组件名 (<strong>字母全小写且必须包含一个连字符</strong>)。这会帮助你避免和当前以及未来的 HTML 元素相冲突。</p>
+</blockquote>
+<p>定义组件名称的方式有两种:</p>
+<h4 id="11-使用kebab-case-短横线分隔命名">1.1 使用Kebab-case (短横线分隔命名)</h4>
+<pre><code class="language-javascript">Vue.component('my-component-name',{/*       */})
+</code></pre>
+<p>当使用 kebab-case (短横线分隔命名) 定义一个组件时，你也必须在引用这个自定义元素时使用 kebab-case，例如<code>&lt;my-component-name&gt;</code>。</p>
+<h4 id="12-使用pascalcase-驼峰式命名">1.2 使用PascalCase (驼峰式命名)</h4>
+<pre><code class="language-javascript">Vue.component('MyComponentName',{/*         */})
+</code></pre>
+<p>当使用 PascalCase (驼峰式命名) 定义一个组件时，你在引用这个自定义元素时两种命名法都可以使用。也就是说 <code>&lt;my-component-name&gt;</code>和 <code>&lt;MyComponentName&gt;</code> 都是可接受的。注意，尽管如此，直接在 DOM (即非字符串的模板) 中使用时只有 kebab-case 是有效的。</p>
+<h2 id="2-组件嵌套子组件">2. 组件嵌套子组件</h2>
+<p>在某些情况我们是需要使用到嵌套组件，也就是说组件还可以继续嵌套组件。形成嵌套组件有两种的实现方式。</p>
+<h4 id="21-父组件直接嵌套子组件">2.1 父组件直接嵌套子组件</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557149324304.png" alt=""></p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;item-A&gt;&lt;/item-A&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Vue.component('itemA',{
+        template:'&lt;div&gt;123&lt;itemB&gt;&lt;/itemB&gt;&lt;/div&gt;'
+    })
+    Vue.component('itemB',{
+        template:'&lt;div&gt;456&lt;/div&gt;'
+    })
+    new Vue({
+        el:'#app'
+    })
+&lt;/script&gt;
+</code></pre>
+<h4 id="22-父组件通过插槽slot嵌套">2.2 父组件通过插槽(slot)嵌套</h4>
+<p>插槽，也就是slot，是组件的一块HTML模板，这块模板显示不显示、以及怎样显示由父组件来决定。
+插槽（Slot）是Vue提出来的一个概念，正如名字一样，插槽用于决定将所携带的内容，插入到指定的某个位置，从而使模板分块，具有模块化的特质和更大的重用性。那么插槽(slot)分成3种分别是:单个插槽，具名插槽，作用域插槽。</p>
+<h4 id="23-单个插槽">2.3 单个插槽</h4>
+<p>首先是单个插槽，单个插槽是vue的官方叫法，但是其实也可以叫它默认插槽，或者与具名插槽相对，我们可以叫它匿名插槽。因为它不用设置name属性。</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;item&gt;
+        &lt;h4&gt;
+            Hello Vue
+        &lt;/h4&gt;
+    &lt;/item&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    Vue.component('item',{
+        data(){
+            return {
+
+            }
+        },
+        template:`
+            &lt;div&gt;
+                &lt;slot&gt;&lt;/slot&gt;
+            &lt;/div&gt;
+        `
+    })
+&lt;/script&gt;
+</code></pre>
+<h4 id="24-具名插槽">2.4 具名插槽</h4>
+<p>匿名插槽没有name属性，所以是匿名插槽，那么，插槽加了name属性，就变成了具名插槽。具名插槽可以在一个组件中出现N次，出现在不同的位置。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557149438361.png" alt=""></p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;item&gt;
+        &lt;div class=&quot;header&quot; slot=&quot;header&quot;&gt;
+            header
+        &lt;/div&gt;
+        &lt;div class=&quot;footer&quot; slot=&quot;footer&quot;&gt;
+            footer
+        &lt;/div&gt;
+    &lt;/item&gt;
+&lt;/div&gt;
+&lt;script&gt;
+Vue.component('item',{
+    template:`
+        &lt;div&gt;
+            &lt;slot name=&quot;header&quot;&gt;&lt;/slot&gt;
+            &lt;div class=&quot;content&quot;&gt;content&lt;/div&gt;
+            &lt;slot name=&quot;footer&quot;&gt;&lt;/slot&gt;
+        &lt;/div&gt;
+    `
+})
+
+new Vue({
+    el:'#app'
+})
+&lt;/script&gt;
+</code></pre>
+<h4 id="25-作用域插槽">2.5 作用域插槽</h4>
+<p>作用域插槽是一种特殊类型的插槽，用作一个（能被传递数据的）可重用模板，来代替已经渲染好的元素。
+在子组件中，只需将数据传递到插槽，就像你将prop传递给组件一样：</p>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    &lt;item&gt;
+        &lt;template slot-scope=&quot;props&quot;&gt;
+            &lt;li&gt;
+                {{props.item}}
+            &lt;/li&gt;
+        &lt;/template&gt;
+    &lt;/item&gt;
+&lt;/div&gt;
+&lt;script&gt;
+Vue.component('item',{
+    data(){
+        return{
+            list:[1,2,3,4,5]
+        }
+    },
+    template:`
+        &lt;div&gt;
+            &lt;ul&gt;
+                &lt;slot v-for=&quot;item in list&quot; :item=&quot;item&quot;&gt;
+                &lt;/slot&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    `
+})
+new Vue({
+    el:'#app'
+})
+&lt;/script&gt;
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/vue-xue-xi-5-shen-ru-liao-jie-zu-jian">
+              <h3 class="post-title">
+                vue学习-5-深入了解组件
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

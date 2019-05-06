@@ -1,0 +1,272 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vue学习-5-深入了解组件 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557149482303">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557149482303" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              vue学习-5-深入了解组件
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-11-14 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
+                  # VUE
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-xue-xi-5-shen-ru-liao-jie-zu-jian.png')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>动态props</li>
+<li>props字面量语法与动态语法</li>
+<li>单向数据流概念</li>
+<li>props验证</li>
+<li>组件中ref的用法</li>
+<li>组件中native的用法</li>
+</ol>
+<h2 id="1动态props">1.动态props</h2>
+<p>类似于用 v-bind 绑定 HTML 特性到一个表达式，也可以用 v-bind 动态绑定 props 的值到父组件的数据中。每当父组件的数据变化时，该变化也会传导给子组件：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557148634691.gif" alt=""></p>
+<pre><code class="language-html">&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;input type=&quot;text&quot; v-model=&quot;msg&quot; /&gt;
+        &lt;child :msg=&quot;msg&quot;&gt;&lt;/child&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        Vue.component('child',{
+            props:['msg'],   //通过props接收父组件传过来的值
+            template:'&lt;div&gt;{{msg}}&lt;/div&gt;'   //渲染模板
+        })
+
+        new Vue({
+            el:'#app',
+            data:{
+                msg:'父组件内容'
+            }
+        })
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+<h2 id="2prop字面量语法与动态语法">2.prop字面量语法与动态语法</h2>
+<h4 id="21-prop-的大小写-camelcase-vs-kebab-case">2.1 Prop 的大小写 (camelCase vs kebab-case)</h4>
+<p>HTML 中的特性名是大小写不敏感的，所以浏览器会把所有大写字符解释为小写字符。这意味着当你使用 DOM 中的模板时，camelCase (驼峰命名法) 的 prop 名需要使用其等价的 kebab-case (短横线分隔命名) 命名：</p>
+<pre><code class="language-javascript">Vue.component('blog-post', {
+  // 在 JavaScript 中是 camelCase 的
+  props: ['postTitle'],
+  template: '&lt;h3&gt;{{ postTitle }}&lt;/h3&gt;'
+})
+</code></pre>
+<pre><code class="language-html">&lt;!-- 在 HTML 中是 kebab-case 的 --&gt;
+&lt;blog-post post-title=&quot;hello!&quot;&gt;&lt;/blog-post&gt;
+</code></pre>
+<p><strong>如果你使用字符串模板，那么这个限制就不存在了。</strong></p>
+<h4 id="22-prop-类型">2.2 Prop 类型</h4>
+<p>到这里，我们只看到了以字符串数组形式列出的 prop：</p>
+<pre><code class="language-javascript">props: ['title', 'likes', 'isPublished', 'commentIds', 'author']
+</code></pre>
+<p>但是，通常你希望每个 prop 都有指定的值类型。这时，你可以以对象形式列出 prop，这些属性的名称和值分别是 prop 各自的名称和类型：</p>
+<pre><code class="language-javascript">props: {
+  title: String,
+  likes: Number,
+  isPublished: Boolean,
+  commentIds: Array,
+  author: Object
+}
+</code></pre>
+<h2 id="3-单向数据流">3. 单向数据流</h2>
+<p>prop 是单向绑定的：当父组件的属性变化时，将传导给子组件，但是反过来不会。这是为了防止子组件无意间修改了父组件的状态，来避免应用的数据流变得难以理解。
+另外，每次父组件更新时，子组件的所有 prop 都会更新为最新值。这意味着你不应该在子组件内部改变 prop。如果你这么做了，Vue 会在控制台给出警告。</p>
+<p>在两种情况下，我们很容易忍不住想去修改 prop 中数据：</p>
+<ol>
+<li>prop 作为初始值传入后，子组件想把它当作局部数据来用；</li>
+<li>prop 作为原始数据传入，由子组件处理成其它数据输出。</li>
+</ol>
+<p><img src="https://qq1332783374.github.io/post-images/1557148965920.png" alt=""></p>
+<p>面对于这种情况，正确的应对方式是：定义一个局部变量，并用 prop 的值初始化</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557148996545.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557149002284.png" alt=""></p>
+<h2 id="4-props验证">4. props验证</h2>
+<blockquote>
+<p>我们可以为组件的 prop 指定验证规则。如果传入的数据不符合要求，Vue 会发出警告。这对于开发给他人使用的组件非常有用。要指定验证规则，需要用对象的形式来定义 prop，而不能用字符串数组</p>
+</blockquote>
+<pre><code class="language-javascript">Vue.component('my-component', {
+  props: {
+    // 基础的类型检查 (`null` 匹配任何类型)
+    propA: Number,
+    // 多个可能的类型
+    propB: [String, Number],
+    // 必填的字符串
+    propC: {
+      type: String,
+      required: true
+    },
+    // 带有默认值的数字
+    propD: {
+      type: Number,
+      default: 100
+    },
+    // 带有默认值的对象
+    propE: {
+      type: Object,
+      // 对象或数组默认值必须从一个工厂函数获取
+      default: function () {
+        return { message: 'hello' }
+      }
+    },
+    // 自定义验证函数
+    propF: {
+      validator: function (value) {
+        // 这个值必须匹配下列字符串中的一个
+        return ['success', 'warning', 'danger'].indexOf(value) !== -1
+      }
+    }
+  }
+})
+</code></pre>
+<h2 id="5-组件中ref的用法">5. 组件中ref的用法</h2>
+<blockquote>
+<p>ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例：</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557149032403.png" alt=""></p>
+<h2 id="6组件中native的用法">6.组件中native的用法</h2>
+<p>你可能想在某个组件的根元素上监听一个原生事件。可以使用 v-on 的修饰符 .native 
+通俗点讲：就是在父组件中给子组件绑定一个原生的事件，就将子组件变成了普通的HTML标签，不加'. native'事件是无法触 发的。
+可以理解为该修饰符的作用就是把一个vue组件转化为一个普通的HTML标签，并且该修饰符对普通HTML标签是没有任何作用的。</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/vue-xue-xi-4-zu-jian-ji-chu">
+              <h3 class="post-title">
+                vue学习-4-组件基础
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
