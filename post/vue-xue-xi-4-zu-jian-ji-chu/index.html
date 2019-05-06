@@ -1,0 +1,727 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vue学习-4-组件基础 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557146691245">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557146691245" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              vue学习-4-组件基础
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-11-12 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
+                  # VUE
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-xue-xi-4-zu-jian-ji-chu.png')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>组件定义</li>
+<li>全局组件</li>
+<li>局部组件</li>
+<li>DOM模板解析注意事项</li>
+<li>data必须是函数</li>
+<li>通过props向子组件传递数据</li>
+<li>单个根元素</li>
+</ol>
+<h2 id="1组件的定义">1.组件的定义</h2>
+<blockquote>
+<p>组件（component）是vue.js 最强大的功能之一。组件可以扩展HTML元素，封装可重用代码。在较高层面上，组件是自定义元素，Vue.js的编译器为它添加特殊功能。在有些情况下，组件也可以表现为用is特性进行了扩展的原生HTML元素。所有Vue组件同时也都是Vue的实例，所以可接受相同的选项对象(除了一些根级特有的选项)并提供相同的生命周期钩子。</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557145897630.png" alt=""></p>
+<h2 id="2-全局组件">2. 全局组件</h2>
+<ol>
+<li>第一步都是先创建一个 Vue() 实例</li>
+</ol>
+<pre><code class="language-javascript">// 实例化
+new Vue({
+    el:&quot;#app&quot;,
+})
+</code></pre>
+<ol start="2">
+<li>要注册一个全局组件，可以用 <code>Vue.component()</code></li>
+</ol>
+<pre><code class="language-javasctipt">Vue.component('my-component',{
+    //选项
+})
+</code></pre>
+<p>组件注册成功后，就可以在<code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</code>里使用自定义的标签了。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557146047105.png" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;第一个组件&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;!-- 模板引用 --&gt;
+            &lt;my-component&gt;&lt;/my-component&gt;
+        &lt;/div&gt;
+        &lt;script src=&quot;https://www.tanshangbiao.cn/pack/vue/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            //注册声明组件
+            Vue.component(&quot;my-component&quot;,{
+                data(){
+                    return {
+                        msg:&quot;全局组件&quot;
+                    }
+                },
+                template:&quot;&lt;h4&gt;{{msg}}&lt;/h4&gt;&quot;  
+
+            })
+            //创建Vue()实例
+            var vm = new Vue({
+                el:&quot;#app&quot;
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="3-局部组件">3. 局部组件</h2>
+<p><img src="https://qq1332783374.github.io/post-images/1557146079795.png" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;局部组件&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;!-- 模板引用 --&gt;
+            &lt;my-component&gt;&lt;/my-component&gt;
+        &lt;/div&gt;
+        &lt;script src=&quot;https://www.tanshangbiao.cn/pack/vue/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            //模板
+            var myComponent = {
+                template:&quot;&lt;h4&gt;我是局部组件&lt;/h4&gt;&quot;
+            }
+
+            //创建Vue()实例
+             new Vue({
+                el:&quot;#app&quot;,
+                components:{  //注册声明组件
+                    myComponent
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="练习1利用vue中的组件完成一行两列基本布局">练习1：利用vue中的组件完成一行两列基本布局</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557146112068.png" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;一行两列&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            .row{
+                display: flex;
+            }
+            .col{
+                flex: 1;
+                height: 500px;
+                border: 1px solid #000;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;!-- 模板引用 --&gt;
+                &lt;cols&gt;&lt;/cols&gt;
+                &lt;cols&gt;&lt;/cols&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;script src=&quot;https://www.tanshangbiao.cn/pack/vue/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            //注册组件
+            Vue.component(&quot;cols&quot;,{
+                data(){
+                    return{
+                        msg:&quot;col&quot;
+                    }
+                },
+                template:'&lt;div class=&quot;col&quot;&gt;{{msg}}&lt;/div&gt;'
+            })
+            //创建Vue()实例
+             new Vue({
+                el:&quot;#app&quot;
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="4-dom模板解析注意事项">4. DOM模板解析注意事项</h2>
+<blockquote>
+<p>当使用 DOM 作为模板时 (例如，使用 el 选项来把 Vue 实例挂载到一个已有内容的元素上)，你会受到 HTML 本身的一些限制，因为 Vue 只有在浏览器解析、规范化模板之后才能获取其内容。尤其要注意，像 ul、ol、table、select 这样的元素里允许包含的元素有限制，而另一些像 option 这样的元素只能出现在某些特定元素的内部。
+在自定义组件中使用这些受限制的元素时会导致一些问题，例如：</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557146195169.png" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;注意&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;table&gt;
+                &lt;my-tr&gt;&lt;/my-tr&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+        &lt;script src=&quot;https://www.tanshangbiao.cn/pack/vue/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            //注册组件
+            Vue.component(&quot;my-tr&quot;,{
+                template:`
+                    &lt;tr&gt;
+                        &lt;td&gt;模板组件&lt;/td&gt;
+                    &lt;/tr&gt;
+                `
+            })
+            //创建Vue()实例
+             new Vue({
+                el:&quot;#app&quot;
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>当你查看DOM元素的时候，你会发现这个并不符合HTML5规范。所以，我们在这里必须借助Vue中的特殊属性，<strong>is属性</strong></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557146234883.png" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;注意&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;table&gt;
+                &lt;tr is=&quot;my-tr&quot;&gt;&lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+        &lt;script src=&quot;https://www.tanshangbiao.cn/pack/vue/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            //注册组件
+            Vue.component(&quot;my-tr&quot;,{
+                template:`
+                    &lt;tr&gt;
+                        &lt;td&gt;模板组件&lt;/td&gt;
+                    &lt;/tr&gt;
+                `
+            })
+            //创建Vue()实例
+             new Vue({
+                el:&quot;#app&quot;
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="5data必须是函数">5.data必须是函数</h2>
+<blockquote>
+<p>我们在使用组件的时候，必须要注意到而且也要认识，组件中的data选项它不是一个对象，它是一个函数，这点尤为重要。因为它需要每个实例可以维护一份被返回对象的独立拷贝。</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557146285996.gif" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;data函数&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;my-btn&gt;&lt;/my-btn&gt;
+            &lt;my-btn&gt;&lt;/my-btn&gt;
+            &lt;my-btn&gt;&lt;/my-btn&gt;
+        &lt;/div&gt;
+        &lt;script src=&quot;https://www.tanshangbiao.cn/pack/vue/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            //注册组件
+            Vue.component(&quot;myBtn&quot;,{
+                data(){
+                    return {
+                        num:0
+                    }
+                },
+                template:`
+                    &lt;button @click=&quot;add&quot;&gt;{{num}}&lt;/button&gt;
+                `,
+                methods:{
+                    add(){
+                        this.num++
+                    }
+                }
+            })
+            //创建Vue()实例
+             new Vue({
+                el:&quot;#app&quot;
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="6-通过prop向子组件传递数据">6. 通过prop向子组件传递数据</h2>
+<h4 id="61-父组件通过-prop给子组件下发数据子组件通过事件emit给父组件发送消息">6.1 父组件通过 prop给子组件下发数据，子组件通过事件($emit)给父组件发送消息。</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557146344715.png" alt=""></p>
+<h4 id="62-prop-是父组件用来传递数据的一个自定义属性-父组件的数据需要通过-props-把数据传给子组件子组件需要显式地用-props-选项声明-prop-组件实例的作用域是孤立的-这意味着不能-也不应该-在子组件的模板内直接引用父组件的数据-父组件的数据需要通过-prop-才能下发到子组件中">6.2 prop 是父组件用来传递数据的一个自定义属性, 父组件的数据需要通过 props 把数据传给子组件，子组件需要显式地用 props 选项声明 “prop”。组件实例的作用域是孤立的。这意味着不能 (也不应该) 在子组件的模板内直接引用父组件的数据。父组件的数据需要通过 prop 才能下发到子组件中。</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557146381658.png" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;data函数&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;blog-post
+                v-for=&quot;post in bloginfo&quot;
+                :key=&quot;post.id&quot;
+                :content=&quot;post.content&quot;
+            &gt;&lt;/blog-post&gt;
+        &lt;/div&gt;
+        &lt;script src=&quot;https://www.tanshangbiao.cn/pack/vue/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            //注册组件
+            Vue.component(&quot;blog-post&quot;,{
+                props:[&quot;content&quot;],
+                template:`
+                    &lt;h4&gt;{{content}}&lt;/h4&gt;
+                `
+            })
+            //创建Vue()实例
+             new Vue({
+                el:&quot;#app&quot;,
+                data:{
+                    bloginfo:[
+                        {id:0,content:&quot;这是第一条&quot;},
+                        {id:1,content:&quot;这是第二条&quot;},
+                        {id:2,content:&quot;这是第三条&quot;}
+                    ]
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="练习">练习</h4>
+<ol>
+<li>父组件向子组件传递值实现累加</li>
+<li>父组件向子组件传递值实现select下拉列表展示</li>
+<li>父组件发起ajax请求实现商品列表(axios)</li>
+</ol>
+<h4 id="练习一父组件向子组件传递值实现累加">练习一：父组件向子组件传递值实现累加</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557146456485.gif" alt=""></p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;父组件向子组件传递值实现累加&lt;/title&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no&quot; /&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;count :num=&quot;3&quot; @addincre=&quot;handClick&quot;&gt;&lt;/count&gt;
+            &lt;count :num=&quot;2&quot; @addincre=&quot;handClick&quot;&gt;&lt;/count&gt;
+            {{total}}
+        &lt;/div&gt;
+        &lt;script src=&quot;https://www.tanshangbiao.cn/pack/vue/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            Vue.component('count',{
+                props:[&quot;num&quot;],
+                data(){
+                    return {
+                        numcount:this.num
+                    }
+                },
+                template:'&lt;div @click=&quot;add&quot;&gt;{{numcount}}&lt;/div&gt;',
+                methods:{
+                    add(){
+                        this.numcount++
+                        this.$emit('addincre')
+                    }
+                }
+            })
+            var vm = new Vue({
+                el:&quot;#app&quot;,
+                data:{
+                    total:5
+                },
+                methods:{
+                    handClick(){
+                        this.total++
+                    }
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="练习2父组件向子组件传递值实现select下拉列表展示">练习2：父组件向子组件传递值实现select下拉列表展示</h4>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;父组件向子组件传递值实现select下拉列表展示&lt;/title&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot; &gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;select v-model=&quot;fruit&quot;&gt;
+                &lt;option is=&quot;isoption&quot; v-for=&quot;item in list&quot; :item=&quot;item&quot;&gt;&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            Vue.component(&quot;isoption&quot;,{
+                props:[&quot;item&quot;],
+                template:`
+                    &lt;option :value=&quot;item.title&quot;&gt;{{item.title}}&lt;/option&gt;
+                `
+            })
+
+            new Vue({
+                el:&quot;#app&quot;,
+                data:{
+                    list:[
+                        {&quot;title&quot;:&quot;苹果1&quot;},
+                        {&quot;title&quot;:&quot;苹果2&quot;},
+                        {&quot;title&quot;:&quot;苹果3&quot;},
+                        {&quot;title&quot;:&quot;苹果4&quot;}
+
+                    ],
+                    fruit:&quot;苹果3&quot;
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="练习3父组件发起ajax请求实现商品列表axios">练习3：父组件发起ajax请求实现商品列表(axios)</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557146527618.gif" alt=""></p>
+<p>mock数据：goods.json</p>
+<pre><code class="language-javascript">{
+    &quot;code&quot;: 200,
+    &quot;msg&quot;: &quot;&quot;,
+    &quot;goodslist&quot;: [
+        {
+            &quot;goodsId&quot;: 0,
+            &quot;goodsImg&quot;: &quot;//h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/607153/2018/0528/120/5ed543e8-b6dc-4fe3-bcf1-e393816b8d4b_5t.jpg&quot;,
+            &quot;desc&quot;: &quot;熙世界V领撞色花边针织女款短袖连衣裙&quot;,
+            &quot;price&quot;: 99,
+            &quot;discount&quot;: 809
+        },
+        {
+            &quot;goodsId&quot;: 1,
+            &quot;goodsImg&quot;: &quot;//h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/2018/07/17/113/e4c755e3-1663-437e-9dde-a4979363a469_5t.jpg&quot;,
+            &quot;desc&quot;: &quot;娜尔思 | NAERSI/娜尔思秋季新品连衣裙&quot;,
+            &quot;price&quot;: 929,
+            &quot;discount&quot;: 939
+        },
+        {
+            &quot;goodsId&quot;: 2,
+            &quot;goodsImg&quot;: &quot;//h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvop/00603727/10000646/2094163692-438051563145240605-438051563145240902-5.jpg&quot;,
+            &quot;desc&quot;: &quot;欧时力 | ochirly欧时力新女装拼接荷叶边刺绣网纱无袖连衣裙1JH2084210&quot;,
+            &quot;price&quot;: 1119,
+            &quot;discount&quot;: 8199
+        },
+        {
+            &quot;goodsId&quot;: 3,
+            &quot;goodsImg&quot;: &quot;//h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/2018/07/17/113/e4c755e3-1663-437e-9dde-a4979363a469_5t.jpg&quot;,
+            &quot;desc&quot;: &quot;娜尔思 | NAERSI/娜尔思秋季新品连衣裙&quot;,
+            &quot;price&quot;: 929,
+            &quot;discount&quot;: 499
+        },
+        {
+            &quot;goodsId&quot;: 4,
+            &quot;goodsImg&quot;: &quot;//h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/2018/08/02/34/b2d13309-0796-4408-beff-ce01f6295388_5t.jpg&quot;,
+            &quot;desc&quot;: &quot;哥弟 | 气质时尚短袖连衣裙&quot;,
+            &quot;price&quot;: 929,
+            &quot;discount&quot;: 8189
+        },
+        {
+            &quot;goodsId&quot;: 5,
+            &quot;goodsImg&quot;: &quot;//h2.appsimg.com/a.appsimg.com/upload/merchandise/pdcvis/2018/06/07/147/fd624450-a586-4b7f-99aa-dbb8e272c26d_5t.jpg&quot;,
+            &quot;desc&quot;: &quot;裂帛 | 立领刺绣七分袖雪纺连衣裙女&quot;,
+            &quot;price&quot;: 329,
+            &quot;discount&quot;: 2399
+        }
+    ]
+}
+</code></pre>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;商品列表&lt;/title&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no&quot; /&gt;
+        &lt;link href=&quot;../css/mui.css&quot; rel=&quot;stylesheet&quot; /&gt;
+        &lt;style&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            header{
+                height: 40px;
+                box-sizing: border-box;
+                padding: 8px 12px;
+                background: #fff;
+                border-bottom: 1px solid #ddd;
+                text-align: center;
+            }
+            header a{
+                color: #666;
+            }
+            .mui-content  a img{
+                width: 100%;
+            }
+            .main{
+
+            }
+            .main .row{
+
+            }
+            .main .row div{
+                background: #fff;
+                text-overflow:ellipsis;
+                float: left;
+                margin: 5px;
+                box-sizing: border-box;
+                padding: 5px;
+            }
+            .mui-col-sm-6{
+                width: 47%;
+            }
+            .price{
+                font-size: 18px;
+                font-weight: bold;
+                color: #d90000;
+            }
+            .oldPrice{
+                font-size: 14px;
+                text-decoration: line-through;
+            }
+            .shopTitle{
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;header&gt;
+                &lt;a href=&quot;javascript:;&quot; class=&quot;back mui-pull-left&quot;&gt;&lt;i class=&quot;mui-icon mui-icon-back&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;a href=&quot;javascript:;&quot; class=&quot;title&quot;&gt;风衣&lt;/a&gt;
+                &lt;a href=&quot;javascript:;&quot; class=&quot;home mui-pull-right&quot;&gt;&lt;i class=&quot;mui-icon mui-icon-home&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+            &lt;/header&gt;
+            &lt;div class=&quot;main&quot;&gt;
+                &lt;div class=&quot;mui-content&quot;&gt;
+                    &lt;div class=&quot;row&quot;&gt;
+                        &lt;!-- 加载商品列表 --&gt;
+                        &lt;goodsitem
+                            v-for=&quot;(item, index) in goodsInfo&quot;
+                            :key = &quot;item.id&quot;
+                            :item=&quot;item&quot;
+                        &gt;&lt;/goodsitem&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;script src=&quot;https://www.tanshangbiao.cn/pack/vue/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://unpkg.com/axios/dist/axios.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            //商品组件
+            Vue.component('goodsitem',{
+                data(){
+                    return{
+
+                    }
+                },
+                props:[&quot;item&quot;],
+                template:`
+                    &lt;div class=&quot;mui-col-sm-6 mui-col-xs-12 &quot;&gt;
+                            &lt;a href=&quot;javascript:;&quot;  data-goodsid=&quot;item.goodsId&quot;&gt;
+                                &lt;img :src=&quot;item.goodsImg&quot; alt=&quot;&quot;&gt;
+                                &lt;p class=&quot;shopTitle&quot;&gt;{{item.desc}}&lt;/p&gt;
+                                &lt;p&gt;
+                                    &lt;span class=&quot;price&quot;&gt;￥{{item.price}}&lt;/span&gt;
+                                    &lt;span class=&quot;oldPrice&quot;&gt;￥{{item.discount}}&lt;/span&gt;
+                                &lt;/p&gt;
+                            &lt;/a&gt;
+                    &lt;/div&gt;
+                `
+            })
+            var vm = new Vue({
+                el:&quot;#app&quot;,
+                data:{
+                    goodsInfo:[]
+                },
+                created(){
+                    var _this = this 
+                    axios.get('../data/goods.json')
+                        .then(function(res){
+                            _this.goodsInfo = res.data.goodslist
+                            console.log(res)
+                        })
+                        .catch(function(error){
+                            console.log(error)
+                        })
+                }
+            })
+        &lt;/script&gt;
+        &lt;script src=&quot;../js/mui.js&quot;&gt;&lt;/script&gt;
+        &lt;script type=&quot;text/javascript&quot;&gt;
+            mui.init()
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="7单个根元素">7.单个根元素</h2>
+<p>当你构建一个组件的时候，你很有可能会出现 every component must have a single root element (<strong>每个组件必须只有一个根元素</strong> )，在编写组件的过程中，切记所有的元素都必须要有一个根元素包裹起来，一般选择使用div标签。</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/vue-xue-xi-3-ji-suan-shu-xing-fang-fa-he-zhen-ting-qi">
+              <h3 class="post-title">
+                vue学习-3-计算属性方法和侦听器
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
