@@ -1,0 +1,765 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vue学习-2-基础 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557143738935">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557143738935" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              vue学习-2-基础
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-11-05 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
+                  # VUE
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-xue-xi-2-ji-chu.png')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>Vue 基础语法</li>
+<li>Vue 的基础指令</li>
+<li>常见问题</li>
+</ol>
+<h2 id="1-vue-基础语法">1. Vue 基础语法</h2>
+<h4 id="11-插值表达式">1.1 插值表达式</h4>
+<blockquote>
+<p>数据绑定最常见的形式就是使用“Mustache”语法 (双大括号) 的文本插值</p>
+</blockquote>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;&lt;/title&gt;
+        &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            {{message}}
+        &lt;/div&gt;
+        &lt;script&gt;
+            new Vue({
+                el:&quot;#app&quot;,
+                data:{
+                    message:&quot;hesllo vue&quot;
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>注意:{{}}里面接受的值如果加了&quot;&quot;或者'',Vue会认为这是一个字符串,那么就会原样输出.</strong></p>
+<h4 id="12-javascript表达式">1.2 JavaScript表达式</h4>
+<blockquote>
+<p><strong>{{}}</strong> 可以接受表达式形式的值,表达式是各种数值,变量，运算符的综合体.简单的表达式可以是常量或者变量名称，其次,还支持简单逻辑运算和算术运算,表达式的值是其运算结果。</p>
+</blockquote>
+<pre><code class="language-javascript">{{number + 1}}
+{{ ok ? 'YES' : 'NO' }}
+</code></pre>
+<p>这些表达式会在所属 Vue 实例的数据作用域下作为 JavaScript 被解析。有个限制就是，每个绑定都只能包含单个表达式，所以下面的例子都不会生效。</p>
+<pre><code class="language-javascript">&lt;!-- 这是语句，不是表达式 --&gt;
+{{ var a = 1 }}
+&lt;!-- 流控制也不会生效，请使用三元表达式 --&gt;
+{{ if (ok) { return message } }}
+</code></pre>
+<h2 id="2-vue-的基础指令">2. Vue 的基础指令</h2>
+<blockquote>
+<p>指令是带有 <strong>v-</strong> 前缀的特殊特性,其值限定为绑定表达式,也就是Javascript表达式。指令的作用是当表达式的值发生变化时,将这个变化也反映到DOM上。</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557142801263.png" alt=""></p>
+<h4 id="21-v-if">2.1 v-if</h4>
+<blockquote>
+<p><strong>v-if</strong> 指令可以完全根据表达式的值在DOM中生成或移除一个元素。如果,v-if表达式赋值为false,那么对应的元素就会从DOM中移除,否则，对应元素的一个克隆将重新插入DOM中(项目中更加倾向)</p>
+</blockquote>
+<ul>
+<li>v-if 赋值为法 <strong>false</strong> 时浏览器的调试台的表现 :</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557142871923.png" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;&lt;/title&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot; &gt;&lt;/script&gt;
+        &lt;style&gt;
+
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;div class=&quot;show&quot; v-if=&quot;isShow&quot;&gt;
+                {{message}}
+            &lt;/div&gt;  
+
+        &lt;/div&gt;
+        &lt;script&gt;
+            new Vue({
+                el:&quot;#app&quot;,
+                data:{
+                    message:&quot;HelloVue&quot;,
+                    isShow:false
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<ul>
+<li>v-if 赋值为法<strong>true</strong>时浏览器的调试台的表现</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557142950768.png" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;&lt;/title&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot; &gt;&lt;/script&gt;
+        &lt;style&gt;
+
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;div class=&quot;show&quot; v-if=&quot;isShow&quot;&gt;
+                {{message}}
+            &lt;/div&gt;  
+
+        &lt;/div&gt;
+        &lt;script&gt;
+            new Vue({
+                el:&quot;#app&quot;,
+                data:{
+                    message:&quot;HelloVue&quot;,
+                    isShow:true
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="22-v-show">2.2 v-show</h4>
+<blockquote>
+<p>v-show指令时候根据表达式的值来显示或者隐藏HTML元素。当v-show赋值为false时,元素将被隐藏。查看DOM时,会发现元素上多了一个内联样式<strong>style=&quot;display:none&quot;</strong></p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557143046401.png" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;&lt;/title&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot; &gt;&lt;/script&gt;
+        &lt;style&gt;
+
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;div class=&quot;show&quot; v-show=&quot;isShow&quot;&gt;
+                {{message}}
+            &lt;/div&gt;  
+
+        &lt;/div&gt;
+        &lt;script&gt;
+            new Vue({
+                el:&quot;#app&quot;,
+                data:{
+                    message:&quot;HelloVue&quot;,
+                    isShow:false
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>在切换v-if模块时,vue.js有一个局部编译/卸载的过程,因为v-if中的模板可能包括数据绑定或子组件。v-if是真实的条件渲染,因为它会确保条件块在切换时合适地销毁与重建条件块内的事件监听器和子组件。</p>
+<p>v-if是惰性的—–如果初始渲染是条件为假,则什么都不做,在第一次为真时才开始局部编译(编译会缓存起来)。</p>
+<p>相比之下,v-show简单得多——元素始终被编译并保留下来.只是简单的css切换。</p>
+<p>一般来说,v-if有着更高的消耗,而v-show有更高的初始渲染消耗。因此,如果需要频繁的切换,则使用v-show。如果运行的条件不大可能改变,则使用v-if。</p>
+<h4 id="23-v-else">2.3 v-else</h4>
+<blockquote>
+<p>顾名思义,v-else就是JavaScript中else的意思,它必须跟着v-if,充当else功能。<strong>注意我们在使用v-else的时候,不可以v-if和v-else之间不可以有其它元素分隔。</strong></p>
+</blockquote>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;&lt;/title&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot; &gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;h1 v-if=&quot;isShow&quot;&gt;v-if&lt;/h1&gt;
+            &lt;h1 v-else=&quot;isShow&quot;&gt;v-else&lt;/h1&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            new Vue({
+                el:&quot;#app&quot;,
+                data:{
+                    message:&quot;HelloVue&quot;,
+                    isShow:false
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="24-v-for">2.4  v-for</h4>
+<blockquote>
+<p>我们可以使用v-for指令基于源数据重复渲染元素。v-for指令需要使用 item in items 形式的特殊语法, items是源数据数组并且item是数组迭代的别名。有些时候我们需要获取元素的下标,则需写成 <strong>v-for = &quot;(item,index) in items&quot;</strong></p>
+</blockquote>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;&lt;/title&gt;
+        &lt;script type=&quot;text/javascript&quot; src=&quot;js/vue.js&quot; &gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;ul&gt;
+                &lt;li v-for=&quot;(item, index) in list&quot;&gt;
+                    {{item.title}}
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            new Vue({
+                el:&quot;#app&quot;,
+                data:{
+                    list:[
+                        {title:&quot;title1&quot;},
+                        {title:&quot;title2&quot;},
+                        {title:&quot;title3&quot;}
+                    ]
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="25-v-on">2.5 v-on</h4>
+<ul>
+<li>v-on指令用于绑定事件监听器。事件参数是原生JS事件名称,例如：</li>
+<li>v-on:click //点击事件</li>
+<li>v-on:mouseover //移入事件</li>
+<li>使用在普通元素上时,只能监听原生DOM事件;使用在自定义元素组件上时,也可以监听子组件触发的自定义事件。通常情况下我们会使用v-on的简写方式 <strong>@</strong> 修饰符。</li>
+</ul>
+<pre><code class="language-html">&lt;!-- 完整语法 --&gt;
+&lt;a v-on:click=&quot;doSomething&quot;&gt;...&lt;/a&gt;
+&lt;!-- 缩写 --&gt;
+&lt;a @click=&quot;doSomething&quot;&gt;...&lt;/a&gt;
+</code></pre>
+<h4 id="26-v-bind">2.6 v-bind</h4>
+<p>在vue中v-bind主要用来绑定于元素的属性。其中，v-bind可以简写成:的形式。</p>
+<h4 id="练习1图片的切换">练习1:图片的切换</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557143354099.gif" alt=""></p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;图片切换&lt;/title&gt;
+        &lt;style type=&quot;text/css&quot;&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .content {
+                width: 520px;
+                height: 350px;
+                margin: 20px auto;
+            }
+            .imgs img{
+                width: 100%;
+                height: 350px;
+            }
+            .btn button{
+                padding: 6px 12px;
+                border: 1px solid #ddd;
+                box-shadow: 2px 2px 4px #ddd;
+                background: #fff;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;div class=&quot;imgs&quot;&gt;
+                    &lt;img 
+                        v-for=&quot;(item,index) in imgs&quot; 
+                        :key='index' 
+                        :src=&quot;item.img&quot; 
+                        v-show = 'item.state'
+                    &gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;btn&quot;&gt;
+                    &lt;button class=&quot;prev&quot; @click= &quot;prev&quot;&gt;上一张&lt;/button&gt;
+                    &lt;button class=&quot;next&quot; @click = &quot;next&quot;&gt;下一张&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;script src=&quot;http://www.tanshangbiao.cn/pack/vue/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            new Vue({
+                el:'#app',
+                data:{
+                    imgs:[
+                        {img:'http://www.tanshangbiao.cn/wp-content/uploads/2018/09/Hippopx-2.jpg',state:true},
+                        {img:'http://www.tanshangbiao.cn/wp-content/uploads/2018/07/weimei_de_pingguobijibendiannao-014.jpg',state:false},
+                        {img:'http://www.tanshangbiao.cn/wp-content/uploads/2018/07/weimei_de_pingguobijibendiannao-002.jpg',state:false},
+                        {img:'http://www.tanshangbiao.cn/wp-content/uploads/2018/07/Hippopx.jpg',state:false}
+                    ],
+                    num: 0
+                },
+                methods:{
+                    prev(){
+                        this.num--
+                        if(this.num&lt;0){
+                            this.num = this.imgs.length-1
+                        }
+                        for(var i=0;i&lt;this.imgs.length;i++){
+                            this.imgs[i].state = false
+                        }
+                        this.imgs[this.num].state = true
+
+                    },
+                    next(){
+                        this.num++
+                        if(this.num&gt;this.imgs.length-1){
+                            this.num = 0
+                        }
+                        for(var i=0;i&lt;this.imgs.length;i++){
+                            this.imgs[i].state = false
+                        }
+                        this.imgs[this.num].state = true
+                    }
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="练习2选项卡切换">练习2：选项卡切换</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557143409019.gif" alt=""></p>
+<pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html&gt;
+
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;vue选项卡&lt;/title&gt;
+        &lt;style scoped=&quot;scoped&quot;&gt;
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            ul li{
+                list-style: none;
+                cursor: pointer;
+            }
+            .tabs{
+                width: 520px;
+                margin: 20px auto;
+            }
+            .tabs .nav{
+                display: flex;
+            }
+            .nav li{
+                flex: 1;
+                box-sizing: border-box;
+                padding: 6px 12px;
+                text-align: center;
+                border: 1px solid #ddd;
+                background: -webkit-linear-gradient(left,#269ABC,#46B8DA);
+                color: #fff;
+            }
+            .nav li.active{
+                background: #fff;
+                color: #000;
+            }
+            .tabs .contents{
+                width: 96.9%;
+                padding: 5px;
+                border: 1px solid #ddd;
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;div class=&quot;tabs&quot;&gt;
+                &lt;ul class=&quot;nav&quot;&gt;
+                    &lt;li 
+                        v-for=&quot;(item,index) in navs&quot; 
+                        :key=&quot;index&quot; 
+                        @click = &quot;tab(index)&quot;  
+                        v-bind:class=&quot;{active:index==current}&quot;
+                    &gt;
+                        {{item.title}}
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;div class=&quot;contents&quot;&gt;
+                    {{message}}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;script src=&quot;http://www.tanshangbiao.cn/pack/vue/vue.js&quot;&gt;&lt;/script&gt;
+        &lt;script&gt;
+            //实例化
+            new Vue({
+                el:&quot;#app&quot;,
+                data:{
+                    message:'内容1',
+                    current:0,
+                    navs:[
+                        {title:'选项1'},
+                        {title:'选项2'},
+                        {title:'选项3'}
+                    ],
+                    content:[
+                        {contents:'内容1'},
+                        {contents:'内容2'},
+                        {contents:'内容3'}
+                    ]
+                },
+                methods:{
+                    tab(index){
+                        console.log(index)
+                        this.message = this.content[index].contents
+                        this.current = index
+                    }
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="27-v-model">2.7  v-model</h4>
+<blockquote>
+<p>这里用一道练习来体验一下 <strong>v-model</strong></p>
+</blockquote>
+<h4 id="练习1商品购物车">练习1:商品购物车</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557143598428.gif" alt=""></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;title&gt;商品购物车&lt;/title&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;&quot;http://www.tanshangbiao.cn/pack/bootstrap/bootstrap.css&quot; /&gt;
+        &lt;script src=&quot;http://www.tanshangbiao.cn/pack/vue/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id=&quot;app&quot;&gt;
+            &lt;div class=&quot;container&quot;&gt;
+                &lt;table class=&quot;table table-bordered table-hover&quot;&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;
+                            &lt;input type=&quot;checkbox&quot; v-model=&quot;checkAll&quot; @click=&quot;selectAll&quot;/&gt;
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            商品名称
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            商品价格
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            商品数量
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            商品总额
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            操作
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr v-for=&quot;(item,index) in listInfo&quot;&gt;
+
+                        &lt;td&gt;
+                            &lt;input 
+                                type=&quot;checkbox&quot; 
+                                :value=&quot;item.id&quot;
+                                v-model=&quot;checkItem&quot;
+                                @change=&quot;selectOne(index)&quot;
+                            &gt;
+                        &lt;/td&gt;
+                        &lt;td&gt;{{item.shopName}}&lt;/td&gt;
+                        &lt;td&gt;{{item.shopPrice}}&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;btn btn-default&quot; @click=&quot;reduce(index)&quot;&gt;-&lt;/button&gt;
+                            &lt;input type=&quot;text&quot; v-model=&quot;item.shopCount&quot; /&gt;
+                            &lt;button class=&quot;btn btn-default&quot; @click=&quot;add(index)&quot;&gt;+&lt;/button&gt;
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            {{item.shopPrice*item.shopCount}}
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;button class=&quot;btn btn-danger&quot; @click=&quot;del(index)&quot;&gt;删除&lt;/button&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+
+                &lt;/table&gt;
+                &lt;p class=&quot;text-right&quot;&gt;
+                    金额总计:{{sum}}
+                &lt;/p&gt;
+                &lt;p class=&quot;text-right&quot;&gt;
+                    商品数量:{{count}}
+                &lt;/p&gt;
+                &lt;hr /&gt;
+                &lt;form&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;input class=&quot;form-control&quot; placeholder=&quot;商品名称&quot; v-model=&quot;shopName&quot; /&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;input class=&quot;form-control&quot; placeholder=&quot;商品价格&quot; v-model = &quot;shopPrice&quot;/&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;form-group&quot;&gt;
+                        &lt;button class=&quot;btn btn-primary&quot; type=&quot;button&quot; @click=&quot;addInfo&quot;&gt;增加&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;script&gt;
+            new Vue({
+                el:&quot;#app&quot;,
+                data:{
+                    listInfo:[
+                        {id:1,shopName:&quot;男装1&quot;,shopPrice:1000,shopCount:1,isBuy:false},
+                        {id:2,shopName:&quot;男装2&quot;,shopPrice:2000,shopCount:2,isBuy:false},
+                        {id:3,shopName:&quot;男装3&quot;,shopPrice:3000,shopCount:3,isBuy:false},
+                        {id:4,shopName:&quot;男装4&quot;,shopPrice:4000,shopCount:4,isBuy:false},
+                        {id:5,shopName:&quot;男装5&quot;,shopPrice:5000,shopCount:5,isBuy:false},
+                    ],
+                    shopName:&quot;&quot;,
+                    shopPrice:&quot;&quot;,
+                    checkItem:[],
+                    checkAll:false
+                },
+                methods:{
+                    add:function(index){
+                        this.listInfo[index].shopCount++
+
+                    },
+                    reduce:function(index){
+                        if(this.listInfo[index].shopCount&lt;=0){
+                            this.listInfo[index].shopCount = 0
+                        }else {
+                            this.listInfo[index].shopCount--
+                        }
+
+                    },
+                    addInfo:function(){
+                        var obj = {
+                            id:this.listInfo.length+1,
+                            shopName:this.shopName,
+                            shopPrice:this.shopPrice,
+                            shopCount:0,
+                            isBuy:false
+                        }
+                        console.log(obj)
+                        this.listInfo.push(obj)
+
+                    },
+                    del(index){
+                        if(confirm(&quot;确定完成了吗?&quot;)){
+                            this.listInfo.splice(index,1)
+                        }
+                    },
+                    selectOne(index){
+                        if(this.checkItem.length == this.listInfo.length){
+                            this.checkAll = true
+                        }else {
+                            this.checkAll = false
+                        }
+                        if(this.listInfo[index].isBuy){
+                            this.listInfo[index].isBuy = false
+                        }else{
+                            this.listInfo[index].isBuy = true
+                        }
+                    },
+                    selectAll(){
+                        this.checkItem = []
+                        if(!this.checkAll){
+                            for (var i=0;i&lt;this.listInfo.length;i++) {
+                                this.checkItem.push(this.listInfo[i].id)
+                                this.listInfo[i].isBuy = true
+                            }
+                        }else {
+                            this.checkItem = []
+                            this.checkAll = false
+                            for (var i=0;i&lt;this.listInfo.length;i++) {
+                                this.listInfo[i].isBuy = false
+                            }
+                        }
+
+                    }
+                },
+                computed:{
+                    sum(){
+                        var total = 0
+                        for (var i=0;i&lt;this.listInfo.length;i++) {
+                            if(this.listInfo[i].isBuy){
+                                total+=parseFloat(this.listInfo[i].shopPrice)*parseFloat(this.listInfo[i].shopCount)
+                            }
+                        }
+                        return total    
+                    },
+                    count:function(){
+                        var total = 0
+                        for (var i=0;i&lt;this.listInfo.length;i++) {
+                            if(this.listInfo[i].isBuy){
+                                total+=parseInt(this.listInfo[i].shopCount)
+                            }
+                        }
+                        return total
+                    }
+                }
+            })
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h2 id="3-常见问题">3. 常见问题</h2>
+<h4 id="31-v-on可以绑定多个方法吗">3.1  v-on可以绑定多个方法吗？</h4>
+<blockquote>
+<p>v-on可以绑定多种类型的方法,可以是click事件,可以是focus事件,也可以是change事件,根据业务需求进行选择。但是,如果v-on绑定了两个甚至多个click事件,那么v-on只会绑定第一个click事件,其他会自动忽略。</p>
+</blockquote>
+<h4 id="32-一个vue实例可以绑定多个element元素吗">3.2 一个vue实例可以绑定多个element元素吗？</h4>
+<blockquote>
+<p>el为实例提供挂载元素,值可以是css选择器,也可以是id选择器,也可以是实际的HTML。但不可以同时多个出现。</p>
+</blockquote>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/vue-xue-xi-1-vuejs-jie-shao">
+              <h3 class="post-title">
+                vue学习-1-vue.js介绍
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
