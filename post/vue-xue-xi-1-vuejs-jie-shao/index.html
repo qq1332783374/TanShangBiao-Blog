@@ -1,0 +1,226 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vue学习-1-vue.js介绍 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557116036044">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557116036044" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              vue学习-1-vue.js介绍
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-11-01 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
+                  # VUE
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-xue-xi-1-vuejs-jie-shao.png')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>什么是vue.js ?</li>
+<li>什么是MVVM?</li>
+<li>第一个vue实例</li>
+</ol>
+<h2 id="1-什么是vuejs">1. 什么是vue.js ？</h2>
+<blockquote>
+<p>Vue (读音 /vjuː/，类似于 view) 是一套用于构建用户界面的渐进式框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与现代化的工具链以及各种支持类库结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
+</blockquote>
+<p>(<em><strong>以上来自官方解释</strong></em>)</p>
+<ul>
+<li>官网：<a href="vue">https://cn.vuejs.org/v2/guide/index.html</a></li>
+<li>vue 特点：
+<ul>
+<li>简洁</li>
+<li>数据驱动：自动追踪依赖的模板表达式和计算属性</li>
+<li>组件化：避免重复造轮子，提高开发效率</li>
+<li>轻量</li>
+<li>快速：精确有效的异步批量 DOM 更新</li>
+<li>模块友好：通过 NPM 或 Bower 安装，无缝融入</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-什么是mvvm与单页面应用程序">2. 什么是MVVM与单页面应用程序?</h2>
+<p>介绍之前先说一下各种应用架构的发展史：</p>
+<h4 id="21-mvc">2.1 MVC</h4>
+<blockquote>
+<p><strong>mvc</strong>是应用最为广泛的软件架构之一。一般MVC分为:<strong>Model(模型)</strong>,<strong>Controller(控制器)</strong> 和<strong>view(视图)</strong>.这主要书基于分层的目的,让彼此的职责分开。View层一般都是通过controller来和Model进行联系.Controller是Model和View的协调者,View和Model不直接联系.基本都是单向联系的。</p>
+</blockquote>
+<p>MVC结构
+<img src="https://qq1332783374.github.io/post-images/1557114403242.png" alt=""></p>
+<h4 id="22-mvp">2.2  MVP</h4>
+<blockquote>
+<p>MVP是从经典的MVC模式演变而来,它们的基本思想有相通的地方:Controller/Presenter负责逻辑的处理,Model提供数据,view负责显示。在MVP中，Presenter完全把view和Model进行了分离，主要的程序逻辑在Presenter实现.而且, Presenter与具体的view是没有直接关联的,而是通过定义好的接口进行交互,从而使得在变更View的时候可以保持Presenter不变。</p>
+</blockquote>
+<p>MVP模式
+<img src="https://qq1332783374.github.io/post-images/1557114485351.png" alt=""></p>
+<h4 id="23-mvvm">2.3 MVVM</h4>
+<blockquote>
+<p>MVVM代表框架有:知名度相对偏低的Knockout.js,早期的Ember.js.目前比较火热的来自Google的Angular.js,和由我们国人前端大神尤雨溪编写的vue.js.相比前面两种模式.MVVM只是把MVC的Controller和MVP的Presenter改成了ViewModel.View的变化会自定更新到ViewModel, ViewModel的变化也会自动同步到View上显示.</p>
+</blockquote>
+<p><img src="https://qq1332783374.github.io/post-images/1557114532790.png" alt=""></p>
+<h2 id="3-第一个vue实例">3. 第一个vue实例</h2>
+<p>参照官网的例子：</p>
+<h4 id="31-起步导包">3.1 起步导包</h4>
+<ul>
+<li>开发环境版本</li>
+</ul>
+<pre><code class="language-html">&lt;!-- 开发环境版本，包含了有帮助的命令行警告 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<ul>
+<li>生产环境版本</li>
+</ul>
+<pre><code class="language-html">&lt;!-- 生产环境版本，优化了尺寸和速度 --&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h4 id="31-第一个实例">3.1 第一个实例</h4>
+<ul>
+<li>通过script标签导入vue.js</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557115036982.png" alt=""></p>
+<p>注意：在开发环境下不要使用压缩版本，不然你就失去了所有常见错误相关的警告!而且Vue不支持IE8以下的浏览器.</p>
+<ul>
+<li>实例化Vue</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557115115084.png" alt=""></p>
+<p>在 Vue 构造器中有一个el 参数，它是 DOM 元素中的 id。data 用于定义属性，实例中有一个属性分别为：message</p>
+<h2 id="总结">总结</h2>
+<p>简单的入个门，很简单。</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/css3-xue-xi-6-3d-bian-huan-he-animation-dong-hua">
+              <h3 class="post-title">
+                css3学习-6-3D变换和animation动画
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
