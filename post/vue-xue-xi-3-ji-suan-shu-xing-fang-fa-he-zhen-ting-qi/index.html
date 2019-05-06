@@ -1,0 +1,220 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vue学习-3-计算属性方法和侦听器 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557144441349">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557144441349" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              vue学习-3-计算属性方法和侦听器
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-11-07 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
+                  # VUE
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-xue-xi-3-ji-suan-shu-xing-fang-fa-he-zhen-ting-qi.png')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>什么是计算属性</li>
+<li>computed与methods不同</li>
+<li>侦听器（watch）</li>
+</ol>
+<h2 id="1-什么是计算属性">1. 什么是计算属性</h2>
+<blockquote>
+<p>计算属性就是当其依赖属性的值发生变化是，这个属性的值会自动更新，与之相关的DOM部份也会同步自动更新。来看图一的代码。</p>
+</blockquote>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    {{firstName+lastName}}
+&lt;/div&gt;
+&lt;script&gt;
+    new Vue({
+        el:&quot;#app&quot;,
+        data:{
+            firstName:&quot;Hello&quot;,
+            lastName:&quot;Vue&quot;
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<blockquote>
+<p>以上的代码，我们发现在插值表达式存在逻辑运算，这种情况VUE是不建议的。因为，VUE主要作用域视图层的展示。所以我们就要用到computed计算属性。</p>
+</blockquote>
+<pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+    {{fullName}}
+&lt;/div&gt;
+&lt;script&gt;
+    new Vue({
+        el:&quot;#app&quot;,
+        data:{
+            firstName:&quot;Hello&quot;,
+            lastName:&quot;Vue&quot;
+        },
+        computed:{
+            fullName (){
+                retuen this.firstName + this.lastName
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre>
+<p><strong>在应用计算的时候，我们要注意一下几点：</strong></p>
+<ol>
+<li>Vue实例中必须声明 <strong>computed</strong> 选项</li>
+<li><strong>computed</strong> 属性接受的是一个对象，对象中是个函数</li>
+<li>对象中的函数，必须是结果的返回值 <strong>retuen</strong></li>
+</ol>
+<h2 id="2-computed与methods不同">2. computed与methods不同</h2>
+<p>理论上computed与methods都是定义函数处理逻辑方法的，他们两者最大的不同之处就是<strong>缓存机制</strong> 。</p>
+<ol>
+<li>computed 计算的结果如果不发生改变就不会触发</li>
+<li>methods中一般都是定义的需要事件触发的一些函数。每次只要触发事件，就会执行相对应的方法。如果把computed中的方法写到methods中会浪费性能。</li>
+<li>computed必须返回一个页面绑定的值，methods中可以只执行逻辑代码,可以有返回值，也可以没有</li>
+<li>两者调用的方式不一样，computed定义的成员像属性一样访问，methods定义的成员必须以函数形式调用。</li>
+</ol>
+<h2 id="3-侦听器watch">3. 侦听器（watch）</h2>
+<blockquote>
+<p>Vue提供了一种更统一的方式来观察和响应Vue实例上的数据变动：侦听属性。当你有一些数据需要随着其他数据变动，执行异步操作或者开销较大的操作时，建议用watch
+通过控制台的调试,我们可以发现watch与computed是有共同的特点，都是可以实现计算属性的缓存。但是，watch方式比较啰嗦，我们一般首选还是computed。</p>
+</blockquote>
+<p>补充： 计算属性会默认提供getter,不过在你需要的时候也可以为你提供一个setter</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557144419828.png" alt=""></p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/vue-xue-xi-2-ji-chu">
+              <h3 class="post-title">
+                vue学习-2-基础
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
