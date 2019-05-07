@@ -1,0 +1,432 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vue-cli搭建简易的ToDoList | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557235768763">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557235768763" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              vue-cli搭建简易的ToDoList
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-11-23 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/kG9sbRDf7" class="post-tags">
+                  # vue-cli
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
+                  # VUE
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-cli-da-jian-jian-yi-de-todolist.jpeg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="效果">效果</h2>
+<p><img src="https://qq1332783374.github.io/post-images/1557235551164.gif" alt=""></p>
+<h2 id="项目目录">项目目录</h2>
+<p><img src="https://qq1332783374.github.io/post-images/1557235620828.png" alt=""></p>
+<h4 id="项目实现代码">项目实现代码：</h4>
+<p><strong>todolist.vue</strong></p>
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;home&quot;&gt;
+        &lt;mHeader @addtodo=&quot;addtodo&quot;&gt;&lt;/mHeader&gt;
+        &lt;mTab :todoListLength=&quot;todoListLength&quot; :doneListLength=&quot;doneListLength&quot;&gt;&lt;/mTab&gt;
+        &lt;router-view :todoList=&quot;todoList&quot; :doneList=&quot;doneList&quot; @del=&quot;del&quot;/&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+//引入头部
+import mHeader from './pages/mHeader'
+//引入导航栏
+import mTab from './pages/mTabbar'
+export default {
+    name:'home',
+    components:{
+        mHeader,
+        mTab
+    },
+    data(){
+        return{
+            todoList:[
+                {id:1,content:'todo-1'},
+                {id:2,content:'todo-2'},
+                {id:3,content:'todo-3'},
+                {id:4,content:'todo-4'},
+                {id:5,content:'todo-5'}
+            ],
+            doneList:[]
+        }
+    },
+    computed:{
+        todoListLength(){  //计算代办
+            return this.todoList.length
+        },
+        doneListLength(){ //计算完成
+            return this.doneList.length
+        }
+    },
+    methods:{
+        addtodo(val){
+            if(this.todoList == 0){
+                var obj = {
+                    id:1,
+                    content:val
+                }
+                this.todoList.push(obj)
+            }else{
+                var obj1 = {
+                    id:this.todoList[this.todoList.length-1]+1,
+                    content:val
+                }
+                this.todoList.push(obj1)
+            }
+        },
+        del(index){
+            if(confirm(&quot;确定完成了吗？&quot;)){
+                var obj = this.todoList.splice(index,1)
+                this.doneList.push(obj[0])
+            }
+        }
+    }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+</code></pre>
+<p><strong>mHeader.vue</strong></p>
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;header&quot;&gt;
+        &lt;div class=&quot;row&quot;&gt;
+           &lt;div class=&quot;col-xs-8&quot;&gt;
+               &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;输入代办&quot; v-model=&quot;todoItem&quot;&gt;
+           &lt;/div&gt;
+           &lt;div class=&quot;col-xs-4&quot;&gt;
+               &lt;button class=&quot;btn btn-info&quot; type=&quot;button&quot; @click=&quot;addtodo&quot;&gt;添加&lt;/button&gt;
+           &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    name:'mHeader',
+    data(){
+        return {
+            todoItem:''
+        }
+    },
+    methods:{
+        addtodo(){
+            if(this.todoItem!=0){
+                this.$emit('addtodo',this.todoItem)
+                this.todoItem = &quot;&quot;
+            }else{
+                alert('请输入代办')
+            }
+        }
+    }
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.header{
+    padding: 6px 12px;
+}
+&lt;/style&gt;
+</code></pre>
+<p><strong>mTabbar.vue</strong></p>
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;tabs&quot;&gt;
+      &lt;ul&gt;
+          &lt;li&gt;
+              &lt;router-link to=&quot;/todo&quot;&gt;
+                未完成
+                &lt;span class=&quot;badge&quot;&gt;{{todoListLength}}&lt;/span&gt;
+              &lt;/router-link&gt;
+          &lt;/li&gt;
+          &lt;li&gt;
+              &lt;router-link to=&quot;/done&quot;&gt;
+                完成
+                &lt;span class=&quot;badge&quot;&gt;{{doneListLength}}&lt;/span&gt;
+              &lt;/router-link&gt;
+          &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    name:'tabs',
+    props:['todoListLength','doneListLength']
+}
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+
+.tabs{
+    padding: 6px 12px;
+}
+.tabs ul{
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+.tabs ul li{
+    list-style: none;
+    flex: 1;
+    text-align: center;
+    padding: 6px;
+    border-bottom: 1px solid #ddd;
+}
+&lt;/style&gt;
+</code></pre>
+<pre><code class="language-done">&lt;template&gt;
+    &lt;div class=&quot;done&quot;&gt;
+        &lt;ul class=&quot;list-group&quot;  v-if=&quot;toggle&quot;&gt;
+            &lt;li 
+                class=&quot;list-group-item&quot; 
+                v-for=&quot;(item , index) in doneList&quot; 
+                :key=&quot;index&quot;
+            &gt;
+                {{item.content}}
+            &lt;/li&gt;
+        &lt;/ul&gt;
+         &lt;div v-else&gt;
+            暂无完成事项...
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    name:'done',
+    data(){
+        return {
+            isShow:false
+        }
+    },
+    props:['doneList'],
+    computed:{
+        toggle(){
+            return this.doneList.length&gt;0?this.isShow=true:this.isShow=false
+        }
+    }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+</code></pre>
+<p><strong>todo.vue</strong></p>
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div class=&quot;todo&quot;&gt;
+        &lt;ul class=&quot;list-group&quot;&gt;
+            &lt;li 
+                class=&quot;list-group-item&quot;
+                v-for=&quot;(item,index) in todoList&quot;
+                :key=&quot;index&quot;
+                @click=&quot;del(index)&quot;
+            &gt;
+            {{item.content}}
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    name:'todo',
+    props:['todoList'],
+    methods:{
+        del(index){
+            this.$emit('del',index)
+        }
+    }
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+
+&lt;/style&gt;
+
+</code></pre>
+<p><strong>index.js 路由规则</strong></p>
+<pre><code class="language-html">import Vue from 'vue'
+import Router from 'vue-router'
+//一级路由
+import mHone from '@/components/home/todolist'
+//二级路由
+import done from '@/components/home/pages/done'
+import todo from '@/components/home/pages/todo'
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      redirect:'/todo',
+      component: mHone,
+      children:[
+        {
+          path:'done',
+          name:'done',
+          component:done
+        },
+        {
+          path:'todo',
+          name:'todo',
+          component:todo
+        },
+      ]
+    },
+
+  ]
+})
+</code></pre>
+<h4 id="小结">小结：</h4>
+<ol>
+<li>注意父子组件的传值，不要搞乱了。</li>
+<li>注意路由规则的配置</li>
+<li>注意项目目录结构的分类管理</li>
+</ol>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/vue-cli2x-ji-chu-yong-fa">
+              <h3 class="post-title">
+                vue-cli@2.x基础用法
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
