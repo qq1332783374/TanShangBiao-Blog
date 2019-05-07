@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>vue-cli@2.x基础用法 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557212605945">
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557216094115">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
 
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557212605945" alt="">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557216094115" alt="">
   </a>
   <h1 class="site-title">
     Tan&#39;s-Blog
@@ -97,7 +97,15 @@
               </div>
             
             <div class="post-content">
-              <h2 id="简介">简介</h2>
+              <h2 id="目录">目录</h2>
+<ol>
+<li>起步</li>
+<li>vue-cli 基础用法</li>
+<li>目录结构介绍</li>
+<li>项目启动</li>
+<li>跨域设置</li>
+</ol>
+<h2 id="简介">简介</h2>
 <p>Vue.js开发的标准工具，vue-cli就是一个官方提供的脚手架工具，操作步骤简单，通过终端命令生成项目，而项目里集成了 webpack、ESlint、babel 等配置和相关依赖，大大节省了开发的时间和提高开发的效率。</p>
 <h2 id="1-起步">1. 起步</h2>
 <p><strong>安装环境，安装需求：</strong></p>
@@ -140,17 +148,35 @@
 <p>输入 <code>vue -V</code> 查看版本信息：</p>
 <p><img src="https://qq1332783374.github.io/post-images/1557212255897.png" alt=""></p>
 <p>到这里基本的环境和工具都配置好了，我们就可以愉快做项目了。</p>
-<h2 id="2-vue-cli-用法">2. vue-cli 用法</h2>
+<h2 id="2-vue-cli-基础用法">2. vue-cli 基础用法</h2>
 <p>使用vue-cli提供的 <code>webpack模板</code> 进行快速开发，我们只需在终端输入 <code>vue init webpack projectName</code> 进行模板的下载，然后用编辑器打开下载好的模板就行了。注意文件的路径，还有项目的名称<strong>不能大写和中文</strong> 。</p>
 <p><img src="https://qq1332783374.github.io/post-images/1557212332885.png" alt=""></p>
 <p>以上的选项是我个人的习惯，仅供参考。上面的步骤走完了，就静待它下载完。</p>
-<p>模板下载完了，就会出现上面的提示跟着提示的来走就行了。</p>
-<ol>
-<li><code>cd vuetest</code> 切换目录到项目文件夹下</li>
-<li><code>npm run dev</code> 启动项目</li>
-</ol>
-<p>项目启动成功后会出现一个地址，打开浏览器（默认谷歌）在地址栏输入<code>localhost:8080</code>就可以看到我们的初始项目了。</p>
 <p>最后就用编辑器打开新建好的项目就可以进行愉快的敲代码了。</p>
+<h2 id="3-目录结构介绍">3. 目录结构介绍</h2>
+<p><strong>目录结构如下：</strong>
+<img src="https://qq1332783374.github.io/post-images/1557213531693.png" alt=""></p>
+<p><strong>目录解释：</strong>
+<img src="https://qq1332783374.github.io/post-images/1557214453862.png" alt=""></p>
+<h2 id="4-项目启动">4. 项目启动</h2>
+<p>启动命令：</p>
+<pre><code class="language-javascript">npm run dev
+</code></pre>
+<p><strong>注意：要在项目目录下打开终端启动</strong></p>
+<p>启动成功后，在浏览器输入 <code>localhost:8080</code></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557214984163.png" alt=""></p>
+<h2 id="5-跨域设置">5. 跨域设置</h2>
+<p>打开 <strong>config/index.js</strong> 文件找到<strong>proxyTable</strong> 对象</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557215669825.png" alt=""></p>
+<pre><code class="language-javascript">proxyTable: {
+      '/': {
+        target: 'https://api.myjson.com/',   // 目标接口域名
+        changeOrigin: true,  //是否跨域
+      }
+    },
+</code></pre>
+<h2 id="总结">总结</h2>
+<p>vue-cli 已经更新到3.0的版本了，这个仅供参考。不过操作也是大同小异。</p>
 
             </div>
           </article>
