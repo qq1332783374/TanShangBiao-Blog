@@ -1,0 +1,362 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vuex-介绍和入门 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557238173250">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557238173250" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              vuex-介绍和入门
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-11-25 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/ceWmq5F8G" class="post-tags">
+                  # vuex
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
+                  # VUE
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vuex-jie-shao-he-ru-men.jpeg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
+<ol>
+<li>什么是vuex</li>
+<li>vuex的使用</li>
+<li>vuex中的状态</li>
+</ol>
+<h2 id="1-什么是vuex">1. 什么是vuex</h2>
+<p>Vuex 是一个专门为 Vue.js 应用所设计的集中式状态管理架构。它借鉴了 Flux 和Redux 的设计思想，但简化了概念，并且采用了一种为能更好发挥 Vue.js 数据响应机制而专门设计的实现。</p>
+<p>state 这样的概念出息接触时感觉会有点模糊，简单来说state就是用来存放项目数据的集合。</p>
+<p>Vuex 使得本地状态（<strong>component local state</strong>）和 应用层级状态(<strong>application state</strong>) 有了一定的差异。</p>
+<p><strong>component local state</strong>：该状态表示仅仅在组件内部使用的状态，有点类似通过配置选项传入 Vue 组件内部的意思。</p>
+<p><strong>application state</strong>：应用层级状态，表示同时被多个组件共享的状态层级。
+假设有这样一个场景：我们有一个父组件，同时包含两个子组件。父组件可以很容易的通过使用 props 属性来向子组件传递数据。</p>
+<p>“单向数据流”理念的极简示意图：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557237251271.png" alt=""></p>
+<ul>
+<li>state，驱动应用的数据源；</li>
+<li>view，以声明方式将 state 映射到视图；</li>
+<li>actions，响应在 view 上的用户输入导致的状态变化。</li>
+</ul>
+<p>当我们的应用遇到多个组件共享状态时，单向数据流的简洁性很容易被破坏：</p>
+<ol>
+<li>多个视图依赖于同一状态。</li>
+<li>来自不同视图的行为需要变更同一状态。</li>
+</ol>
+<p>传参的方法对于多层嵌套的组件将会非常繁琐，并且对于兄弟组件间的状态传递无能为力，所以vue中也为我们提供了vuex这个状态管理的插件</p>
+<p><strong>VUEX示例图</strong></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557237306077.png" alt=""></p>
+<h2 id="2-vuex的使用">2. vuex的使用</h2>
+<p>每一个 Vuex 应用的核心就是 store（仓库）。<strong>store</strong> 基本上就是一个容器，它包含着你的应用中大部分的状态 (state)。Vuex 和单纯的全局对象有以下两点不同：</p>
+<ol>
+<li>Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</li>
+<li>你不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地提交 (commit) mutation。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。</li>
+</ol>
+<p>对于VUEX的结构图进行个简单的分析：</p>
+<p>Vuex 规定，属于应用层级的状态只能通过 Mutation 中的方法来修改，而派发 Mutation 中的事件只能通过 action。</p>
+<p>从左到又，从组件出发，组件中调用 action，在 action 这一层级我们可以和后台数据交互，比如获取初始化的数据源，或者中间数据的过滤等。然后在 action 中去派发 Mutation。Mutation 去触发状态的改变，状态的改变，将触发视图的更新。</p>
+<p>注意事项：</p>
+<ol>
+<li>数据流都是单向的</li>
+<li>组件能够调用 action</li>
+<li>action 用来派发 Mutation</li>
+<li>只有 mutation 可以改变状态</li>
+<li>store 是响应式的，无论 state 什么时候更新，组件都将同步更新</li>
+</ol>
+<h2 id="3-vuex中的状态">3. VUEX中的状态</h2>
+<p>VUEX中总共有五种状态，也就是我们常称为的核心概念，分别是：</p>
+<ul>
+<li>State</li>
+<li>Getter</li>
+<li>Mutation</li>
+<li>Action</li>
+<li>Module</li>
+</ul>
+<p>利用vue-cli来搭建一个小项目试一下上面的五种状态</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557237440677.png" alt=""></p>
+<p>项目搭建后，输入<code>npm install vuex --save</code> 来安装vuex</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557237468898.png" alt=""></p>
+<p>(我这里安装的国内的淘宝镜像cnpm和npm是一样的)</p>
+<h4 id="31-开始">3.1 开始</h4>
+<p>在src目录下创建一个名为<strong>store</strong>的文件夹，并且创建一个<strong>index.js</strong>文件</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557237530410.png" alt=""></p>
+<h4 id="32-编辑indexjs文件">3.2 编辑index.js文件</h4>
+<p>引入vue和vuex，并且声明vuex中五个状态的常量</p>
+<pre><code class="language-javascript">//引入vue和vuex
+import Vue from 'vue'
+import Vuex from 'vuex'
+//使用vuex
+Vue.use(Vuex)
+
+const state = {
+
+}
+
+const getters = {
+
+}
+
+const actions = {
+
+}
+
+const mutations = {
+
+}
+
+export default new Vuex.Store({
+    state,
+    getters,
+    actions,
+    mutations
+})
+</code></pre>
+<h4 id="33-在mainjs中引入新建的vuex文件然后在实例化vue对象中加入store对象">3.3  在main.js中引入新建的vuex文件，然后，在实例化Vue对象中加入store对象</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557237602907.png" alt=""></p>
+<h4 id="34-state负责存储整个应用的状态数据">3.4  state：负责存储整个应用的状态数据</h4>
+<p>state就是根据你项目的需求，自己定义一个数据结构，是我们单页应用程序中的共享值</p>
+<p>一般需要在使用的时候在跟节点注入Store（相当于仓库）对象（store中至少要注入两项，state 和 mutation）。</p>
+<p>在组件使用的过程中，如果想要获取对应的状态你就可以直接使用<strong>this.$store.state</strong>获取，</p>
+<p>当然，也可以将 状态对象赋值给内部对象，也就是把index.js中的值，赋值给我们模板里data中的值。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557237730701.png" alt=""></p>
+<p>也可以通过计算属性来获取</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557237759051.png" alt=""></p>
+<p>两者出来的效果是一样的</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557237781972.png" alt=""></p>
+<h4 id="35-getters">3.5 getters</h4>
+<p>我们虽然可以通过以上的方式来获取到寄存于store中的state值，但是在vue中并不希望我们直接获取state的方式来获取值，而是通过getters。</p>
+<p>getters从表面是获得的意思（可以认为是 store 的计算属性）,可以把他看作在获取数据之前进行的一种再编辑，
+相当于对某些状态做二次处理( 对数据的一个过滤和加工 )。getters 是一个纯函数，
+接收参数 state，返回值会根据它的赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。</p>
+<p>getters的基本用法:</p>
+<p>在store/index.js下定义</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557237829236.png" alt=""></p>
+<p>在<strong>computed</strong>中调用</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557237853348.png" alt=""></p>
+<p>用个小案例来体验一下 vuex</p>
+<p><strong>案例：利用组件传递值实现加减功能</strong></p>
+<p>效果：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557237912719.gif" alt=""></p>
+<p><strong>vuextest.vue</strong></p>
+<pre><code class="language-html">&lt;template&gt;
+    &lt;div&gt;
+        &lt;button @click=&quot;reduceNum&quot;&gt;-&lt;/button&gt;
+        &lt;span&gt;{{getNum}}&lt;/span&gt;
+        &lt;button @click=&quot;addNum&quot;&gt;+&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+    name:'vuexTest',
+    computed:{
+        getNum(){
+            return this.$store.getters.getNum
+        }
+    },
+    methods:{
+        reduceNum(){
+            this.$store.dispatch('reduceNum')  
+        },
+        addNum(){
+            this.$store.dispatch('addNum')
+        }
+    }
+}
+&lt;/script&gt;
+&lt;style scoped&gt;
+
+&lt;/style&gt;
+</code></pre>
+<p><strong>store/index.js</strong></p>
+<pre><code class="language-html">//引入vue和vuex
+import Vue from 'vue'
+import Vuex from 'vuex'
+//使用vuex
+Vue.use(Vuex)
+
+const state = {
+    num:0
+}
+
+const getters = {
+    getNum(){
+        return state.num
+    }
+}
+
+const actions = {
+    reduceNum(ctx){
+        ctx.commit('reduceNum')
+    },
+    addNum(ctx){
+        ctx.commit('addNum')
+    }
+}
+
+const mutations = {
+    reduceNum(state){
+        state.num--
+    },
+    addNum(state){
+        state.num++
+    }
+}
+
+export default new Vuex.Store({
+    state,
+    getters,
+    actions,
+    mutations
+})
+</code></pre>
+<p><strong>接下来我们又回到上面的状态示例图</strong></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557237988385.png" alt=""></p>
+<p>从以上的图中可以看出,VUE中的组件通过<strong>dispatch</strong>方法，向<strong>actions</strong>中提交事件，这里要注意在action选项中，我们一般情况下是用于发起异步请求，包括ajax和promise请求等。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557238014858.png" alt=""></p>
+<p>在store/index.js中在actions对象中接受addNum事件,在接受的过程中会伴随着vuex的实例对象（actions对象中的事件是可以进行参数传递），然后通过 <strong>commit()</strong> 方法向mutations对象传递事件，并且改变state选项中的值。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557238051795.png" alt=""></p>
+<p>Mutations的中文意思是“变化”，利用它可以更改状态(是操作state的唯一方法，即只有mutations方法能够改变state状态值)，Vuex 中的 mutation 非常类似于事件：每个 mutation 都有一个字符串的 事件类型 (type) 和 一个 回调函数 (handler)。这个回调函数就是我们实际进行状态更改的地方，并且它会接受 state 作为第一个参数。</p>
+<p>到这里 vuex 的基本流程差不多走完了，附上两个自己做的练习：</p>
+<h4 id="练习1利用vuex实现购物车功能">练习1：利用vuex实现购物车功能</h4>
+<p>源码地址： http://https//github.com/qq1332783374/shopCart</p>
+<h4 id="练习2利用-vuex实现todolist">练习2：利用 vuex实现todolist</h4>
+<p>源码地址：https://github.com/qq1332783374/vuex-todolist</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/vue-cli-da-jian-jian-yi-de-todolist">
+              <h3 class="post-title">
+                vue-cli搭建简易的ToDoList
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
