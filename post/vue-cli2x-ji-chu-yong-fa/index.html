@@ -1,0 +1,209 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vue-cli@2.x基础用法 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557212605945">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557212605945" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              vue-cli@2.x基础用法
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-11-21 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
+                  # VUE
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-cli2x-ji-chu-yong-fa.jpeg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="简介">简介</h2>
+<p>Vue.js开发的标准工具，vue-cli就是一个官方提供的脚手架工具，操作步骤简单，通过终端命令生成项目，而项目里集成了 webpack、ESlint、babel 等配置和相关依赖，大大节省了开发的时间和提高开发的效率。</p>
+<h2 id="1-起步">1. 起步</h2>
+<p><strong>安装环境，安装需求：</strong></p>
+<ol>
+<li>电脑需要安装node.js 和 npm</li>
+<li>全局安装webpack 打包工具（高版本的可能要配合webpack-cli使用）</li>
+<li>全局安装 vue</li>
+<li>全局安装 vue-cli</li>
+</ol>
+<h4 id="11-nodejs-安装">1.1 nodejs 安装</h4>
+<ul>
+<li>window用户直接到官网下载安装就可以了，下载地址 https://nodejs.org/zh-cn/download/</li>
+<li>Linux 用户安装
+<ul>
+<li><code>sudo apt-get install -y nodejs</code> 安装 nodejs</li>
+<li>sudo apt-get install -y npm</li>
+</ul>
+</li>
+</ul>
+<p>安装成功后，打开终端查看版本信息：</p>
+<ul>
+<li>Windows用户<strong>win键+r</strong> 输入<strong>cmd</strong> 打开终端</li>
+<li>Linux就直接打开终端就行了</li>
+</ul>
+<p>两个系统看版本号的代码是一样的。</p>
+<p>查看node版本 输入代码<code>node -v</code></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557211990920.png" alt=""></p>
+<p>查看npm版本号 输入代码 <code>npm -v</code></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557212014550.png" alt=""></p>
+<p>两个版本号出来就OK啦~~</p>
+<h4 id="12-webpack安装">1.2 webpack安装</h4>
+<p>webpack 是通过npm来安装的，webpack要配合webpack-cli 一起来使用，所以我们在终端输入</p>
+<p><code>npm install -g webpack webpack-cli</code></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557212145882.png" alt=""></p>
+<p>输入 <code>webpack -v</code> 查看版本信息。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557212183808.png" alt=""></p>
+<h4 id="13-vue和vue-cli-安装">1.3 vue和vue-cli 安装</h4>
+<p>vue和vue-cli的安装也是通过npm来进行安装的，在终端输入 <code>npm install -g vue vue-cli</code> 两个一起安装。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557212224939.png" alt=""></p>
+<p>输入 <code>vue -V</code> 查看版本信息：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557212255897.png" alt=""></p>
+<p>到这里基本的环境和工具都配置好了，我们就可以愉快做项目了。</p>
+<h2 id="2-vue-cli-用法">2. vue-cli 用法</h2>
+<p>使用vue-cli提供的 <code>webpack模板</code> 进行快速开发，我们只需在终端输入 <code>vue init webpack projectName</code> 进行模板的下载，然后用编辑器打开下载好的模板就行了。注意文件的路径，还有项目的名称<strong>不能大写和中文</strong> 。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557212332885.png" alt=""></p>
+<p>以上的选项是我个人的习惯，仅供参考。上面的步骤走完了，就静待它下载完。</p>
+<p>模板下载完了，就会出现上面的提示跟着提示的来走就行了。</p>
+<ol>
+<li><code>cd vuetest</code> 切换目录到项目文件夹下</li>
+<li><code>npm run dev</code> 启动项目</li>
+</ol>
+<p>项目启动成功后会出现一个地址，打开浏览器（默认谷歌）在地址栏输入<code>localhost:8080</code>就可以看到我们的初始项目了。</p>
+<p>最后就用编辑器打开新建好的项目就可以进行愉快的敲代码了。</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/vue-xue-xi-7-vue-zhong-de-yang-shi-bang-ding">
+              <h3 class="post-title">
+                vue学习-7-Vue中的样式绑定
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
