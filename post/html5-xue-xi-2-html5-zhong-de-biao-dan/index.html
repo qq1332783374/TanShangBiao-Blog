@@ -1,124 +1,103 @@
-
-<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>html5学习-2-html5中的表单 | Tan&#39;s-Blog</title>
-<meta name="description" content="温故而知新">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557231009256">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557230947307">
 <link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
 
-
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
-
-  
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
   </head>
   <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://qq1332783374.github.io">
-        <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557230947307" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://qq1332783374.github.io">
-        <h1 class="site-title">Tan&#39;s-Blog</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557231009256" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
       
-        
-          <a href="https://qq1332783374.github.io" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
         <div class="post-detail">
-          
-            <div class="feature-container" style="background-image: url('https://qq1332783374.github.io/post-images/html5-xue-xi-2-html5-zhong-de-biao-dan.png')">
+          <article class="post">
+            <h2 class="post-title">
+              html5学习-2-html5中的表单
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2018-09-14 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/1GaHdwE5J" class="post-tags">
+                  # HTML5
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
             </div>
-          
-          <h2 class="post-title">html5学习-2-html5中的表单</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2018-09-14</span>
             
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://qq1332783374.github.io/tag/1GaHdwE5J">
-                    HTML5
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO">
-                    笔记
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://qq1332783374.github.io/tag/AJo58fd2h">
-                    前端
-                    
-                  </a>
-                
-              </span>
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/html5-xue-xi-2-html5-zhong-de-biao-dan.png')">
+              </div>
             
-          </div>
-          <div class="post-content">
-            <h2 id="目录">目录</h2>
+            <div class="post-content">
+              <h2 id="目录">目录</h2>
 <ol>
 <li>新增的表单属性</li>
 <li>新增的表单类型</li>
@@ -257,86 +236,58 @@ autocomplete属性应该用来保护敏感用户数据，避免浏览器对它�
 <h2 id="总结">总结</h2>
 <p>HTML5表单极大地提高了开发者的工作效率，并给用户带来了一些新的体验。HTML5提供了很多直接使用的功能，而以前需要大量的定制代码才能实现这些功能。</p>
 
-          </div>
+            </div>
+          </article>
         </div>
-
+    
         
           <div class="next-post">
-            <a class="purple-link" href="https://qq1332783374.github.io/post/html5-xue-xi-1-html5-xin-zeng-biao-qian">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/html5-xue-xi-1-html5-xin-zeng-biao-qian">
               <h3 class="post-title">
-                下一篇：html5学习-1-html5新增标签
+                html5学习-1-html5新增标签
               </h3>
             </a>
-          </div>
+          </div>  
+        
+
+        
           
-      </div>
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
-      
-        
-          <div id="gitalk-container"></div>
-        
+<div id="gitalk-container"></div>
 
-        
-      
+<script>
 
-      <div class="site-footer">
-  <div class="slogan">温故而知新</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
 
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+  gitalk.render('gitalk-container')
 
 </script>
 
+          
 
-  
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
 
-      var gitalk = new Gitalk({
-        clientID: 'e317a113b2a1e0a25d73',
-        clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
-        repo: 'TanShangBiao-Blog',
-        owner: 'qq1332783374',
-        admin: ['qq1332783374'],
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
 
-      gitalk.render('gitalk-container')
-
-    </script>
-  
-
-  
-
-
-
-
+      </div>
+    </div>
   </body>
 </html>
