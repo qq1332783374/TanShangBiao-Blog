@@ -1,0 +1,270 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>记一次原生JavaScript封装AJAX函数 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557313482856">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557313482856" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              记一次原生JavaScript封装AJAX函数
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-01-02 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/KS9yxfg9U" class="post-tags">
+                  # JavaScript
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/ji-yi-ci-yuan-sheng-javascript-feng-zhuang-ajax-han-shu.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="前言">前言</h2>
+<p>差不多到学期末了有点闲，于是就研究一下AJAX的原理。发现也没有想象中的那么难，当然还有高级点用法需要研究。不过基础用法还是挺容易理解的，正所谓万变不离其宗，底层理解了，其他的套路应该都差不多。</p>
+<h2 id="1-同步和异步的理解">1. 同步和异步的理解</h2>
+<ul>
+<li><strong>同步:</strong> 同步方法一旦执行，就只能只能执行下去，等待服务器响应成功或失败返回结果后，才能继续下一步操作。</li>
+<li><strong>异步:</strong> 异步方法和同步的区别就是无须等待服务器的响应结果返回来才能执行下一步操作。进一步的提高了用户的体验。</li>
+</ul>
+<h2 id="2-ajax-介绍">2. AJAX 介绍</h2>
+<ul>
+<li>
+<p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</p>
+</li>
+<li>
+<p>AJAX 不是新的编程语言，而是一种使用现有标准的新方法。</p>
+</li>
+<li>
+<p>AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</p>
+</li>
+<li>
+<p>AJAX 不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行。
+(ajax介绍转自<a href="https://www.runoob.com/ajax/ajax-tutorial.html">菜鸟教程</a>的AJAX教程)</p>
+</li>
+</ul>
+<h2 id="3-ajax-的4个阶段">3. AJAX 的4个阶段</h2>
+<ol>
+<li>实例化一个xhr对象</li>
+</ol>
+<pre><code class="language-javascript">var xhr = new XMLHttpRequest()
+</code></pre>
+<ol start="2">
+<li>连接服务器</li>
+</ol>
+<pre><code class="language-javascript">xhr.open(&quot;get&quot;,&quot;api/test.php&quot;,true)
+</code></pre>
+<p><strong>open(method,url,async)</strong> 参数：</p>
+<ul>
+<li>method 请求的类型；GET 或 POST</li>
+<li>url：API接口地址</li>
+<li>async：true（异步）或 false（同步）</li>
+</ul>
+<ol start="3">
+<li>向服务器发送数据</li>
+</ol>
+<pre><code class="language-javascript">xhr.send()
+</code></pre>
+<ol start="4">
+<li>等待服务器响应返回数据</li>
+</ol>
+<pre><code class="language-javascript">xhr.onreadystatechange = function () {
+	// 触发readystatechange事件，然后检测readyState属性
+	
+}
+</code></pre>
+<p><strong>readyState,	存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。</strong></p>
+<ol>
+<li>请求未初始化</li>
+<li>服务器连接已建立</li>
+<li>请求已接收</li>
+<li>请求处理中</li>
+<li>请求已完成，且响应已就绪</li>
+</ol>
+<p><strong>status状态</strong></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557308001385.png" alt=""></p>
+<h2 id="4-完整流程">4. 完整流程</h2>
+<pre><code class="language-javascript">var obj = {
+            type:'get',
+            url: 'https://www.tanshangbiao.cn/project/phpApi/test.php',
+            async: true,
+            success: (res)=&gt;{
+                console.log(res)
+            }
+        }
+        // ajax
+        function _ajax(options) {
+            // 1. 实例化xhr对象
+            var xhr = new XMLHttpRequest();
+            // 序列化参数
+            var params = formsParams(options.data);
+            // 判断请求类型
+            /*
+                open() 三个参数
+                1. 请求类型
+                2. 请求地址
+                3. 是否异步
+            */
+            if(options.type == 'post') {
+                xhr.open(options.type, options.url, options.async || true);
+                // post 请求头
+                xhr.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded&quot;);
+                // 发送参数
+                xhr.send(params)
+            }else if (options.type == 'get') {
+                xhr.open(options.type, options.url + &quot;?&quot; +params, options.async || true);
+                xhr.send(null)
+            }
+            //  等待服务器返回结果
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4 &amp;&amp; xhr.status == 200) {
+                    options.success(xhr.responseText)
+                }
+            }
+        }
+        // 序列化参数
+        function formsParams(data) {
+            var arr = [];
+            for(var prop in data) {
+                //console.log(prop)
+                arr.push(prop + '=' + data[prop]);
+            };
+            return arr.join('&amp;');
+        }
+        _ajax(obj)
+</code></pre>
+<h2 id="5-总结">5. 总结</h2>
+<p>万变不离其宗，高逼格的又实用的Promise写法好像也是这个原理。</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/vs-code-qian-duan-zi-yong-cha-jian">
+              <h3 class="post-title">
+                VS Code-前端自用插件
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
