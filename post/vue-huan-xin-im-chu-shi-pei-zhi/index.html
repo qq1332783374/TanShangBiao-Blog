@@ -1,0 +1,370 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>vue环信IM初始配置 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557481679723">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557481679723" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              vue环信IM初始配置
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-03-22 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
+                  # VUE
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-huan-xin-im-chu-shi-pei-zhi.jpeg')">
+              </div>
+            
+            <div class="post-content">
+              <h1 id="起步">起步</h1>
+<blockquote>
+<p>项目基于vue+vuex进行构建</p>
+</blockquote>
+<h4 id="1-安装">1. 安装</h4>
+<ul>
+<li><code>npm install easemob-websdk --save</code></li>
+<li><code>npm install strophe.js</code></li>
+</ul>
+<hr>
+<h4 id="2-配置-connectionjs">2. 配置 connection.js</h4>
+<blockquote>
+<p>找到 <code>node_modules/easemob-websdk/src/connection.js</code>, 在大概十六行的位置加入以下代码</p>
+</blockquote>
+<pre><code class="language-javascript">
+var Strophe = require('strophe.js').Strophe;
+var meStrophe = require('strophe.js');
+$iq = meStrophe.$iq;
+$build = meStrophe.$build;
+$msg = meStrophe.$msg;
+$pres = meStrophe.$pres;
+
+</code></pre>
+<p><a href="https://i.loli.net/2019/04/11/5caeb0ded86db.png"><img src="https://i.loli.net/2019/04/11/5caeb0ded86db.png" alt=""></a></p>
+<hr>
+<blockquote>
+<p>然后还是在这个文件，大约在667行加入 <code>config</code> 定义</p>
+</blockquote>
+<pre><code class="language-javascript">
+var config = {
+    xmppURL: 'im-api.easemob.com',
+    apiURL: (location.protocol === 'https:' ? 'https:' : 'http:') + '//a1.easemob.com',
+    appkey: '官网实例appkey',
+    https: false,
+    isMultiLoginSessions: true,
+    isAutoLogin: true,
+    isWindowSDK: false,
+    isSandBox: false,
+    isDebug: true,
+    autoReconnectNumMax: 2,
+    autoReconnectInterval: 2,
+    isWebRTC: (/Firefox/.test(navigator.userAgent) || /WebKit/.test(navigator.userAgent)) &amp;&amp; /^https\:$/.test(window.location.protocol),
+    heartBeatWait: 4500,
+    isHttpDNS: false,
+    msgStatus: true,
+    delivery: true,
+    read: true,
+    saveLocal: false,
+    encrypt: {
+      type: 'none'
+    }
+  }
+
+</code></pre>
+<p><a href="https://i.loli.net/2019/04/11/5caeb193ddefa.png"><img src="https://i.loli.net/2019/04/11/5caeb193ddefa.png" alt=""></a></p>
+<hr>
+<blockquote>
+<p>还是当前文件， 大约在 4660 行找到 <code>var WebIM = window.WebIM || {}</code>, 在下面加入上面定义的 <code>config</code> 配置</p>
+</blockquote>
+<pre><code class="language-javascript">
+WebIM.config = config;
+
+</code></pre>
+<p><a href="https://i.loli.net/2019/04/11/5caeb1a5b1cda.png"><img src="https://i.loli.net/2019/04/11/5caeb1a5b1cda.png" alt=""></a></p>
+<hr>
+<h4 id="21-配置-strophejs">2.1 配置 strophe.js</h4>
+<blockquote>
+<p>找到 <code>node_modules/strophe.js/dist/strophe.js</code>,大约在 <strong>2845</strong>行 <code>pause: function pause() {this.paused = true;}</code> 后面，加入以下代码</p>
+</blockquote>
+<pre><code class="language-javascript">
+setJid: function (jid) {
+    this.jid = jid;
+    this.authzid = Strophe.getBareJidFromJid(this.jid);
+    this.authcid = Strophe.getNodeFromJid(this.jid);
+},
+getJid: function () {
+    return this.jid;
+},
+
+</code></pre>
+<p><a href="https://i.loli.net/2019/04/11/5caeb1ba28fe6.png"><img src="https://i.loli.net/2019/04/11/5caeb1ba28fe6.png" alt=""></a></p>
+<p>完成以上步骤基本可以在组件内使用了。</p>
+<hr>
+<h1 id="使用">使用</h1>
+<h4 id="1-mainjs-配置">1. main.js 配置</h4>
+<pre><code class="language-javascript">
+// 环信IM配置
+import websdk from 'easemob-websdk'
+let WebIM = window.WebIM = websdk
+Vue.prototype.$WebIM = WebIM
+
+var conn = new WebIM.connection({    
+  isMultiLoginSessions: WebIM.config.isMultiLoginSessions,    
+  https: typeof WebIM.config.https === 'boolean' ? WebIM.config.https : location.protocol === 'https:',    
+  url: WebIM.config.xmppURL,    
+  heartBeatWait: WebIM.config.heartBeatWait,    
+  autoReconnectNumMax: WebIM.config.autoReconnectNumMax,    
+  autoReconnectInterval: WebIM.config.autoReconnectInterval,    
+  apiUrl: WebIM.config.apiURL,    
+  isAutoLogin: true
+});
+
+const options = {
+  apiUrl: WebIM.config.apiURL,
+  user: '****',
+  pwd: '****',    
+  appKey: WebIM.config.appkey,    
+  success:function (token) {        
+    console.log('%c 登陆成功', 'color: green')    
+    console.log(token)
+  },    
+  error:function (err) {    
+    console.log('%c *** err ***', 'color: red')    
+    console.log(err)    
+  }
+}
+
+Vue.prototype.$imConn = conn
+Vue.prototype.$imoption = options
+
+</code></pre>
+<hr>
+<h4 id="2-组件内使用">2. 组件内使用</h4>
+<pre><code class="language-javascript">
+methods: {
+    login() {
+      if (this.username == &quot;&quot;) {
+        this.alertShow(&quot;请输入用户名&quot;);
+        return;
+      } else if (this.password == &quot;&quot;) {
+        this.alertShow(&quot;请输入密码&quot;);
+        return;
+      } else {
+        const user = {
+          username: this.username,
+          password: this.password
+        };
+        // vuex 响应
+        this.$store.dispatch('DO_Login_IM', user)
+      }
+    }
+}
+
+</code></pre>
+<p><strong>vuex</strong></p>
+<pre><code class="language-javascript">
+const actions = {
+    DO_Login_IM (commit, obj) {
+        console.log(obj)
+        var imConn = Vue.prototype.$imConn
+
+        Vue.prototype.$imoption.user = obj.username
+        Vue.prototype.$imoption.pwd = obj.password
+
+        imConn.open(Vue.prototype.$imoption)
+
+        imConn.listen({
+            onOpened (message) {   // 建立连接
+                console.log('%c [opened] 成功连接 ', 'color: green')
+                console.log(message)
+                // 登陆状态
+                imConn.setPresence()
+                // 获取好友列表
+                imConn.getRoster({
+                    success (lists) {
+                        console.log('%c *** 好友列表 ***' , 'color: blue')
+                        console.log(lists)
+                    }
+                })
+            },
+            onClosed (message) {  // 连接关闭
+                console.log('%c [close] 连接关闭 ', 'color: red')
+                console.log(message)
+            },
+
+            onTextMessage (message) {  // 接收文本消息
+                console.log('%c *** 接收到的文本Text消息 ***', 'color: green')
+                console.log(message)
+            },
+            onEmojiMessage (message) {  // 接收表情
+                console.log('%c [emoji] 表情', 'color: yellow')
+                console.log(message)
+            },
+            onPictureMessage (message) {  // 接收图片
+                console.log('%c [image] 接收图片', 'color: #2b99ff')
+                console.log(message)
+                let options = {url: message.url}
+                options.onFileDownloadComplete = function (data) {
+                    console.log('%c *** 图片下载成功 ***' ,'color: green')
+                    console.log(data)
+                }
+                options.onFileDownloadError = function (err) {
+                    console.log('%c *** 图片下载失败 ***', 'color: red')
+                    console.log(err)
+                }
+                Vue.prototype.$WebIM.utils.download.call(Vue.prototype.$imConn, options)
+            },
+
+            onRoster (message) { 
+                console.log('*** Roster ***')
+                console.log(message)
+            },
+            onError (error) {  // 错误监听
+                console.log(error)
+            }
+        })
+    }
+}
+
+</code></pre>
+<h1 id="总结">总结</h1>
+<blockquote>
+<p>以上配置基本可以实现一个简单的聊天室配置，如有什么不对的地方请大家指出，多多交流</p>
+</blockquote>
+<p><a href="https://i.loli.net/2019/04/11/5caeb1f99e514.png"><img src="https://i.loli.net/2019/04/11/5caeb1f99e514.png" alt=""></a></p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/liao-tian-shi-xiao-guo-rang-gun-dong-tiao-zi-dong-gun-dao-di-bu">
+              <h3 class="post-title">
+                聊天室效果让滚动条自动滚到底部
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
