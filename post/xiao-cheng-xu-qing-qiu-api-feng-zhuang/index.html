@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>vue学习-7-Vue中的样式绑定 | Tan&#39;s-Blog</title>
+<title>小程序请求API封装 | Tan&#39;s-Blog</title>
 <link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557493732314">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
@@ -72,15 +72,15 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              vue学习-7-Vue中的样式绑定
+              小程序请求API封装
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2018-11-19 ·
+                · 2019-04-18 ·
               </time>
               
-                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
-                  # VUE
+                <a href="https://qq1332783374.github.io/tag/OiWvbiKlo" class="post-tags">
+                  # 小程序
                 </a>
               
                 <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
@@ -93,44 +93,51 @@
               
             </div>
             
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-xue-xi-7-vue-zhong-de-yang-shi-bang-ding.png')">
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/xiao-cheng-xu-qing-qiu-api-feng-zhuang.jpeg')">
               </div>
             
             <div class="post-content">
-              <h2 id="目录">目录</h2>
-<ol>
-<li>样式绑定概念</li>
-<li>绑定HTML的Class属性</li>
-<li>绑定HTML的Style属性</li>
-<li>绑定内联样式</li>
-</ol>
-<h2 id="1-样式绑定概念">1. 样式绑定概念</h2>
-<blockquote>
-<p>操作元素的 class 列表和内联样式是数据绑定的一个常见需求。因为它们都是属性，所以我们可以用 v-bind 处理它们：只需要通过表达式计算出字符串结果即可。不过，字符串拼接麻烦且易错。因此，在将 v-bind 用于 class 和 style 时，Vue.js 做了专门的增强。表达式结果的类型除了字符串之外，还可以是对象或数组。</p>
-</blockquote>
-<h2 id="2-绑定html的class属性">2. 绑定HTML的Class属性</h2>
-<h4 id="21-v-bindclass">2.1 v-bind:class</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557149700142.png" alt=""></p>
-<h4 id="22-动态切换多个class">2.2 动态切换多个Class</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557149734343.png" alt=""></p>
-<h4 id="23-v-bindclass-绑定对象">2.3 v-bind:class 绑定对象</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557149779671.png" alt=""></p>
-<h4 id="24-通过邦定一个返回对象的计算属性">2.4 通过邦定一个返回对象的计算属性</h4>
-<ul>
-<li>通过对象的计算属性返回一个class</li>
-</ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557149820449.png" alt=""></p>
-<ul>
-<li>通过计算属性返回多个class</li>
-</ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557149851276.png" alt=""></p>
-<h2 id="3-绑定html的style属性">3. 绑定HTML的Style属性</h2>
-<p>通过把一个数组传给v-bind:class,用来应用一个class列表</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557149910134.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557149919119.png" alt=""></p>
-<h2 id="4-绑定内联样式">4. 绑定内联样式</h2>
-<p>v-bind:style 的对象语法十分直观——看着非常像 CSS，但其实是一个 JavaScript 对象。CSS 属性名可以用驼峰式 (camelCase) 或短横线分隔 (kebab-case，记得用单引号括起来) 来命名：</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557149951207.png" alt=""></p>
+              <h2 id="1-在-utils-文件夹下面新建-apijs">1. 在 utils 文件夹下面新建 api.js</h2>
+<pre><code class="language-javascript">// 请求地址
+const url = 'http://192.168.22.46'
+/**
+ * 
+ * @param {String} api  请求地址aip
+ * @param {Object} data 请求参数
+ * @param {String} method  请求方式
+ */
+function httpApi (api, data={}, method, ) {
+    return new Promise((resolve, reject) =&gt; {
+        wx.request({
+            url: url + api,
+            data: data,
+            method: method || 'GET',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded' 
+            },
+            success (res) {
+                return resolve(res.data)
+            },
+            fail (err) {
+                return reject(err)
+            }
+        })
+    })
+}
+
+// 导出
+module.exports = {
+    httpApi
+}
+</code></pre>
+<h2 id="2-全局注册调用">2. 全局注册调用</h2>
+<p>在 <strong>app.js</strong>  引入api.js</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557493627610.png" alt=""></p>
+<p>在 <strong>App({})</strong> 注册</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557493644672.png" alt=""></p>
+<h2 id="3-测试调用">3. 测试调用</h2>
+<p><img src="https://qq1332783374.github.io/post-images/1557493667720.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557493682674.png" alt=""></p>
 
             </div>
           </article>
@@ -139,9 +146,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/vue-xue-xi-6-shen-ru-liao-jie-zu-jian-2">
+            <a href="https://qq1332783374.github.io/post/vue-xiang-mu-chu-shi-hua">
               <h3 class="post-title">
-                vue学习-6-深入了解组件2
+                vue项目初始化
               </h3>
             </a>
           </div>  
