@@ -1,0 +1,276 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>win10-JavaWeb环境 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557474092644">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557474092644" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              win10-JavaWeb环境
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-01-17 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/0WwiNnRX7" class="post-tags">
+                  # JavaWeb
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/win10-javaweb-huan-jing.jpeg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="前言">前言</h2>
+<p>放假四五天在家有点闲，找点东西折腾一下。于是搞了一个JavaWeb的开发环境，然而我并不会Java，但并不影响这个环境的配置。</p>
+<h2 id="环境">环境</h2>
+<ul>
+<li>系统：win10</li>
+<li>软件版本：
+<ul>
+<li>JDK 1.8 ，(下载地址)[https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html]</li>
+<li>Tomcat8.5，(下载地址)[https://tomcat.apache.org/download-80.cgi]</li>
+<li>MySql5.5, (下载地址)[https://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.62-winx64.zip]</li>
+<li>MySQL图形界面：SQLyog，(下载地址)[https://www.tanshangbiao.cn/resources/SQLyog.zip]</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-jdk环境配置">1. JDK环境配置</h2>
+<h4 id="11-jdk安装直接下一步就行了注意记得你的安装路径到时候有用-例如我的是cprogram-filesjavajdk180_191">1.1 jdk安装直接下一步就行了，注意记得你的安装路径到时候有用。例如我的是：C:\Program Files\Java\jdk1.8.0_191</h4>
+<h4 id="12-安装完接下来就是配置环境变量了">1.2 安装完接下来就是配置环境变量了。</h4>
+<ul>
+<li>依次进入：我的电脑-属性-高级系统设置-环境变量</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557471558031.png" alt=""></p>
+<ul>
+<li>在系统变量新建，变量名为 <code>JAVA_HOME</code>，变量值是刚才的安装路径，我的是：<code>C:\Program Files\Java\jdk1.8.0_191;</code></li>
+<li>继续新建变量，变量名为 <code>CLASSPATH</code> , 变量值 <code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code> (注意前面是有个点的)</li>
+<li>找到 <code>Path</code> 变量点编辑, 然后新建两个变量值，分别是 <strong>jdk/bin</strong> 和 <strong>jre/bin</strong> 的路径。例如我的是：
+<ul>
+<li><code>C:\Program Files\Java\jdk1.8.0_191\bin</code></li>
+<li><code>C:\Program Files\Java\jre1.8.0_191\bin</code></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557471939069.png" alt=""></p>
+<ul>
+<li>打开 <code>cmd</code>，打开cmd方法：<code>win键+r输入cmd</code> 或者直接找到打开。</li>
+<li>打开后依次输入 <code>java -version</code> 和 <code>javac -version</code> , 如果成功的话会分别输出，相应的版本信息，这时候就已经成功配置好jdk环境了。</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557472080133.png" alt=""></p>
+<h2 id="2-tomcat环境配置">2. Tomcat环境配置</h2>
+<p><strong>Tomcat的环境配置跟jdk的环境配置大同小异</strong></p>
+<ol>
+<li>首先将下载好的Tomcat压缩包解压。</li>
+<li>到系统环境变量，新建变量名为<code>TOMCAT_HOME</code>,变量值为：解压好的路径：例如我的路径是：<code>E:\JavaWeb\apache-tomcat-8.5.37-windows-x64</code>，然后保存。</li>
+<li>编辑<code>Path</code>变量，新建，变量值为：Tomcat里面的bin目录，<code>E:\JavaWeb\apache-tomcat-8.5.37-windows-x64\apache-tomcat-8.5.37\bin</code>，确定保存就行了。</li>
+<li>用cmd打开Tomcat的bin目录,在cmd输入<code>startup</code>，这时候会自动弹出多一个终端，这就代表已经成功启动啦！</li>
+</ol>
+<p><img src="https://qq1332783374.github.io/post-images/1557472379918.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557472386598.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557472394561.png" alt=""></p>
+<ol start="5">
+<li>打开浏览器输入地址：<code>localhost:8080</code>，效果如下</li>
+</ol>
+<p><img src="https://qq1332783374.github.io/post-images/1557473137378.png" alt=""></p>
+<ol start="6">
+<li>简单介绍一下Tomcat的两个目录
+<ul>
+<li>conf：主要是存放Tomcat服务器相关的设定</li>
+<li>webapps：主要是存放和管理开发的项目</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-mysql配置">3. MySQL配置</h2>
+<ol>
+<li>也是找个地方解压一下，数据多的话找个储存空间大点的硬盘</li>
+<li>在解压好的MySQL根目录下新建一个名为<code>my.ini</code>的配置文件，配置如下：</li>
+</ol>
+<pre><code class="language-javascript">[mysql]
+# 设置mysql客户端默认字符集
+default-character-set=utf8
+[mysqld]
+#设置3306端口
+port = 3306
+# 设置mysql的安装目录
+basedir=E:\JavaWeb\mysql-5.5.62-winx64
+# 设置mysql数据库的数据的存放目录
+datadir=E:\JavaWeb\mysql-5.5.62-winx64\data
+
+# 允许最大连接数
+max_connections=200
+# 服务端使用的字符集默认为UTF8
+character-set-server=utf8
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+</code></pre>
+<ol start="3">
+<li>环境配置和上面的差不多</li>
+</ol>
+<ul>
+<li>新建变量<code>MYSQL_HOME</code>,值为<code>E:\JavaWeb\mysql-5.5.62-winx64</code>（安装路径）</li>
+<li>编辑<code>Path</code>,新建<code>E:\JavaWeb\mysql-5.5.62-winx64\bin</code></li>
+</ul>
+<ol start="4">
+<li>这次打开终端的方式要用管理员身份打开了，不然会不行，权限不够。</li>
+</ol>
+<p><img src="https://qq1332783374.github.io/post-images/1557473472214.png" alt=""></p>
+<p><strong>切换目录</strong>
+<img src="https://qq1332783374.github.io/post-images/1557473497163.png" alt=""></p>
+<ol start="5">
+<li>在bin目录分别输入以下代码：</li>
+</ol>
+<ul>
+<li>mysqld --install</li>
+<li>net start mysql</li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557473532775.png" alt=""></p>
+<ol start="6">
+<li>MySQL 初始化设置，设置密码，操作如下：</li>
+</ol>
+<ul>
+<li><code>mysql -u root -p</code></li>
+<li><code>use mysql;</code></li>
+<li><code>update user set authentication_string=password('您的密码') where user='root';</code></li>
+<li><code>flush privileges;</code>(刷新指令，记得要刷新)</li>
+<li><code>exit</code></li>
+</ul>
+<p><img src="https://qq1332783374.github.io/post-images/1557473612727.png" alt=""></p>
+<ol start="7">
+<li>到这里基本完成啦！最后在安装个图形界面就行了，直接解压运行就ok，记得看里面的<strong>使用说明</strong>。</li>
+</ol>
+<p><img src="https://qq1332783374.github.io/post-images/1557473855542.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557473862037.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557473868518.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557473876145.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557473882877.png" alt=""></p>
+<h2 id="结语">结语</h2>
+<p>到这里一个JavaWeb的环境搭建完成，应该没什么错误 0.0。</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/ji-yi-ci-yuan-sheng-javascript-feng-zhuang-ajax-han-shu">
+              <h3 class="post-title">
+                记一次原生JavaScript封装AJAX函数
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
