@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Vue-axios 请求拦截器 | Tan&#39;s-Blog</title>
+<title>vue项目初始化 | Tan&#39;s-Blog</title>
 <link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557493054598">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
@@ -72,16 +72,12 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              Vue-axios 请求拦截器
+              vue项目初始化
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-03-10 ·
+                · 2019-04-10 ·
               </time>
-              
-                <a href="https://qq1332783374.github.io/tag/a4ALd5iwx" class="post-tags">
-                  # axios
-                </a>
               
                 <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
                   # VUE
@@ -91,13 +87,50 @@
                   # 笔记
                 </a>
               
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
             </div>
             
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-axios-qing-qiu-lan-jie-qi.jpeg')">
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-xiang-mu-chu-shi-hua.jpeg')">
               </div>
             
             <div class="post-content">
-              <p><strong>api.js</strong></p>
+              <h1 id="起步">起步</h1>
+<ul>
+<li>
+<p>项目搭建，利用 <code>vue-cle</code></p>
+<ul>
+<li>搭建命令 <code>vue init webpack my-project</code> (一般都用webpack模板)</li>
+</ul>
+</li>
+<li>
+<p>必备插件 <code>vuex</code> <code>axios</code></p>
+<ul>
+<li>安装 <code>npm i vuex axios -S</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="初始配置">初始配置</h1>
+<h2 id="1-异步请求配置">1. 异步请求配置</h2>
+<ul>
+<li>
+<p>找到 <code>confi/index.js</code>,在 <code>proxyTable</code>对象输入一下代码：</p>
+<pre><code class="language-javascript">
+proxyTable: {
+  '/': {
+    target: 'http://192.168.22.46'
+  }
+},
+
+</code></pre>
+</li>
+<li>
+<p>axios 异步请求拦截以及异常处理</p>
+</li>
+</ul>
+<p><strong>api.js</strong></p>
 <pre><code class="language-javascript">
 import axios from 'axios'
 
@@ -202,7 +235,9 @@ axios.interceptors.response.use((data) =&gt; {
    }
 
 </code></pre>
-<p><strong>在main.js导入</strong></p>
+<ul>
+<li><code>main.js</code>全局添加</li>
+</ul>
 <pre><code class="language-javascript">
 // api 接口
 import {server} from 'api/api'
@@ -210,14 +245,63 @@ import {server} from 'api/api'
 Vue.prototype.$server = server
 
 </code></pre>
-<p><strong>用法</strong></p>
-<pre><code class="language-javascript">const paramsObj = {
-	username: 'admin',
-	password: 123456
+<ul>
+<li>用法</li>
+</ul>
+<pre><code class="language-javascript">
+const paramsObj = {
+    username: 'admin',
+    password: 123456
 }
 
 this.$server.login(paramsObj).then((res) =&gt; {
-	console.log(res)
+    console.log(res)
+})
+
+</code></pre>
+<h2 id="2-路由拦截配置">2. 路由拦截配置</h2>
+<pre><code class="language-javascript">// main.js
+router.beforeEach((to, from, next) =&gt; {
+  if (to.path == '/login') {
+    sessionStorage.removeItem('user');
+  }
+  let user = JSON.parse(sessionStorage.getItem('user'));
+  if (!user &amp;&amp; to.path != '/login') {
+    next({ path: '/login' })
+  } else {
+    next()
+  }
+})
+
+
+</code></pre>
+<h2 id="3-ui框架安装">3. UI框架安装</h2>
+<ul>
+<li>安装命令</li>
+</ul>
+<pre><code>npm i element-ui -S
+</code></pre>
+<ul>
+<li>全局引入</li>
+</ul>
+<pre><code>
+// main.js
+
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
+Vue.use(ElementUI)
+
+</code></pre>
+<h2 id="4-组件标题">4. 组件标题</h2>
+<pre><code class="language-javascript">
+// 组件网站标题
+router.beforeEach((to, from, next) =&gt; {
+  /* 路由发生变化修改页面title */
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
 })
 
 </code></pre>
@@ -229,9 +313,9 @@ this.$server.login(paramsObj).then((res) =&gt; {
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/deepin-linux-mongodb-shu-ju-ku-an-zhuang">
+            <a href="https://qq1332783374.github.io/post/js-zhong-varconstlet-de-qu-bie">
               <h3 class="post-title">
-                Deepin-Linux MongoDB数据库安装
+                JS中var、const、let的区别
               </h3>
             </a>
           </div>  
