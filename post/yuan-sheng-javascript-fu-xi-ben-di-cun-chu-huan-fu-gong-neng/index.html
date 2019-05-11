@@ -1,0 +1,369 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>原生JavaScript复习-本地存储换肤功能 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557583751948">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557583751948" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              原生JavaScript复习-本地存储换肤功能
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-11 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/YHHgHvnEV" class="post-tags">
+                  # 原生JavaScript
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/yuan-sheng-javascript-fu-xi-ben-di-cun-chu-huan-fu-gong-neng.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="前言">前言</h2>
+<p>因为即将要出去实习了，趁着周末有空复习了一下原生JavaScript，这是一个通过本地存储实现的换肤功能。</p>
+<h2 id="效果">效果</h2>
+<p><img src="https://qq1332783374.github.io/post-images/1557583481676.gif" alt=""></p>
+<h2 id="代码">代码</h2>
+<ol>
+<li>css 部分可能比较简单，通俗点说就是有点丑0.0</li>
+</ol>
+<pre><code class="language-css">.btn {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            background: #2b99ff;
+            color: #fff;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer;
+        }
+        .oDiv {
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+        }
+        .moadl {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(0,0,0,0.55);
+            display: none;
+        }
+        .dialog {
+            width: 520px;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px 10px;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .setBg , .setWidth, .setHeight
+        {
+            margin-bottom: 25px;
+        }
+        .setBg a, .setWidth a, .setHeight a {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            text-decoration: none;
+            color: #666;
+        }
+</code></pre>
+<ol start="2">
+<li>html 结构</li>
+</ol>
+<pre><code class="language-html">&lt;div class=&quot;main&quot;&gt;
+
+        &lt;div class=&quot;header&quot;&gt;
+            点击Btn修改样式 &lt;button type=&quot;button&quot; id=&quot;setClass&quot; class=&quot;btn&quot; onclick=&quot;moadlShow()&quot;&gt;设置&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;div class=&quot;oDiv&quot; id=&quot;oDiv&quot;&gt;
+
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;!--modal--&gt;
+    &lt;div class=&quot;moadl&quot; id=&quot;myMoadl&quot;&gt;
+        &lt;div class=&quot;dialog&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;div class=&quot;close&quot; onclick=&quot;moadlClose()&quot;&gt;
+                    X
+                &lt;/div&gt;
+                &lt;div class=&quot;setBg&quot;&gt;
+                    &lt;span&gt;请选择背景颜色：&lt;/span&gt;
+                    &lt;a href=&quot;javascript:;&quot; onclick=&quot;setColor(0)&quot;&gt;红色&lt;/a&gt;
+                    &lt;a href=&quot;javascript:;&quot; onclick=&quot;setColor(1)&quot;&gt;绿色&lt;/a&gt;
+                    &lt;a href=&quot;javascript:;&quot; onclick=&quot;setColor(2)&quot;&gt;蓝色&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;setWidth&quot;&gt;
+                    &lt;span&gt;请选择宽度（单位px）：&lt;/span&gt;
+                    &lt;a href=&quot;javascript:;&quot; onclick=&quot;setWorH(0, 'w')&quot;&gt;200&lt;/a&gt;
+                    &lt;a href=&quot;javascript:;&quot; onclick=&quot;setWorH(1, 'w')&quot;&gt;300&lt;/a&gt;
+                    &lt;a href=&quot;javascript:;&quot; onclick=&quot;setWorH(2, 'w')&quot;&gt;400&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;setHeight&quot;&gt;
+                    &lt;span&gt;请选择高度（单位px）：&lt;/span&gt;
+                    &lt;a href=&quot;javascript:;&quot; onclick=&quot;setWorH(0, 'h')&quot;&gt;200&lt;/a&gt;
+                    &lt;a href=&quot;javascript:;&quot; onclick=&quot;setWorH(1, 'h')&quot;&gt;300&lt;/a&gt;
+                    &lt;a href=&quot;javascript:;&quot; onclick=&quot;setWorH(2, 'h')&quot;&gt;400&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;btn-group&quot;&gt;
+                    &lt;button class=&quot;btn&quot; type=&quot;button&quot; id=&quot;reset&quot; onclick=&quot;resetClass()&quot;&gt;重置&lt;/button&gt;
+                    &lt;button class=&quot;btn&quot; type=&quot;button&quot; id=&quot;confirm&quot; onclick=&quot;confirmClass()&quot;&gt;确定&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+<ol start="3">
+<li>JavaScript</li>
+</ol>
+<pre><code class="language-javascript">// common
+        var oDiv = document.getElementById('oDiv');
+        var myMoadl = document.getElementById('myMoadl');
+        var isConfirm = false;
+
+        // 初始化判断是否存在本地存储样式
+        function initoDivClass() {
+            if (localStorage.getItem('oDivClass')) {
+                let oDivClass = JSON.parse(localStorage.getItem('oDivClass'));
+                with (oDiv.style) {
+                    width = oDivClass.width;
+                    height = oDivClass.height;
+                    background = oDivClass.background;
+                }
+
+            } else {
+                with (oDiv.style) {
+                    width = 100 + 'px';
+                    height = 100 + 'px';
+                    background = '';
+                };
+            }
+
+        };
+        initoDivClass();
+
+        // modal show
+        function moadlShow() {
+            myMoadl.style.display = 'block';
+        };
+
+        // modal close
+        function moadlClose() {
+            if (localStorage.getItem('oDivClass')) {
+                let oDivClass = JSON.parse(localStorage.getItem('oDivClass'));
+                if (oDivClass.isConfirm) {
+                    myMoadl.style.display = 'none';
+                    with (oDiv.style) {
+                        width = oDivClass.width;
+                        height = oDivClass.height;
+                        background = oDivClass.background;
+                    }
+                } else {
+                    with (oDiv.style) {
+                        width = 100 + 'px';
+                        height = 100 + 'px';
+                        background = '';
+                    };
+                    myMoadl.style.display = 'none';
+                }
+            } else {
+                if (isConfirm) {
+                    myMoadl.style.display = 'none';
+                } else {
+                    with (oDiv.style) {
+                        width = 100 + 'px';
+                        height = 100 + 'px';
+                        background = '';
+                    };
+                    myMoadl.style.display = 'none';
+                }
+            }
+        };
+
+        // set color
+        function setColor(index) {
+            let colorArr = ['red', 'green', 'blue'];
+            oDiv.style.background = colorArr[index];
+        };
+
+        //  width &amp;&amp; height arr
+        const whArr = [200, 300, 400];
+        function setWorH(index, _type) {
+            if (_type == 'w') {  // 设置宽度
+                oDiv.style.width = whArr[index] + 'px';
+            } else if (_type == 'h') {
+                oDiv.style.height = whArr[index] + 'px';
+            };
+        };
+
+        // reset
+        function resetClass() {
+            with (oDiv.style) {
+                width = 100 + 'px';
+                height = 100 + 'px';
+                background = 'none';
+            }
+            isConfirm = false;
+            localStorage.removeItem('oDivClass');
+        }
+
+        // confirm
+        function confirmClass() {
+            myMoadl.style.display = 'none';
+            isConfirm = true;
+            let oDivClass = {
+                isConfirm: isConfirm,
+                width: oDiv.style.width,
+                height: oDiv.style.height,
+                background: oDiv.style.background
+            };
+            localStorage.setItem('oDivClass', JSON.stringify(oDivClass));
+        }
+</code></pre>
+<h2 id="总结">总结</h2>
+<p>不知道说什么 。 。 。</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/tao-bao-dian-pu-she-ji-gui-fan">
+              <h3 class="post-title">
+                淘宝店铺设计规范
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
