@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>console不止.log() | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557735905002">
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557736447499">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
 
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557735905002" alt="">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557736447499" alt="">
   </a>
   <h1 class="site-title">
     Tan&#39;s-Blog
@@ -98,10 +98,10 @@
             
             <div class="post-content">
               <h2 id="前言">前言</h2>
-<p>刚开始学JS的时候，老师就说过要多用<code>console.log()</code> 打印信息。不过也是对于我这种初学者来说<code>console.log()</code>已经够用了，随着学习的深入，<code>log()</code> 面对一个长长的数组时，就显得不是很直观。这个时候就可以用 <code>console.table()</code>来直观显示这一数组 。</p>
+<p>刚开始学JS的时候，老师就说过要多用<code>console.log()</code> 打印信息。不过也是对于我这种初学者来说<code>console.log()</code>已经够用了，随着学习的深入，<code>log()</code> 面对一个长长的数组时，就显得不是很直观。这个时候就可以用 <code>console.table()</code>来直观显示这一数组 。接下来和大家介绍一下<code>console</code>的几个比较常用的方法。</p>
 <h2 id="1-consolelog">1. console.log()</h2>
 <p>其实<code>console.log()</code>还隐藏着很多让人意想不到的功能，比如说打印出带<code>css</code>样式的文字，通过<code>%s</code>和<code>%o</code>(注意是字母 o)占位符进行传值。</p>
-<h4 id="11-s和o">1.1 %s和%o</h4>
+<h4 id="11-s和o占位符">1.1 %s和%o占位符</h4>
 <p><img src="https://qq1332783374.github.io/post-images/1557717587934.png" alt=""></p>
 <pre><code class="language-javascript">
 var user = {name: 'tan'};
@@ -124,7 +124,7 @@ console.log('Hello %s %o', 'World', user);
 <h2 id="2-consoletable">2. console.table()</h2>
 <p>这个API我也是最近才发现的，有点惊讶，居然还有这么好用的东西，话不多说自行体验。</p>
 <p>假设有这么一个数组：</p>
-<pre><code class="language-javscript">var arr = [
+<pre><code class="language-javascript">var arr = [
         {id: 1, name: '小明', age: '18'},
         {id: 2, name: '小红', age: '19'},
         {id: 3, name: '小东', age: '18'},
@@ -156,13 +156,13 @@ console.log('Hello %s %o', 'World', user);
 <h2 id="5-consoleassert">5. console.assert()</h2>
 <p>这个是用来判断<code>true</code>和<code>false</code>的，而且只有为<code>false</code>的时候才行，具体用处我也不是很理解0.0，可能没有遇到这种场景。</p>
 <p><img src="https://qq1332783374.github.io/post-images/1557735086430.png" alt=""></p>
-<p>参考资料：</p>
+<p>参考文献：</p>
 <ul>
 <li>
-<p>掘金-前端小智-【译】灵活使用 console 让 js 调试更简单 (【译】灵活使用 console 让 js 调试更简单)[https://juejin.im/post/5ca6bf5151882543fc5e3bb0#heading-5]</p>
+<p>掘金-前端小智-【译】灵活使用 console 让 js 调试更简单-[https://juejin.im/post/5ca6bf5151882543fc5e3bb0#heading-5](【译】灵活使用 console 让 js 调试更简单)</p>
 </li>
 <li>
-<p>掘金小册 -你不知道的 Chrome 调试技巧 (你不知道的 Chrome 调试技巧)[https://juejin.im/book/5c526902e51d4543805ef35e/section/5c5269026fb9a049f1549e4a]</p>
+<p>掘金小册 -《你不知道的 Chrome 调试技巧》- [https://juejin.im/book/5c526902e51d4543805ef35e/section/5c5269026fb9a049f1549e4a](你不知道的 Chrome 调试技巧)</p>
 </li>
 </ul>
 
