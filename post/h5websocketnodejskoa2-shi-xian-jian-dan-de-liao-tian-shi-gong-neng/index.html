@@ -4,7 +4,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>H5+WebSocket+Node.js+Koa2 实现简单的聊天室功能 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557672447117">
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557712130682">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
 
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557672447117" alt="">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557712130682" alt="">
   </a>
   <h1 class="site-title">
     Tan&#39;s-Blog
@@ -139,7 +139,7 @@ app.listen(3000);
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;聊天室&lt;/title&gt;
+    &lt;title&gt;前端切图工程师&lt;/title&gt;
     &lt;style&gt;
         .chat-room
         {
@@ -149,11 +149,12 @@ app.listen(3000);
             border: 1px solid #ddd;
             position: relative;
             margin: 0 auto;
+            overflow: hidden;
         }
         .chat-content
         {
             width: 100%;
-            height: 470px;
+            height: 450px;
             overflow:auto;
         }
         .chat-op
@@ -184,6 +185,7 @@ app.listen(3000);
     var chatContent = document.getElementById('chatContent');
     var oContent = document.getElementById('content');
 
+
     /* 封装 WebSocket 实例化的方法  */
     var CreateWebSocket = (function () {
         return function (urlValue) {
@@ -212,6 +214,8 @@ app.listen(3000);
 
         chatContent.appendChild(oFriendItem);
 
+        // 聊天内容置底部
+        chatContent.scrollTop = chatContent.scrollHeight;
 
     };
 
@@ -238,6 +242,9 @@ app.listen(3000);
 
         oContent.value = '';
 
+        // 聊天内容置底部
+        chatContent.scrollTop = chatContent.scrollHeight;
+
         webSocket.send(str);
     };
 
@@ -245,11 +252,13 @@ app.listen(3000);
     document.getElementById(&quot;close&quot;).addEventListener(&quot;click&quot;, function () {
         webSocket.close();
     });
+
+
 &lt;/script&gt;
 &lt;/html&gt;
 </code></pre>
 <p>参考资料：
-感谢博客园的大神，(参考文献)[https://www.cnblogs.com/lovling/p/7440360.html]</p>
+感谢博客园的大神，<a href="%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">https://www.cnblogs.com/lovling/p/7440360.html</a></p>
 
             </div>
           </article>
