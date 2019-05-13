@@ -1,0 +1,223 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>console不止.log() | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557735905002">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557735905002" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              console不止.log()
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-13 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/O5PkCIrKv" class="post-tags">
+                  # Chome
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/console-bu-zhi-log.jpeg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="前言">前言</h2>
+<p>刚开始学JS的时候，老师就说过要多用<code>console.log()</code> 打印信息。不过也是对于我这种初学者来说<code>console.log()</code>已经够用了，随着学习的深入，<code>log()</code> 面对一个长长的数组时，就显得不是很直观。这个时候就可以用 <code>console.table()</code>来直观显示这一数组 。</p>
+<h2 id="1-consolelog">1. console.log()</h2>
+<p>其实<code>console.log()</code>还隐藏着很多让人意想不到的功能，比如说打印出带<code>css</code>样式的文字，通过<code>%s</code>和<code>%o</code>(注意是字母 o)占位符进行传值。</p>
+<h4 id="11-s和o">1.1 %s和%o</h4>
+<p><img src="https://qq1332783374.github.io/post-images/1557717587934.png" alt=""></p>
+<pre><code class="language-javascript">
+var user = {name: 'tan'};
+
+console.log('Hello %s %o', 'World', user);
+
+</code></pre>
+<h4 id="12-打印带样式信息">1.2 打印带样式信息</h4>
+<p><strong>console.log('%cMsg', 'css')</strong></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557718016104.png" alt=""></p>
+<pre><code class="language-javascript">console.log('Hello %cWorld', 'color: #2b99ff; font-size: 24px;');
+</code></pre>
+<h4 id="13-增强log信息的阅读体验">1.3 增强log()信息的阅读体验</h4>
+<p>假设有这么一个场景，你需要一次打印好几个变量信息，而你又不想写好几个<code>console.log()</code>进行一次次打印。这时候你可能会一次打印全部变量，场景如下：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557718510598.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557718515652.png" alt=""></p>
+<p>那么问题来了，对象少的时候还是比较好辨别。那如果对象多了，就显得有点混乱了。为了提高它的可读性，可以给这些参数用一个<code>{}</code>包起来，就会有不一样的效果。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557718717009.png" alt=""></p>
+<p><img src="https://qq1332783374.github.io/post-images/1557718722663.png" alt=""></p>
+<h2 id="2-consoletable">2. console.table()</h2>
+<p>这个API我也是最近才发现的，有点惊讶，居然还有这么好用的东西，话不多说自行体验。</p>
+<p>假设有这么一个数组：</p>
+<pre><code class="language-javscript">var arr = [
+        {id: 1, name: '小明', age: '18'},
+        {id: 2, name: '小红', age: '19'},
+        {id: 3, name: '小东', age: '18'},
+        {id: 4, name: '小莉', age: '18'},
+        {id: 5, name: '小伟', age: '20'}
+    ]
+</code></pre>
+<ol>
+<li>用<code>console.log()</code>时是这样的，效果不是那么一目了然：</li>
+</ol>
+<p><img src="https://qq1332783374.github.io/post-images/1557719635724.png" alt=""></p>
+<ol start="2">
+<li>用<code>console.table()</code>是这样的，一目了然：</li>
+</ol>
+<p><img src="https://qq1332783374.github.io/post-images/1557719731762.png" alt=""></p>
+<p><code>console.table()</code>的第二参数是选择显示的字段</p>
+<pre><code class="language-javascript">console.table(arr, ['id', 'name'])
+</code></pre>
+<p><img src="https://qq1332783374.github.io/post-images/1557719994746.png" alt=""></p>
+<blockquote>
+<p><code>console.table()</code>也支持node.js，不过要更新到10版本以上。同时这个也有个限制，就是最多只能处理<strong>1000</strong>条数据。</p>
+</blockquote>
+<h2 id="3-consoledir">3. console.dir()</h2>
+<p><code>console.log()</code>和<code>console.dir()</code>的区别是看图吧：</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557734303959.png" alt=""></p>
+<h2 id="4-consolewarn">4. console.warn()</h2>
+<p>更直观的看到一些警告的信息（个人理解）</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557734472331.png" alt=""></p>
+<h2 id="5-consoleassert">5. console.assert()</h2>
+<p>这个是用来判断<code>true</code>和<code>false</code>的，而且只有为<code>false</code>的时候才行，具体用处我也不是很理解0.0，可能没有遇到这种场景。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1557735086430.png" alt=""></p>
+<p>参考资料：</p>
+<ul>
+<li>
+<p>掘金-前端小智-【译】灵活使用 console 让 js 调试更简单 (【译】灵活使用 console 让 js 调试更简单)[https://juejin.im/post/5ca6bf5151882543fc5e3bb0#heading-5]</p>
+</li>
+<li>
+<p>掘金小册 -你不知道的 Chrome 调试技巧 (你不知道的 Chrome 调试技巧)[https://juejin.im/book/5c526902e51d4543805ef35e/section/5c5269026fb9a049f1549e4a]</p>
+</li>
+</ul>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/h5websocketnodejskoa2-shi-xian-jian-dan-de-liao-tian-shi-gong-neng">
+              <h3 class="post-title">
+                H5+WebSocket+Node.js+Koa2 实现简单的聊天室功能
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
