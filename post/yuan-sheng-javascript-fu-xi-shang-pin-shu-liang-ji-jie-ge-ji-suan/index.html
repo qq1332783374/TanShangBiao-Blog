@@ -1,0 +1,299 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>原生JavaScript复习-商品数量及价格计算 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557798890176">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557798890176" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              原生JavaScript复习-商品数量及价格计算
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-13 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/YHHgHvnEV" class="post-tags">
+                  # 原生JavaScript
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/yuan-sheng-javascript-fu-xi-shang-pin-shu-liang-ji-jie-ge-ji-suan.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="效果">效果</h2>
+<p><img src="https://qq1332783374.github.io/post-images/1557798781997.gif" alt=""></p>
+<h2 id="代码">代码</h2>
+<h4 id="html-结构">html 结构</h4>
+<pre><code class="language-html">&lt;div&gt;
+    &lt;ul id=&quot;list-group&quot;&gt;
+        &lt;li&gt;
+            &lt;input type=&quot;button&quot; value=&quot;-&quot; name=&quot;sub&quot;/&gt;
+            &lt;strong&gt;0&lt;/strong&gt;
+            &lt;input type=&quot;button&quot; value=&quot;+&quot; name=&quot;add&quot;/&gt;
+            单价：&lt;em&gt;12.5元&lt;/em&gt;
+            小计：&lt;span&gt;0元&lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;input type=&quot;button&quot; value=&quot;-&quot; name=&quot;sub&quot;/&gt;
+            &lt;strong&gt;0&lt;/strong&gt;
+            &lt;input type=&quot;button&quot; value=&quot;+&quot; name=&quot;add&quot;/&gt;
+            单价：&lt;em&gt;10元&lt;/em&gt;
+            小计：&lt;span&gt;0元&lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;input type=&quot;button&quot; value=&quot;-&quot; name=&quot;sub&quot;/&gt;
+            &lt;strong&gt;0&lt;/strong&gt;
+            &lt;input type=&quot;button&quot; value=&quot;+&quot; name=&quot;add&quot;/&gt;
+            单价：&lt;em&gt;22.5元&lt;/em&gt;
+            小计：&lt;span&gt;0元&lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;input type=&quot;button&quot; value=&quot;-&quot; name=&quot;sub&quot;/&gt;
+            &lt;strong&gt;0&lt;/strong&gt;
+            &lt;input type=&quot;button&quot; value=&quot;+&quot; name=&quot;add&quot;/&gt;
+            单价：&lt;em&gt;6.5元&lt;/em&gt;
+            小计：&lt;span&gt;0元&lt;/span&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p id=&quot;allUnit&quot;&gt;商品数量合计共:0件&lt;/p&gt;
+    &lt;p id=&quot;allPrice&quot;&gt;总消费：0元&lt;br/&gt;
+    &lt;p id=&quot;maxPrice&quot;&gt;其中购买的商品总价最贵的：0元&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<h4 id="js">JS</h4>
+<pre><code class="language-javascript">// 单个商品数量dom
+    var oUnit = document.getElementsByTagName('strong');
+    // 单价dom
+    var onePrice = document.getElementsByTagName('em');
+    // 小计 dom
+    var subTotal = document.getElementsByTagName('span');
+    // 总件数 dom
+    var allUnit = document.getElementById('allUnit');
+    // 总价 dom
+    var oAllPrice = document.getElementById('allPrice');
+    // 最贵商品
+    var maxPrice = document.getElementById('maxPrice');
+
+    // li
+    var oUl = document.getElementById('list-group');
+    var oLi = oUl.getElementsByTagName('li');
+
+    for (let i =0; i&lt;oLi.length; i++) {
+
+        handleShop(i);
+
+    };
+    // 商品加减
+    function handleShop(index) {
+        let addBtn = document.getElementsByName('add');
+        let subBtn = document.getElementsByName('sub');
+        let num = 0;
+        // 商品添加
+        addBtn[index].onclick = () =&gt; {
+            num ++;
+            // 单个商品数量
+            oUnit[index].innerText = num;
+
+            // 小计
+            subTotal[index].innerText = parseFloat(onePrice[index].innerText)*num + '元';
+
+            // 总件数
+            allUnit.innerText = `商品数量合计共:${total()}件`;
+
+            // 总价
+            oAllPrice.innerText = `总消费：${allPrice()}元`;
+
+            // 最大值
+            maxPrice.innerText = `其中购买的商品总价最贵的：${max()}元`;
+        };
+
+        // 商品减去
+        subBtn[index].onclick = () =&gt; {
+            num -- ;
+            if (num &lt; 0){
+                num = 0;
+            };
+            // 单个商品数量
+            oUnit[index].innerText = num;
+
+            // 小计
+            subTotal[index].innerText = parseFloat(onePrice[index].innerText)*num + '元';
+
+            // 总件数
+            allUnit.innerText = `商品数量合计共:${total()}件`;
+
+            // 总价
+            oAllPrice.innerText = `总消费：${allPrice()}元`;
+
+            // 最大值
+            maxPrice.innerText = `其中购买的商品总价最贵的：${max()}元`;
+        };
+
+    };
+
+    // 总件数
+    function total() {
+        let sum = 0;
+        for (let i=0; i&lt;oUnit.length; i++) {
+            sum += parseInt(oUnit[i].innerText)
+        };
+        return sum;
+    };
+    
+    // 总价
+    function allPrice() {
+        let sum = 0;
+        for (let i=0; i&lt;subTotal.length; i++) {
+            sum += parseFloat(subTotal[i].innerText);
+        };
+        return sum;
+    };
+
+    // 最大值
+    function max() {
+        let arr = [];
+
+        for (let i=0; i&lt;subTotal.length; i++) {
+            arr.push(parseFloat(subTotal[i].innerText));
+        };
+        // 最大值，最小值反过来就可以
+        arr.sort((a, b) =&gt; {
+            return b-a
+        });
+
+        return arr[0];
+    }
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/console-bu-zhi-log">
+              <h3 class="post-title">
+                console不止.log()
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
