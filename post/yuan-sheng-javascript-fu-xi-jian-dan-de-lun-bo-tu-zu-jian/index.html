@@ -1,0 +1,305 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>原生JavaScript复习-简单的轮播图组件 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1557887674839">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1557887674839" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              原生JavaScript复习-简单的轮播图组件
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-15 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/YHHgHvnEV" class="post-tags">
+                  # 原生JavaScript
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/yuan-sheng-javascript-fu-xi-jian-dan-de-lun-bo-tu-zu-jian.jpeg')">
+              </div>
+            
+            <div class="post-content">
+              <h2 id="效果">效果</h2>
+<p><img src="https://qq1332783374.github.io/post-images/1557887559707.gif" alt=""></p>
+<h2 id="代码">代码</h2>
+<h4 id="css-样式">css 样式</h4>
+<pre><code class="language-css">* {
+            margin: 0;
+            padding: 0;
+        }
+        .main {
+            width: 800px;
+            margin: 20px auto;
+        }
+        ul li {
+            list-style: none;
+            cursor: pointer;
+        }
+        .pic {
+            width: 100%;
+            position: relative;
+            height: 520px;
+        }
+        .pic img {
+            width: 100%;
+            height: 520px;
+        }
+        .pic .indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 45%;
+        }
+        .pic .indicators li {
+            width: 20px;
+            height: 20px;
+            background: rgba(0,0,0,0.55);
+            border-radius: 50%;
+            float: left;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .pic .swiper {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+
+        .pic ul li.active {
+            background: rgba(0,255,255,0.55);
+        }
+        a.btn {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            position: absolute;
+            text-align: center;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 600;
+            top: 45%;
+        }
+        a.next {
+            right: 0;
+        }
+</code></pre>
+<h4 id="html-结构">html 结构</h4>
+<pre><code class="language-html">&lt;div class=&quot;main&quot;&gt;
+        &lt;div class=&quot;pic&quot;&gt;
+            &lt;!-- 图--&gt;
+            &lt;div class=&quot;swiper&quot;&gt;
+                &lt;img src=&quot;&quot; id=&quot;swiper&quot;&gt;
+            &lt;/div&gt;
+
+            &lt;!--点--&gt;
+            &lt;ul class=&quot;indicators&quot; id=&quot;indicators&quot;&gt;
+
+            &lt;/ul&gt;
+
+            &lt;!-- 切换按钮--&gt;
+            &lt;a href=&quot;javascript:;&quot; class=&quot;btn next&quot; onclick=&quot;next()&quot;&gt; &gt; &lt;/a&gt;
+            &lt;a href=&quot;javascript:;&quot; class=&quot;btn prev&quot; onclick=&quot;prev()&quot;&gt; &lt; &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+<h4 id="javascript">JavaScript</h4>
+<pre><code class="language-javascript">var images = ['https://www.tanshangbiao.cn/project/images/bg.jpg','https://www.tanshangbiao.cn/project/images/bg-1.jpg','https://www.tanshangbiao.cn/project/images/bg-2.jpg'];
+
+        var num = 0;
+        var oSwiper = document.getElementById('swiper');
+        var oIndicators = document.getElementById('indicators');
+
+        /** 初始化 */
+        function swiperInit() {
+            oSwiper.src = images[num];
+
+            for (let i=0; i&lt;images.length; i++) {
+                let oLi = document.createElement('li');
+                oLi.addEventListener('click', clickInd);
+                oIndicators.appendChild(oLi);
+            };
+            oIndicators.getElementsByTagName('li')[num].className = 'active';
+        };
+        swiperInit();
+
+        /** 下一张*/
+        function next() {
+            num ++ ;
+            if (num &gt; images.length - 1) {
+                num = 0 ;
+            };
+            oSwiper.src = images[num];
+
+            ind();
+        };
+
+        /** 上一张 */
+        function prev() {
+            num -- ;
+            if (num &lt; 0) {
+                num = images.length - 1;
+            };
+            oSwiper.src = images[num];
+
+            ind();
+        };
+
+        /** 切点 */
+        function ind() {
+            let oIndItem = oIndicators.getElementsByTagName('li');
+
+            for (let i = 0; i&lt;oIndItem.length; i++) {
+                oIndItem[i].className = '';
+            };
+
+            oIndItem[num].className = 'active';
+        };
+
+        function clickInd() {
+            let oIndItem = oIndicators.getElementsByTagName('li');
+
+            for (let i=0; i&lt;oIndItem.length; i++) {
+                oIndItem[i].onclick = () =&gt; {
+                    num = i;
+                    ind();
+                    oSwiper.src = images[i];
+                }
+            }
+        }
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/yuan-sheng-javascript-fu-xi-shang-pin-shu-liang-ji-jie-ge-ji-suan">
+              <h3 class="post-title">
+                原生JavaScript复习-商品数量及价格计算
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
