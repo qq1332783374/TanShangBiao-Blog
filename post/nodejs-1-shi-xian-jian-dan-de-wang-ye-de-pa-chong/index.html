@@ -1,0 +1,300 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NodeJS--1--实现简单的网页的爬虫 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1558426118929">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1558426118929" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              NodeJS--1--实现简单的网页的爬虫
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-21 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/sCVj6O2xa" class="post-tags">
+                  # 爬虫
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/mDJQ8TjHY" class="post-tags">
+                  # nodeJS
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/nodejs-1-shi-xian-jian-dan-de-wang-ye-de-pa-chong.jpeg')">
+              </div>
+            
+            <div class="post-content">
+              <blockquote>
+<p>感谢 <strong>GitHub</strong> 的<a href="https://github.com/alsotang?tab=repositories">alsotang</a> 提供的开源学习项目 <a href="https://github.com/alsotang/node-lessons">node-lessons</a> ，昨天看了一天收获还是不少，不过有些点还不是很理解。今天总结了一下，基本吸收的知识点。</p>
+</blockquote>
+<h2 id="知识点">知识点</h2>
+<ol>
+<li>使用 Express 实现简单的node服务</li>
+<li>使用 superagent 抓取网页</li>
+<li>使用 cheerio 分析网页</li>
+</ol>
+<h2 id="1-使用-express-实现简单的node服务">1. 使用 Express 实现简单的node服务</h2>
+<h4 id="11-express-框架介绍">1.1 Express 框架介绍</h4>
+<blockquote>
+<p>Express 基于 Node.js 平台，快速、开放、极简的 Web 开发框架</p>
+</blockquote>
+<ul>
+<li><a href="http://expressjs.com/">官网</a></li>
+</ul>
+<h4 id="12-项目初始化">1.2 项目初始化</h4>
+<blockquote>
+<p>前提是要安装 **Node.js **</p>
+</blockquote>
+<p>接下来新建一个目录</p>
+<pre><code class="language-javascript">mkdir myapp
+</code></pre>
+<p>并切换到新建好的目录下：</p>
+<pre><code class="language-javascript">cd myapp
+</code></pre>
+<p>通过 <code>npm init -y</code> 命令初始化项目，这时候会生成一个 <code>package.json</code>的文件，这个文件是个好东西，想了解更多请前往 <a href="https://docs.npmjs.com/files/package.json"> Specifics of npm’s package.json handling.</a></p>
+<p>接下来在 myapp 目录下安装 Express 并将其保存到依赖列表中。如下：</p>
+<pre><code class="language-javascript">npm install express --save
+</code></pre>
+<p>新建一个<strong>app.js</strong> 文件，输入一下代码：</p>
+<pre><code class="language-javascript">// 加载 express 模块
+const express = require('express')
+
+// 实例化 express
+const app = express()
+
+// 
+app.get('/', (req, res) =&gt; {
+	res.send('Hello Express')
+})
+
+// 端口监听
+app.listen(3000, () =&gt; {
+	console.log('server is running at http://localhost:3000')
+})
+</code></pre>
+<p>执行一下命令：</p>
+<pre><code class="language-javascript">node app.js
+</code></pre>
+<p>这时候终端会输出相关的打印信息，
+<img src="https://qq1332783374.github.io/post-images/1558423357462.png" alt=""></p>
+<p>通过谷歌访问<code>localhost:3000</code>就可以看到<code>Hello Express</code></p>
+<p><img src="https://qq1332783374.github.io/post-images/1558423377543.png" alt=""></p>
+<h4 id="小结">小结</h4>
+<p>到这里一个简单的 express 应用已经完成了，接下来就是通过 <strong>superagent</strong> 和 <strong>cheerio</strong> 实现一个简单网页爬虫</p>
+<h2 id="2-简单的网页爬虫">2. 简单的网页爬虫</h2>
+<p>这里是在上面的基础上继续完成来实现这个简单的网页爬虫，通过访问<code>localhost:3000</code>时，以 json 的形式在页面显示输出 CNode(https://cnodejs.org/ ) 社区首页的所有帖子标题和链接。</p>
+<p><img src="https://qq1332783374.github.io/post-images/1558423915646.png" alt=""></p>
+<p>依赖介绍：</p>
+<ul>
+<li><a href="http://visionmedia.github.io/superagent/">superagent</a> 一个用来发 http 请求的库</li>
+<li><a href="https://github.com/cheeriojs/cheerio">cheerio</a>，Node.js 版的 jQuery ，主要是用来读取网页的节点属性和相应的值</li>
+</ul>
+<p>插件安装：</p>
+<pre><code class="language-javascript">npm install superagent cheerio --save
+</code></pre>
+<p>在<strong>app.js</strong>引入相关的依赖：</p>
+<pre><code class="language-javascript">const superagent = require('superagent')
+const cheerio = require('cheerio')
+</code></pre>
+<p>核心代码：</p>
+<pre><code class="language-javascript">app.get('/',  (req, res, next) =&gt; {
+  // 1. 用 superagent 去发起请求抓取 https://cnodejs.org/ 的 html 内容
+  superagent.get('https://cnodejs.org/')
+    .end((err, res) =&gt; {
+      // 2. 错误判断处理
+      if (err) {
+        return next(err)
+      }
+			/**
+			* 3. res.text 是存网页 html 内容
+			* 4. 将爬取到的内容传到 cheerio.load(res.text) 方法进行节点的读取
+			* 5. 接下来就是 jQuery的操作获取节点的值了 
+			*/
+      var $ = cheerio.load(res.text)
+      var items = []
+      $('#topic_list .topic_title').each((idx, element) =&gt; {
+        var $element = $(element)
+        items.push({
+          title: $element.attr('title'),
+          href: $element.attr('href')
+        })
+      })
+			// 6. 发送到页面显示
+      res.send(items)
+    })
+})
+</code></pre>
+<p><strong>最终代码：</strong></p>
+<pre><code class="language-javascript">const express = require('express')
+const superagent = require('superagent')
+const cheerio = require('cheerio')
+
+const app = express()
+
+app.get('/', (req, res, next) =&gt; {
+	superagent.get('https://cnodejs.org/')
+		.end((err, res) =&gt; {
+			if (err) {
+				return next(err)
+			}
+			
+			var $ = cheerio.load(res.text)
+			var items = []
+			
+			$('#topic_list .topic_title').each((idx, element) =&gt; {
+        var $element = $(element)
+        items.push({
+          title: $element.attr('title'),
+          href: $element.attr('href')
+        })
+      })
+			
+      res.send(items)
+		})
+])
+
+
+app.listen(3000, () =&gt; {
+	console.log('server is running at http://localhost:3000')
+})
+</code></pre>
+<p>启动：</p>
+<pre><code class="language-javascript">
+node app.js
+
+</code></pre>
+<h2 id="总结">总结</h2>
+<p>一个简单的网页爬虫到这里就完成啦！！ 不过并发过高会被ip可能会被封掉。</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/yuan-sheng-javascript-fu-xi-jian-dan-de-lun-bo-tu-zu-jian">
+              <h3 class="post-title">
+                原生JavaScript复习-简单的轮播图组件
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
