@@ -1,0 +1,238 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NodeJS--3--使用 async 控制并发 | Tan&#39;s-Blog</title>
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1558444854742">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qq1332783374.github.io">
+  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1558444854742" alt="">
+  </a>
+  <h1 class="site-title">
+    Tan&#39;s-Blog
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://qq1332783374.github.io" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              NodeJS--3--使用 async 控制并发
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-05-21 ·
+              </time>
+              
+                <a href="https://qq1332783374.github.io/tag/sCVj6O2xa" class="post-tags">
+                  # 爬虫
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
+                  # 笔记
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/mDJQ8TjHY" class="post-tags">
+                  # nodeJS
+                </a>
+              
+                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
+                  # 前端
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/nodejs-3-shi-yong-async-kong-zhi-bing-fa.jpeg')">
+              </div>
+            
+            <div class="post-content">
+              <blockquote>
+<p>文章出自<strong>GitHub</strong>：<a href="https://github.com/alsotang">alsotang</a> 的 <a href="node-lessons">https://github.com/alsotang/node-lessons</a> 感谢大神</p>
+</blockquote>
+<p>代码</p>
+<pre><code class="language-javascript">const async = require('async')
+const superagent = require('superagent')
+const cheerio = require('cheerio')
+var eventproxy = require('eventproxy')
+const url = require('url')
+
+// 并发计数器
+var concurrencyCount = 0
+var fetchUrl = (url, callback) =&gt; {
+    // delay 的值为 2000 以内的随机整数
+    const delay = parseInt((Math.random() * 10000000) % 2000, 10)
+    concurrencyCount++
+    console.log('现在的并发数是', concurrencyCount, '，正在抓取的是', url, '，耗时' + delay + '毫秒');
+    setTimeout(() =&gt; {
+        concurrencyCount--
+        callback(null, url)
+    }, delay)
+}
+
+var urls = []
+var condeUrl = 'https://cnodejs.org/'
+// 爬取url
+superagent.get(condeUrl)
+    .end((err, res) =&gt; {
+        if (err) return console.error(err);
+
+        var $ = cheerio.load(res.text)
+        // 爬取首页的url
+        $('#topic_list .topic_title').each((idx, el) =&gt; {
+            var $el = $(el)
+            // $element.attr('href') 本来的样子是 /topic/542acd7d5d28233425538b04
+            // 我们用 url.resolve 来自动推断出完整 url，变成
+            // https://cnodejs.org/topic/542acd7d5d28233425538b04 的形式
+            var href = url.resolve(condeUrl, $el.attr('href'))
+            urls.push(href)
+        })
+
+        async.mapLimit(urls, 5, (url, callback) =&gt; {
+            fetchUrl(url, callback)
+        }, (err, result) =&gt; {
+            console.log('final:')
+            console.log(result)
+
+            var ep = new eventproxy()
+
+            ep.after('topic_html', urls.length, (topics) =&gt; {
+                topics = topics.map((topicPair) =&gt; {
+                    var topicUrl = topicPair[0]
+                    var topicHtml = topicPair[1]
+                    var $ = cheerio.load(topicHtml)
+                    return ({
+                        title: $('.topic_full_title').text().trim(),
+                        href: topicUrl,
+                        comment1: $('.reply_content').eq(0).text().trim(),
+                        author: $('.user_card .user_name a').text().trim(),
+                        score: $('.user_card .floor .big').text().trim(),
+                        content: $('.markdown-text p').text().trim(),
+                    })
+                })
+
+                console.log('topics:');
+                console.log(topics);
+            })
+
+            urls.forEach((topicUrl) =&gt; {
+                superagent.get(topicUrl)
+                    .end((err, res) =&gt; {
+                        console.log('fetch ' + topicUrl + ' successful');
+                        ep.emit('topic_html', [topicUrl, res.text]);
+                    })
+            })
+
+        })
+    })
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qq1332783374.github.io/post/nodejs-2-shi-yong-eventproxy-kong-zhi-bing-fa-zhuan-zai">
+              <h3 class="post-title">
+                NodeJS--2--使用 eventproxy 控制并发(转载)
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'e317a113b2a1e0a25d73',
+    clientSecret: '49b08472e808a2d236a17a17c1499e2ef105b9b7',
+    repo: 'TanShangBiao-Blog',
+    owner: 'qq1332783374',
+    admin: ['qq1332783374'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
