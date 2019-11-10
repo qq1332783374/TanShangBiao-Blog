@@ -1,99 +1,111 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>win10-JavaWeb环境 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1564900987242">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<title>Tan&#39;s-Blog</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1573408223903">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Tan&#39;s-Blog - Atom Feed" href="https://qq1332783374.github.io/atom.xml">
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1564900987242" alt="">
-  </a>
-  <h1 class="site-title">
-    Tan&#39;s-Blog
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://qq1332783374.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1573408223903" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E7%8E%AF%E5%A2%83">环境</a></li>
+<li><a href="#1-jdk%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE">1. JDK环境配置</a><br>
+*
+<ul>
+<li><a href="#11-jdk%E5%AE%89%E8%A3%85%E7%9B%B4%E6%8E%A5%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%B0%B1%E8%A1%8C%E4%BA%86%E6%B3%A8%E6%84%8F%E8%AE%B0%E5%BE%97%E4%BD%A0%E7%9A%84%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84%E5%88%B0%E6%97%B6%E5%80%99%E6%9C%89%E7%94%A8-%E4%BE%8B%E5%A6%82%E6%88%91%E7%9A%84%E6%98%AFcprogram-filesjavajdk180_191">1.1 jdk安装直接下一步就行了，注意记得你的安装路径到时候有用。例如我的是：C:\Program Files\Java\jdk1.8.0_191</a></li>
+<li><a href="#12-%E5%AE%89%E8%A3%85%E5%AE%8C%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%B0%B1%E6%98%AF%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E4%BA%86">1.2 安装完接下来就是配置环境变量了。</a></li>
+</ul>
+</li>
+<li><a href="#2-tomcat%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE">2. Tomcat环境配置</a></li>
+<li><a href="#3-mysql%E9%85%8D%E7%BD%AE">3. MySQL配置</a></li>
+<li><a href="#%E7%BB%93%E8%AF%AD">结语</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="remixicon-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
     
       
-        <a href="https://qq1332783374.github.io" class="menu">
+        <a href="https://qq1332783374.github.io" class="menu" style="animation-delay: 0s">
           首页
         </a>
       
     
       
-        <a href="/archives" class="menu">
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
           归档
         </a>
       
     
       
-        <a href="/tags" class="menu">
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
           标签
         </a>
       
     
       
-        <a href="/post/about" class="menu">
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
           关于
         </a>
       
     
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://qq1332783374.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              win10-JavaWeb环境
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2019-01-17 ·
-              </time>
-              
-                <a href="https://qq1332783374.github.io/tag/0WwiNnRX7" class="post-tags">
-                  # JavaWeb
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
-                  # 笔记
-                </a>
-              
-            </div>
-            
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/win10-javaweb-huan-jing.jpeg')">
-              </div>
-            
-            <div class="post-content">
-              <h2 id="前言">前言</h2>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">win10-JavaWeb环境</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2019-01-17 / 4 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://qq1332783374.github.io/post-images/win10-javaweb-huan-jing.jpeg" alt="">
+        
+        <div class="post-content yue">
+          <h2 id="前言">前言</h2>
 <p>放假四五天在家有点闲，找点东西折腾一下。于是搞了一个JavaWeb的开发环境，然而我并不会Java，但并不影响这个环境的配置。</p>
 <h2 id="环境">环境</h2>
 <ul>
@@ -113,7 +125,7 @@
 <ul>
 <li>依次进入：我的电脑-属性-高级系统设置-环境变量</li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557471558031.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://qq1332783374.github.io/post-images/1557471558031.png" alt=""></figure>
 <ul>
 <li>在系统变量新建，变量名为 <code>JAVA_HOME</code>，变量值是刚才的安装路径，我的是：<code>C:\Program Files\Java\jdk1.8.0_191;</code></li>
 <li>继续新建变量，变量名为 <code>CLASSPATH</code> , 变量值 <code>.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code> (注意前面是有个点的)</li>
@@ -124,12 +136,12 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557471939069.png" alt=""></p>
+<figure data-type="image" tabindex="2"><img src="https://qq1332783374.github.io/post-images/1557471939069.png" alt=""></figure>
 <ul>
 <li>打开 <code>cmd</code>，打开cmd方法：<code>win键+r输入cmd</code> 或者直接找到打开。</li>
 <li>打开后依次输入 <code>java -version</code> 和 <code>javac -version</code> , 如果成功的话会分别输出，相应的版本信息，这时候就已经成功配置好jdk环境了。</li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557472080133.png" alt=""></p>
+<figure data-type="image" tabindex="3"><img src="https://qq1332783374.github.io/post-images/1557472080133.png" alt=""></figure>
 <h2 id="2-tomcat环境配置">2. Tomcat环境配置</h2>
 <p><strong>Tomcat的环境配置跟jdk的环境配置大同小异</strong></p>
 <ol>
@@ -138,13 +150,13 @@
 <li>编辑<code>Path</code>变量，新建，变量值为：Tomcat里面的bin目录，<code>E:\JavaWeb\apache-tomcat-8.5.37-windows-x64\apache-tomcat-8.5.37\bin</code>，确定保存就行了。</li>
 <li>用cmd打开Tomcat的bin目录,在cmd输入<code>startup</code>，这时候会自动弹出多一个终端，这就代表已经成功启动啦！</li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1557472379918.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557472386598.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557472394561.png" alt=""></p>
+<figure data-type="image" tabindex="4"><img src="https://qq1332783374.github.io/post-images/1557472379918.png" alt=""></figure>
+<figure data-type="image" tabindex="5"><img src="https://qq1332783374.github.io/post-images/1557472386598.png" alt=""></figure>
+<figure data-type="image" tabindex="6"><img src="https://qq1332783374.github.io/post-images/1557472394561.png" alt=""></figure>
 <ol start="5">
 <li>打开浏览器输入地址：<code>localhost:8080</code>，效果如下</li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1557473137378.png" alt=""></p>
+<figure data-type="image" tabindex="7"><img src="https://qq1332783374.github.io/post-images/1557473137378.png" alt=""></figure>
 <ol start="6">
 <li>简单介绍一下Tomcat的两个目录
 <ul>
@@ -186,8 +198,8 @@ default-storage-engine=INNODB
 <ol start="4">
 <li>这次打开终端的方式要用管理员身份打开了，不然会不行，权限不够。</li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1557473472214.png" alt=""></p>
-<p><strong>切换目录</strong>
+<figure data-type="image" tabindex="8"><img src="https://qq1332783374.github.io/post-images/1557473472214.png" alt=""></figure>
+<p><strong>切换目录</strong><br>
 <img src="https://qq1332783374.github.io/post-images/1557473497163.png" alt=""></p>
 <ol start="5">
 <li>在bin目录分别输入以下代码：</li>
@@ -196,7 +208,7 @@ default-storage-engine=INNODB
 <li>mysqld --install</li>
 <li>net start mysql</li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557473532775.png" alt=""></p>
+<figure data-type="image" tabindex="9"><img src="https://qq1332783374.github.io/post-images/1557473532775.png" alt=""></figure>
 <ol start="6">
 <li>MySQL 初始化设置，设置密码，操作如下：</li>
 </ol>
@@ -207,32 +219,54 @@ default-storage-engine=INNODB
 <li><code>flush privileges;</code>(刷新指令，记得要刷新)</li>
 <li><code>exit</code></li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557473612727.png" alt=""></p>
+<figure data-type="image" tabindex="10"><img src="https://qq1332783374.github.io/post-images/1557473612727.png" alt=""></figure>
 <ol start="7">
 <li>到这里基本完成啦！最后在安装个图形界面就行了，直接解压运行就ok，记得看里面的<strong>使用说明</strong>。</li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1557473855542.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557473862037.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557473868518.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557473876145.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557473882877.png" alt=""></p>
+<figure data-type="image" tabindex="11"><img src="https://qq1332783374.github.io/post-images/1557473855542.png" alt=""></figure>
+<figure data-type="image" tabindex="12"><img src="https://qq1332783374.github.io/post-images/1557473862037.png" alt=""></figure>
+<figure data-type="image" tabindex="13"><img src="https://qq1332783374.github.io/post-images/1557473868518.png" alt=""></figure>
+<figure data-type="image" tabindex="14"><img src="https://qq1332783374.github.io/post-images/1557473876145.png" alt=""></figure>
+<figure data-type="image" tabindex="15"><img src="https://qq1332783374.github.io/post-images/1557473882877.png" alt=""></figure>
 <h2 id="结语">结语</h2>
 <p>到这里一个JavaWeb的环境搭建完成，应该没什么错误 0.0。</p>
 
-            </div>
-          </article>
         </div>
-    
+
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/ji-yi-ci-yuan-sheng-javascript-feng-zhuang-ajax-han-shu">
-              <h3 class="post-title">
-                记一次原生JavaScript封装AJAX函数
-              </h3>
-            </a>
-          </div>  
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/0WwiNnRX7">
+            <span class="flex-auto">JavaWeb</span>
+          </a>
         
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/ZRC-SBBXO">
+            <span class="flex-auto">笔记</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://qq1332783374.github.io/post/deepin-linux-mongodb-shu-ju-ku-an-zhuang">
+                <h3 class="post-title">
+                  <i class="remixicon-arrow-left-line"></i>
+                  Deepin-Linux MongoDB数据库安装
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://qq1332783374.github.io/post/ji-yi-ci-yuan-sheng-javascript-feng-zhuang-ajax-han-shu">
+                <h3 class="post-title">
+                  记一次原生JavaScript封装AJAX函数
+                  <i class="remixicon-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
 
         
           
@@ -258,16 +292,108 @@ var dsqjs = new DisqusJS(options)
 
           
         
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
 
       </div>
     </div>
+
+    <script src="https://qq1332783374.github.io/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
   </body>
 </html>

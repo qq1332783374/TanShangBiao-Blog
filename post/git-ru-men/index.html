@@ -1,103 +1,106 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>git入门 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1564900987242">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<title>Tan&#39;s-Blog</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1573408223903">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Tan&#39;s-Blog - Atom Feed" href="https://qq1332783374.github.io/atom.xml">
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1564900987242" alt="">
-  </a>
-  <h1 class="site-title">
-    Tan&#39;s-Blog
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://qq1332783374.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1573408223903" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%B5%B7%E6%AD%A5">起步</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE">配置</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">常用命令</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="remixicon-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
     
       
-        <a href="https://qq1332783374.github.io" class="menu">
+        <a href="https://qq1332783374.github.io" class="menu" style="animation-delay: 0s">
           首页
         </a>
       
     
       
-        <a href="/archives" class="menu">
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
           归档
         </a>
       
     
       
-        <a href="/tags" class="menu">
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
           标签
         </a>
       
     
       
-        <a href="/post/about" class="menu">
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
           关于
         </a>
       
     
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://qq1332783374.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              git入门
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2018-07-31 ·
-              </time>
-              
-                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
-                  # 笔记
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/FqRJdUE8d" class="post-tags">
-                  # git
-                </a>
-              
-            </div>
-            
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/git-ru-men.jpeg')">
-              </div>
-            
-            <div class="post-content">
-              <h2 id="起步">起步</h2>
-<p>首先到官网下载一个<strong>git</strong>，我这里以win10为例。
-<a href="%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80">https://git-scm.com/downloads</a>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">git入门</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2018-07-31 / 3 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://qq1332783374.github.io/post-images/git-ru-men.jpeg" alt="">
+        
+        <div class="post-content yue">
+          <h2 id="起步">起步</h2>
+<p>首先到官网下载一个<strong>git</strong>，我这里以win10为例。<br>
+<a href="%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80">https://git-scm.com/downloads</a><br>
 下载好了直接下一步就行了，安装完了鼠标右键菜单会出现以下两个选项：</p>
-<p><img src="https://qq1332783374.github.io/post-images/1556604619144.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://qq1332783374.github.io/post-images/1556604619144.png" alt=""></figure>
 <h2 id="配置">配置</h2>
 <p>安装完<strong>git</strong>后，直接在桌面右键选择 <code>Git Bash Here</code>，进入git终端，进行配置。</p>
 <ol>
@@ -112,7 +115,7 @@ git config --global user.email &quot;your GitHub Email&quot;
 </ol>
 <pre><code class="language-javascript">git config -l
 </code></pre>
-<p><img src="https://qq1332783374.github.io/post-images/1556605195378.png" alt=""></p>
+<figure data-type="image" tabindex="2"><img src="https://qq1332783374.github.io/post-images/1556605195378.png" alt=""></figure>
 <ol start="3">
 <li>ssh配置</li>
 </ol>
@@ -131,7 +134,7 @@ git config --global user.email &quot;your GitHub Email&quot;
 <blockquote>
 <p>如果觉得 vim 不好操作,可以直接到 <strong>C盘</strong>找到文件</p>
 </blockquote>
-<p><img src="https://qq1332783374.github.io/post-images/1556606227944.png" alt=""></p>
+<figure data-type="image" tabindex="3"><img src="https://qq1332783374.github.io/post-images/1556606227944.png" alt=""></figure>
 <p>一般都是以上的路径</p>
 <ol start="4">
 <li>GitHub ssh配置</li>
@@ -139,10 +142,10 @@ git config --global user.email &quot;your GitHub Email&quot;
 <ul>
 <li>配置ssh的基本流程可以按着下面的步骤进行</li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1556606931046.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1556606937986.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1556606949567.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1556606955414.png" alt=""></p>
+<figure data-type="image" tabindex="4"><img src="https://qq1332783374.github.io/post-images/1556606931046.png" alt=""></figure>
+<figure data-type="image" tabindex="5"><img src="https://qq1332783374.github.io/post-images/1556606937986.png" alt=""></figure>
+<figure data-type="image" tabindex="6"><img src="https://qq1332783374.github.io/post-images/1556606949567.png" alt=""></figure>
+<figure data-type="image" tabindex="7"><img src="https://qq1332783374.github.io/post-images/1556606955414.png" alt=""></figure>
 <ul>
 <li>完成以上步骤就算是基本配置完了，可以愉快的进行代码提交了。</li>
 </ul>
@@ -158,36 +161,36 @@ git config --global user.email &quot;your GitHub Email&quot;
 <pre><code class="language-javascript">git init
 </code></pre>
 <p>创建成功后会多出一个<code>master</code>本地分支来</p>
-<p><img src="https://qq1332783374.github.io/post-images/1556610125564.png" alt=""></p>
+<figure data-type="image" tabindex="8"><img src="https://qq1332783374.github.io/post-images/1556610125564.png" alt=""></figure>
 <ol start="4">
 <li>首先查看一下本地文件的状态，如果未提交的话文件会显示红色。</li>
 </ol>
 <pre><code class="language-javascript">git status
 </code></pre>
-<p><img src="https://qq1332783374.github.io/post-images/1556610344102.png" alt=""></p>
+<figure data-type="image" tabindex="9"><img src="https://qq1332783374.github.io/post-images/1556610344102.png" alt=""></figure>
 <ol start="5">
 <li>添加要提交的文件，输入一下代码</li>
 </ol>
 <pre><code class="language-javascript">git add READM.md   // 添加单个文件，直接添加文件名就行
 git add .    // 这个命令简单点来说就是直接添加全部，一般都用这个
 </code></pre>
-<p><img src="https://qq1332783374.github.io/post-images/1556610618284.png" alt=""></p>
+<figure data-type="image" tabindex="10"><img src="https://qq1332783374.github.io/post-images/1556610618284.png" alt=""></figure>
 <ol start="6">
 <li>提交刚刚添加的文件</li>
 </ol>
 <pre><code class="language-javascript">git commit -m &quot;first commit&quot;
 </code></pre>
-<p><img src="https://qq1332783374.github.io/post-images/1556610712258.png" alt=""></p>
+<figure data-type="image" tabindex="11"><img src="https://qq1332783374.github.io/post-images/1556610712258.png" alt=""></figure>
 <ol start="7">
 <li>提交完之后再来查看一下状态</li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1556610759580.png" alt=""></p>
+<figure data-type="image" tabindex="12"><img src="https://qq1332783374.github.io/post-images/1556610759580.png" alt=""></figure>
 <ol start="8">
 <li>然后就到GitHub上创建一个新的仓库，步骤如下</li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1556611262980.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1556611268639.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1556611275963.png" alt=""></p>
+<figure data-type="image" tabindex="13"><img src="https://qq1332783374.github.io/post-images/1556611262980.png" alt=""></figure>
+<figure data-type="image" tabindex="14"><img src="https://qq1332783374.github.io/post-images/1556611268639.png" alt=""></figure>
+<figure data-type="image" tabindex="15"><img src="https://qq1332783374.github.io/post-images/1556611275963.png" alt=""></figure>
 <ol start="9">
 <li>添加远程仓库地址</li>
 </ol>
@@ -198,30 +201,52 @@ git add .    // 这个命令简单点来说就是直接添加全部，一般都�
 </ol>
 <pre><code class="language-javascript">git push -u origin master    // 初次提交要加上 -u，下一次提交就不用了
 </code></pre>
-<p><img src="https://qq1332783374.github.io/post-images/1556611479272.png" alt=""></p>
+<figure data-type="image" tabindex="16"><img src="https://qq1332783374.github.io/post-images/1556611479272.png" alt=""></figure>
 <ol start="11">
 <li>提交成功后就可以在 GitHub上面查看，刚刚所提交的内容。记得刷新一下页面。</li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1556611562637.png" alt=""></p>
+<figure data-type="image" tabindex="17"><img src="https://qq1332783374.github.io/post-images/1556611562637.png" alt=""></figure>
 <ol start="12">
 <li>以上就差不多是一个git的基本操作流程了，用户只需配置一次就行了，配置完跟着命令敲应该是没问题的。</li>
 </ol>
 <p><em>如有错误的地方，请大家指出。谢谢！欢迎大家多多交流和学习！</em></p>
 
-            </div>
-          </article>
         </div>
-    
+
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/javascript-Images">
-              <h3 class="post-title">
-                原生JavaScript实现一个简单的图片排序功能
-              </h3>
-            </a>
-          </div>  
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/ZRC-SBBXO">
+            <span class="flex-auto">笔记</span>
+          </a>
         
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/FqRJdUE8d">
+            <span class="flex-auto">git</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://qq1332783374.github.io/post/html5-xue-xi-1-html5-xin-zeng-biao-qian">
+                <h3 class="post-title">
+                  <i class="remixicon-arrow-left-line"></i>
+                  html5学习-1-html5新增标签
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://qq1332783374.github.io/post/javascript-Images">
+                <h3 class="post-title">
+                  原生JavaScript实现一个简单的图片排序功能
+                  <i class="remixicon-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
 
         
           
@@ -247,16 +272,108 @@ var dsqjs = new DisqusJS(options)
 
           
         
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
 
       </div>
     </div>
+
+    <script src="https://qq1332783374.github.io/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
   </body>
 </html>

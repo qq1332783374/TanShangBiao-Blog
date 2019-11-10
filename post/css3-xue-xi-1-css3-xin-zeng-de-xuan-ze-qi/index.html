@@ -1,103 +1,114 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>css3学习-1-CSS3新增的选择器 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1564900987242">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<title>Tan&#39;s-Blog</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1573408223903">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Tan&#39;s-Blog - Atom Feed" href="https://qq1332783374.github.io/atom.xml">
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1564900987242" alt="">
-  </a>
-  <h1 class="site-title">
-    Tan&#39;s-Blog
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://qq1332783374.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1573408223903" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#1-css3%E4%B8%AD%E5%B1%9E%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8">1 .CSS3中属性选择器</a><br>
+*<br>
+*<br>
+* <a href="#%E7%BB%83%E4%B9%A01-%E7%99%BE%E5%BA%A6%E6%96%87%E5%BA%93%E5%9B%BE%E6%A0%87">练习1. 百度文库图标</a></li>
+<li><a href="#2-css3%E4%B8%AD%E7%BB%93%E6%9E%84%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8">2. CSS3中结构伪类选择器</a><br>
+*<br>
+*<br>
+* <a href="#%E7%BB%83%E4%B9%A02%E6%96%B0%E6%B5%AA%E7%9A%84%E5%A4%B4%E9%83%A8%E5%AF%BC%E8%88%AA">练习2：新浪的头部导航</a></li>
+<li><a href="#3-ui%E5%85%83%E7%B4%A0%E7%8A%B6%E6%80%81%E4%BC%AA%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8">3. UI元素状态伪类选择器</a><br>
+*<br>
+*<br>
+* <a href="#%E7%BB%83%E4%B9%A01target%E5%AE%9E%E7%8E%B0%E9%80%89%E9%A1%B9%E5%8D%A1%E5%88%87%E6%8D%A2">练习1:target实现选项卡切换</a><br>
+* <a href="#%E7%BB%83%E4%B9%A02-%E5%88%A9%E7%94%A8%E7%B1%BB%E5%9E%8B%E4%B8%BAradio%E5%AE%9E%E7%8E%B0%E9%80%89%E9%A1%B9%E5%8D%A1">练习2: 利用类型为radio实现选项卡</a><br>
+* <a href="#%E7%BB%83%E4%B9%A05%E5%88%A9%E7%94%A8%E5%92%8C%E5%AE%9E%E7%8E%B0%E5%AF%B9%E8%AF%9D%E6%A1%86%E5%B0%8F%E4%B8%89%E8%A7%92">练习5:利用和实现对话框小三角</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="remixicon-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
     
       
-        <a href="https://qq1332783374.github.io" class="menu">
+        <a href="https://qq1332783374.github.io" class="menu" style="animation-delay: 0s">
           首页
         </a>
       
     
       
-        <a href="/archives" class="menu">
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
           归档
         </a>
       
     
       
-        <a href="/tags" class="menu">
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
           标签
         </a>
       
     
       
-        <a href="/post/about" class="menu">
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
           关于
         </a>
       
     
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://qq1332783374.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              css3学习-1-CSS3新增的选择器
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2018-10-13 ·
-              </time>
-              
-                <a href="https://qq1332783374.github.io/tag/qDNFOfUzc" class="post-tags">
-                  # CSS3
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
-                  # 笔记
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
-                  # 前端
-                </a>
-              
-            </div>
-            
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/css3-xue-xi-1-css3-xin-zeng-de-xuan-ze-qi.jpg')">
-              </div>
-            
-            <div class="post-content">
-              <h2 id="目录">目录</h2>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">css3学习-1-CSS3新增的选择器</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2018-10-13 / 14 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://qq1332783374.github.io/post-images/css3-xue-xi-1-css3-xin-zeng-de-xuan-ze-qi.jpg" alt="">
+        
+        <div class="post-content yue">
+          <h2 id="目录">目录</h2>
 <ol>
 <li>CSS3中属性选择器</li>
 <li>CSS3中结构伪类选择器</li>
@@ -146,7 +157,7 @@
 </table>
 <p>CSS 3遵循了惯用的编码规则，选用了^、<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">和</mi><mo>∗</mo><mi mathvariant="normal">这</mi><mn>3</mn><mi mathvariant="normal">个</mi><mi mathvariant="normal">通</mi><mi mathvariant="normal">用</mi><mi mathvariant="normal">匹</mi><mi mathvariant="normal">配</mi><mi mathvariant="normal">运</mi><mi mathvariant="normal">算</mi><mi mathvariant="normal">符</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">其</mi><mi mathvariant="normal">中</mi><msup><mi mathvariant="normal">，</mi><mi mathvariant="normal">表</mi></msup><mi mathvariant="normal">示</mi><mi mathvariant="normal">匹</mi><mi mathvariant="normal">配</mi><mi mathvariant="normal">起</mi><mi mathvariant="normal">始</mi><mi mathvariant="normal">符</mi><mi mathvariant="normal">，</mi></mrow><annotation encoding="application/x-tex">和*这3个通用匹配运算符，其中，^表示匹配起始符，</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord cjk_fallback">和</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord cjk_fallback">这</span><span class="mord">3</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">通</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">匹</span><span class="mord cjk_fallback">配</span><span class="mord cjk_fallback">运</span><span class="mord cjk_fallback">算</span><span class="mord cjk_fallback">符</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">其</span><span class="mord cjk_fallback">中</span><span class="mord"><span class="mord cjk_fallback">，</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.363em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord cjk_fallback mtight">表</span></span></span></span></span></span></span></span><span class="mord cjk_fallback">示</span><span class="mord cjk_fallback">匹</span><span class="mord cjk_fallback">配</span><span class="mord cjk_fallback">起</span><span class="mord cjk_fallback">始</span><span class="mord cjk_fallback">符</span><span class="mord cjk_fallback">，</span></span></span></span>表示匹配终止符，* 表示匹配任意字符，使用它们更符合编码习惯和惯用编程思维。</p>
 <p><strong>浏览器兼容情况</strong></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557052206846.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://qq1332783374.github.io/post-images/1557052206846.png" alt=""></figure>
 <h5 id="练习1-百度文库图标">练习1. 百度文库图标</h5>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -244,7 +255,7 @@
 </tbody>
 </table>
 <h5 id="练习2新浪的头部导航">练习2：新浪的头部导航</h5>
-<p><img src="https://qq1332783374.github.io/post-images/1557052656767.png" alt=""></p>
+<figure data-type="image" tabindex="2"><img src="https://qq1332783374.github.io/post-images/1557052656767.png" alt=""></figure>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -411,7 +422,7 @@
 </tbody>
 </table>
 <h5 id="练习1target实现选项卡切换">练习1:target实现选项卡切换</h5>
-<p><img src="https://qq1332783374.github.io/post-images/1557052980814.gif" alt=""></p>
+<figure data-type="image" tabindex="3"><img src="https://qq1332783374.github.io/post-images/1557052980814.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -446,7 +457,7 @@
 &lt;/html&gt;
 </code></pre>
 <h5 id="练习2-利用类型为radio实现选项卡">练习2: 利用类型为radio实现选项卡</h5>
-<p><img src="https://qq1332783374.github.io/post-images/1557053109305.gif" alt=""></p>
+<figure data-type="image" tabindex="4"><img src="https://qq1332783374.github.io/post-images/1557053109305.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -500,7 +511,7 @@
 &lt;/html&gt;
 </code></pre>
 <h5 id="练习5利用和实现对话框小三角">练习5:利用和实现对话框小三角</h5>
-<p><img src="https://qq1332783374.github.io/post-images/1557053186925.png" alt=""></p>
+<figure data-type="image" tabindex="5"><img src="https://qq1332783374.github.io/post-images/1557053186925.png" alt=""></figure>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -547,20 +558,46 @@
 &lt;/html&gt;
 </code></pre>
 
-            </div>
-          </article>
         </div>
-    
+
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/html5-xue-xi-6-html5-zhong-de-duo-mei-ti-bo-fang">
-              <h3 class="post-title">
-                html5学习-6-html5中的多媒体播放
-              </h3>
-            </a>
-          </div>  
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/qDNFOfUzc">
+            <span class="flex-auto">CSS3</span>
+          </a>
         
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/ZRC-SBBXO">
+            <span class="flex-auto">笔记</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/AJo58fd2h">
+            <span class="flex-auto">前端</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://qq1332783374.github.io/post/css3-xue-xi-2-css3-zeng-qiang-wen-ben-he-yan-se-gong-neng">
+                <h3 class="post-title">
+                  <i class="remixicon-arrow-left-line"></i>
+                  css3学习-2-CSS3增强文本和颜色功能
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://qq1332783374.github.io/post/html5-xue-xi-6-html5-zhong-de-duo-mei-ti-bo-fang">
+                <h3 class="post-title">
+                  html5学习-6-html5中的多媒体播放
+                  <i class="remixicon-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
 
         
           
@@ -586,16 +623,108 @@ var dsqjs = new DisqusJS(options)
 
           
         
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
 
       </div>
     </div>
+
+    <script src="https://qq1332783374.github.io/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
   </body>
 </html>

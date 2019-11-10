@@ -1,103 +1,117 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>vue学习-6-深入了解组件2 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1564900987242">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<title>Tan&#39;s-Blog</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1573408223903">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Tan&#39;s-Blog - Atom Feed" href="https://qq1332783374.github.io/atom.xml">
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1564900987242" alt="">
-  </a>
-  <h1 class="site-title">
-    Tan&#39;s-Blog
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://qq1332783374.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1573408223903" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#1-%E7%BC%96%E5%86%99%E7%BB%84%E4%BB%B6%E7%BB%86%E8%8A%82">1. 编写组件细节</a><br>
+*
+<ul>
+<li><a href="#11-%E4%BD%BF%E7%94%A8kebab-case-%E7%9F%AD%E6%A8%AA%E7%BA%BF%E5%88%86%E9%9A%94%E5%91%BD%E5%90%8D">1.1 使用Kebab-case (短横线分隔命名)</a></li>
+<li><a href="#12-%E4%BD%BF%E7%94%A8pascalcase-%E9%A9%BC%E5%B3%B0%E5%BC%8F%E5%91%BD%E5%90%8D">1.2 使用PascalCase (驼峰式命名)</a></li>
+</ul>
+</li>
+<li><a href="#2-%E7%BB%84%E4%BB%B6%E5%B5%8C%E5%A5%97%E5%AD%90%E7%BB%84%E4%BB%B6">2. 组件嵌套子组件</a><br>
+*
+<ul>
+<li><a href="#21-%E7%88%B6%E7%BB%84%E4%BB%B6%E7%9B%B4%E6%8E%A5%E5%B5%8C%E5%A5%97%E5%AD%90%E7%BB%84%E4%BB%B6">2.1 父组件直接嵌套子组件</a></li>
+<li><a href="#22-%E7%88%B6%E7%BB%84%E4%BB%B6%E9%80%9A%E8%BF%87%E6%8F%92%E6%A7%BDslot%E5%B5%8C%E5%A5%97">2.2 父组件通过插槽(slot)嵌套</a></li>
+<li><a href="#23-%E5%8D%95%E4%B8%AA%E6%8F%92%E6%A7%BD">2.3 单个插槽</a></li>
+<li><a href="#24-%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD">2.4 具名插槽</a></li>
+<li><a href="#25-%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD">2.5 作用域插槽</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="remixicon-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
     
       
-        <a href="https://qq1332783374.github.io" class="menu">
+        <a href="https://qq1332783374.github.io" class="menu" style="animation-delay: 0s">
           首页
         </a>
       
     
       
-        <a href="/archives" class="menu">
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
           归档
         </a>
       
     
       
-        <a href="/tags" class="menu">
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
           标签
         </a>
       
     
       
-        <a href="/post/about" class="menu">
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
           关于
         </a>
       
     
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://qq1332783374.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              vue学习-6-深入了解组件2
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2018-11-16 ·
-              </time>
-              
-                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
-                  # VUE
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
-                  # 笔记
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
-                  # 前端
-                </a>
-              
-            </div>
-            
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-xue-xi-6-shen-ru-liao-jie-zu-jian-2.png')">
-              </div>
-            
-            <div class="post-content">
-              <h2 id="目录">目录</h2>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">vue学习-6-深入了解组件2</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2018-11-16 / 5 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://qq1332783374.github.io/post-images/vue-xue-xi-6-shen-ru-liao-jie-zu-jian-2.png" alt="">
+        
+        <div class="post-content yue">
+          <h2 id="目录">目录</h2>
 <ol>
 <li>编写组件细节</li>
 <li>组件嵌套子组件slot插槽的用法</li>
@@ -119,7 +133,7 @@
 <h2 id="2-组件嵌套子组件">2. 组件嵌套子组件</h2>
 <p>在某些情况我们是需要使用到嵌套组件，也就是说组件还可以继续嵌套组件。形成嵌套组件有两种的实现方式。</p>
 <h4 id="21-父组件直接嵌套子组件">2.1 父组件直接嵌套子组件</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557149324304.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://qq1332783374.github.io/post-images/1557149324304.png" alt=""></figure>
 <pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
     &lt;item-A&gt;&lt;/item-A&gt;
 &lt;/div&gt;
@@ -136,7 +150,7 @@
 &lt;/script&gt;
 </code></pre>
 <h4 id="22-父组件通过插槽slot嵌套">2.2 父组件通过插槽(slot)嵌套</h4>
-<p>插槽，也就是slot，是组件的一块HTML模板，这块模板显示不显示、以及怎样显示由父组件来决定。
+<p>插槽，也就是slot，是组件的一块HTML模板，这块模板显示不显示、以及怎样显示由父组件来决定。<br>
 插槽（Slot）是Vue提出来的一个概念，正如名字一样，插槽用于决定将所携带的内容，插入到指定的某个位置，从而使模板分块，具有模块化的特质和更大的重用性。那么插槽(slot)分成3种分别是:单个插槽，具名插槽，作用域插槽。</p>
 <h4 id="23-单个插槽">2.3 单个插槽</h4>
 <p>首先是单个插槽，单个插槽是vue的官方叫法，但是其实也可以叫它默认插槽，或者与具名插槽相对，我们可以叫它匿名插槽。因为它不用设置name属性。</p>
@@ -164,7 +178,7 @@
 </code></pre>
 <h4 id="24-具名插槽">2.4 具名插槽</h4>
 <p>匿名插槽没有name属性，所以是匿名插槽，那么，插槽加了name属性，就变成了具名插槽。具名插槽可以在一个组件中出现N次，出现在不同的位置。</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557149438361.png" alt=""></p>
+<figure data-type="image" tabindex="2"><img src="https://qq1332783374.github.io/post-images/1557149438361.png" alt=""></figure>
 <pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
     &lt;item&gt;
         &lt;div class=&quot;header&quot; slot=&quot;header&quot;&gt;
@@ -192,7 +206,7 @@ new Vue({
 &lt;/script&gt;
 </code></pre>
 <h4 id="25-作用域插槽">2.5 作用域插槽</h4>
-<p>作用域插槽是一种特殊类型的插槽，用作一个（能被传递数据的）可重用模板，来代替已经渲染好的元素。
+<p>作用域插槽是一种特殊类型的插槽，用作一个（能被传递数据的）可重用模板，来代替已经渲染好的元素。<br>
 在子组件中，只需将数据传递到插槽，就像你将prop传递给组件一样：</p>
 <pre><code class="language-html">&lt;div id=&quot;app&quot;&gt;
     &lt;item&gt;
@@ -225,20 +239,46 @@ new Vue({
 &lt;/script&gt;
 </code></pre>
 
-            </div>
-          </article>
         </div>
-    
+
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/vue-xue-xi-5-shen-ru-liao-jie-zu-jian">
-              <h3 class="post-title">
-                vue学习-5-深入了解组件
-              </h3>
-            </a>
-          </div>  
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/DfppNGX-L">
+            <span class="flex-auto">VUE</span>
+          </a>
         
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/ZRC-SBBXO">
+            <span class="flex-auto">笔记</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/AJo58fd2h">
+            <span class="flex-auto">前端</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://qq1332783374.github.io/post/vue-xue-xi-7-vue-zhong-de-yang-shi-bang-ding">
+                <h3 class="post-title">
+                  <i class="remixicon-arrow-left-line"></i>
+                  vue学习-7-Vue中的样式绑定
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://qq1332783374.github.io/post/vue-xue-xi-5-shen-ru-liao-jie-zu-jian">
+                <h3 class="post-title">
+                  vue学习-5-深入了解组件
+                  <i class="remixicon-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
 
         
           
@@ -264,16 +304,108 @@ var dsqjs = new DisqusJS(options)
 
           
         
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
 
       </div>
     </div>
+
+    <script src="https://qq1332783374.github.io/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
   </body>
 </html>

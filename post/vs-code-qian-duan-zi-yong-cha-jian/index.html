@@ -1,147 +1,150 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>VS Code-前端自用插件 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1564900987242">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<title>Tan&#39;s-Blog</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1573408223903">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Tan&#39;s-Blog - Atom Feed" href="https://qq1332783374.github.io/atom.xml">
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1564900987242" alt="">
-  </a>
-  <h1 class="site-title">
-    Tan&#39;s-Blog
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://qq1332783374.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1573408223903" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85">插件安装</a></li>
+<li><a href="#%E7%BB%93%E8%AF%AD">结语</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="remixicon-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
     
       
-        <a href="https://qq1332783374.github.io" class="menu">
+        <a href="https://qq1332783374.github.io" class="menu" style="animation-delay: 0s">
           首页
         </a>
       
     
       
-        <a href="/archives" class="menu">
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
           归档
         </a>
       
     
       
-        <a href="/tags" class="menu">
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
           标签
         </a>
       
     
       
-        <a href="/post/about" class="menu">
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
           关于
         </a>
       
     
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://qq1332783374.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              VS Code-前端自用插件
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2018-12-28 ·
-              </time>
-              
-                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
-                  # 笔记
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
-                  # 前端
-                </a>
-              
-            </div>
-            
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vs-code-qian-duan-zi-yong-cha-jian.jpg')">
-              </div>
-            
-            <div class="post-content">
-              <h2 id="前言">前言</h2>
-<p>VsCode全称是Visual Studio Code，微软公司出品。<a href="https://code.visualstudio.com/">官网</a>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">VS Code-前端自用插件</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2018-12-28 / 2 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://qq1332783374.github.io/post-images/vs-code-qian-duan-zi-yong-cha-jian.jpg" alt="">
+        
+        <div class="post-content yue">
+          <h2 id="前言">前言</h2>
+<p>VsCode全称是Visual Studio Code，微软公司出品。<a href="https://code.visualstudio.com/">官网</a><br>
 个人觉得还是挺良心的一款软件，功能该有的都有了，还可以插件扩展。在这里和大家分享一下，平时自己常用又好用的插件。</p>
 <h2 id="插件安装">插件安装</h2>
 <ul>
-<li>直接点击商店安装就可以了，操作简单
+<li>直接点击商店安装就可以了，操作简单<br>
 <img src="https://qq1332783374.github.io/post-images/1557276586894.png" alt=""></li>
 </ul>
 <ol>
 <li><a href="https://marketplace.visualstudio.com/items?itemName=octref.vetur">Vetur</a></li>
 </ol>
 <p>vue官方推荐的插件，vue开发必备。</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557278859973.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://qq1332783374.github.io/post-images/1557278859973.png" alt=""></figure>
 <ol start="2">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify">Beautify</a></li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1557277571426.png" alt=""></p>
+<figure data-type="image" tabindex="2"><img src="https://qq1332783374.github.io/post-images/1557277571426.png" alt=""></figure>
 <p>代码格式工具，按<strong>F1</strong>键，选 <strong>Beautify file</strong>就可以了：</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557277587070.png" alt=""></p>
+<figure data-type="image" tabindex="3"><img src="https://qq1332783374.github.io/post-images/1557277587070.png" alt=""></figure>
 <ol start="3">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag">Auto Close Tag </a></li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1557277775578.png" alt=""></p>
+<figure data-type="image" tabindex="4"><img src="https://qq1332783374.github.io/post-images/1557277775578.png" alt=""></figure>
 <p>标签自动闭合</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557277786811.gif" alt=""></p>
+<figure data-type="image" tabindex="5"><img src="https://qq1332783374.github.io/post-images/1557277786811.gif" alt=""></figure>
 <ol start="4">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=MS-CEINTL.vscode-language-pack-zh-hans">Chinese (Simplified) Language Pack for Visual Studio Code</a></li>
 </ol>
 <p>汉化插件</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557281015940.png" alt=""></p>
+<figure data-type="image" tabindex="6"><img src="https://qq1332783374.github.io/post-images/1557281015940.png" alt=""></figure>
 <ol start="5">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=necinc.elmmet">Elm Emmet</a></li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1557278100346.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557278107370.gif" alt=""></p>
+<figure data-type="image" tabindex="7"><img src="https://qq1332783374.github.io/post-images/1557278100346.png" alt=""></figure>
+<figure data-type="image" tabindex="8"><img src="https://qq1332783374.github.io/post-images/1557278107370.gif" alt=""></figure>
 <ol start="6">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css">HTML CSS Support</a></li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1557278210462.png" alt=""></p>
+<figure data-type="image" tabindex="9"><img src="https://qq1332783374.github.io/post-images/1557278210462.png" alt=""></figure>
 <ol start="7">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion">IntelliSense for CSS class names in HTML</a></li>
 </ol>
 <p>标签内类名智能提示</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557278289409.png" alt=""></p>
+<figure data-type="image" tabindex="10"><img src="https://qq1332783374.github.io/post-images/1557278289409.png" alt=""></figure>
 <ol start="8">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=xabikos.JavaScriptSnippets">JavaScript（ES6）code snippets</a></li>
 </ol>
 <p>Es6语法智能提示</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557282277628.png" alt=""></p>
+<figure data-type="image" tabindex="11"><img src="https://qq1332783374.github.io/post-images/1557282277628.png" alt=""></figure>
 <ol start="9">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme">Material Theme</a></li>
 </ol>
@@ -149,80 +152,102 @@
 <ol start="10">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme">Material Icon Theme</a></li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1557278607277.png" alt=""></p>
+<figure data-type="image" tabindex="12"><img src="https://qq1332783374.github.io/post-images/1557278607277.png" alt=""></figure>
 <p>各种图标</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557278639921.png" alt=""></p>
+<figure data-type="image" tabindex="13"><img src="https://qq1332783374.github.io/post-images/1557278639921.png" alt=""></figure>
 <ol start="11">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense">Path Intellisense</a></li>
 </ol>
 <p>文件路径提示</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557278714140.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557278761731.gif" alt=""></p>
+<figure data-type="image" tabindex="14"><img src="https://qq1332783374.github.io/post-images/1557278714140.png" alt=""></figure>
+<figure data-type="image" tabindex="15"><img src="https://qq1332783374.github.io/post-images/1557278761731.gif" alt=""></figure>
 <ol start="12">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=steoates.autoimport">Auto Import</a></li>
 </ol>
 <p>自行体验，还是挺好用的。</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557282373731.png" alt=""></p>
+<figure data-type="image" tabindex="16"><img src="https://qq1332783374.github.io/post-images/1557282373731.png" alt=""></figure>
 <ol start="13">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow">indent-rainbow</a></li>
 </ol>
 <p>提高代码的可读性</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557279135539.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557279095649.png" alt=""></p>
+<figure data-type="image" tabindex="17"><img src="https://qq1332783374.github.io/post-images/1557279135539.png" alt=""></figure>
+<figure data-type="image" tabindex="18"><img src="https://qq1332783374.github.io/post-images/1557279095649.png" alt=""></figure>
 <ol start="14">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier - Code formatter</a></li>
 </ol>
 <p>整理代码格式</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557279197387.png" alt=""></p>
+<figure data-type="image" tabindex="19"><img src="https://qq1332783374.github.io/post-images/1557279197387.png" alt=""></figure>
 <ol start="15">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense">npm Intellisense</a></li>
 </ol>
 <p>npm 模块名称提示：</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557279322643.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557279359976.gif" alt=""></p>
+<figure data-type="image" tabindex="20"><img src="https://qq1332783374.github.io/post-images/1557279322643.png" alt=""></figure>
+<figure data-type="image" tabindex="21"><img src="https://qq1332783374.github.io/post-images/1557279359976.gif" alt=""></figure>
 <ol start="16">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">GitLens</a></li>
 </ol>
 <p>git 重度患者必备之一</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557279465087.png" alt=""></p>
+<figure data-type="image" tabindex="22"><img src="https://qq1332783374.github.io/post-images/1557279465087.png" alt=""></figure>
 <ol start="17">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory">Git History</a></li>
 </ol>
 <p>git 重度患者必备之一</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557279537617.png" alt=""></p>
+<figure data-type="image" tabindex="23"><img src="https://qq1332783374.github.io/post-images/1557279537617.png" alt=""></figure>
 <ol start="18">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=felipecaputo.git-project-manager">Git Project Manager</a></li>
 </ol>
 <p>git 重度患者必备之一</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557279649634.png" alt=""></p>
+<figure data-type="image" tabindex="24"><img src="https://qq1332783374.github.io/post-images/1557279649634.png" alt=""></figure>
 <ol start="19">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer">Bracket Pair Colorizer</a></li>
 </ol>
 <p>不知道怎么描述，反正就是很好用</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557279800469.png" alt=""></p>
+<figure data-type="image" tabindex="25"><img src="https://qq1332783374.github.io/post-images/1557279800469.png" alt=""></figure>
 <ol start="20">
 <li><a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome">Debugger for Chrome</a></li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1557280142435.png" alt=""></p>
+<figure data-type="image" tabindex="26"><img src="https://qq1332783374.github.io/post-images/1557280142435.png" alt=""></figure>
 <p>用谷歌的必备</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557280165579.gif" alt=""></p>
+<figure data-type="image" tabindex="27"><img src="https://qq1332783374.github.io/post-images/1557280165579.gif" alt=""></figure>
 <h2 id="结语">结语</h2>
-<p>作为一名前端小白，上面的插件差不多够用了 (<em>^▽^</em>)。如有更好的插件，大家多多交流！！</p>
+<p>作为一名前端小白，上面的插件差不多够用了 (<em><sup>▽</sup></em>)。如有更好的插件，大家多多交流！！</p>
 
-            </div>
-          </article>
         </div>
-    
+
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/vue-jie-duan-zong-jie">
-              <h3 class="post-title">
-                Vue-阶段总结
-              </h3>
-            </a>
-          </div>  
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/ZRC-SBBXO">
+            <span class="flex-auto">笔记</span>
+          </a>
         
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/AJo58fd2h">
+            <span class="flex-auto">前端</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://qq1332783374.github.io/post/ji-yi-ci-yuan-sheng-javascript-feng-zhuang-ajax-han-shu">
+                <h3 class="post-title">
+                  <i class="remixicon-arrow-left-line"></i>
+                  记一次原生JavaScript封装AJAX函数
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://qq1332783374.github.io/post/vue-jie-duan-zong-jie">
+                <h3 class="post-title">
+                  Vue-阶段总结
+                  <i class="remixicon-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
 
         
           
@@ -248,16 +273,108 @@ var dsqjs = new DisqusJS(options)
 
           
         
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
 
       </div>
     </div>
+
+    <script src="https://qq1332783374.github.io/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
   </body>
 </html>

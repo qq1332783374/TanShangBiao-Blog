@@ -1,103 +1,132 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>css3学习-5-渐变、过度时间以及2D变换 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1564900987242">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<title>Tan&#39;s-Blog</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1573408223903">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Tan&#39;s-Blog - Atom Feed" href="https://qq1332783374.github.io/atom.xml">
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1564900987242" alt="">
-  </a>
-  <h1 class="site-title">
-    Tan&#39;s-Blog
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://qq1332783374.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1573408223903" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#1-css3%E4%B8%AD%E7%9A%84%E8%BF%87%E6%B8%A1">1. css3中的过渡</a><br>
+*
+<ul>
+<li><a href="#11-css3%E7%9A%84%E8%BF%87%E6%B8%A1%E5%B1%9E%E6%80%A7">1.1 CSS3的过渡属性</a></li>
+<li><a href="#12-%E6%8C%87%E5%AE%9A%E8%BF%87%E6%B8%A1%E5%B1%9E%E6%80%A7transition-property">1.2 指定过渡属性transition-property</a></li>
+<li><a href="#13-%E6%8C%87%E5%AE%9A%E8%BF%87%E6%B8%A1%E6%97%B6%E9%97%B4transition-duration">1.3 指定过渡时间transition-duration</a></li>
+<li><a href="#14-%E6%8C%87%E5%AE%9A%E8%BF%87%E6%B8%A1%E5%87%BD%E6%95%B0transition-timing-function">1.4 指定过渡函数transition-timing-function</a></li>
+<li><a href="#15-%E6%8C%87%E5%AE%9A%E8%BF%87%E6%B8%A1%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4transition-delay">1.5 指定过渡延迟时间transition-delay</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A0">练习</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A01%E9%BC%A0%E6%A0%87%E6%82%AC%E6%B5%AEbody%E4%B8%8A%E6%97%B6%E7%9B%92%E5%AD%90%E7%9A%84%E9%AB%98%E5%BA%A6%E4%BB%8E100px%E8%BF%87%E6%B8%A1%E5%88%B050px%E7%84%B6%E5%90%8E%E5%AE%BD%E5%BA%A6%E4%BB%8E-50px%E8%BF%87%E6%B8%A1%E5%88%B0300px%E5%90%8C%E6%97%B6%E7%9B%92%E5%AD%90%E7%9A%84%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2%E4%BB%8E8ec63f%E8%89%B2%E8%BF%87%E6%B8%A1%E5%88%B0f7941d%E8%89%B2">练习1：鼠标悬浮body上时，盒子的高度从100px过渡到50px,然后宽度从 50px过渡到300px，同时盒子的背景颜色从”#8ec63f”色过渡到”#f7941d”色。</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A02css3%E5%AE%9E%E7%8E%B0%E5%AF%BC%E8%88%AA%E6%9D%A1%E4%B8%8B%E6%8B%89%E6%95%88%E6%9E%9C">练习2：CSS3实现导航条下拉效果</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A03%E7%A7%BB%E5%85%A5%E5%87%BA%E7%8E%B0%E9%81%AE%E7%9B%96%E5%B1%82">练习3：移入出现遮盖层</a></li>
+</ul>
+</li>
+<li><a href="#2-css3%E4%B8%AD%E7%9A%842d%E5%8F%98%E6%8D%A2">2. css3中的2d变换</a><br>
+*
+<ul>
+<li><a href="#21-transform%E5%B1%9E%E6%80%A7">2.1 transform属性</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A01%E5%9B%BE%E7%89%87%E5%88%97%E8%A1%A8%E5%B8%A6%E6%9C%89%E6%97%8B%E8%BD%AC%E5%8A%A8%E7%94%BB">练习1：图片列表带有旋转动画</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A02%E6%89%87%E5%BD%A2%E5%AF%BC%E8%88%AA">练习2：扇形导航</a></li>
+<li><a href="#22-transform-orign%E5%B1%9E%E6%80%A7">2.2 transform-orign属性</a></li>
+</ul>
+</li>
+<li><a href="#3-css3%E4%B8%AD%E7%9A%84%E6%B8%90%E5%8F%98">3. css3中的渐变</a><br>
+*
+<ul>
+<li><a href="#31-css3%E7%9A%84%E7%BA%BF%E6%80%A7%E6%B8%90%E5%8F%98">3.1 CSS3的线性渐变</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95">基本用法：</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A01css3%E8%BF%9B%E5%BA%A6%E6%9D%A1">练习1：CSS3进度条</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A02%E5%85%89%E7%BA%BF%E8%BD%A8%E8%BF%B9">练习2：光线轨迹</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="remixicon-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
     
       
-        <a href="https://qq1332783374.github.io" class="menu">
+        <a href="https://qq1332783374.github.io" class="menu" style="animation-delay: 0s">
           首页
         </a>
       
     
       
-        <a href="/archives" class="menu">
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
           归档
         </a>
       
     
       
-        <a href="/tags" class="menu">
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
           标签
         </a>
       
     
       
-        <a href="/post/about" class="menu">
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
           关于
         </a>
       
     
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://qq1332783374.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              css3学习-5-渐变、过度时间以及2D变换
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2018-10-26 ·
-              </time>
-              
-                <a href="https://qq1332783374.github.io/tag/qDNFOfUzc" class="post-tags">
-                  # CSS3
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
-                  # 笔记
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
-                  # 前端
-                </a>
-              
-            </div>
-            
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/css3-xue-xi-5-jian-bian-guo-du-shi-jian-yi-ji-2d-bian-huan.jpg')">
-              </div>
-            
-            <div class="post-content">
-              <h2 id="目录">目录</h2>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">css3学习-5-渐变、过度时间以及2D变换</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2018-10-26 / 16 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://qq1332783374.github.io/post-images/css3-xue-xi-5-jian-bian-guo-du-shi-jian-yi-ji-2d-bian-huan.jpg" alt="">
+        
+        <div class="post-content yue">
+          <h2 id="目录">目录</h2>
 <ol>
 <li>css3中的过渡</li>
 <li>css3中的2d变换</li>
@@ -158,7 +187,7 @@
 <p>渐变</p>
 </li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557103591331.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://qq1332783374.github.io/post-images/1557103591331.png" alt=""></figure>
 <h4 id="13-指定过渡时间transition-duration">1.3 指定过渡时间transition-duration</h4>
 <p><strong>transition-duration:time</strong></p>
 <p>time为数值，单位为s(秒)或ms(毫秒)。可以作用与所有元素。默认值为0，也就是说变换是即时的。当你设置transition-duration为0时，指定的元素样式过渡时，看不到过渡过程，直接看结果。和transition-property属性一样，当你设置多个过渡属性的时候，也可以设置多个过渡时间，每个值之间需要用逗号隔开。</p>
@@ -166,14 +195,14 @@
 <blockquote>
 <p>transition-timing-function属性指定某种指代过渡”缓冲函数”的属性。此属性可指定浏览器的过渡速度，以及过渡期间的操作进展情况。可以将某个值指定为预定义函数，阶梯函数或者三次方贝塞尔曲线。（cubic-bezier(0.145,1.295,0,1.610)）</p>
 </blockquote>
-<p><img src="https://qq1332783374.github.io/post-images/1557103683090.png" alt=""></p>
+<figure data-type="image" tabindex="2"><img src="https://qq1332783374.github.io/post-images/1557103683090.png" alt=""></figure>
 <h4 id="15-指定过渡延迟时间transition-delay">1.5 指定过渡延迟时间transition-delay</h4>
 <blockquote>
 <p>过渡属性transition还有一个过渡延迟时间属性transition-delay,用来定义过渡延迟时间。transition-delay用来指定一个动画开始执行的时间，也就是说当改变元素属性值后多长时间开始执行过渡效果，它的取值可以是正整数和0，非0的时候必须设置单位s(秒)或者ms(毫秒)</p>
 </blockquote>
 <h4 id="练习">练习</h4>
 <h4 id="练习1鼠标悬浮body上时盒子的高度从100px过渡到50px然后宽度从-50px过渡到300px同时盒子的背景颜色从8ec63f色过渡到f7941d色">练习1：鼠标悬浮body上时，盒子的高度从100px过渡到50px,然后宽度从 50px过渡到300px，同时盒子的背景颜色从”#8ec63f”色过渡到”#f7941d”色。</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557103752583.gif" alt=""></p>
+<figure data-type="image" tabindex="3"><img src="https://qq1332783374.github.io/post-images/1557103752583.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -211,7 +240,7 @@
 
 </code></pre>
 <h4 id="练习2css3实现导航条下拉效果">练习2：CSS3实现导航条下拉效果</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557103798281.gif" alt=""></p>
+<figure data-type="image" tabindex="4"><img src="https://qq1332783374.github.io/post-images/1557103798281.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -306,7 +335,7 @@
 &lt;/html&gt;
 </code></pre>
 <h4 id="练习3移入出现遮盖层">练习3：移入出现遮盖层</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557103839896.gif" alt=""></p>
+<figure data-type="image" tabindex="5"><img src="https://qq1332783374.github.io/post-images/1557103839896.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -369,9 +398,9 @@
 <p>transform属性让元素在一个坐标系统中变形，包含了一系列变形函数，可以移动，旋转和缩放元素。</p>
 <p><code>transform:none|&lt;transform-function&gt;</code></p>
 <p>可用于内联元素和块元素。其默认值为none，表示元素不进行变形。属性值transform-function,表示一个或多个变形函数，以空格分开。例如rotate,scale,translate等。需要注意的时，在transform中使用过多个transform-function时却需要用空格隔开。</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557104030979.png" alt=""></p>
+<figure data-type="image" tabindex="6"><img src="https://qq1332783374.github.io/post-images/1557104030979.png" alt=""></figure>
 <h4 id="练习1图片列表带有旋转动画">练习1：图片列表带有旋转动画</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557104126224.gif" alt=""></p>
+<figure data-type="image" tabindex="7"><img src="https://qq1332783374.github.io/post-images/1557104126224.gif" alt=""></figure>
 <pre><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -444,7 +473,7 @@
 
 </code></pre>
 <h4 id="练习2扇形导航">练习2：扇形导航</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557104216537.gif" alt=""></p>
+<figure data-type="image" tabindex="8"><img src="https://qq1332783374.github.io/post-images/1557104216537.gif" alt=""></figure>
 <pre><code class="language-html">
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -539,11 +568,11 @@
 <li>属性值可以是百分比,em,px等具体的值，也可以是top,right,bottom,left和center这样的关键词。</li>
 </ul>
 <h2 id="3-css3中的渐变">3. css3中的渐变</h2>
-<p>一直以来,Web设计师都是通过图形软件设计这些渐变效果，然后以图片的形式或者背景图片的形式运用到页面中。Web页面上实现的效果，仅从页面的视觉效果上来看，与设计并无任何差异。
-事实上这种方法比较麻烦，因为首先需要设计师进行设计，然后进行切图，在通过样式应用到页面中。另外，在实际应用中可扩展性差，还直接影响页面性能。
+<p>一直以来,Web设计师都是通过图形软件设计这些渐变效果，然后以图片的形式或者背景图片的形式运用到页面中。Web页面上实现的效果，仅从页面的视觉效果上来看，与设计并无任何差异。<br>
+事实上这种方法比较麻烦，因为首先需要设计师进行设计，然后进行切图，在通过样式应用到页面中。另外，在实际应用中可扩展性差，还直接影响页面性能。<br>
 值得庆幸的是，W3C组织将渐变设计收入到CSS3标准中，可以直接通过CSS的渐变属性制作类似渐变图片的效果。</p>
 <h4 id="31-css3的线性渐变">3.1 CSS3的线性渐变</h4>
-<p>在线性渐变过程中，颜色沿着一条直线过渡：从左侧到右侧，从右侧到左侧，从顶部到底部，从底部到顶部或沿任意轴。
+<p>在线性渐变过程中，颜色沿着一条直线过渡：从左侧到右侧，从右侧到左侧，从顶部到底部，从底部到顶部或沿任意轴。<br>
 在CSS3中制作线性效果，首先要指定一个渐变的方向，起始颜色，结束颜色。具有这三个参数就可以制作一个最简单，最普遍的渐变效果。</p>
 <h4 id="基本用法">基本用法：</h4>
 <ul>
@@ -556,7 +585,7 @@
 <li>第五个参数endColor表示结束的颜色</li>
 </ul>
 <h4 id="练习1css3进度条">练习1：CSS3进度条</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557104476602.gif" alt=""></p>
+<figure data-type="image" tabindex="9"><img src="https://qq1332783374.github.io/post-images/1557104476602.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!doctype html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -597,7 +626,7 @@
 &lt;/html&gt;
 </code></pre>
 <h4 id="练习2光线轨迹">练习2：光线轨迹</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557104538796.gif" alt=""></p>
+<figure data-type="image" tabindex="10"><img src="https://qq1332783374.github.io/post-images/1557104538796.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!doctype html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -634,20 +663,46 @@
 &lt;/html&gt;
 </code></pre>
 
-            </div>
-          </article>
         </div>
-    
+
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/css3-xue-xi-4-css3-de-xin-zeng-bu-ju-flex">
-              <h3 class="post-title">
-                css3学习-4-CSS3的新增布局flex
-              </h3>
-            </a>
-          </div>  
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/qDNFOfUzc">
+            <span class="flex-auto">CSS3</span>
+          </a>
         
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/ZRC-SBBXO">
+            <span class="flex-auto">笔记</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/AJo58fd2h">
+            <span class="flex-auto">前端</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://qq1332783374.github.io/post/css3-xue-xi-6-3d-bian-huan-he-animation-dong-hua">
+                <h3 class="post-title">
+                  <i class="remixicon-arrow-left-line"></i>
+                  css3学习-6-3D变换和animation动画
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://qq1332783374.github.io/post/css3-xue-xi-4-css3-de-xin-zeng-bu-ju-flex">
+                <h3 class="post-title">
+                  css3学习-4-CSS3的新增布局flex
+                  <i class="remixicon-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
 
         
           
@@ -673,16 +728,108 @@ var dsqjs = new DisqusJS(options)
 
           
         
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
 
       </div>
     </div>
+
+    <script src="https://qq1332783374.github.io/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
   </body>
 </html>

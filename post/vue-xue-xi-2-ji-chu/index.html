@@ -1,103 +1,129 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>vue学习-2-基础 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1564900987242">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<title>Tan&#39;s-Blog</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1573408223903">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Tan&#39;s-Blog - Atom Feed" href="https://qq1332783374.github.io/atom.xml">
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1564900987242" alt="">
-  </a>
-  <h1 class="site-title">
-    Tan&#39;s-Blog
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://qq1332783374.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1573408223903" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#1-vue-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95">1. Vue 基础语法</a><br>
+*
+<ul>
+<li><a href="#11-%E6%8F%92%E5%80%BC%E8%A1%A8%E8%BE%BE%E5%BC%8F">1.1 插值表达式</a></li>
+<li><a href="#12-javascript%E8%A1%A8%E8%BE%BE%E5%BC%8F">1.2 JavaScript表达式</a></li>
+</ul>
+</li>
+<li><a href="#2-vue-%E7%9A%84%E5%9F%BA%E7%A1%80%E6%8C%87%E4%BB%A4">2. Vue 的基础指令</a><br>
+*
+<ul>
+<li><a href="#21-v-if">2.1 v-if</a></li>
+<li><a href="#22-v-show">2.2 v-show</a></li>
+<li><a href="#23-v-else">2.3 v-else</a></li>
+<li><a href="#24-v-for">2.4  v-for</a></li>
+<li><a href="#25-v-on">2.5 v-on</a></li>
+<li><a href="#26-v-bind">2.6 v-bind</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A01%E5%9B%BE%E7%89%87%E7%9A%84%E5%88%87%E6%8D%A2">练习1:图片的切换</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A02%E9%80%89%E9%A1%B9%E5%8D%A1%E5%88%87%E6%8D%A2">练习2：选项卡切换</a></li>
+<li><a href="#27-v-model">2.7  v-model</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A01%E5%95%86%E5%93%81%E8%B4%AD%E7%89%A9%E8%BD%A6">练习1:商品购物车</a></li>
+</ul>
+</li>
+<li><a href="#3-%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98">3. 常见问题</a><br>
+*
+<ul>
+<li><a href="#31-v-on%E5%8F%AF%E4%BB%A5%E7%BB%91%E5%AE%9A%E5%A4%9A%E4%B8%AA%E6%96%B9%E6%B3%95%E5%90%97">3.1  v-on可以绑定多个方法吗？</a></li>
+<li><a href="#32-%E4%B8%80%E4%B8%AAvue%E5%AE%9E%E4%BE%8B%E5%8F%AF%E4%BB%A5%E7%BB%91%E5%AE%9A%E5%A4%9A%E4%B8%AAelement%E5%85%83%E7%B4%A0%E5%90%97">3.2 一个vue实例可以绑定多个element元素吗？</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="remixicon-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
     
       
-        <a href="https://qq1332783374.github.io" class="menu">
+        <a href="https://qq1332783374.github.io" class="menu" style="animation-delay: 0s">
           首页
         </a>
       
     
       
-        <a href="/archives" class="menu">
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
           归档
         </a>
       
     
       
-        <a href="/tags" class="menu">
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
           标签
         </a>
       
     
       
-        <a href="/post/about" class="menu">
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
           关于
         </a>
       
     
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://qq1332783374.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              vue学习-2-基础
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2018-11-05 ·
-              </time>
-              
-                <a href="https://qq1332783374.github.io/tag/DfppNGX-L" class="post-tags">
-                  # VUE
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
-                  # 笔记
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
-                  # 前端
-                </a>
-              
-            </div>
-            
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/vue-xue-xi-2-ji-chu.png')">
-              </div>
-            
-            <div class="post-content">
-              <h2 id="目录">目录</h2>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">vue学习-2-基础</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2018-11-05 / 18 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://qq1332783374.github.io/post-images/vue-xue-xi-2-ji-chu.png" alt="">
+        
+        <div class="post-content yue">
+          <h2 id="目录">目录</h2>
 <ol>
 <li>Vue 基础语法</li>
 <li>Vue 的基础指令</li>
@@ -148,7 +174,7 @@
 <blockquote>
 <p>指令是带有 <strong>v-</strong> 前缀的特殊特性,其值限定为绑定表达式,也就是Javascript表达式。指令的作用是当表达式的值发生变化时,将这个变化也反映到DOM上。</p>
 </blockquote>
-<p><img src="https://qq1332783374.github.io/post-images/1557142801263.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://qq1332783374.github.io/post-images/1557142801263.png" alt=""></figure>
 <h4 id="21-v-if">2.1 v-if</h4>
 <blockquote>
 <p><strong>v-if</strong> 指令可以完全根据表达式的值在DOM中生成或移除一个元素。如果,v-if表达式赋值为false,那么对应的元素就会从DOM中移除,否则，对应元素的一个克隆将重新插入DOM中(项目中更加倾向)</p>
@@ -156,7 +182,7 @@
 <ul>
 <li>v-if 赋值为法 <strong>false</strong> 时浏览器的调试台的表现 :</li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557142871923.png" alt=""></p>
+<figure data-type="image" tabindex="2"><img src="https://qq1332783374.github.io/post-images/1557142871923.png" alt=""></figure>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -189,7 +215,7 @@
 <ul>
 <li>v-if 赋值为法<strong>true</strong>时浏览器的调试台的表现</li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557142950768.png" alt=""></p>
+<figure data-type="image" tabindex="3"><img src="https://qq1332783374.github.io/post-images/1557142950768.png" alt=""></figure>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -223,7 +249,7 @@
 <blockquote>
 <p>v-show指令时候根据表达式的值来显示或者隐藏HTML元素。当v-show赋值为false时,元素将被隐藏。查看DOM时,会发现元素上多了一个内联样式<strong>style=&quot;display:none&quot;</strong></p>
 </blockquote>
-<p><img src="https://qq1332783374.github.io/post-images/1557143046401.png" alt=""></p>
+<figure data-type="image" tabindex="4"><img src="https://qq1332783374.github.io/post-images/1557143046401.png" alt=""></figure>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -334,7 +360,7 @@
 <h4 id="26-v-bind">2.6 v-bind</h4>
 <p>在vue中v-bind主要用来绑定于元素的属性。其中，v-bind可以简写成:的形式。</p>
 <h4 id="练习1图片的切换">练习1:图片的切换</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557143354099.gif" alt=""></p>
+<figure data-type="image" tabindex="5"><img src="https://qq1332783374.github.io/post-images/1557143354099.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!doctype html&gt;
 &lt;html&gt;
 
@@ -422,7 +448,7 @@
 &lt;/html&gt;
 </code></pre>
 <h4 id="练习2选项卡切换">练习2：选项卡切换</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557143409019.gif" alt=""></p>
+<figure data-type="image" tabindex="6"><img src="https://qq1332783374.github.io/post-images/1557143409019.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!doctype html&gt;
 &lt;html&gt;
 
@@ -519,7 +545,7 @@
 <p>这里用一道练习来体验一下 <strong>v-model</strong></p>
 </blockquote>
 <h4 id="练习1商品购物车">练习1:商品购物车</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557143598428.gif" alt=""></p>
+<figure data-type="image" tabindex="7"><img src="https://qq1332783374.github.io/post-images/1557143598428.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -708,20 +734,46 @@
 <p>el为实例提供挂载元素,值可以是css选择器,也可以是id选择器,也可以是实际的HTML。但不可以同时多个出现。</p>
 </blockquote>
 
-            </div>
-          </article>
         </div>
-    
+
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/vue-xue-xi-1-vuejs-jie-shao">
-              <h3 class="post-title">
-                vue学习-1-vue.js介绍
-              </h3>
-            </a>
-          </div>  
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/DfppNGX-L">
+            <span class="flex-auto">VUE</span>
+          </a>
         
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/ZRC-SBBXO">
+            <span class="flex-auto">笔记</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/AJo58fd2h">
+            <span class="flex-auto">前端</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://qq1332783374.github.io/post/vue-xue-xi-3-ji-suan-shu-xing-fang-fa-he-zhen-ting-qi">
+                <h3 class="post-title">
+                  <i class="remixicon-arrow-left-line"></i>
+                  vue学习-3-计算属性方法和侦听器
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://qq1332783374.github.io/post/vue-xue-xi-1-vuejs-jie-shao">
+                <h3 class="post-title">
+                  vue学习-1-vue.js介绍
+                  <i class="remixicon-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
 
         
           
@@ -747,16 +799,108 @@ var dsqjs = new DisqusJS(options)
 
           
         
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
 
       </div>
     </div>
+
+    <script src="https://qq1332783374.github.io/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
   </body>
 </html>

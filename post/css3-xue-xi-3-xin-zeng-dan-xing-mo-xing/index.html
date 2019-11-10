@@ -1,111 +1,131 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>css3学习-3-新增弹性模型 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1564900987242">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<title>Tan&#39;s-Blog</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1573408223903">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Tan&#39;s-Blog - Atom Feed" href="https://qq1332783374.github.io/atom.xml">
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1564900987242" alt="">
-  </a>
-  <h1 class="site-title">
-    Tan&#39;s-Blog
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://qq1332783374.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1573408223903" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B">1. 什么是弹性盒子模型</a></li>
+<li><a href="#2-box-orient%E5%B1%9E%E6%80%A7">2. box-orient属性</a></li>
+<li><a href="#3-box-direction%E5%B1%9E%E6%80%A7%E5%AE%9A%E4%B9%89%E7%9B%92%E5%AD%90%E7%9A%84%E5%B8%83%E5%B1%80%E9%A1%BA%E5%BA%8F">3. box-direction属性定义盒子的布局顺序</a></li>
+<li><a href="#4-box-ordinal-group%E5%B1%9E%E6%80%A7%E5%AE%9A%E4%B9%89%E7%9B%92%E5%AD%90%E5%B8%83%E5%B1%80%E4%BD%8D%E7%BD%AE">4. box-ordinal-group属性定义盒子布局位置</a></li>
+<li><a href="#5-%E5%AE%9A%E4%B9%89%E7%9B%92%E5%AD%90%E7%9A%84%E5%BC%B9%E6%80%A7%E7%A9%BA%E9%97%B4box-flex%E5%B1%9E%E6%80%A7">5. 定义盒子的弹性空间box-flex属性</a></li>
+<li><a href="#6%E7%AE%A1%E7%90%86%E7%9B%92%E5%AD%90%E7%9A%84%E7%A9%BA%E9%97%B4box-pack%E5%92%8Cbox-align%E5%B1%9E%E6%80%A7">6.管理盒子的空间box-pack和box-align属性</a><br>
+*
+<ul>
+<li><a href="#61-box-pack%E5%B1%9E%E6%80%A7%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95">6.1 box-pack属性基本语法</a></li>
+<li><a href="#62-box-align%E5%B1%9E%E6%80%A7%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95">6.2 box-align属性基本语法</a></li>
+</ul>
+</li>
+<li><a href="#7%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%98%B4%E5%BD%B1">7.盒子模型的阴影</a></li>
+<li><a href="#8%E5%85%B6%E5%AE%83%E6%96%B0%E5%A2%9E%E7%9B%92%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B1%9E%E6%80%A7">8.其它新增盒模型的属性</a><br>
+*
+<ul>
+<li><a href="#81-box-reflect%E5%80%92%E5%BD%B1">8.1. box-reflect倒影</a></li>
+<li><a href="#82-%E8%AF%A1%E5%BC%82%E7%9A%84%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B-box-sizing">8.2. 诡异的盒子模型 box-sizing</a></li>
+<li><a href="#83-%E5%88%86%E6%A0%8F%E5%B8%83%E5%B1%80">8.3. 分栏布局</a></li>
+<li><a href="#84-css3%E4%B8%AD%E7%9A%84%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80">8.4. CSS3中的响应式布局</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="remixicon-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
     
       
-        <a href="https://qq1332783374.github.io" class="menu">
+        <a href="https://qq1332783374.github.io" class="menu" style="animation-delay: 0s">
           首页
         </a>
       
     
       
-        <a href="/archives" class="menu">
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
           归档
         </a>
       
     
       
-        <a href="/tags" class="menu">
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
           标签
         </a>
       
     
       
-        <a href="/post/about" class="menu">
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
           关于
         </a>
       
     
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://qq1332783374.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              css3学习-3-新增弹性模型
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2018-10-18 ·
-              </time>
-              
-                <a href="https://qq1332783374.github.io/tag/qDNFOfUzc" class="post-tags">
-                  # CSS3
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
-                  # 笔记
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
-                  # 前端
-                </a>
-              
-            </div>
-            
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/css3-xue-xi-3-xin-zeng-dan-xing-mo-xing.jpg')">
-              </div>
-            
-            <div class="post-content">
-              <h2 id="目录">目录</h2>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">css3学习-3-新增弹性模型</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2018-10-18 / 7 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://qq1332783374.github.io/post-images/css3-xue-xi-3-xin-zeng-dan-xing-mo-xing.jpg" alt="">
+        
+        <div class="post-content yue">
+          <h2 id="目录">目录</h2>
 <ol>
 <li>什么是弹性盒子模型</li>
 <li>box-orient定义盒子布局取向</li>
 <li>box-direction属性定义盒子的布局顺序</li>
 <li>box-ordinal-group属性定义盒子布局位置</li>
-<li>定义盒子的弹性空间box-flex属性
-6.管理盒子的空间box-pack和box-align属性
-7.盒子模型的阴影
+<li>定义盒子的弹性空间box-flex属性<br>
+6.管理盒子的空间box-pack和box-align属性<br>
+7.盒子模型的阴影<br>
 8.其它新增盒模型的属性</li>
 </ol>
 <h2 id="前言">前言</h2>
@@ -115,23 +135,23 @@
 <ul>
 <li>CSS1定义的盒形元素</li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557064643654.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557064650889.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://qq1332783374.github.io/post-images/1557064643654.png" alt=""></figure>
+<figure data-type="image" tabindex="2"><img src="https://qq1332783374.github.io/post-images/1557064650889.png" alt=""></figure>
 <ul>
 <li>CSS2中新增的盒模型属性</li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557064677613.png" alt=""></p>
+<figure data-type="image" tabindex="3"><img src="https://qq1332783374.github.io/post-images/1557064677613.png" alt=""></figure>
 <h2 id="1-什么是弹性盒子模型">1. 什么是弹性盒子模型</h2>
 <blockquote>
 <p>CSS3中引入了新的盒模型处理机制，即是弹性盒模型，该模型用于决定元素在盒子中的分布方式以及如何处理盒子的可用空间。主要目的是用于创建自适应浏览器窗口流动布局或自适应大小的弹性布局。</p>
 </blockquote>
 <p>为了表现弹性盒模型的表现需要，CSS3新增了8个属性。</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557064738109.png" alt=""></p>
+<figure data-type="image" tabindex="4"><img src="https://qq1332783374.github.io/post-images/1557064738109.png" alt=""></figure>
 <h2 id="2-box-orient属性">2. box-orient属性</h2>
 <blockquote>
 <p>box-orient属性可用于定义盒子元素内部的流动布局方向，该属性的基本语法如下。注意在使用弹性盒子模型时，用户需要先把父容器的display属性设置为box或者inline-box</p>
 </blockquote>
-<p><img src="https://qq1332783374.github.io/post-images/1557064784828.png" alt=""></p>
+<figure data-type="image" tabindex="5"><img src="https://qq1332783374.github.io/post-images/1557064784828.png" alt=""></figure>
 <p>值简单说明:</p>
 <ul>
 <li>horizontal:盒子元素从左到右在一条水平线上显示它的子元素</li>
@@ -141,7 +161,7 @@
 <blockquote>
 <p>box-direction属性可以改变盒子元素中内部元素的流动顺序</p>
 </blockquote>
-<p><img src="https://qq1332783374.github.io/post-images/1557064841839.png" alt=""></p>
+<figure data-type="image" tabindex="6"><img src="https://qq1332783374.github.io/post-images/1557064841839.png" alt=""></figure>
 <ul>
 <li>
 <p>normal:正常线束顺序，即如果盒子元素的box-orient属性值为horizontal,则其包含的子元素按照从左到右的顺序显示。如果盒子元素的box-orient属性值为vertical，则其包含的子元素按照从上到下的顺序显示</p>
@@ -154,18 +174,18 @@
 <blockquote>
 <p>box-ordinal-group属性可以改变盒子内部元素的流动顺序，而box-ordinal-group属性能够设置每个子元素在盒子中的具体显示位置。</p>
 </blockquote>
-<p><img src="https://qq1332783374.github.io/post-images/1557064897217.png" alt=""></p>
+<figure data-type="image" tabindex="7"><img src="https://qq1332783374.github.io/post-images/1557064897217.png" alt=""></figure>
 <p>box-ordinal-group（）可以设置指定的数值，让元素在规定的位置出现，其序号默认都为1，并且序号相同的元素将按照他们在文档中加载的顺序进行排列。</p>
 <p><strong>注意:值更低的元素会显示在值更高的元素前面显示。盒子内部的元素默认的box-ordinal-group是1</strong></p>
 <h2 id="5-定义盒子的弹性空间box-flex属性">5. 定义盒子的弹性空间box-flex属性</h2>
-<p><img src="https://qq1332783374.github.io/post-images/1557064933991.png" alt=""></p>
+<figure data-type="image" tabindex="8"><img src="https://qq1332783374.github.io/post-images/1557064933991.png" alt=""></figure>
 <ul>
 <li>number属性值是一个整数或者小数，当盒子中包含多个定义了box-flex属性子元素时，浏览器将会把这些子元素的box-flex属性相加，然后根据它们各自的值占总值的比例来分配盒子剩余的空间。</li>
 </ul>
 <p><code>公式:子元素的尺寸=父盒子的尺寸*子元素的box-flex属性值/所有子元素的box-flex属性值的和</code></p>
 <h2 id="6管理盒子的空间box-pack和box-align属性">6.管理盒子的空间box-pack和box-align属性</h2>
 <h4 id="61-box-pack属性基本语法">6.1 box-pack属性基本语法</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557065121293.png" alt=""></p>
+<figure data-type="image" tabindex="9"><img src="https://qq1332783374.github.io/post-images/1557065121293.png" alt=""></figure>
 <p>值简单说明</p>
 <ul>
 <li>start:所有子元素都显示在盒子的左侧，富余的空间显示在盒子的右侧</li>
@@ -174,7 +194,7 @@
 <li>center:富余的空间在盒子的两侧平均分配</li>
 </ul>
 <h4 id="62-box-align属性基本语法">6.2 box-align属性基本语法</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557065192161.png" alt=""></p>
+<figure data-type="image" tabindex="10"><img src="https://qq1332783374.github.io/post-images/1557065192161.png" alt=""></figure>
 <p>值简单说明:</p>
 <ul>
 <li>start:所有子元素沿盒子上边缘排列，都显示在盒子的上部，富余空间显示在盒子的底部。</li>
@@ -221,10 +241,10 @@
 </table>
 <h2 id="8其它新增盒模型的属性">8.其它新增盒模型的属性</h2>
 <h4 id="81-box-reflect倒影">8.1. box-reflect倒影</h4>
-<p>由于box-reflect不是w3c组织标准属性，所以要添加浏览器的私有属性。
-使用方法:
+<p>由于box-reflect不是w3c组织标准属性，所以要添加浏览器的私有属性。<br>
+使用方法:<br>
 <code>-webkit-box-reflect:none|&lt;direction&gt;&lt;offset&gt;?&lt;mask-box-image&gt;</code></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557065470134.png" alt=""></p>
+<figure data-type="image" tabindex="11"><img src="https://qq1332783374.github.io/post-images/1557065470134.png" alt=""></figure>
 <p>从box-reflect语法中可以得知，其中包括以下几个属性值:</p>
 <ul>
 <li>none:此值为box-reflect的默认值，表示无倒影</li>
@@ -238,9 +258,9 @@
 </ul>
 <h4 id="82-诡异的盒子模型-box-sizing">8.2. 诡异的盒子模型 box-sizing</h4>
 <p>在css2所定义的盒子模型，为标准的盒子模型(content-box)</p>
-<p>content-box定义:
+<p>content-box定义:<br>
 <code>width/height=border+padding+content</code></p>
-<p>在css3中新增了一个怪异盒模型的概念(border-box)
+<p>在css3中新增了一个怪异盒模型的概念(border-box)<br>
 <code>width/height = content</code></p>
 <p><strong>注：标准盒子模型主要适用于pc端。诡异(border-box)主要适用于了移动端。</strong></p>
 <h4 id="83-分栏布局">8.3. 分栏布局</h4>
@@ -252,7 +272,7 @@
 <li>column-rule:栏间线条，默认为0</li>
 </ul>
 <h4 id="84-css3中的响应式布局">8.4. CSS3中的响应式布局</h4>
-<p>在css3中为我们提供了@media查询。此属性是针对于不同媒体来定义不同的样式。
+<p>在css3中为我们提供了@media查询。此属性是针对于不同媒体来定义不同的样式。<br>
 @media可以针对不同的屏幕尺寸设置不同不同的样式，特别是需要你设置响应式的页面，@medai是非常有用的。当你重置浏览器大小的时候，页面也会根据浏览器的宽度和高度重新渲染页面。</p>
 <p>基本用法:</p>
 <ul>
@@ -278,20 +298,46 @@
 }
 </code></pre>
 
-            </div>
-          </article>
         </div>
-    
+
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/css3-xue-xi-2-css3-zeng-qiang-wen-ben-he-yan-se-gong-neng">
-              <h3 class="post-title">
-                css3学习-2-CSS3增强文本和颜色功能
-              </h3>
-            </a>
-          </div>  
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/qDNFOfUzc">
+            <span class="flex-auto">CSS3</span>
+          </a>
         
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/ZRC-SBBXO">
+            <span class="flex-auto">笔记</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/AJo58fd2h">
+            <span class="flex-auto">前端</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://qq1332783374.github.io/post/css3-xue-xi-4-css3-de-xin-zeng-bu-ju-flex">
+                <h3 class="post-title">
+                  <i class="remixicon-arrow-left-line"></i>
+                  css3学习-4-CSS3的新增布局flex
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://qq1332783374.github.io/post/css3-xue-xi-2-css3-zeng-qiang-wen-ben-he-yan-se-gong-neng">
+                <h3 class="post-title">
+                  css3学习-2-CSS3增强文本和颜色功能
+                  <i class="remixicon-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
 
         
           
@@ -317,16 +363,108 @@ var dsqjs = new DisqusJS(options)
 
           
         
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
 
       </div>
     </div>
+
+    <script src="https://qq1332783374.github.io/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
   </body>
 </html>

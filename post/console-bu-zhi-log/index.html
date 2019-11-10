@@ -1,108 +1,117 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>console不止.log() | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1564900987242">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<title>Tan&#39;s-Blog</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1573408223903">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Tan&#39;s-Blog - Atom Feed" href="https://qq1332783374.github.io/atom.xml">
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1564900987242" alt="">
-  </a>
-  <h1 class="site-title">
-    Tan&#39;s-Blog
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://qq1332783374.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1573408223903" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#1-consolelog">1. console.log()</a><br>
+*
+<ul>
+<li><a href="#11-s%E5%92%8Co%E5%8D%A0%E4%BD%8D%E7%AC%A6">1.1 %s和%o占位符</a></li>
+<li><a href="#12-%E6%89%93%E5%8D%B0%E5%B8%A6%E6%A0%B7%E5%BC%8F%E4%BF%A1%E6%81%AF">1.2 打印带样式信息</a></li>
+<li><a href="#13-%E5%A2%9E%E5%BC%BAlog%E4%BF%A1%E6%81%AF%E7%9A%84%E9%98%85%E8%AF%BB%E4%BD%93%E9%AA%8C">1.3 增强log()信息的阅读体验</a></li>
+</ul>
+</li>
+<li><a href="#2-consoletable">2. console.table()</a></li>
+<li><a href="#3-consoledir">3. console.dir()</a></li>
+<li><a href="#4-consolewarn">4. console.warn()</a></li>
+<li><a href="#5-consoleassert">5. console.assert()</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="remixicon-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
     
       
-        <a href="https://qq1332783374.github.io" class="menu">
+        <a href="https://qq1332783374.github.io" class="menu" style="animation-delay: 0s">
           首页
         </a>
       
     
       
-        <a href="/archives" class="menu">
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
           归档
         </a>
       
     
       
-        <a href="/tags" class="menu">
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
           标签
         </a>
       
     
       
-        <a href="/post/about" class="menu">
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
           关于
         </a>
       
     
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://qq1332783374.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              console不止.log()
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2019-05-13 ·
-              </time>
-              
-                <a href="https://qq1332783374.github.io/tag/O5PkCIrKv" class="post-tags">
-                  # Chome
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
-                  # 笔记
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
-                  # 前端
-                </a>
-              
-            </div>
-            
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/console-bu-zhi-log.jpeg')">
-              </div>
-            
-            <div class="post-content">
-              <h2 id="前言">前言</h2>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">console不止.log()</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2019-05-13 / 3 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://qq1332783374.github.io/post-images/console-bu-zhi-log.jpeg" alt="">
+        
+        <div class="post-content yue">
+          <h2 id="前言">前言</h2>
 <p>刚开始学JS的时候，老师就说过要多用<code>console.log()</code> 打印信息。不过也是对于我这种初学者来说<code>console.log()</code>已经够用了，随着学习的深入，<code>log()</code> 面对一个长长的数组时，就显得不是很直观。这个时候就可以用 <code>console.table()</code>来直观显示这一数组 。接下来和大家介绍一下<code>console</code>的几个比较常用的方法。</p>
 <h2 id="1-consolelog">1. console.log()</h2>
 <p>其实<code>console.log()</code>还隐藏着很多让人意想不到的功能，比如说打印出带<code>css</code>样式的文字，通过<code>%s</code>和<code>%o</code>(注意是字母 o)占位符进行传值。</p>
 <h4 id="11-s和o占位符">1.1 %s和%o占位符</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557717587934.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://qq1332783374.github.io/post-images/1557717587934.png" alt=""></figure>
 <pre><code class="language-javascript">
 var user = {name: 'tan'};
 
@@ -111,16 +120,16 @@ console.log('Hello %s %o', 'World', user);
 </code></pre>
 <h4 id="12-打印带样式信息">1.2 打印带样式信息</h4>
 <p><strong>console.log('%cMsg', 'css')</strong></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557718016104.png" alt=""></p>
+<figure data-type="image" tabindex="2"><img src="https://qq1332783374.github.io/post-images/1557718016104.png" alt=""></figure>
 <pre><code class="language-javascript">console.log('Hello %cWorld', 'color: #2b99ff; font-size: 24px;');
 </code></pre>
 <h4 id="13-增强log信息的阅读体验">1.3 增强log()信息的阅读体验</h4>
 <p>假设有这么一个场景，你需要一次打印好几个变量信息，而你又不想写好几个<code>console.log()</code>进行一次次打印。这时候你可能会一次打印全部变量，场景如下：</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557718510598.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557718515652.png" alt=""></p>
+<figure data-type="image" tabindex="3"><img src="https://qq1332783374.github.io/post-images/1557718510598.png" alt=""></figure>
+<figure data-type="image" tabindex="4"><img src="https://qq1332783374.github.io/post-images/1557718515652.png" alt=""></figure>
 <p>那么问题来了，对象少的时候还是比较好辨别。那如果对象多了，就显得有点混乱了。为了提高它的可读性，可以给这些参数用一个<code>{}</code>包起来，就会有不一样的效果。</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557718717009.png" alt=""></p>
-<p><img src="https://qq1332783374.github.io/post-images/1557718722663.png" alt=""></p>
+<figure data-type="image" tabindex="5"><img src="https://qq1332783374.github.io/post-images/1557718717009.png" alt=""></figure>
+<figure data-type="image" tabindex="6"><img src="https://qq1332783374.github.io/post-images/1557718722663.png" alt=""></figure>
 <h2 id="2-consoletable">2. console.table()</h2>
 <p>这个API我也是最近才发现的，有点惊讶，居然还有这么好用的东西，话不多说自行体验。</p>
 <p>假设有这么一个数组：</p>
@@ -135,27 +144,27 @@ console.log('Hello %s %o', 'World', user);
 <ol>
 <li>用<code>console.log()</code>时是这样的，效果不是那么一目了然：</li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1557719635724.png" alt=""></p>
+<figure data-type="image" tabindex="7"><img src="https://qq1332783374.github.io/post-images/1557719635724.png" alt=""></figure>
 <ol start="2">
 <li>用<code>console.table()</code>是这样的，一目了然：</li>
 </ol>
-<p><img src="https://qq1332783374.github.io/post-images/1557719731762.png" alt=""></p>
+<figure data-type="image" tabindex="8"><img src="https://qq1332783374.github.io/post-images/1557719731762.png" alt=""></figure>
 <p><code>console.table()</code>的第二参数是选择显示的字段</p>
 <pre><code class="language-javascript">console.table(arr, ['id', 'name'])
 </code></pre>
-<p><img src="https://qq1332783374.github.io/post-images/1557719994746.png" alt=""></p>
+<figure data-type="image" tabindex="9"><img src="https://qq1332783374.github.io/post-images/1557719994746.png" alt=""></figure>
 <blockquote>
 <p><code>console.table()</code>也支持node.js，不过要更新到10版本以上。同时这个也有个限制，就是最多只能处理<strong>1000</strong>条数据。</p>
 </blockquote>
 <h2 id="3-consoledir">3. console.dir()</h2>
 <p><code>console.log()</code>和<code>console.dir()</code>的区别是看图吧：</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557734303959.png" alt=""></p>
+<figure data-type="image" tabindex="10"><img src="https://qq1332783374.github.io/post-images/1557734303959.png" alt=""></figure>
 <h2 id="4-consolewarn">4. console.warn()</h2>
 <p>更直观的看到一些警告的信息（个人理解）</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557734472331.png" alt=""></p>
+<figure data-type="image" tabindex="11"><img src="https://qq1332783374.github.io/post-images/1557734472331.png" alt=""></figure>
 <h2 id="5-consoleassert">5. console.assert()</h2>
 <p>这个是用来判断<code>true</code>和<code>false</code>的，而且只有为<code>false</code>的时候才行，具体用处我也不是很理解0.0，可能没有遇到这种场景。</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557735086430.png" alt=""></p>
+<figure data-type="image" tabindex="12"><img src="https://qq1332783374.github.io/post-images/1557735086430.png" alt=""></figure>
 <p>参考文献：</p>
 <ul>
 <li>
@@ -166,20 +175,46 @@ console.log('Hello %s %o', 'World', user);
 </li>
 </ul>
 
-            </div>
-          </article>
         </div>
-    
+
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/h5websocketnodejskoa2-shi-xian-jian-dan-de-liao-tian-shi-gong-neng">
-              <h3 class="post-title">
-                H5+WebSocket+Node.js+Koa2 实现简单的聊天室功能
-              </h3>
-            </a>
-          </div>  
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/O5PkCIrKv">
+            <span class="flex-auto">Chome</span>
+          </a>
         
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/ZRC-SBBXO">
+            <span class="flex-auto">笔记</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/AJo58fd2h">
+            <span class="flex-auto">前端</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://qq1332783374.github.io/post/yuan-sheng-javascript-fu-xi-shang-pin-shu-liang-ji-jie-ge-ji-suan">
+                <h3 class="post-title">
+                  <i class="remixicon-arrow-left-line"></i>
+                  原生JavaScript复习-商品数量及价格计算
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://qq1332783374.github.io/post/h5websocketnodejskoa2-shi-xian-jian-dan-de-liao-tian-shi-gong-neng">
+                <h3 class="post-title">
+                  H5+WebSocket+Node.js+Koa2 实现简单的聊天室功能
+                  <i class="remixicon-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
 
         
           
@@ -205,16 +240,108 @@ var dsqjs = new DisqusJS(options)
 
           
         
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
 
       </div>
     </div>
+
+    <script src="https://qq1332783374.github.io/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
   </body>
 </html>

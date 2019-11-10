@@ -1,103 +1,105 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>css3学习-2-CSS3增强文本和颜色功能 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1564900987242">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<title>Tan&#39;s-Blog</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1573408223903">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Tan&#39;s-Blog - Atom Feed" href="https://qq1332783374.github.io/atom.xml">
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1564900987242" alt="">
-  </a>
-  <h1 class="site-title">
-    Tan&#39;s-Blog
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://qq1332783374.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1573408223903" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#1-%E6%96%87%E6%9C%AC%E9%98%B4%E5%BD%B1text-shadow">1. 文本阴影(text-shadow)</a></li>
+<li><a href="#2-%E6%BA%A2%E5%87%BA%E6%96%87%E6%9C%AC%E7%9C%81%E7%95%A5text-over-flow%E5%B1%9E%E6%80%A7">2. 溢出文本省略—text-over flow属性</a></li>
+<li><a href="#3-%E6%96%87%E6%9C%AC%E6%8D%A2%E8%A1%8C%E6%98%BE%E7%A4%BAword-wrap%E5%B1%9E%E6%80%A7">3. 文本换行显示—word-wrap属性</a></li>
+<li><a href="#4-hsl%E8%89%B2%E5%BD%A9%E6%A8%A1%E5%BC%8F">4. HSL色彩模式</a></li>
+<li><a href="#5-rgba%E8%89%B2%E5%BD%A9%E6%A8%A1%E5%BC%8F">5. RGBA色彩模式</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="remixicon-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
     
       
-        <a href="https://qq1332783374.github.io" class="menu">
+        <a href="https://qq1332783374.github.io" class="menu" style="animation-delay: 0s">
           首页
         </a>
       
     
       
-        <a href="/archives" class="menu">
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
           归档
         </a>
       
     
       
-        <a href="/tags" class="menu">
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
           标签
         </a>
       
     
       
-        <a href="/post/about" class="menu">
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
           关于
         </a>
       
     
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://qq1332783374.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              css3学习-2-CSS3增强文本和颜色功能
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2018-10-16 ·
-              </time>
-              
-                <a href="https://qq1332783374.github.io/tag/qDNFOfUzc" class="post-tags">
-                  # CSS3
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
-                  # 笔记
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
-                  # 前端
-                </a>
-              
-            </div>
-            
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/css3-xue-xi-2-css3-zeng-qiang-wen-ben-he-yan-se-gong-neng.jpg')">
-              </div>
-            
-            <div class="post-content">
-              <h2 id="目录">目录</h2>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">css3学习-2-CSS3增强文本和颜色功能</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2018-10-16 / 5 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://qq1332783374.github.io/post-images/css3-xue-xi-2-css3-zeng-qiang-wen-ben-he-yan-se-gong-neng.jpg" alt="">
+        
+        <div class="post-content yue">
+          <h2 id="目录">目录</h2>
 <ol>
 <li>文本阴影(text-shadow)</li>
 <li>溢出文本省略—text-over flow属性</li>
@@ -111,31 +113,31 @@
 <ul>
 <li>CSS3中新增的文本属性</li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557063219670.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://qq1332783374.github.io/post-images/1557063219670.png" alt=""></figure>
 <ul>
 <li>CSS3中增强的颜色功能</li>
 </ul>
-<p><img src="https://qq1332783374.github.io/post-images/1557063231415.png" alt=""></p>
+<figure data-type="image" tabindex="2"><img src="https://qq1332783374.github.io/post-images/1557063231415.png" alt=""></figure>
 <h2 id="1-文本阴影text-shadow">1. 文本阴影(text-shadow)</h2>
 <p>实际上，在CSS 2.1中，W3C就已经定义了text-shadow属性，但在CSS 3中又重新定义了它，并增加了不透明度效果，该属性的基本语法如下</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557063262960.png" alt=""></p>
-<p>值简单说明：
-* 表示颜色；
-* 表示由浮点数字和单位标识符组成的长度值，可为负值，指定阴影的水平延伸距离；
+<figure data-type="image" tabindex="3"><img src="https://qq1332783374.github.io/post-images/1557063262960.png" alt=""></figure>
+<p>值简单说明：<br>
+* 表示颜色；<br>
+* 表示由浮点数字和单位标识符组成的长度值，可为负值，指定阴影的水平延伸距离；<br>
 * 表示由浮点数字和单位标识符组成的长度值，不可为负值，指定模糊效果的作用距离。如果仅仅需要模糊效果，将前两个length全部设定为0即可。</p>
 <p>总结: 阴影偏移由两个值指定到文本的距离。第一个长度值指定到文本右边的水平距离，负值会把阴影放置在文本的左边。第二个长度值指定到文本下边的垂直距离，负值会把阴影放置在文本上方。</p>
 <h2 id="2-溢出文本省略text-over-flow属性">2. 溢出文本省略—text-over flow属性</h2>
 <p>在信息列表结构中，常常会遇到栏目的宽度固定但信息项的字符过长的矛盾，为了避免超长字符的信息项破坏栏目的布局，设计师经常需要考虑限制栏目信息的显示长度，如设置当信息项字符超出长度时则省略显示。之前，一般多借助JavaScript脚本来实现这种效果。现在，CSS 3新增了text-overflow属性，使得这个问题迎刃而解。</p>
-<p><img src="https://qq1332783374.github.io/post-images/1557063353918.png" alt=""></p>
-<p>值简单说明：
-* clip属性值表示不显示省略标记，而是简单地裁切。
-* ellipsis属性值表示当对象内文本溢出时显示省略标记，省略标记插入的位置是最后一个字符。
+<figure data-type="image" tabindex="4"><img src="https://qq1332783374.github.io/post-images/1557063353918.png" alt=""></figure>
+<p>值简单说明：<br>
+* clip属性值表示不显示省略标记，而是简单地裁切。<br>
+* ellipsis属性值表示当对象内文本溢出时显示省略标记，省略标记插入的位置是最后一个字符。<br>
 * ellipsis-word表示当对象内文本溢出时显示省略标记，省略标记插入的位置是最后一个词（word）。</p>
 <blockquote>
 <p>注意: text-overflow属性仅用于决定，当文本溢出时是否显示省略标记，并不具备样式定义的功能。要实现溢出时产生省略号的效果，应该再定义两个样式：强制文本在一行内显示（white-space:nowrap）和溢出内容为隐藏（overflow:hidden），只有这样才能实现溢出文本显示为省略号的效果。</p>
 </blockquote>
 <h2 id="3-文本换行显示word-wrap属性">3. 文本换行显示—word-wrap属性</h2>
-<p><img src="https://qq1332783374.github.io/post-images/1557063443186.png" alt=""></p>
+<figure data-type="image" tabindex="5"><img src="https://qq1332783374.github.io/post-images/1557063443186.png" alt=""></figure>
 <p>值简单说明：</p>
 <ul>
 <li>normal属性值表示控制连续文本换行。</li>
@@ -163,20 +165,46 @@
 </code></pre>
 <p>其中r、g、b分别表示红色、绿色和蓝色三种原色所占的比重。r、g、b的值可以是正整数或者百分数，正整数值的取值范围为0～255，百分数值的取值范围为0.0%～100.0%，超出范围的数值将被截至其最接近的取值极限。注意，并非所有浏览器都支持使用百分数值。第四个参数<opacity>表示不透明度，取值在0到1之间。</p>
 
-            </div>
-          </article>
         </div>
-    
+
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/css3-xue-xi-1-css3-xin-zeng-de-xuan-ze-qi">
-              <h3 class="post-title">
-                css3学习-1-CSS3新增的选择器
-              </h3>
-            </a>
-          </div>  
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/qDNFOfUzc">
+            <span class="flex-auto">CSS3</span>
+          </a>
         
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/ZRC-SBBXO">
+            <span class="flex-auto">笔记</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/AJo58fd2h">
+            <span class="flex-auto">前端</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://qq1332783374.github.io/post/css3-xue-xi-3-xin-zeng-dan-xing-mo-xing">
+                <h3 class="post-title">
+                  <i class="remixicon-arrow-left-line"></i>
+                  css3学习-3-新增弹性模型
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://qq1332783374.github.io/post/css3-xue-xi-1-css3-xin-zeng-de-xuan-ze-qi">
+                <h3 class="post-title">
+                  css3学习-1-CSS3新增的选择器
+                  <i class="remixicon-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
 
         
           
@@ -202,16 +230,108 @@ var dsqjs = new DisqusJS(options)
 
           
         
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
 
       </div>
     </div>
+
+    <script src="https://qq1332783374.github.io/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
   </body>
 </html>

@@ -1,103 +1,120 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>css3学习-6-3D变换和animation动画 | Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1564900987242">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<title>Tan&#39;s-Blog</title>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1573408223903">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Tan&#39;s-Blog - Atom Feed" href="https://qq1332783374.github.io/atom.xml">
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1564900987242" alt="">
-  </a>
-  <h1 class="site-title">
-    Tan&#39;s-Blog
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://qq1332783374.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1573408223903" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#1-3d%E5%8F%98%E6%8D%A2">1. 3D变换</a><br>
+*
+<ul>
+<li><a href="#%E5%B8%B8%E7%94%A8api">常用API：</a></li>
+<li><a href="#%E5%AE%9E%E4%BE%8B">实例：</a></li>
+<li><a href="#%E5%AE%9E%E4%BE%8B13d%E7%AB%8B%E6%96%B9%E4%BD%93">实例1：3D立方体</a></li>
+</ul>
+</li>
+<li><a href="#2-animation">2. animation</a><br>
+*
+<ul>
+<li><a href="#21%E5%85%B3%E9%94%AE%E5%B8%A7-keyframes">2.1关键帧-keyFrames</a></li>
+<li><a href="#22-animate-%E8%B0%83%E7%94%A8%E5%8A%A8%E7%94%BB">2.2 animate-调用动画</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A0">练习</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A01%E5%BE%AA%E7%8E%AF%E8%BF%90%E5%8A%A8">练习1：循环运动</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A02%E6%BB%9A%E5%8A%A8%E6%8F%90%E7%A4%BA">练习2：滚动提示</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A033d%E6%8A%98%E5%8F%A0%E8%8F%9C%E5%8D%95">练习3：3D折叠菜单</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A04%E6%B6%9F%E6%BC%AA%E6%95%88%E6%9E%9C">练习4：涟漪效果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="remixicon-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
     
       
-        <a href="https://qq1332783374.github.io" class="menu">
+        <a href="https://qq1332783374.github.io" class="menu" style="animation-delay: 0s">
           首页
         </a>
       
     
       
-        <a href="/archives" class="menu">
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
           归档
         </a>
       
     
       
-        <a href="/tags" class="menu">
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
           标签
         </a>
       
     
       
-        <a href="/post/about" class="menu">
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
           关于
         </a>
       
     
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://qq1332783374.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              css3学习-6-3D变换和animation动画
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2018-10-29 ·
-              </time>
-              
-                <a href="https://qq1332783374.github.io/tag/qDNFOfUzc" class="post-tags">
-                  # CSS3
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/ZRC-SBBXO" class="post-tags">
-                  # 笔记
-                </a>
-              
-                <a href="https://qq1332783374.github.io/tag/AJo58fd2h" class="post-tags">
-                  # 前端
-                </a>
-              
-            </div>
-            
-              <div class="post-feature-image" style="background-image: url('https://qq1332783374.github.io/post-images/css3-xue-xi-6-3d-bian-huan-he-animation-dong-hua.jpg')">
-              </div>
-            
-            <div class="post-content">
-              <h2 id="目录">目录</h2>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">css3学习-6-3D变换和animation动画</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2018-10-29 / 10 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://qq1332783374.github.io/post-images/css3-xue-xi-6-3d-bian-huan-he-animation-dong-hua.jpg" alt="">
+        
+        <div class="post-content yue">
+          <h2 id="目录">目录</h2>
 <ol>
 <li>3D变换</li>
 <li>animation</li>
@@ -108,15 +125,15 @@
 <li>transform-style（preserve-3d） 建立3D空间</li>
 <li>Perspective 景深</li>
 <li>Perspective- origin 景深基点</li>
-<li>Transform 新增函数
-* rotateX()
-* rotateY()
-* rotateZ()
+<li>Transform 新增函数<br>
+* rotateX()<br>
+* rotateY()<br>
+* rotateZ()<br>
 * translateZ()</li>
 </ul>
 <h4 id="实例">实例：</h4>
 <h4 id="实例13d立方体">实例1：3D立方体</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557104995252.gif" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://qq1332783374.github.io/post-images/1557104995252.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!doctype html&gt;
 &lt;html&gt;
 
@@ -260,13 +277,13 @@
 <p>可选属性</p>
 <ul>
 <li>
-<p>animation-timing-function	动画运动形式
-- 参数
-- linear	匀速
-- ease		缓冲
-- ease-in	由慢到快
-- ease-out	由快到慢
-- ease-in-out	由慢到快再到慢
+<p>animation-timing-function	动画运动形式<br>
+- 参数<br>
+- linear	匀速<br>
+- ease		缓冲<br>
+- ease-in	由慢到快<br>
+- ease-out	由快到慢<br>
+- ease-in-out	由慢到快再到慢<br>
 - cubic-bezier(number, number, number, number)：	特定的贝塞尔曲线类型，4个数值需在[0, 1]区间内</p>
 </li>
 <li>
@@ -294,7 +311,7 @@
 </ol>
 <h4 id="练习">练习</h4>
 <h4 id="练习1循环运动">练习1：循环运动</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557105787842.gif" alt=""></p>
+<figure data-type="image" tabindex="2"><img src="https://qq1332783374.github.io/post-images/1557105787842.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!doctype html&gt;
 &lt;html&gt;
 
@@ -357,7 +374,7 @@
 &lt;/html&gt;
 </code></pre>
 <h4 id="练习2滚动提示">练习2：滚动提示</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557105835569.gif" alt=""></p>
+<figure data-type="image" tabindex="3"><img src="https://qq1332783374.github.io/post-images/1557105835569.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!doctype html&gt;
 &lt;html&gt;
 
@@ -433,7 +450,7 @@
 &lt;/html&gt;
 </code></pre>
 <h4 id="练习33d折叠菜单">练习3：3D折叠菜单</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557105891513.gif" alt=""></p>
+<figure data-type="image" tabindex="4"><img src="https://qq1332783374.github.io/post-images/1557105891513.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!doctype html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -580,7 +597,7 @@
 &lt;/html&gt;
 </code></pre>
 <h4 id="练习4涟漪效果">练习4：涟漪效果</h4>
-<p><img src="https://qq1332783374.github.io/post-images/1557105948390.gif" alt=""></p>
+<figure data-type="image" tabindex="5"><img src="https://qq1332783374.github.io/post-images/1557105948390.gif" alt=""></figure>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -654,20 +671,46 @@
 &lt;/html&gt;
 </code></pre>
 
-            </div>
-          </article>
         </div>
-    
+
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://qq1332783374.github.io/post/css3-xue-xi-5-jian-bian-guo-du-shi-jian-yi-ji-2d-bian-huan">
-              <h3 class="post-title">
-                css3学习-5-渐变、过度时间以及2D变换
-              </h3>
-            </a>
-          </div>  
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/qDNFOfUzc">
+            <span class="flex-auto">CSS3</span>
+          </a>
         
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/ZRC-SBBXO">
+            <span class="flex-auto">笔记</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://qq1332783374.github.io/tag/AJo58fd2h">
+            <span class="flex-auto">前端</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://qq1332783374.github.io/post/vue-xue-xi-1-vuejs-jie-shao">
+                <h3 class="post-title">
+                  <i class="remixicon-arrow-left-line"></i>
+                  vue学习-1-vue.js介绍
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://qq1332783374.github.io/post/css3-xue-xi-5-jian-bian-guo-du-shi-jian-yi-ji-2d-bian-huan">
+                <h3 class="post-title">
+                  css3学习-5-渐变、过度时间以及2D变换
+                  <i class="remixicon-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
 
         
           
@@ -693,16 +736,108 @@ var dsqjs = new DisqusJS(options)
 
           
         
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
 
       </div>
     </div>
+
+    <script src="https://qq1332783374.github.io/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
   </body>
 </html>

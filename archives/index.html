@@ -1,754 +1,785 @@
 <html>
   <head>
     <meta charset="utf-8" />
-<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tan&#39;s-Blog</title>
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1564900987242">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1573408223903">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://qq1332783374.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Tan&#39;s-Blog - Atom Feed" href="https://qq1332783374.github.io/atom.xml">
+
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://qq1332783374.github.io">
-  <img class="avatar" src="https://qq1332783374.github.io/images/avatar.png?v=1564900987242" alt="">
-  </a>
-  <h1 class="site-title">
-    Tan&#39;s-Blog
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://qq1332783374.github.io">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1573408223903" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            温故而知新
+          </p>
+          <div class="animated fadeInLeft social-container hidden lg:block" style="animation-delay: 0.6s">
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="remixicon-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
     
       
-        <a href="https://qq1332783374.github.io" class="menu">
+        <a href="https://qq1332783374.github.io" class="menu" style="animation-delay: 0s">
           首页
         </a>
       
     
       
-        <a href="/archives" class="menu">
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
           归档
         </a>
       
     
       
-        <a href="/tags" class="menu">
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
           标签
         </a>
       
     
       
-        <a href="/post/about" class="menu">
+        <a href="/post/about" class="menu" style="animation-delay: 0.6000000000000001s">
           关于
         </a>
       
     
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://qq1332783374.github.io/atom.xml" target="_blank">RSS</a>
   </div>
 </div>
-
-    
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4">
+        <h2 class="text-lg text-gray-700 mb-8">
+          <i class="remixicon-archive-line"></i> 文章归档
+        </h2>
         
 
-<div class="archives-container">
+        <div class="archives-container">
+          
+            <h2 class="text-gray-600 py-4 animated fadeIn">
+              <i class="remixicon-map-pin-time-line"></i>
+              2019
+            </h2>
+            
+              
+                <a href="https://qq1332783374.github.io/post/nodejs-pa-chong-3-shi-yong-async-kong-zhi-bing-fa" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    NodeJS爬虫--3--使用 async 控制并发
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-05-21</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/nodejs-pa-chong-2-shi-yong-eventproxy-kong-zhi-bing-fa-zhuan-zai" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    NodeJS爬虫--2--使用 eventproxy 控制并发(转载)
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-05-21</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/nodejs-pa-chong-1-shi-xian-jian-dan-de-wang-ye-de-pa-chong" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    NodeJS爬虫--1--实现简单的网页的爬虫
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-05-21</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/yuan-sheng-javascript-fu-xi-jian-dan-de-lun-bo-tu-zu-jian" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    原生JavaScript复习-简单的轮播图组件
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-05-15</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/yuan-sheng-javascript-fu-xi-shang-pin-shu-liang-ji-jie-ge-ji-suan" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    原生JavaScript复习-商品数量及价格计算
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-05-13</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/console-bu-zhi-log" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    console不止.log()
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-05-13</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/h5websocketnodejskoa2-shi-xian-jian-dan-de-liao-tian-shi-gong-neng" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    H5+WebSocket+Node.js+Koa2 实现简单的聊天室功能
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-05-12</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/yuan-sheng-javascript-fu-xi-ben-di-cun-chu-huan-fu-gong-neng" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    原生JavaScript复习-本地存储换肤功能
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-05-11</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/wowjs-jian-dan-shi-yong-jiao-cheng" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    WOW.js 简单使用教程
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-05-05</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/url-can-shu-jie-qu-gong-ju-han-shu" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    URL参数截取工具函数
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-05-04</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/chang-jian-zheng-ze" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    常见正则
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-04-28</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/nodejsexpress-ru-men" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    Node.js+Express入门
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-04-27</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/shi-jian-chuo-zhuan-huan-han-shu" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    时间戳转换函数
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-04-27</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/wang-zhan-she-ji-chang-jian-wen-ti" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    网站设计常见问题
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-04-25</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/xiao-cheng-xu-qing-qiu-api-feng-zhuang" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    小程序请求API封装
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-04-18</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-xiang-mu-chu-shi-hua" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    vue项目初始化
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-04-10</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/js-zhong-varconstlet-de-qu-bie" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    JS中var、const、let的区别
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-04-02</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-huan-xin-im-chu-shi-pei-zhi" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    vue环信IM初始配置
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-03-22</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/liao-tian-shi-xiao-guo-rang-gun-dong-tiao-zi-dong-gun-dao-di-bu" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    聊天室效果让滚动条自动滚到底部
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-03-18</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/jie-jue-yi-xie-yi-dong-duan-she-pei-wen-ti" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    解决一些移动端设配问题
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-03-14</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-router-lu-you-lan-jie-qi" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    Vue-router 路由拦截器
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-03-13</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-axios-qing-qiu-lan-jie-qi" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    Vue-axios 请求拦截器
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-03-10</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/deepin-linux-mongodb-shu-ju-ku-an-zhuang" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    Deepin-Linux MongoDB数据库安装
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-02-02</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/win10-javaweb-huan-jing" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    win10-JavaWeb环境
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-01-17</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/ji-yi-ci-yuan-sheng-javascript-feng-zhuang-ajax-han-shu" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    记一次原生JavaScript封装AJAX函数
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2019-01-02</div>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+          
+            <h2 class="text-gray-600 py-4 animated fadeIn">
+              <i class="remixicon-map-pin-time-line"></i>
+              2018
+            </h2>
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vs-code-qian-duan-zi-yong-cha-jian" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    VS Code-前端自用插件
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-12-28</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-jie-duan-zong-jie" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    Vue-阶段总结
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-12-04</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vuex-jie-shao-he-ru-men" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    vuex-介绍和入门
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-11-25</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-cli-da-jian-jian-yi-de-todolist" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    vue-cli搭建简易的ToDoList
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-11-23</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-cli2x-ji-chu-yong-fa" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    vue-cli@2.x基础用法
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-11-21</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-xue-xi-7-vue-zhong-de-yang-shi-bang-ding" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    vue学习-7-Vue中的样式绑定
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-11-19</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-xue-xi-6-shen-ru-liao-jie-zu-jian-2" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    vue学习-6-深入了解组件2
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-11-16</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-xue-xi-5-shen-ru-liao-jie-zu-jian" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    vue学习-5-深入了解组件
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-11-14</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-xue-xi-4-zu-jian-ji-chu" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    vue学习-4-组件基础
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-11-12</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-xue-xi-3-ji-suan-shu-xing-fang-fa-he-zhen-ting-qi" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    vue学习-3-计算属性方法和侦听器
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-11-07</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-xue-xi-2-ji-chu" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    vue学习-2-基础
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-11-05</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/vue-xue-xi-1-vuejs-jie-shao" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    vue学习-1-vue.js介绍
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-11-01</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/css3-xue-xi-6-3d-bian-huan-he-animation-dong-hua" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    css3学习-6-3D变换和animation动画
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-10-29</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/css3-xue-xi-5-jian-bian-guo-du-shi-jian-yi-ji-2d-bian-huan" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    css3学习-5-渐变、过度时间以及2D变换
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-10-26</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/css3-xue-xi-4-css3-de-xin-zeng-bu-ju-flex" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    css3学习-4-CSS3的新增布局flex
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-10-22</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/css3-xue-xi-3-xin-zeng-dan-xing-mo-xing" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    css3学习-3-新增弹性模型
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-10-18</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/css3-xue-xi-2-css3-zeng-qiang-wen-ben-he-yan-se-gong-neng" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    css3学习-2-CSS3增强文本和颜色功能
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-10-16</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/css3-xue-xi-1-css3-xin-zeng-de-xuan-ze-qi" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    css3学习-1-CSS3新增的选择器
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-10-13</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/html5-xue-xi-6-html5-zhong-de-duo-mei-ti-bo-fang" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    html5学习-6-html5中的多媒体播放
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-09-28</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/html5-xue-xi-5-html5-zhong-de-shu-ju-cun-chu" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    html5学习-5-html5中的数据存储
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-09-22</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/html5-xue-xi-4-html5-zhong-de-canvas-ji-chu" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    html5学习-4-html5中的canvas基础
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-09-19</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/html5-xue-xi-3-html5-zhong-de-wen-jian-cao-zuo" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    html5学习-3-html5中的文件操作
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-09-17</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/html5-xue-xi-2-html5-zhong-de-biao-dan" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    html5学习-2-html5中的表单
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-09-14</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/html5-xue-xi-1-html5-xin-zeng-biao-qian" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    html5学习-1-html5新增标签
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-09-12</div>
+              
+            
+              
+                <a href="https://qq1332783374.github.io/post/git-ru-men" class="post">
+                  <h2 class="inline-block font-bold text-lg post-title animated fadeIn">
+                    git入门
+                  </h2>
+                </a>
+                <div class="text-sm font-light mt-3 mb-6 text-gray-400 animated fadeInDown" style="animation-delay: 0.4s">2018-07-31</div>
+              
+            
+          
+        </div>
+
+        <div>
+          <div class="pagination-container animated fadeIn">
   
-    <h2 class="year">2019</h2>
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/03-react-bi-ji-sheng-ming-zhou-qi-han-shu">
-            <h2 class="post-title">
-              03-React笔记 生命周期函数
-              <small>2019-06-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/02-react-bi-ji-react-zhong-de-xu-ni-dom">
-            <h2 class="post-title">
-              02-React笔记 React中的虚拟DOM
-              <small>2019-06-16</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/01-react-bi-ji-propsstatehe-render-han-shu-zhi-jian-de-guan-xi">
-            <h2 class="post-title">
-              01-React笔记 props、state、和render函数之间的关系
-              <small>2019-06-16</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/nodejs-pa-chong-3-shi-yong-async-kong-zhi-bing-fa">
-            <h2 class="post-title">
-              NodeJS爬虫--3--使用 async 控制并发
-              <small>2019-05-21</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/nodejs-pa-chong-2-shi-yong-eventproxy-kong-zhi-bing-fa-zhuan-zai">
-            <h2 class="post-title">
-              NodeJS爬虫--2--使用 eventproxy 控制并发(转载)
-              <small>2019-05-21</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/nodejs-pa-chong-1-shi-xian-jian-dan-de-wang-ye-de-pa-chong">
-            <h2 class="post-title">
-              NodeJS爬虫--1--实现简单的网页的爬虫
-              <small>2019-05-21</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/yuan-sheng-javascript-fu-xi-jian-dan-de-lun-bo-tu-zu-jian">
-            <h2 class="post-title">
-              原生JavaScript复习-简单的轮播图组件
-              <small>2019-05-15</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/yuan-sheng-javascript-fu-xi-shang-pin-shu-liang-ji-jie-ge-ji-suan">
-            <h2 class="post-title">
-              原生JavaScript复习-商品数量及价格计算
-              <small>2019-05-13</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/console-bu-zhi-log">
-            <h2 class="post-title">
-              console不止.log()
-              <small>2019-05-13</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/h5websocketnodejskoa2-shi-xian-jian-dan-de-liao-tian-shi-gong-neng">
-            <h2 class="post-title">
-              H5+WebSocket+Node.js+Koa2 实现简单的聊天室功能
-              <small>2019-05-12</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/yuan-sheng-javascript-fu-xi-ben-di-cun-chu-huan-fu-gong-neng">
-            <h2 class="post-title">
-              原生JavaScript复习-本地存储换肤功能
-              <small>2019-05-11</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/wowjs-jian-dan-shi-yong-jiao-cheng">
-            <h2 class="post-title">
-              WOW.js 简单使用教程
-              <small>2019-05-05</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/url-can-shu-jie-qu-gong-ju-han-shu">
-            <h2 class="post-title">
-              URL参数截取工具函数
-              <small>2019-05-04</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/chang-jian-zheng-ze">
-            <h2 class="post-title">
-              常见正则
-              <small>2019-04-28</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/nodejsexpress-ru-men">
-            <h2 class="post-title">
-              Node.js+Express入门
-              <small>2019-04-27</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/shi-jian-chuo-zhuan-huan-han-shu">
-            <h2 class="post-title">
-              时间戳转换函数
-              <small>2019-04-27</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/wang-zhan-she-ji-chang-jian-wen-ti">
-            <h2 class="post-title">
-              网站设计常见问题
-              <small>2019-04-25</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/xiao-cheng-xu-qing-qiu-api-feng-zhuang">
-            <h2 class="post-title">
-              小程序请求API封装
-              <small>2019-04-18</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-xiang-mu-chu-shi-hua">
-            <h2 class="post-title">
-              vue项目初始化
-              <small>2019-04-10</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/js-zhong-varconstlet-de-qu-bie">
-            <h2 class="post-title">
-              JS中var、const、let的区别
-              <small>2019-04-02</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-huan-xin-im-chu-shi-pei-zhi">
-            <h2 class="post-title">
-              vue环信IM初始配置
-              <small>2019-03-22</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/liao-tian-shi-xiao-guo-rang-gun-dong-tiao-zi-dong-gun-dao-di-bu">
-            <h2 class="post-title">
-              聊天室效果让滚动条自动滚到底部
-              <small>2019-03-18</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/jie-jue-yi-xie-yi-dong-duan-she-pei-wen-ti">
-            <h2 class="post-title">
-              解决一些移动端设配问题
-              <small>2019-03-14</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-router-lu-you-lan-jie-qi">
-            <h2 class="post-title">
-              Vue-router 路由拦截器
-              <small>2019-03-13</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-axios-qing-qiu-lan-jie-qi">
-            <h2 class="post-title">
-              Vue-axios 请求拦截器
-              <small>2019-03-10</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/deepin-linux-mongodb-shu-ju-ku-an-zhuang">
-            <h2 class="post-title">
-              Deepin-Linux MongoDB数据库安装
-              <small>2019-02-02</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/win10-javaweb-huan-jing">
-            <h2 class="post-title">
-              win10-JavaWeb环境
-              <small>2019-01-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/ji-yi-ci-yuan-sheng-javascript-feng-zhuang-ajax-han-shu">
-            <h2 class="post-title">
-              记一次原生JavaScript封装AJAX函数
-              <small>2019-01-02</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
   
-    <h2 class="year">2018</h2>
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vs-code-qian-duan-zi-yong-cha-jian">
-            <h2 class="post-title">
-              VS Code-前端自用插件
-              <small>2018-12-28</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-jie-duan-zong-jie">
-            <h2 class="post-title">
-              Vue-阶段总结
-              <small>2018-12-04</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vuex-jie-shao-he-ru-men">
-            <h2 class="post-title">
-              vuex-介绍和入门
-              <small>2018-11-25</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-cli-da-jian-jian-yi-de-todolist">
-            <h2 class="post-title">
-              vue-cli搭建简易的ToDoList
-              <small>2018-11-23</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-cli2x-ji-chu-yong-fa">
-            <h2 class="post-title">
-              vue-cli@2.x基础用法
-              <small>2018-11-21</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-xue-xi-7-vue-zhong-de-yang-shi-bang-ding">
-            <h2 class="post-title">
-              vue学习-7-Vue中的样式绑定
-              <small>2018-11-19</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-xue-xi-6-shen-ru-liao-jie-zu-jian-2">
-            <h2 class="post-title">
-              vue学习-6-深入了解组件2
-              <small>2018-11-16</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-xue-xi-5-shen-ru-liao-jie-zu-jian">
-            <h2 class="post-title">
-              vue学习-5-深入了解组件
-              <small>2018-11-14</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-xue-xi-4-zu-jian-ji-chu">
-            <h2 class="post-title">
-              vue学习-4-组件基础
-              <small>2018-11-12</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-xue-xi-3-ji-suan-shu-xing-fang-fa-he-zhen-ting-qi">
-            <h2 class="post-title">
-              vue学习-3-计算属性方法和侦听器
-              <small>2018-11-07</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-xue-xi-2-ji-chu">
-            <h2 class="post-title">
-              vue学习-2-基础
-              <small>2018-11-05</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/vue-xue-xi-1-vuejs-jie-shao">
-            <h2 class="post-title">
-              vue学习-1-vue.js介绍
-              <small>2018-11-01</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/css3-xue-xi-6-3d-bian-huan-he-animation-dong-hua">
-            <h2 class="post-title">
-              css3学习-6-3D变换和animation动画
-              <small>2018-10-29</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/css3-xue-xi-5-jian-bian-guo-du-shi-jian-yi-ji-2d-bian-huan">
-            <h2 class="post-title">
-              css3学习-5-渐变、过度时间以及2D变换
-              <small>2018-10-26</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/css3-xue-xi-4-css3-de-xin-zeng-bu-ju-flex">
-            <h2 class="post-title">
-              css3学习-4-CSS3的新增布局flex
-              <small>2018-10-22</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/css3-xue-xi-3-xin-zeng-dan-xing-mo-xing">
-            <h2 class="post-title">
-              css3学习-3-新增弹性模型
-              <small>2018-10-18</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/css3-xue-xi-2-css3-zeng-qiang-wen-ben-he-yan-se-gong-neng">
-            <h2 class="post-title">
-              css3学习-2-CSS3增强文本和颜色功能
-              <small>2018-10-16</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/css3-xue-xi-1-css3-xin-zeng-de-xuan-ze-qi">
-            <h2 class="post-title">
-              css3学习-1-CSS3新增的选择器
-              <small>2018-10-13</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/html5-xue-xi-6-html5-zhong-de-duo-mei-ti-bo-fang">
-            <h2 class="post-title">
-              html5学习-6-html5中的多媒体播放
-              <small>2018-09-28</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/html5-xue-xi-5-html5-zhong-de-shu-ju-cun-chu">
-            <h2 class="post-title">
-              html5学习-5-html5中的数据存储
-              <small>2018-09-22</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/html5-xue-xi-4-html5-zhong-de-canvas-ji-chu">
-            <h2 class="post-title">
-              html5学习-4-html5中的canvas基础
-              <small>2018-09-19</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://qq1332783374.github.io/post/html5-xue-xi-3-html5-zhong-de-wen-jian-cao-zuo">
-            <h2 class="post-title">
-              html5学习-3-html5中的文件操作
-              <small>2018-09-17</small>
-            </h2>
-          </a>
-        </article>
-      
-    
+    <a href="https://qq1332783374.github.io/archives/page/2/" class="page-btn">下一页 <i class="remixicon-arrow-right-line"></i></a>
   
 </div>
 
-    
-        <div class="pagination-container">
-  
-  
-    <a href="https://qq1332783374.github.io/archives/page/2/" class="prev-page">下一页</a>
-  
-</div>
-
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-</script>
-
+        </div>
       </div>
     </div>
+
+    <script src="https://qq1332783374.github.io/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
   </body>
 </html>
