@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qq1332783374.github.io</id>
     <title>Tan&apos;s-Blog</title>
-    <updated>2019-11-17T05:59:59.354Z</updated>
+    <updated>2019-11-27T14:08:38.032Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qq1332783374.github.io"/>
     <link rel="self" href="https://qq1332783374.github.io/atom.xml"/>
@@ -10,6 +10,52 @@
     <logo>https://qq1332783374.github.io/images/avatar.png</logo>
     <icon>https://qq1332783374.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Tan&apos;s-Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Mac 解决`.bash_profile`配置项不生效问题]]></title>
+        <id>https://qq1332783374.github.io/post/mac-jie-jue-bash_profilepei-zhi-xiang-bu-sheng-xiao-wen-ti</id>
+        <link href="https://qq1332783374.github.io/post/mac-jie-jue-bash_profilepei-zhi-xiang-bu-sheng-xiao-wen-ti">
+        </link>
+        <updated>2019-11-27T13:56:58.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="前言">前言</h2>
+<p>重启电脑，打开<code>iTerm2</code>敲命令的时候，突然发现配置项不生效了，要<code>source ~/.bash_profile</code> 一下才行，好像每次重启了都要重载一下命令。这就令人很头疼啦！网上查了一下，原来是我的<code>iTerm2</code>是加载<code>~/.zshrc</code>文件，然而这个文件里面并没有定义到环境变量导致的。</p>
+<h2 id="解决">解决</h2>
+<p>其实解决办法很简单，只需在<code>~/.zshrc</code>文件下面添加重载命令即可</p>
+<pre><code># 打开 .zshrc 文件
+vim ~./zshrc
+
+# 在最后添加命令
+source ~/.bash_profile
+
+# 保存退出
+:wq
+
+# 重载 `.zshrc` 文件
+source ~./zshrc
+</code></pre>
+<h2 id="总结">总结</h2>
+<p>希望能帮助到大家。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2>
+<p>重启电脑，打开<code>iTerm2</code>敲命令的时候，突然发现配置项不生效了，要<code>source ~/.bash_profile</code> 一下才行，好像每次重启了都要重载一下命令。这就令人很头疼啦！网上查了一下，原来是我的<code>iTerm2</code>是加载<code>~/.zshrc</code>文件，然而这个文件里面并没有定义到环境变量导致的。</p>
+<h2 id="解决">解决</h2>
+<p>其实解决办法很简单，只需在<code>~/.zshrc</code>文件下面添加重载命令即可</p>
+<pre><code># 打开 .zshrc 文件
+vim ~./zshrc
+
+# 在最后添加命令
+source ~/.bash_profile
+
+# 保存退出
+:wq
+
+# 重载 `.zshrc` 文件
+source ~./zshrc
+</code></pre>
+<h2 id="总结">总结</h2>
+<p>希望能帮助到大家。</p>
+<!-- more -->
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Mac终端iTerm2配置]]></title>
         <id>https://qq1332783374.github.io/post/mac-zhong-duan-iterm2-pei-zhi</id>
@@ -1366,93 +1412,6 @@ app.listen(3000);
 </code></pre>
 <h2 id="总结">总结</h2>
 <p>不知道说什么 。 。 。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[WOW.js 简单使用教程]]></title>
-        <id>https://qq1332783374.github.io/post/wowjs-jian-dan-shi-yong-jiao-cheng</id>
-        <link href="https://qq1332783374.github.io/post/wowjs-jian-dan-shi-yong-jiao-cheng">
-        </link>
-        <updated>2019-05-05T01:52:35.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>WOW.js - 让页面滚动更有趣。</p>
-</blockquote>
-<p><strong>官网:</strong> <a href="wow.js">https://www.delac.io/wow/</a></p>
-<p><strong>GitHub</strong>: <a href="github">https://github.com/matthieua/WOW</a></p>
-<p><strong>BootCDN</strong>: <a href="BootCDN">https://cdn.bootcss.com/wow/1.1.2/wow.js</a></p>
-<p>ps : IE6/7 等老版本的浏览器不支持 CSS3 动画，建议使用新版本的浏览器。</p>
-<h2 id="使用教程">使用教程</h2>
-<ol>
-<li>wow.js 是依赖于<strong>animate.css</strong>，记得要先引入animate.css。</li>
-</ol>
-<p><strong>animate官网</strong>：<a href="animate.css">https://daneden.github.io/animate.css/</a></p>
-<pre><code class="language-javascript">
-&lt;head&gt;
-	&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.bootcss.com/animate.css/3.7.0/animate.css&quot;&gt;
-&lt;/head&gt;
-
-</code></pre>
-<ol start="2">
-<li>引入<strong>wow.js</strong>相关的JS包，并且初始化</li>
-</ol>
-<pre><code class="language-javascript">
-&lt;script src=&quot;https://cdn.bootcss.com/wow/1.1.2/wow.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-	// wow.js 初始化
-	new WOW().init();
-&lt;/script&gt;
-
-</code></pre>
-<p>如需要自定义配置，参照官方的配置如下：</p>
-<pre><code class="language-javascript">// 1. boxClass：需要执行动画的className，默认 wow
-// 2. animateClass：animation.css 动画的 className，默认 animated
-// 3. offset：距离可视区域多少开始执行动画，默认 0
-// 4. mobile：是否在移动设备上执行动画，默认 true
-// 5. live：异步加载的内容是否有效，默认 true
-// 6. callback：每次动画启动时都会触发回调函数，参数为正在执行动画的DOM节点
-// 7. scrollContainer：可选滚动容器选择器，否则使用window
-
-var wow = new WOW({
-    boxClass: 'wow', 
-    animateClass: 'animated', 
-    offset: 0, 
-    mobile: true, 
-    live: true, 
-    callback: function (box) {
-        
-    },
-    scrollContainer: null
-});
-wow.init();
-
-</code></pre>
-<ol start="3">
-<li>在DOM节点上使用</li>
-</ol>
-<pre><code class="language-javascript">
-&lt;div 
-	class=&quot;wow fadeIn&quot; 
-	data-wow-duration=&quot;2s&quot; 
-	data-wow-delay=&quot;2s&quot; 
-	data-wow-offset=&quot;5&quot;  
-	data-wow-iteration=&quot;5&quot;&gt;
-&lt;/div&gt;
-
-</code></pre>
-<ul>
-<li><strong>wow</strong>class类名是必须添加的</li>
-<li><strong>fadeIn</strong> 是 animate 的动画样式名</li>
-<li><strong>data-wow-duration</strong>：动画持续时间</li>
-<li><strong>data-wow-delay</strong>：动画延迟时间</li>
-<li><strong>data-wow-offset</strong>：元素的偏移值</li>
-<li><strong>data-wow-iteration</strong>：动画执行次数</li>
-</ul>
-<p><strong>PS：两个class类名是必写的，data属性是可写可不写看情况而定。</strong></p>
-<ol start="4">
-<li>推荐一个全屏滚动的插件<strong>fullpage.js</strong></li>
-</ol>
-<p><strong>官网</strong>：<a href="">https://alvarotrigo.com/fullPage/zh/#page1</a></p>
-<p>以上就是全部教程，欢迎大家交流学习。</p>
 ]]></content>
     </entry>
 </feed>
