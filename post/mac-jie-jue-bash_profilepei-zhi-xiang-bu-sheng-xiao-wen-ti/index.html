@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tan&#39;s-Blog</title>
 <meta name="description" content="温故而知新" />
-<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1574863697632">
+<link rel="shortcut icon" href="https://qq1332783374.github.io/favicon.ico?v=1574949832116">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link href="https://cdn.remixicon.com/releases/v1.3.1/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
@@ -24,7 +24,7 @@
       <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
         <i class="remixicon-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
         <a href="https://qq1332783374.github.io">
-          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1574863697632" alt="">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://qq1332783374.github.io/images/avatar.png?v=1574949832116" alt="">
         </a>
         <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">Tan&#39;s-Blog</h1>
       </div>
@@ -98,6 +98,7 @@
         <div class="post-content yue">
           <h2 id="前言">前言</h2>
 <p>重启电脑，打开<code>iTerm2</code>敲命令的时候，突然发现配置项不生效了，要<code>source ~/.bash_profile</code> 一下才行，好像每次重启了都要重载一下命令。这就令人很头疼啦！网上查了一下，原来是我的<code>iTerm2</code>是加载<code>~/.zshrc</code>文件，然而这个文件里面并没有定义到环境变量导致的。</p>
+<!-- more -->
 <h2 id="解决">解决</h2>
 <p>其实解决办法很简单，只需在<code>~/.zshrc</code>文件下面添加重载命令即可</p>
 <pre><code># 打开 .zshrc 文件
@@ -114,7 +115,6 @@ source ~./zshrc
 </code></pre>
 <h2 id="总结">总结</h2>
 <p>希望能帮助到大家。</p>
-<!-- more -->
 
         </div>
 
